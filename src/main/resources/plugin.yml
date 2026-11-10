@@ -1,0 +1,32 @@
+name: ${name}
+version: ${version}
+main: ${main}
+api-version: '1.21.11'
+authors: [ BbIJABNPOBATEJb ]
+description: Paint pictures right in the game, no resource pack needed. Export and import as a string.
+
+permissions:
+  paintcraft.use:
+    description: Paint, place canvases, /paint and the menus
+    default: true
+  paintcraft.export:
+    description: Export a painting as a string
+    default: true
+  paintcraft.import:
+    description: Import a painting from a string
+    default: true
+  paintcraft.image:
+    description: Import an image from a URL (/paint image)
+    default: op
+  paintcraft.give:
+    description: Give the brush and canvases with /paint give
+    default: op
+  paintcraft.admin:
+    description: Edit and remove other players' paintings, /paint reload, /paint language, no limits and no costs
+    default: op
+    children:
+      paintcraft.use: true
+      paintcraft.export: true
+      paintcraft.import: true
+      paintcraft.image: true
+      paintcraft.give: true

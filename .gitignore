@@ -1,0 +1,13 @@
+.gradle/
+build/
+out/
+run/
+stand/
+.idea/
+*.iml
+*.class
+*.log
+hs_err_pid*
+__pycache__/
+Thumbs.db
+[Dd]esktop.ini

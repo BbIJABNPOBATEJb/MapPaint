@@ -1,0 +1,104 @@
+plugins {
+    id 'java-library'
+    id 'com.gradleup.shadow' version '9.6.1'
+}
+
+group = pluginGroup
+version = pluginVersion
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(javaVer)
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://repo.panda-lang.org/releases' }
+    maven { url = 'https://repo.codemc.io/repository/maven-releases/' }
+    maven { url = 'https://repo.codemc.io/repository/maven-snapshots/' }
+}
+
+dependencies {
+    compileOnly libs.paper.api
+
+    implementation libs.litecommands.bukkit
+    implementation libs.packetevents
+    implementation libs.adventure.nbt
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+}
+
+configurations.runtimeClasspath {
+    exclude group: 'com.google.code.gson'
+    exclude group: 'org.jetbrains', module: 'annotations'
+    exclude group: 'net.kyori', module: 'adventure-api'
+    exclude group: 'net.kyori', module: 'adventure-key'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release.set(javaVer.toInteger())
+    options.compilerArgs.add('-parameters')
+}
+
+processResources {
+    filteringCharset = 'UTF-8'
+
+    def props = [
+            version: pluginVersion,
+            name   : pluginName,
+            main   : pluginMainClass
+    ]
+    inputs.properties props
+
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+def libsPackage = "${project.group}.paintcraft.lib"
+
+shadowJar {
+    archiveBaseName.set(pluginName)
+    archiveClassifier.set('')
+
+    relocate 'dev.rollczi.litecommands', "${libsPackage}.litecommands"
+    relocate 'net.dzikoysk', "${libsPackage}.panda"
+    relocate 'panda.utilities', "${libsPackage}.panda.utilities"
+    relocate 'panda.std', "${libsPackage}.panda.std"
+    relocate 'com.github.retrooper.packetevents', "${libsPackage}.packetevents.api"
+    relocate 'io.github.retrooper.packetevents', "${libsPackage}.packetevents.impl"
+    relocate('net.kyori.adventure.nbt', "${libsPackage}.nbt") {
+        exclude 'net.kyori.adventure.nbt.api.*'
+    }
+    relocate 'net.kyori.examination', "${libsPackage}.examination"
+
+    exclude 'META-INF/maven/**'
+    exclude 'META-INF/versions/**'
+
+    manifest {
+        attributes 'paperweight-mappings-namespace': 'mojang'
+    }
+}
+
+tasks.register('ruJar', Jar) {
+    dependsOn tasks.shadowJar
+    archiveBaseName.set(pluginName)
+    archiveClassifier.set('ru')
+    filteringCharset = 'UTF-8'
+
+    manifest {
+        attributes 'paperweight-mappings-namespace': 'mojang'
+    }
+
+    from(zipTree(tasks.shadowJar.archiveFile)) {
+        exclude 'META-INF/MANIFEST.MF'
+        filesMatching('config.yml') {
+            filter { it.replace('language: en', 'language: ru') }
+        }
+    }
+}
+
+tasks.jar.enabled = false
+tasks.build.dependsOn tasks.shadowJar, tasks.ruJar

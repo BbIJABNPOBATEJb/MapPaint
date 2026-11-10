@@ -1,0 +1,449 @@
+# PaintCraft — English
+#
+# {placeholders} in braces are filled in by the plugin: keep them as they are.
+# Colors are MiniMessage tags: <gray>, <white>, <#FF7800>.
+# A key missing from another language file falls back to this one.
+
+language:
+  name: "English"
+  changed: "<#1FFF5E>Language: <white>{language}"
+  current: "<white>Current language: <#FF7800>{language}"
+  available: "<gray>Available: <white>{languages}"
+  unknown: "Unknown language {input}. Available: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "You don't have permission"
+  color-format: "A color is written as #RRGGBB, for example #FF8800"
+  canvas-cleared: "<gray>Canvas cleared. <dark_gray>F to bring it back"
+  "on": "ON"
+  "off": "OFF"
+
+click:
+  left: "LMB"
+  right: "RMB"
+
+action:
+  open: "open"
+  select: "select"
+  take: "take"
+  toggle: "toggle"
+
+unit:
+  canvas:
+    one: "{count} 1×1 canvas"
+    many: "{count} 1×1 canvases"
+  sheet:
+    one: "{count} sheet"
+    many: "{count} sheets"
+  painting:
+    one: "{count} painting"
+    many: "{count} paintings"
+
+color:
+  transparent: "Transparent"
+  transparent-short: "transparent"
+
+command:
+  invalid-usage: "Invalid usage"
+  player-only: "Players only"
+  usage-header: "<#FF7800>Command usage:"
+  usage: "<#FF1F1F>Usage: <white>{usage}"
+  unknown-choice: "No such {what}: {input}"
+  choice:
+    tool: "tool"
+    item: "item"
+  canvas-size: "Canvas size is WxH in blocks, from 1x1 to {max}x{max}. For example: 2x3"
+  panel-reset: "The panel windows are back in their places"
+  specify-player: "Specify a player"
+  give-painting: "Paintings come from the gallery: /paint gallery"
+  given: "<white>Given to <#FF7800>{player}"
+  reloaded: "Config reloaded"
+  look-at-painting: "Look at a painting or hold one in your hand"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— paintings without a resource pack"
+    lines:
+      - "<#FF7800>Brush <dark_gray>» <gray>stick + feather. <#FF7800>Canvas <dark_gray>» <gray>paper + stick"
+      - "Canvases laid out as a rectangle in a crafting table merge into a big one"
+      - "<#FF7800>RMB <dark_gray>» <gray>paint, <#FF7800>LMB <dark_gray>» <gray>pick a color from a canvas or a block"
+      - "<#FF7800>Shift + RMB off the canvas <dark_gray>» <gray>palette, <#FF7800>Shift + scroll <dark_gray>» <gray>brush size"
+      - "<#FF7800>Shift while painting <dark_gray>» <gray>straight line, square, circle"
+      - "<#FF7800>F <dark_gray>» <gray>undo, <#FF7800>Shift + F <dark_gray>» <gray>redo"
+      - "<#FF7800>Q <dark_gray>» <gray>previous tool, <#FF7800>Shift + Q <dark_gray>» <gray>next tool"
+      - "<white>/paint <gray>palette · <white>/paint gallery <gray>my paintings"
+      - "<white>/paint color #RRGGBB <gray>· <white>size number <gray>· <white>tool name"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>put moved panel windows back"
+      - "<white>/paint export <gray>painting code · <white>/paint import [code] <gray>paste a code"
+      - "<white>/paint sign [title] <gray>sign: a signed painting can be copied"
+      - "<white>/paint image [url] <gray>image from the web: crop, zoom, offset"
+      - "<white>/paint admin <gray>plugin items and every painting on the server"
+      - "<white>/paint give brush|canvas [WxH] [amount] [player]"
+      - "<white>/paint language [code] <gray>plugin language · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Brush"
+    hint: "Hold RMB and drag over the canvas. Shift keeps it straight."
+  eraser:
+    name: "Eraser"
+    hint: "Erases down to the blank canvas."
+  fill:
+    name: "Fill"
+    hint: "Fills an area of one color."
+  spray:
+    name: "Spray can"
+    hint: "Sprays dots: the longer you hold, the denser."
+  line:
+    name: "Line"
+    hint: "Hold RMB at the start, release at the end. Shift snaps it."
+  rect:
+    name: "Rectangle"
+    hint: "Drag from corner to corner. Shift makes a square."
+  ellipse:
+    name: "Ellipse"
+    hint: "Drag like a rectangle. Shift makes a circle."
+
+item:
+  brush:
+    name: "<#FF7800>Artist's Brush"
+    paint: "paint on a canvas <gray>(can be held)"
+    pick: "pick a color from a canvas or a block"
+    palette: "palette <gray>(off the canvas)"
+    shift-key: "Shift while painting"
+    shift: "straight line, square, circle"
+    wheel-key: "Shift + scroll"
+    wheel: "brush size"
+    undo: "undo"
+    redo: "redo"
+  canvas:
+    name: "Canvas {size}"
+    lore:
+      - "Place it on a wall, floor or ceiling"
+      - "and paint with the brush."
+      - ""
+      - "<dark_gray>Identical canvases laid out"
+      - "<dark_gray>as a rectangle in a crafting table"
+      - "<dark_gray>merge into a big one."
+    assemble: "assemble a big canvas from the stack"
+  painting:
+    sketch-name: "Sketch"
+    author: "Author: <white>{name}"
+    size: "Size: <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>transferred, not painted by hand"
+    signed:
+      - "<dark_gray>Painting + blank canvas {size}"
+      - "<dark_gray>in a crafting table makes a copy."
+    sketch:
+      - "<dark_gray>Not signed: can still be painted."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Untitled"
+  signed: "<#FF7800>signed"
+  sketch: "<white>sketch"
+  imported: " <gray>· <#FFE100>import"
+
+hud:
+  size: "<gray>size <white>{size}"
+
+paint:
+  signed: "The painting is signed — it can't be changed anymore"
+  not-yours: "This painting belongs to {player}: only the author paints on it"
+  undo:
+    look: "Look at a painting to undo"
+    undone: "Undone"
+    redone: "Redone"
+    nothing-undo: "Nothing to undo"
+    nothing-redo: "Nothing to redo"
+
+place:
+  deleted: "The author deleted this painting. The item is a blank canvas again"
+  too-big: "Canvases bigger than {max} can't be placed on this server"
+  no-room: "A {size} canvas doesn't fit here"
+  denied: "You can't do that here"
+  break-owner: "Only the player who placed the painting can take it down"
+  change-owner: "Only the player who placed the painting can change it"
+
+assemble:
+  hold: "Hold 1×1 canvases in your hand"
+  not-enough: "A {size} canvas needs {canvases}, you hold {have}"
+  done: "Canvas {size} assembled"
+
+import:
+  parts: "Parts received: {have} of {total}. Paste part {next}."
+  too-big: "The painting in the code is bigger than this server allows ({max})"
+  bad-code: "This is not a painting code, or it is broken"
+  loading: "Loading the image…"
+  image-failed: "Couldn't load the image: {reason}"
+  image-done: "<#1FFF5E>The image is on the canvas. <gray>Not right? Open the window again and adjust — the previous result gets replaced."
+  code-done: "<#1FFF5E>The drawing is on the canvas. <gray>Undo with F while holding the brush."
+  no-target: "Nowhere to put it: look at your canvas or hold a blank {size} canvas"
+  created: "A {size} painting is in your inventory"
+  paper: "Importing costs paper: {sheets} — {price} per block of the painting"
+  limit: "You already have {paintings} — that's the limit. Delete some: /paint gallery"
+
+gallery:
+  need-canvas: "You need a blank {size} canvas in your inventory"
+
+sign:
+  done: "<#1FFF5E>Painting '{title}' signed. <gray>It can now be copied in a crafting table."
+
+panel:
+  window:
+    tools: "Brush"
+    colors: "Color"
+    actions: "Painting"
+  title:
+    tools: "BRUSH"
+    colors: "COLOR"
+  window-reset: "The '{window}' window is back in its place"
+  window-grabbed: "<#FF7800>Window '{window}' <dark_gray>» <gray>move it with your crosshair; release RMB or click again to drop"
+  move: "<#FF7800>Move the window <dark_gray>» <gray>hold RMB and drag; Shift + click puts it back"
+  size: "<#FF7800>Brush size: {size} <dark_gray>» <gray>fine-tune with Shift + scroll"
+  shape:
+    square: "<#FF7800>Square brush <dark_gray>» <gray>straight edges, sharp corners"
+    round: "<#FF7800>Round brush <dark_gray>» <gray>soft rounded strokes"
+  hue: "<#FF7800>Hue <dark_gray>» <gray>colors of this hue show up in the square"
+  current-color: "<#FF7800>Current color: <white>{color} <dark_gray>» <gray>enter a #RRGGBB code"
+  previous-color: "<#FF7800>Previous color: <white>{color} <dark_gray>» <gray>switch back"
+  transparent: "<#1FFFE3>Transparent <dark_gray>» <gray>the wall shows through the painting"
+  shade: "{color} <dark_gray>» <gray>shade of the current color"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Undo <dark_gray>» <gray>same as F"
+    redo: "<#FF7800>Redo <dark_gray>» <gray>same as Shift + F"
+    clear: "<#FF7800>Clear the canvas <dark_gray>» <gray>fill with white, can be undone"
+    resolution: "<#FF7800>Resolution: {res} px/block <dark_gray>» <gray>change; F brings it back"
+    shared: "<#FF7800>Anyone can paint: {state} <dark_gray>» <gray>toggle"
+    sign: "<#FF7800>Sign <dark_gray>» <gray>give it a title and finish the painting"
+    export: "<#FF7800>Export <dark_gray>» <gray>painting code as a string"
+    import: "<#FF7800>Import <dark_gray>» <gray>paste a painting code"
+    image: "<#FF7800>Image from a URL <dark_gray>» <gray>with crop, zoom and offset"
+    gallery: "<#FF7800>My paintings"
+    hide: "<#FF7800>Hide the panel <dark_gray>» <gray>comes back when you click the canvas with the brush"
+
+menu:
+  close:
+    name: "Close"
+    action: "close the menu"
+  back:
+    name: "Back"
+    action: "go back"
+  hint: "Hint"
+  page:
+    previous: "Previous page"
+    next: "Next page"
+    action: "turn the page"
+    of: "Page {page} of {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Delete forever?"
+      - "The painting disappears from every wall"
+      - "and its items turn into blank canvases."
+    "yes": "<#FF1F1F>yes, delete"
+    "no": "keep it"
+    action: "delete forever"
+    done: "Painting deleted"
+  admin:
+    title: "Paintings: admin"
+    canvases:
+      name: "<#FF7800>Canvases of every size"
+      lore:
+        - "From 1×1 to {max}: 3×5, 1×4 and any other."
+    painting:
+      - "Author: <white>{author}"
+      - "{size} blocks · {res} px/block · {state}"
+      - "Changed: <white>{date}"
+      - "Placed in loaded chunks: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "take"
+    export: "export as a string"
+    empty: "No paintings on the server yet"
+    count: "<white>Paintings on the server: <#FF7800>{count}"
+    too-big:
+      - "Bigger than the config allows:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "take {amount} at once"
+    help-canvases:
+      - "<white>Canvases of every size."
+      - "Column is width, row is height:"
+      - "third column of the fifth row is 3×5."
+      - ""
+      - "Shift + LMB gives {amount} at once."
+    help:
+      - "<white>The top row holds plugin items:"
+      - "the brush, a canvas and the table"
+      - "of canvases up to {max}."
+      - ""
+      - "Below are paintings of all players."
+      - "A painting taken here is the same"
+      - "one, not a copy: edits show up"
+      - "wherever it hangs."
+  canvas:
+    title: "Canvas"
+    info:
+      - "Author: <white>{author}"
+      - "Size: <white>{size} <gray>blocks, <white>{pixels} <gray>pixels"
+      - "State: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Resolution: <#FF7800>{res} <white>pixels per block"
+      lore:
+        - "The lower the number, the bigger the pixels."
+        - "The drawing is stretched on change."
+        - "<dark_gray>F undoes the change."
+      finer: "finer"
+      coarser: "coarser"
+    clear:
+      name: "Clear the canvas"
+      lore:
+        - "Fill with white. Can be undone (F)."
+      action: "clear"
+    shared:
+      name: "<white>Anyone can paint: {state}"
+      lore:
+        - "Painting together: any player's"
+        - "brush works on this canvas."
+    sign:
+      name: "Sign"
+      lore:
+        - "Give it a title and finish the painting."
+        - "A signed painting can't be changed,"
+        - "but it can be copied."
+      action: "sign"
+    export:
+      name: "Export as a string"
+      lore:
+        - "The painting code: copy it and pass it"
+        - "to anyone, even to another server."
+      action: "show the code"
+    import:
+      name: "Import from a string"
+      lore:
+        - "Paste a code. The drawing lands on the"
+        - "canvas you look at, or in a blank"
+        - "canvas in your hand."
+      action: "paste a code"
+    gallery:
+      lore:
+        - "Everything you have painted."
+  gallery:
+    title: "My paintings"
+    painting:
+      - "{size} blocks · {res} px/block · {state}"
+      - "Changed: <white>{date}"
+      - "Placed now: <white>{placed}"
+    take: "take <gray>(needs a blank {size} canvas)"
+    empty:
+      name: "Nothing here yet"
+      lore:
+        - "Place a canvas and paint something."
+    help:
+      - "<white>All your paintings are kept here,"
+      - "even if you took them down or lost them."
+      - ""
+      - "A sketch taken from here is the same"
+      - "painting: edits show up wherever"
+      - "it hangs."
+      - ""
+      - "Signed paintings are copied in a"
+      - "crafting table: painting + blank canvas."
+  palette:
+    title: "Palette and tools"
+    page: "Colors: page {page} of {pages}"
+    hex:
+      name: "Color by code"
+      lore:
+        - "Enter #RRGGBB — the nearest"
+        - "palette color gets picked."
+      action: "enter a code"
+    transparent:
+      - "Pixels disappear: the wall shows"
+      - "through the painting. Good for stickers"
+      - "and paintings of any shape."
+    shade:
+      - "Shade of the selected color."
+    size:
+      name: "<white>Brush size: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>In game: Shift + mouse wheel."
+      more: "bigger"
+      less: "smaller"
+      shift: "With Shift"
+      by-four: "by 4"
+    canvas:
+      name: "Canvas and my paintings"
+      lore:
+        - "Resolution, signing, export,"
+        - "import, the list of your paintings."
+    help:
+      - "<white>With the brush in hand:"
+      - "RMB on a canvas paints,"
+      - "LMB picks a color from a canvas"
+      - "or from any block in the world."
+      - ""
+      - "Shift + scroll changes the brush size."
+      - "F undoes, Shift + F redoes."
+      - ""
+      - "Shapes are dragged: hold RMB,"
+      - "move, release."
+      - "With Shift a line goes straight,"
+      - "a rectangle becomes a square,"
+      - "an ellipse becomes a circle."
+
+dialog:
+  code: "Code"
+  export:
+    title: "Export a painting"
+    text: "'{title}' — a code of {length} characters. Press Copy to put it on the clipboard."
+    text-parts: "'{title}' — the code is long, so it is split into parts. Part {part} of {parts}: {length} characters. Copy and paste all the parts one by one."
+    copy: "Copy"
+    copy-tooltip: "Put the code on the clipboard"
+    next: "Next part"
+    first: "Back to part one"
+  import:
+    title: "Import a painting"
+    text: "Paste a painting code (Ctrl+V). The drawing lands on the canvas you are looking at, or in a blank canvas in your hand."
+    button: "Import"
+  sign:
+    title: "Sign the painting"
+    text: "A signed painting can't be changed, but it can be copied: painting + a blank canvas of the same size in a crafting table."
+    input: "Title"
+    button: "Sign"
+  hex:
+    title: "Color by code"
+    text: "Enter a color as #RRGGBB. Maps can't show every color, so the nearest one gets picked."
+    input: "Color"
+    button: "Select"
+  canvas:
+    title: "Assemble a canvas"
+    creative: "Canvases are not spent in creative mode."
+    have: "You hold {canvases}."
+    text: "Column is width, row is height: a 2×4 canvas takes eight 1×1 canvases. Gray sizes are out of reach for now."
+    same: "You already hold this canvas"
+    assemble: "Assemble a {size} canvas: takes {canvases}"
+    need: "Takes {canvases}, you hold {have}"
+  image:
+    title: "Image from a URL"
+    text: "The image lands on the canvas you are looking at, or in a blank canvas in your hand; the size in blocks only matters when there is neither. Not happy with it? Open the window again: the settings are kept and the previous result on the canvas gets replaced."
+    url: "Image URL"
+    fit:
+      label: "Fit"
+      cover: "Fill the canvas, crop the rest"
+      contain: "Fit the whole image, with margins"
+      stretch: "Stretch over the canvas"
+    zoom: "Zoom, %"
+    x: "Shift right, %"
+    "y": "Shift down, %"
+    brightness: "Brightness, %"
+    contrast: "Contrast, %"
+    saturation: "Saturation, %"
+    dither: "Smooth color transitions (not applied to pixel art)"
+    shade: "Darken like a block face: for cubes made of paintings"
+    clear: "Margins around the image are transparent, not white"
+    width: "Width of a new painting, blocks"
+    height: "Height of a new painting, blocks"
+    button: "Apply"
+    no-url: "Paste an image URL"

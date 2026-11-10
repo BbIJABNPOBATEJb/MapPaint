@@ -1,0 +1,46 @@
+# en, ru or any file from the lang folder. In game: /paint language <code>
+language: en
+
+canvas:
+  # biggest canvas side in blocks (1-16)
+  max-size: 5
+  # pixels per block of a new canvas, the owner can change it later
+  default-resolution: 32
+  resolutions: [16, 32, 64, 128]
+  # painting distance in blocks
+  reach: 6.0
+
+brush:
+  max-size: 32
+  # true - the eraser makes pixels transparent, false - white
+  eraser-transparent: false
+
+limits:
+  # 0 - unlimited
+  paintings-per-player: 200
+  undo-steps: 30
+
+protection:
+  # only the player who placed a painting (and admins) can take it down
+  only-placer-breaks: true
+
+import:
+  # paper per block of the painting, 0 - free. Free in creative and for admins
+  paper-per-block: 1
+  code: true
+  image-url: true
+  image-max-bytes: 8388608
+  image-resolution: 128
+  # false - never download from localhost and LAN addresses
+  image-allow-private-hosts: false
+
+autosave-seconds: 20
+
+recipes:
+  brush:
+    enabled: true
+    ingredients: [STICK, FEATHER]
+  canvas:
+    enabled: true
+    ingredients: [PAPER, STICK]
+    amount: 1
