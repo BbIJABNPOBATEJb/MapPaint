@@ -8,7 +8,6 @@ import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.paint.Tool;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
-import me.bbijabnpobatejb.paintcraft.ui.Dialogs;
 import me.bbijabnpobatejb.paintcraft.ui.inventory.InventoryGuiImpl;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.ItemUtil;
@@ -66,7 +65,7 @@ public class PaletteGui extends InventoryGuiImpl {
                 .lore(StringUtil.mmLore(Lang.list("menu.palette.hex.lore")))
                 .addLore(ActionLoreBuilder.create(Lang.get("menu.palette.hex.action")).build())
                 .build(), (gui, player, click) -> {
-            Dialogs.hex(plugin, player);
+            plugin.getPrompts().hex(player);
             return true;
         });
         addColor(3, Palette.TRANSPARENT, transparent, StringUtil.mmLore(Lang.list("menu.palette.transparent")));

@@ -1,0 +1,449 @@
+# PaintCraft — Svenska
+#
+# {platshållare} inom klammerparenteser fyller pluginet i: lämna dem som de är.
+# Färger anges med MiniMessage-taggar: <gray>, <white>, <#FF7800>.
+# En nyckel som saknas i filen hämtas från den engelska översättningen.
+
+language:
+  name: "Svenska"
+  changed: "<#1FFF5E>Språk: <white>{language}"
+  current: "<white>Nuvarande språk: <#FF7800>{language}"
+  available: "<gray>Tillgängliga: <white>{languages}"
+  unknown: "Okänt språk {input}. Tillgängliga: {languages}"
+
+prefix: "Målningar"
+
+common:
+  no-permission: "Du har inte behörighet"
+  color-format: "En färg skrivs som #RRGGBB, till exempel #FF8800"
+  canvas-cleared: "<gray>Duken är rensad. <dark_gray>F — ta tillbaka"
+  "on": "PÅ"
+  "off": "AV"
+
+click:
+  left: "VMK"
+  right: "HMK"
+
+action:
+  open: "öppna"
+  select: "välj"
+  take: "ta"
+  toggle: "växla"
+
+unit:
+  canvas:
+    one: "{count} duk 1×1"
+    many: "{count} dukar 1×1"
+  sheet:
+    one: "{count} ark"
+    many: "{count} ark"
+  painting:
+    one: "{count} målning"
+    many: "{count} målningar"
+
+color:
+  transparent: "Genomskinlig"
+  transparent-short: "genomskinlig"
+
+command:
+  invalid-usage: "Felaktig användning"
+  player-only: "Endast för spelare"
+  usage-header: "<#FF7800>Hjälp för kommandot:"
+  usage: "<#FF1F1F>Användning: <white>{usage}"
+  unknown-choice: "Finns inte: {input} ({what})"
+  choice:
+    tool: "verktyg"
+    item: "föremål"
+  canvas-size: "Dukens storlek anges som BxH i block, från 1x1 till {max}x{max}. Till exempel: 2x3"
+  panel-reset: "Panelens fönster är tillbaka på sina platser"
+  specify-player: "Ange en spelare"
+  give-painting: "Målningar får man från galleriet: /paint gallery"
+  given: "<white>Gavs till <#FF7800>{player}"
+  reloaded: "Konfigurationen är omladdad"
+  look-at-painting: "Titta på en målning eller håll en i handen"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— målningar utan resurspaket"
+    lines:
+      - "<#FF7800>Pensel <dark_gray>» <gray>pinne + fjäder. <#FF7800>Duk <dark_gray>» <gray>papper + pinne"
+      - "Dukar i en rektangel på arbetsbänken slås ihop till en stor"
+      - "<#FF7800>HMK <dark_gray>» <gray>måla, <#FF7800>VMK <dark_gray>» <gray>ta färg från duk eller block"
+      - "<#FF7800>Shift + HMK vid sidan av duken <dark_gray>» <gray>palett, <#FF7800>Shift + hjul <dark_gray>» <gray>penselstorlek"
+      - "<#FF7800>Shift när du målar <dark_gray>» <gray>rak linje, kvadrat, cirkel"
+      - "<#FF7800>F <dark_gray>» <gray>ångra, <#FF7800>Shift + F <dark_gray>» <gray>gör om"
+      - "<#FF7800>Q <dark_gray>» <gray>föregående verktyg, <#FF7800>Shift + Q <dark_gray>» <gray>nästa"
+      - "<white>/paint <gray>palett · <white>/paint gallery <gray>mina målningar"
+      - "<white>/paint color #RRGGBB <gray>· <white>size tal <gray>· <white>tool namn"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>flytta tillbaka panelens fönster"
+      - "<white>/paint export <gray>målningskod · <white>/paint import [kod] <gray>klistra in kod"
+      - "<white>/paint sign [titel] <gray>signera: en signerad målning kan kopieras"
+      - "<white>/paint image [url] <gray>bild från webben: beskärning, zoom, förskjutning"
+      - "<white>/paint admin <gray>pluginets föremål och alla målningar på servern"
+      - "<white>/paint give brush|canvas [BxH] [antal] [spelare]"
+      - "<white>/paint language [kod] <gray>pluginets språk · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Pensel"
+    hint: "Håll HMK och dra över duken. Shift — rakt."
+  eraser:
+    name: "Suddgummi"
+    hint: "Suddar ner till den tomma duken."
+  fill:
+    name: "Fyll"
+    hint: "Fyller ett område med en färg."
+  spray:
+    name: "Sprayburk"
+    hint: "Sprayar prickar: ju längre du håller, desto tätare."
+  line:
+    name: "Linje"
+    hint: "Håll HMK i början, släpp i slutet. Shift — rakt."
+  rect:
+    name: "Rektangel"
+    hint: "Dra från hörn till hörn. Shift — kvadrat."
+  ellipse:
+    name: "Ellips"
+    hint: "Dra som en rektangel. Shift — cirkel."
+
+item:
+  brush:
+    name: "<#FF7800>Konstnärens pensel"
+    paint: "måla på duken <gray>(kan hållas)"
+    pick: "ta färg från duk eller block"
+    palette: "palett <gray>(vid sidan av duken)"
+    shift-key: "Shift när du målar"
+    shift: "rak linje, kvadrat, cirkel"
+    wheel-key: "Shift + hjul"
+    wheel: "penselstorlek"
+    undo: "ångra"
+    redo: "gör om"
+  canvas:
+    name: "Duk {size}"
+    lore:
+      - "Sätt upp den på vägg, golv eller tak"
+      - "och måla med penseln."
+      - ""
+      - "<dark_gray>Likadana dukar, lagda som en"
+      - "<dark_gray>rektangel på arbetsbänken,"
+      - "<dark_gray>slås ihop till en stor."
+    assemble: "bygg en stor duk av högen"
+  painting:
+    sketch-name: "Skiss"
+    author: "Konstnär: <white>{name}"
+    size: "Storlek: <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>överförd, inte målad med penseln"
+    signed:
+      - "<dark_gray>Målning + tom duk {size}"
+      - "<dark_gray>på arbetsbänken ger en kopia."
+    sketch:
+      - "<dark_gray>Inte signerad: kan målas vidare."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Utan titel"
+  signed: "<#FF7800>signerad"
+  sketch: "<white>skiss"
+  imported: " <gray>· <#FFE100>import"
+
+hud:
+  size: "<gray>storlek <white>{size}"
+
+paint:
+  signed: "Målningen är signerad — den kan inte ändras längre"
+  not-yours: "Den här målningen tillhör {player}: bara konstnären målar på den"
+  undo:
+    look: "Titta på en målning för att ångra"
+    undone: "Ångrat"
+    redone: "Gjort om"
+    nothing-undo: "Inget att ångra"
+    nothing-redo: "Inget att göra om"
+
+place:
+  deleted: "Konstnären har tagit bort målningen. Föremålet är en tom duk igen"
+  too-big: "Dukar större än {max} kan inte sättas upp på den här servern"
+  no-room: "En duk på {size} ryms inte här"
+  denied: "Du får inte göra det här"
+  break-owner: "Bara den som hängde upp målningen kan ta ner den"
+  change-owner: "Bara den som hängde upp målningen kan ändra den"
+
+assemble:
+  hold: "Håll dukar på 1×1 i handen"
+  not-enough: "En duk på {size} kräver {canvases}, du håller {have}"
+  done: "Duk {size} byggd"
+
+import:
+  parts: "Mottagna delar: {have} av {total}. Klistra in del {next}."
+  too-big: "Målningen i koden är större än servern tillåter ({max})"
+  bad-code: "Det här är ingen målningskod, eller så är den trasig"
+  loading: "Laddar bilden…"
+  image-failed: "Bilden kunde inte laddas: {reason}"
+  image-done: "<#1FFF5E>Bilden ligger på duken. <gray>Inte bra? Öppna fönstret igen och justera — det förra resultatet ersätts."
+  code-done: "<#1FFF5E>Teckningen ligger på duken. <gray>Ångra med F med penseln i handen."
+  no-target: "Ingenstans att lägga den: titta på din duk eller håll en tom duk på {size} i handen"
+  created: "En målning på {size} ligger i ditt förråd"
+  paper: "Importen kostar papper: {sheets} — {price} per block av målningen"
+  limit: "Du har redan {paintings} — det är gränsen. Ta bort några: /paint gallery"
+
+gallery:
+  need-canvas: "Du behöver en tom duk på {size} i förrådet"
+
+sign:
+  done: "<#1FFF5E>Målningen ”{title}” är signerad. <gray>Nu kan den kopieras på arbetsbänken."
+
+panel:
+  window:
+    tools: "Pensel"
+    colors: "Färg"
+    actions: "Målning"
+  title:
+    tools: "PENSEL"
+    colors: "FÄRG"
+  window-reset: "Fönstret ”{window}” är tillbaka på sin plats"
+  window-grabbed: "<#FF7800>Fönstret ”{window}” <dark_gray>» <gray>flytta det med hårkorset; släpp HMK eller klicka igen för att släppa ner det"
+  move: "<#FF7800>Flytta fönstret <dark_gray>» <gray>håll HMK och dra; Shift + klick sätter tillbaka det"
+  size: "<#FF7800>Penselstorlek: {size} <dark_gray>» <gray>finjustera med Shift + hjul"
+  shape:
+    square: "<#FF7800>Fyrkantig pensel <dark_gray>» <gray>raka kanter, skarpa hörn"
+    round: "<#FF7800>Rund pensel <dark_gray>» <gray>mjuka, rundade drag"
+  hue: "<#FF7800>Nyans <dark_gray>» <gray>färger i den här nyansen visas i rutan"
+  current-color: "<#FF7800>Nuvarande färg: <white>{color} <dark_gray>» <gray>ange en #RRGGBB-kod"
+  previous-color: "<#FF7800>Förra färgen: <white>{color} <dark_gray>» <gray>byt tillbaka"
+  transparent: "<#1FFFE3>Genomskinlig <dark_gray>» <gray>väggen syns genom målningen"
+  shade: "{color} <dark_gray>» <gray>ljushet för nuvarande färg"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Ångra <dark_gray>» <gray>samma som F"
+    redo: "<#FF7800>Gör om <dark_gray>» <gray>samma som Shift + F"
+    clear: "<#FF7800>Rensa duken <dark_gray>» <gray>fyll med vitt, kan ångras"
+    resolution: "<#FF7800>Upplösning: {res} px/block <dark_gray>» <gray>ändra; F tar tillbaka"
+    shared: "<#FF7800>Alla får måla: {state} <dark_gray>» <gray>växla"
+    sign: "<#FF7800>Signera <dark_gray>» <gray>ge en titel och avsluta målningen"
+    export: "<#FF7800>Exportera <dark_gray>» <gray>målningskod som text"
+    import: "<#FF7800>Importera <dark_gray>» <gray>klistra in en målningskod"
+    image: "<#FF7800>Bild från en url <dark_gray>» <gray>med beskärning, zoom och förskjutning"
+    gallery: "<#FF7800>Mina målningar"
+    hide: "<#FF7800>Dölj panelen <dark_gray>» <gray>kommer tillbaka när du klickar på duken med penseln"
+
+menu:
+  close:
+    name: "Stäng"
+    action: "stäng menyn"
+  back:
+    name: "Tillbaka"
+    action: "gå tillbaka"
+  hint: "Tips"
+  page:
+    previous: "Föregående sida"
+    next: "Nästa sida"
+    action: "bläddra"
+    of: "Sida {page} av {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Ta bort för alltid?"
+      - "Målningen försvinner från alla väggar"
+      - "och dess föremål blir tomma dukar."
+    "yes": "<#FF1F1F>ja, ta bort"
+    "no": "behåll"
+    action: "ta bort för alltid"
+    done: "Målningen är borttagen"
+  admin:
+    title: "Målningar: administration"
+    canvases:
+      name: "<#FF7800>Dukar i alla storlekar"
+      lore:
+        - "Från 1×1 till {max}: 3×5, 1×4 och alla andra."
+    painting:
+      - "Konstnär: <white>{author}"
+      - "{size} block · {res} px/block · {state}"
+      - "Ändrad: <white>{date}"
+      - "Hänger i laddade chunks: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "ta"
+    export: "exportera som text"
+    empty: "Det finns inga målningar på servern ännu"
+    count: "<white>Målningar på servern: <#FF7800>{count}"
+    too-big:
+      - "Större än konfigurationen tillåter:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "ta {amount} på en gång"
+    help-canvases:
+      - "<white>Dukar i alla storlekar."
+      - "Kolumnen är bredden, raden är höjden:"
+      - "tredje kolumnen i femte raden är 3×5."
+      - ""
+      - "Shift + VMK ger {amount} på en gång."
+    help:
+      - "<white>Översta raden är pluginets föremål:"
+      - "penseln, en duk och tabellen med"
+      - "dukar upp till {max}."
+      - ""
+      - "Nedanför finns alla spelares målningar."
+      - "En målning du tar är samma målning,"
+      - "ingen kopia: ändringar syns överallt"
+      - "där den hänger."
+  canvas:
+    title: "Duk"
+    info:
+      - "Konstnär: <white>{author}"
+      - "Storlek: <white>{size} <gray>block, <white>{pixels} <gray>pixlar"
+      - "Status: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Upplösning: <#FF7800>{res} <white>pixlar per block"
+      lore:
+        - "Lägre tal ger större pixlar."
+        - "Teckningen sträcks ut vid ändring."
+        - "<dark_gray>F ångrar ändringen."
+      finer: "finare"
+      coarser: "grövre"
+    clear:
+      name: "Rensa duken"
+      lore:
+        - "Fyll med vitt. Kan ångras (F)."
+      action: "rensa"
+    shared:
+      name: "<white>Alla får måla: {state}"
+      lore:
+        - "Måla tillsammans: varje spelares"
+        - "pensel fungerar på den här duken."
+    sign:
+      name: "Signera"
+      lore:
+        - "Ge en titel och avsluta målningen."
+        - "En signerad målning kan inte ändras,"
+        - "men den kan kopieras."
+      action: "signera"
+    export:
+      name: "Exportera som text"
+      lore:
+        - "Målningskoden: kopiera och ge den"
+        - "till vem som helst, även på en annan server."
+      action: "visa koden"
+    import:
+      name: "Importera från text"
+      lore:
+        - "Klistra in en kod. Teckningen hamnar på"
+        - "duken du tittar på, eller på en tom"
+        - "duk i handen."
+      action: "klistra in kod"
+    gallery:
+      lore:
+        - "Allt du har målat."
+  gallery:
+    title: "Mina målningar"
+    painting:
+      - "{size} block · {res} px/block · {state}"
+      - "Ändrad: <white>{date}"
+      - "Hänger nu: <white>{placed}"
+    take: "ta <gray>(kräver en tom duk på {size})"
+    empty:
+      name: "Inget här ännu"
+      lore:
+        - "Sätt upp en duk och måla något."
+    help:
+      - "<white>Här finns alla dina målningar,"
+      - "även om du tagit ner eller tappat bort dem."
+      - ""
+      - "En skiss som tas härifrån är samma"
+      - "målning: ändringar syns överallt"
+      - "där den hänger."
+      - ""
+      - "Signerade målningar kopieras på"
+      - "arbetsbänken: målning + tom duk."
+  palette:
+    title: "Palett och verktyg"
+    page: "Färger: sida {page} av {pages}"
+    hex:
+      name: "Färg med kod"
+      lore:
+        - "Ange #RRGGBB — närmaste"
+        - "färg i paletten väljs."
+      action: "ange kod"
+    transparent:
+      - "Pixlarna försvinner: väggen syns"
+      - "genom målningen. Bra för klistermärken"
+      - "och målningar i valfri form."
+    shade:
+      - "Ljushet för den valda färgen."
+    size:
+      name: "<white>Penselstorlek: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>I spelet: Shift + mushjul."
+      more: "större"
+      less: "mindre"
+      shift: "Med Shift"
+      by-four: "med 4"
+    canvas:
+      name: "Duk och mina målningar"
+      lore:
+        - "Upplösning, signering, export,"
+        - "import, lista över dina målningar."
+    help:
+      - "<white>Med penseln i handen:"
+      - "HMK på duken målar,"
+      - "VMK tar en färg från duken"
+      - "eller från vilket block som helst."
+      - ""
+      - "Shift + hjul ändrar penselstorleken."
+      - "F ångrar, Shift + F gör om."
+      - ""
+      - "Former dras: håll HMK,"
+      - "flytta, släpp."
+      - "Med Shift blir linjen rak,"
+      - "rektangeln en kvadrat,"
+      - "ellipsen en cirkel."
+
+dialog:
+  code: "Kod"
+  export:
+    title: "Exportera målning"
+    text: "”{title}” — en kod på {length} tecken. Tryck på ”Kopiera” för att lägga den i urklipp."
+    text-parts: "”{title}” — koden är lång och har delats upp i delar. Del {part} av {parts}: {length} tecken. Kopiera och klistra in alla delar en i taget."
+    copy: "Kopiera"
+    copy-tooltip: "Lägg koden i urklipp"
+    next: "Nästa del"
+    first: "Tillbaka till del ett"
+  import:
+    title: "Importera målning"
+    text: "Klistra in en målningskod (Ctrl+V). Teckningen hamnar på duken du tittar på, eller på en tom duk i handen."
+    button: "Importera"
+  sign:
+    title: "Signera målningen"
+    text: "En signerad målning kan inte ändras, men den kan kopieras: målning + en tom duk i samma storlek på arbetsbänken."
+    input: "Titel"
+    button: "Signera"
+  hex:
+    title: "Färg med kod"
+    text: "Ange en färg som #RRGGBB. Kartor kan inte visa alla färger, så närmaste färg väljs."
+    input: "Färg"
+    button: "Välj"
+  canvas:
+    title: "Bygg en duk"
+    creative: "I kreativt läge går dukar inte åt."
+    have: "Du håller {canvases}."
+    text: "Kolumnen är bredden, raden är höjden: en duk på 2×4 kräver åtta dukar på 1×1. Gråa storlekar är utom räckhåll tills vidare."
+    same: "Du håller redan den här duken"
+    assemble: "Bygg en duk på {size}: kräver {canvases}"
+    need: "Kräver {canvases}, du håller {have}"
+  image:
+    title: "Bild från en url"
+    text: "Bilden hamnar på duken du tittar på, eller på en tom duk i handen; storleken i block spelar bara roll när ingetdera finns. Inte nöjd? Öppna fönstret igen: inställningarna sparas och det förra resultatet på duken ersätts."
+    url: "Bildens url"
+    fit:
+      label: "Anpassning"
+      cover: "Fyll duken, beskär resten"
+      contain: "Passa in hela bilden, med marginaler"
+      stretch: "Sträck över hela duken"
+    zoom: "Zoom, %"
+    x: "Förskjut åt höger, %"
+    "y": "Förskjut nedåt, %"
+    brightness: "Ljusstyrka, %"
+    contrast: "Kontrast, %"
+    saturation: "Färgmättnad, %"
+    dither: "Mjuka färgövergångar (används inte för pixelkonst)"
+    shade: "Mörkare som en blocksida: för kuber av målningar"
+    clear: "Marginaler runt bilden är genomskinliga, inte vita"
+    width: "Den nya målningens bredd, block"
+    height: "Den nya målningens höjd, block"
+    button: "Använd"
+    no-url: "Klistra in en bild-url"

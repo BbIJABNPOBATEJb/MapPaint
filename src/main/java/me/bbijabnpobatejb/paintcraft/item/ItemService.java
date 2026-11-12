@@ -1,21 +1,16 @@
 package me.bbijabnpobatejb.paintcraft.item;
 
-import io.papermc.paper.datacomponent.DataComponentTypes;
-import io.papermc.paper.datacomponent.item.Consumable;
-import io.papermc.paper.datacomponent.item.Tool;
-import io.papermc.paper.datacomponent.item.UseEffects;
-import io.papermc.paper.datacomponent.item.consumable.ItemUseAnimation;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
+import me.bbijabnpobatejb.paintcraft.compat.ItemStyle;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
 import me.bbijabnpobatejb.paintcraft.util.ItemUtil;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
 import me.bbijabnpobatejb.paintcraft.util.action.ActionLoreBuilder;
-import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -28,18 +23,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("UnstableApiUsage")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ItemService {
-
-    public static final Material BASE = Material.RECOVERY_COMPASS;
 
     NamespacedKey kindKey;
     NamespacedKey widthKey;
     NamespacedKey heightKey;
     NamespacedKey idKey;
+    ItemStyle style;
 
     public ItemService(PaintCraft plugin) {
+        style = plugin.getItemStyle();
         kindKey = new NamespacedKey(plugin, "kind");
         widthKey = new NamespacedKey(plugin, "w");
         heightKey = new NamespacedKey(plugin, "h");
@@ -47,8 +41,7 @@ public class ItemService {
     }
 
     public ItemStack createBrush() {
-        ItemStack item = ItemUtil.builder(BASE)
-                .model("brush")
+        ItemStack item = ItemUtil.builder(style.create(PaintItem.BRUSH))
                 .displayName(Lang.get("item.brush.name"))
                 .lore(ActionLoreBuilder.create()
                         .rightClick(Lang.get("item.brush.paint"))
@@ -59,28 +52,15 @@ public class ItemService {
                         .swapHands(Lang.get("item.brush.undo"))
                         .shiftSwapHands(Lang.get("item.brush.redo"))
                         .buildOnlyLines())
-                .maxStack(1)
                 .string(kindKey, PaintItem.BRUSH.name())
                 .build();
-        item.setData(DataComponentTypes.CONSUMABLE, Consumable.consumable()
-                .consumeSeconds(100_000f)
-                .animation(ItemUseAnimation.BRUSH)
-                .sound(Key.key("minecraft", "intentionally_empty"))
-                .hasConsumeParticles(false));
-        item.setData(DataComponentTypes.USE_EFFECTS, UseEffects.useEffects()
-                .canSprint(true)
-                .interactVibrations(false)
-                .speedMultiplier(1f));
-        item.setData(DataComponentTypes.TOOL, Tool.tool()
-                .defaultMiningSpeed(0.0001f)
-                .damagePerBlock(0)
-                .canDestroyBlocksInCreative(false));
+        style.maxStack(item, 1);
+        style.brush(item);
         return item;
     }
 
     public ItemStack createCanvas(int width, int height, int amount) {
-        val builder = ItemUtil.builder(BASE)
-                .model("map")
+        val builder = ItemUtil.builder(style.create(PaintItem.CANVAS))
                 .displayName("<white>" + Lang.get("item.canvas.name", "size", width + "×" + height))
                 .lore(StringUtil.mmLore(Lang.list("item.canvas.lore")));
         if (width == 1 && height == 1) {
@@ -88,18 +68,18 @@ public class ItemService {
                     .shiftRightClick(Lang.get("item.canvas.assemble"))
                     .buildOnlyLines());
         }
-        return builder
-                .maxStack(64)
+        ItemStack item = builder
                 .amount(amount)
                 .string(kindKey, PaintItem.CANVAS.name())
                 .integer(widthKey, width)
                 .integer(heightKey, height)
                 .build();
+        style.maxStack(item, 64);
+        return item;
     }
 
     public ItemStack createPainting(Painting painting, int amount) {
-        val builder = ItemUtil.builder(BASE)
-                .model("painting")
+        val builder = ItemUtil.builder(style.create(PaintItem.PAINTING))
                 .string(kindKey, PaintItem.PAINTING.name())
                 .string(idKey, painting.id)
                 .integer(widthKey, painting.blocksW)
@@ -113,14 +93,14 @@ public class ItemService {
         if (painting.signed) {
             lore.addAll(Lang.list("item.painting.signed", "size", size));
             builder.displayName("<#FF7800>" + StringUtil.escape(painting.getDisplayTitle()))
-                    .glowing(true)
-                    .maxStack(64);
+                    .glowing(true);
         } else {
             lore.addAll(Lang.list("item.painting.sketch", "id", painting.id));
-            builder.displayName("<white>" + Lang.get("item.painting.sketch-name"))
-                    .maxStack(1);
+            builder.displayName("<white>" + Lang.get("item.painting.sketch-name"));
         }
-        return builder.lore(StringUtil.mmLore(lore)).amount(amount).build();
+        ItemStack item = builder.lore(StringUtil.mmLore(lore)).amount(amount).build();
+        style.maxStack(item, painting.signed ? 64 : 1);
+        return item;
     }
 
     public static String state(Painting painting) {
@@ -159,7 +139,7 @@ public class ItemService {
     }
 
     public @Nullable PaintItem typeOf(@Nullable ItemStack item) {
-        if (item == null || item.getType() != BASE) return null;
+        if (item == null || !item.hasItemMeta()) return null;
         String kind = ItemUtil.getString(item, kindKey);
         if (kind == null) return null;
         try {

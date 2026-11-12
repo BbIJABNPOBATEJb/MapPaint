@@ -1,0 +1,451 @@
+# PaintCraft — Français
+#
+# Les {placeholders} entre accolades sont remplis par le plugin : ne les modifiez pas.
+# Les couleurs sont des balises MiniMessage : <gray>, <white>, <#FF7800>.
+# Une clé absente d'un autre fichier de langue est reprise depuis celui-ci.
+
+language:
+  name: "Français"
+  changed: "<#1FFF5E>Langue : <white>{language}"
+  current: "<white>Langue actuelle : <#FF7800>{language}"
+  available: "<gray>Disponibles : <white>{languages}"
+  unknown: "Langue inconnue {input}. Disponibles : {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "Vous n'avez pas la permission"
+  color-format: "Une couleur s'écrit #RRGGBB, par exemple #FF8800"
+  canvas-cleared: "<gray>Toile effacée. <dark_gray>F pour la récupérer"
+  "on": "ACTIVÉ"
+  "off": "DÉSACTIVÉ"
+
+click:
+  left: "clic gauche"
+  right: "clic droit"
+
+action:
+  open: "ouvrir"
+  select: "choisir"
+  take: "prendre"
+  toggle: "basculer"
+
+unit:
+  canvas:
+    one: "{count} toile 1×1"
+    many: "{count} toiles 1×1"
+  sheet:
+    one: "{count} feuille"
+    many: "{count} feuilles"
+  painting:
+    one: "{count} tableau"
+    many: "{count} tableaux"
+
+color:
+  transparent: "Transparent"
+  transparent-short: "transparent"
+
+command:
+  invalid-usage: "Utilisation incorrecte"
+  player-only: "Réservé aux joueurs"
+  usage-header: "<#FF7800>Utilisation de la commande :"
+  usage: "<#FF1F1F>Utilisation : <white>{usage}"
+  unknown-choice: "{what} inconnu : {input}"
+  choice:
+    tool: "outil"
+    item: "objet"
+  canvas-size: "La taille de la toile s'écrit LxH en blocs, de 1x1 à {max}x{max}. Par exemple : 2x3"
+  panel-reset: "Les fenêtres du panneau sont revenues à leur place"
+  specify-player: "Indiquez un joueur"
+  give-painting: "Les tableaux viennent de la galerie : /paint gallery"
+  given: "<white>Donné à <#FF7800>{player}"
+  reloaded: "Configuration rechargée"
+  look-at-painting: "Regardez un tableau ou tenez-en un en main"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— des tableaux sans pack de ressources"
+    lines:
+      - "<#FF7800>Pinceau <dark_gray>» <gray>bâton + plume. <#FF7800>Toile <dark_gray>» <gray>papier + bâton"
+      - "Des toiles disposées en rectangle dans une table de fabrication fusionnent en une grande"
+      - "<#FF7800>clic droit <dark_gray>» <gray>peindre, <#FF7800>clic gauche <dark_gray>» <gray>prélever une couleur sur une toile ou un bloc"
+      - "<#FF7800>Shift + clic droit hors de la toile <dark_gray>» <gray>palette, <#FF7800>Shift + molette <dark_gray>» <gray>taille du pinceau"
+      - "<#FF7800>Shift en peignant <dark_gray>» <gray>ligne droite, carré, cercle"
+      - "<#FF7800>F <dark_gray>» <gray>annuler, <#FF7800>Shift + F <dark_gray>» <gray>rétablir"
+      - "<#FF7800>Q <dark_gray>» <gray>outil précédent, <#FF7800>Shift + Q <dark_gray>» <gray>outil suivant"
+      - "<white>/paint <gray>palette · <white>/paint gallery <gray>mes tableaux"
+      - "<white>/paint color #RRGGBB <gray>· <white>size nombre <gray>· <white>tool nom"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>remettre en place les fenêtres déplacées"
+      - "<white>/paint export <gray>code du tableau · <white>/paint import [code] <gray>coller un code"
+      - "<white>/paint sign [titre] <gray>signer : un tableau signé peut être copié"
+      - "<white>/paint image [url] <gray>image du web : recadrage, zoom, décalage"
+      - "<white>/paint admin <gray>objets du plugin et tous les tableaux du serveur"
+      - "<white>/paint give brush|canvas [LxH] [quantité] [joueur]"
+      - "<white>/paint language [code] <gray>langue du plugin · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Pinceau"
+    hint: "Maintenez le clic droit et glissez sur la toile. Shift garde le trait droit."
+  eraser:
+    name: "Gomme"
+    hint: "Efface jusqu'à la toile vierge."
+  fill:
+    name: "Remplissage"
+    hint: "Remplit une zone d'une seule couleur."
+  spray:
+    name: "Bombe de peinture"
+    hint: "Projette des points : plus on maintient, plus c'est dense."
+  line:
+    name: "Ligne"
+    hint: "Maintenez le clic droit au début, relâchez à la fin. Shift l'aligne."
+  rect:
+    name: "Rectangle"
+    hint: "Glissez d'un coin à l'autre. Shift donne un carré."
+  ellipse:
+    name: "Ellipse"
+    hint: "Glissez comme pour un rectangle. Shift donne un cercle."
+
+item:
+  brush:
+    name: "<#FF7800>Pinceau d'artiste"
+    paint: "peindre sur une toile <gray>(peut être tenu)"
+    pick: "prélever une couleur sur une toile ou un bloc"
+    palette: "palette <gray>(hors de la toile)"
+    shift-key: "Shift en peignant"
+    shift: "ligne droite, carré, cercle"
+    wheel-key: "Shift + molette"
+    wheel: "taille du pinceau"
+    undo: "annuler"
+    redo: "rétablir"
+  canvas:
+    name: "Toile {size}"
+    lore:
+      - "Posez-la sur un mur, un sol ou un plafond"
+      - "et peignez avec le pinceau."
+      - ""
+      - "<dark_gray>Des toiles identiques disposées"
+      - "<dark_gray>en rectangle dans une table de"
+      - "<dark_gray>fabrication fusionnent en une grande."
+    assemble: "assembler une grande toile à partir de la pile"
+  painting:
+    sketch-name: "Esquisse"
+    author: "Auteur : <white>{name}"
+    size: "Taille : <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>transféré, pas peint à la main"
+    signed:
+      - "<dark_gray>Tableau + toile vierge {size}"
+      - "<dark_gray>dans une table de fabrication = copie."
+    sketch:
+      - "<dark_gray>Non signé : on peut encore peindre."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Sans titre"
+  signed: "<#FF7800>signé"
+  sketch: "<white>esquisse"
+  imported: " <gray>· <#FFE100>import"
+
+hud:
+  size: "<gray>taille <white>{size}"
+
+paint:
+  signed: "Le tableau est signé — il ne peut plus être modifié"
+  not-yours: "Ce tableau appartient à {player} : seul l'auteur peut y peindre"
+  undo:
+    look: "Regardez un tableau pour annuler"
+    undone: "Annulé"
+    redone: "Rétabli"
+    nothing-undo: "Rien à annuler"
+    nothing-redo: "Rien à rétablir"
+
+place:
+  deleted: "L'auteur a supprimé ce tableau. L'objet est redevenu une toile vierge"
+  too-big: "Les toiles de plus de {max} ne peuvent pas être posées sur ce serveur"
+  no-room: "Une toile {size} ne rentre pas ici"
+  denied: "Vous ne pouvez pas faire ça ici"
+  break-owner: "Seul le joueur qui a posé le tableau peut le décrocher"
+  change-owner: "Seul le joueur qui a posé le tableau peut le modifier"
+
+assemble:
+  hold: "Tenez des toiles 1×1 en main"
+  not-enough: "Une toile {size} demande {canvases}, vous en tenez {have}"
+  done: "Toile {size} assemblée"
+
+import:
+  parts: "Parties reçues : {have} sur {total}. Collez la partie {next}."
+  too-big: "Le tableau du code est plus grand que ce que permet ce serveur ({max})"
+  bad-code: "Ce n'est pas un code de tableau, ou il est corrompu"
+  loading: "Chargement de l'image…"
+  image-failed: "Impossible de charger l'image : {reason}"
+  image-done: "<#1FFF5E>L'image est sur la toile. <gray>Pas satisfait ? Rouvrez la fenêtre et ajustez — le résultat précédent sera remplacé."
+  code-done: "<#1FFF5E>Le dessin est sur la toile. <gray>Annulez avec F en tenant le pinceau."
+  no-target: "Nulle part où le mettre : regardez votre toile ou tenez une toile {size} vierge"
+  created: "Un tableau {size} est dans votre inventaire"
+  paper: "L'import coûte du papier : {sheets} — {price} par bloc du tableau"
+  limit: "Vous avez déjà {paintings} — c'est la limite. Supprimez-en : /paint gallery"
+
+gallery:
+  need-canvas: "Il vous faut une toile {size} vierge dans votre inventaire"
+
+sign:
+  done: "<#1FFF5E>Tableau '{title}' signé. <gray>Il peut maintenant être copié dans une table de fabrication."
+
+panel:
+  window:
+    tools: "Pinceau"
+    colors: "Couleur"
+    actions: "Tableau"
+  title:
+    tools: "PINCEAU"
+    colors: "COULEUR"
+  window-reset: "La fenêtre '{window}' est revenue à sa place"
+  window-grabbed: "<#FF7800>Fenêtre '{window}' <dark_gray>» <gray>déplacez-la avec le viseur ; relâchez le clic droit ou recliquez pour la poser"
+  move: "<#FF7800>Déplacer la fenêtre <dark_gray>» <gray>maintenez le clic droit et glissez ; Shift + clic la remet en place"
+  size: "<#FF7800>Taille du pinceau : {size} <dark_gray>» <gray>réglage fin avec Shift + molette"
+  shape:
+    square: "<#FF7800>Pinceau carré <dark_gray>» <gray>bords droits, coins nets"
+    round: "<#FF7800>Pinceau rond <dark_gray>» <gray>traits doux et arrondis"
+  hue: "<#FF7800>Teinte <dark_gray>» <gray>les couleurs de cette teinte apparaissent dans le carré"
+  current-color: "<#FF7800>Couleur actuelle : <white>{color} <dark_gray>» <gray>saisir un code #RRGGBB"
+  previous-color: "<#FF7800>Couleur précédente : <white>{color} <dark_gray>» <gray>revenir"
+  transparent: "<#1FFFE3>Transparent <dark_gray>» <gray>le mur apparaît à travers le tableau"
+  shade: "{color} <dark_gray>» <gray>nuance de la couleur actuelle"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Annuler <dark_gray>» <gray>comme F"
+    redo: "<#FF7800>Rétablir <dark_gray>» <gray>comme Shift + F"
+    clear: "<#FF7800>Effacer la toile <dark_gray>» <gray>remplit de blanc, annulable"
+    resolution: "<#FF7800>Résolution : {res} px/bloc <dark_gray>» <gray>modifier ; F pour revenir"
+    shared: "<#FF7800>Tout le monde peut peindre : {state} <dark_gray>» <gray>basculer"
+    sign: "<#FF7800>Signer <dark_gray>» <gray>donnez un titre et terminez le tableau"
+    export: "<#FF7800>Exporter <dark_gray>» <gray>code du tableau sous forme de texte"
+    import: "<#FF7800>Importer <dark_gray>» <gray>coller un code de tableau"
+    image: "<#FF7800>Image depuis une URL <dark_gray>» <gray>avec recadrage, zoom et décalage"
+    gallery: "<#FF7800>Mes tableaux"
+    hide: "<#FF7800>Masquer le panneau <dark_gray>» <gray>revient quand vous cliquez sur la toile avec le pinceau"
+
+menu:
+  close:
+    name: "Fermer"
+    action: "fermer le menu"
+  back:
+    name: "Retour"
+    action: "revenir en arrière"
+  hint: "Astuce"
+  page:
+    previous: "Page précédente"
+    next: "Page suivante"
+    action: "tourner la page"
+    of: "Page {page} sur {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Supprimer définitivement ?"
+      - "Le tableau disparaît de tous les murs"
+      - "et ses objets redeviennent des toiles vierges."
+    "yes": "<#FF1F1F>oui, supprimer"
+    "no": "le garder"
+    action: "supprimer définitivement"
+    done: "Tableau supprimé"
+  admin:
+    title: "Tableaux : admin"
+    canvases:
+      name: "<#FF7800>Toiles de toutes tailles"
+      lore:
+        - "De 1×1 à {max} : 3×5, 1×4 et toute autre."
+    painting:
+      - "Auteur : <white>{author}"
+      - "{size} blocs · {res} px/bloc · {state}"
+      - "Modifié : <white>{date}"
+      - "Posé dans les chunks chargés : <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "prendre"
+    export: "exporter sous forme de texte"
+    empty: "Aucun tableau sur le serveur pour l'instant"
+    count: "<white>Tableaux sur le serveur : <#FF7800>{count}"
+    too-big:
+      - "Plus grand que ce que permet la config :"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "en prendre {amount} d'un coup"
+    help-canvases:
+      - "<white>Toiles de toutes tailles."
+      - "La colonne est la largeur, la ligne la hauteur :"
+      - "3e colonne de la 5e ligne = 3×5."
+      - ""
+      - "Shift + clic gauche en donne {amount} d'un coup."
+    help:
+      - "<white>La rangée du haut contient les objets"
+      - "du plugin : le pinceau, une toile et la table"
+      - "des toiles jusqu'à {max}."
+      - ""
+      - "En dessous, les tableaux de tous les joueurs."
+      - "Un tableau pris ici est le même, pas"
+      - "une copie : les modifications se voient"
+      - "partout où il est accroché."
+  canvas:
+    title: "Toile"
+    info:
+      - "Auteur : <white>{author}"
+      - "Taille : <white>{size} <gray>blocs, <white>{pixels} <gray>pixels"
+      - "État : {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Résolution : <#FF7800>{res} <white>pixels par bloc"
+      lore:
+        - "Plus le nombre est bas, plus les"
+        - "pixels sont gros."
+        - "Le dessin est étiré lors du changement."
+        - "<dark_gray>F annule le changement."
+      finer: "plus fin"
+      coarser: "plus gros"
+    clear:
+      name: "Effacer la toile"
+      lore:
+        - "Remplit de blanc. Annulable (F)."
+      action: "effacer"
+    shared:
+      name: "<white>Tout le monde peut peindre : {state}"
+      lore:
+        - "Peinture à plusieurs : le pinceau de"
+        - "n'importe quel joueur marche sur cette toile."
+    sign:
+      name: "Signer"
+      lore:
+        - "Donnez un titre et terminez le tableau."
+        - "Un tableau signé ne peut plus être"
+        - "modifié, mais il peut être copié."
+      action: "signer"
+    export:
+      name: "Exporter sous forme de texte"
+      lore:
+        - "Le code du tableau : copiez-le et"
+        - "donnez-le à qui vous voulez, même"
+        - "sur un autre serveur."
+      action: "afficher le code"
+    import:
+      name: "Importer depuis un texte"
+      lore:
+        - "Collez un code. Le dessin arrive sur"
+        - "la toile que vous regardez, ou dans"
+        - "une toile vierge tenue en main."
+      action: "coller un code"
+    gallery:
+      lore:
+        - "Tout ce que vous avez peint."
+  gallery:
+    title: "Mes tableaux"
+    painting:
+      - "{size} blocs · {res} px/bloc · {state}"
+      - "Modifié : <white>{date}"
+      - "Posé actuellement : <white>{placed}"
+    take: "prendre <gray>(demande une toile {size} vierge)"
+    empty:
+      name: "Rien ici pour l'instant"
+      lore:
+        - "Posez une toile et peignez quelque chose."
+    help:
+      - "<white>Tous vos tableaux sont conservés ici,"
+      - "même décrochés ou perdus."
+      - ""
+      - "Une esquisse prise ici est le même"
+      - "tableau : les modifications se voient"
+      - "partout où il est accroché."
+      - ""
+      - "Les tableaux signés se copient dans une"
+      - "table de fabrication : tableau + toile vierge."
+  palette:
+    title: "Palette et outils"
+    page: "Couleurs : page {page} sur {pages}"
+    hex:
+      name: "Couleur par code"
+      lore:
+        - "Saisissez #RRGGBB — la couleur de la"
+        - "palette la plus proche est choisie."
+      action: "saisir un code"
+    transparent:
+      - "Les pixels disparaissent : le mur apparaît"
+      - "à travers le tableau. Pratique pour les"
+      - "autocollants et les tableaux de toute forme."
+    shade:
+      - "Nuance de la couleur choisie."
+    size:
+      name: "<white>Taille du pinceau : <#FF7800>{size}"
+      lore:
+        - "<dark_gray>En jeu : Shift + molette."
+      more: "plus grand"
+      less: "plus petit"
+      shift: "Avec Shift"
+      by-four: "de 4"
+    canvas:
+      name: "Toile et mes tableaux"
+      lore:
+        - "Résolution, signature, export,"
+        - "import, liste de vos tableaux."
+    help:
+      - "<white>Pinceau en main :"
+      - "clic droit sur une toile = peindre,"
+      - "clic gauche = prélever une couleur sur"
+      - "une toile ou n'importe quel bloc."
+      - ""
+      - "Shift + molette change la taille du pinceau."
+      - "F annule, Shift + F rétablit."
+      - ""
+      - "Les formes se tracent en glissant :"
+      - "maintenez le clic droit, bougez, relâchez."
+      - "Avec Shift, une ligne devient droite,"
+      - "un rectangle devient un carré,"
+      - "une ellipse devient un cercle."
+
+dialog:
+  code: "Code"
+  export:
+    title: "Exporter un tableau"
+    text: "'{title}' — un code de {length} caractères. Cliquez sur Copier pour le mettre dans le presse-papiers."
+    text-parts: "'{title}' — le code est long, il est donc découpé en parties. Partie {part} sur {parts} : {length} caractères. Copiez et collez toutes les parties une par une."
+    copy: "Copier"
+    copy-tooltip: "Mettre le code dans le presse-papiers"
+    next: "Partie suivante"
+    first: "Retour à la première partie"
+  import:
+    title: "Importer un tableau"
+    text: "Collez un code de tableau (Ctrl+V). Le dessin arrive sur la toile que vous regardez, ou dans une toile vierge tenue en main."
+    button: "Importer"
+  sign:
+    title: "Signer le tableau"
+    text: "Un tableau signé ne peut plus être modifié, mais il peut être copié : tableau + une toile vierge de même taille dans une table de fabrication."
+    input: "Titre"
+    button: "Signer"
+  hex:
+    title: "Couleur par code"
+    text: "Saisissez une couleur sous la forme #RRGGBB. Les cartes ne peuvent pas afficher toutes les couleurs, la plus proche est donc choisie."
+    input: "Couleur"
+    button: "Choisir"
+  canvas:
+    title: "Assembler une toile"
+    creative: "Les toiles ne sont pas consommées en mode créatif."
+    have: "Vous tenez {canvases}."
+    text: "La colonne est la largeur, la ligne la hauteur : une toile 2×4 demande huit toiles 1×1. Les tailles en gris sont hors de portée pour l'instant."
+    same: "Vous tenez déjà cette toile"
+    assemble: "Assembler une toile {size} : demande {canvases}"
+    need: "Demande {canvases}, vous en tenez {have}"
+  image:
+    title: "Image depuis une URL"
+    text: "L'image arrive sur la toile que vous regardez, ou dans une toile vierge tenue en main ; la taille en blocs ne compte que s'il n'y a ni l'une ni l'autre. Pas satisfait ? Rouvrez la fenêtre : les réglages sont conservés et le résultat précédent sur la toile est remplacé."
+    url: "URL de l'image"
+    fit:
+      label: "Ajustement"
+      cover: "Remplir la toile, rogner le reste"
+      contain: "Afficher toute l'image, avec des marges"
+      stretch: "Étirer sur la toile"
+    zoom: "Zoom, %"
+    x: "Décalage à droite, %"
+    "y": "Décalage vers le bas, %"
+    brightness: "Luminosité, %"
+    contrast: "Contraste, %"
+    saturation: "Saturation, %"
+    dither: "Transitions de couleurs douces (inactif pour le pixel art)"
+    shade: "Assombrir comme la face d'un bloc : pour des cubes faits de tableaux"
+    clear: "Les marges autour de l'image sont transparentes, pas blanches"
+    width: "Largeur du nouveau tableau, en blocs"
+    height: "Hauteur du nouveau tableau, en blocs"
+    button: "Appliquer"
+    no-url: "Collez l'URL d'une image"

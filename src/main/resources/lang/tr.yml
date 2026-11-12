@@ -1,0 +1,450 @@
+# PaintCraft — Türkçe
+#
+# Süslü parantez içindeki {placeholders} eklenti tarafından doldurulur: olduğu gibi bırakın.
+# Renkler MiniMessage etiketleridir: <gray>, <white>, <#FF7800>.
+# Başka bir dil dosyasında eksik olan anahtar bu dosyadan alınır.
+
+language:
+  name: "Türkçe"
+  changed: "<#1FFF5E>Dil: <white>{language}"
+  current: "<white>Geçerli dil: <#FF7800>{language}"
+  available: "<gray>Mevcut diller: <white>{languages}"
+  unknown: "Bilinmeyen dil {input}. Mevcut diller: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "Yetkin yok"
+  color-format: "Renk #RRGGBB biçiminde yazılır, örneğin #FF8800"
+  canvas-cleared: "<gray>Tuval temizlendi. <dark_gray>Geri getirmek için F"
+  "on": "AÇIK"
+  "off": "KAPALI"
+
+click:
+  left: "Sol tık"
+  right: "Sağ tık"
+
+action:
+  open: "aç"
+  select: "seç"
+  take: "al"
+  toggle: "değiştir"
+
+unit:
+  canvas:
+    one: "{count} adet 1×1 tuval"
+    many: "{count} adet 1×1 tuval"
+  sheet:
+    one: "{count} kâğıt"
+    many: "{count} kâğıt"
+  painting:
+    one: "{count} resim"
+    many: "{count} resim"
+
+color:
+  transparent: "Şeffaf"
+  transparent-short: "şeffaf"
+
+command:
+  invalid-usage: "Hatalı kullanım"
+  player-only: "Yalnızca oyuncular için"
+  usage-header: "<#FF7800>Komut kullanımı:"
+  usage: "<#FF1F1F>Kullanım: <white>{usage}"
+  unknown-choice: "Böyle bir {what} yok: {input}"
+  choice:
+    tool: "araç"
+    item: "eşya"
+  canvas-size: "Tuval boyutu blok cinsinden GxY olarak yazılır, 1x1 ile {max}x{max} arası. Örneğin: 2x3"
+  panel-reset: "Panel pencereleri yerlerine döndü"
+  specify-player: "Bir oyuncu belirt"
+  give-painting: "Resimler galeriden gelir: /paint gallery"
+  given: "<white>Verildi: <#FF7800>{player}"
+  reloaded: "Ayarlar yeniden yüklendi"
+  look-at-painting: "Bir resme bak ya da elinde bir resim tut"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— kaynak paketi olmadan resimler"
+    lines:
+      - "<#FF7800>Fırça <dark_gray>» <gray>çubuk + tüy. <#FF7800>Tuval <dark_gray>» <gray>kâğıt + çubuk"
+      - "Üretim masasında dikdörtgen dizilen tuvaller tek büyük tuvalde birleşir"
+      - "<#FF7800>Sağ tık <dark_gray>» <gray>boya, <#FF7800>Sol tık <dark_gray>» <gray>tuvalden ya da bloktan renk al"
+      - "<#FF7800>Tuval dışında Shift + Sağ tık <dark_gray>» <gray>palet, <#FF7800>Shift + tekerlek <dark_gray>» <gray>fırça boyutu"
+      - "<#FF7800>Boyarken Shift <dark_gray>» <gray>düz çizgi, kare, daire"
+      - "<#FF7800>F <dark_gray>» <gray>geri al, <#FF7800>Shift + F <dark_gray>» <gray>yinele"
+      - "<#FF7800>Q <dark_gray>» <gray>önceki araç, <#FF7800>Shift + Q <dark_gray>» <gray>sonraki araç"
+      - "<white>/paint <gray>palet · <white>/paint gallery <gray>resimlerim"
+      - "<white>/paint color #RRGGBB <gray>· <white>size sayı <gray>· <white>tool ad"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>taşınan panel pencerelerini yerine koy"
+      - "<white>/paint export <gray>resim kodu · <white>/paint import [kod] <gray>kod yapıştır"
+      - "<white>/paint sign [başlık] <gray>imzala: imzalı resim kopyalanabilir"
+      - "<white>/paint image [url] <gray>internetten görsel: kırpma, yakınlaştırma, kaydırma"
+      - "<white>/paint admin <gray>eklenti eşyaları ve sunucudaki tüm resimler"
+      - "<white>/paint give brush|canvas [GxY] [adet] [oyuncu]"
+      - "<white>/paint language [kod] <gray>eklenti dili · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Fırça"
+    hint: "Sağ tıkı basılı tutup tuvalin üzerinde sürükle. Shift çizgiyi düz tutar."
+  eraser:
+    name: "Silgi"
+    hint: "Boş tuvale kadar siler."
+  fill:
+    name: "Doldur"
+    hint: "Tek renkli bir alanı doldurur."
+  spray:
+    name: "Sprey"
+    hint: "Nokta püskürtür: ne kadar basılı tutarsan o kadar yoğun olur."
+  line:
+    name: "Çizgi"
+    hint: "Başlangıçta Sağ tıka bas, bitişte bırak. Shift düzeltir."
+  rect:
+    name: "Dikdörtgen"
+    hint: "Köşeden köşeye sürükle. Shift kare yapar."
+  ellipse:
+    name: "Elips"
+    hint: "Dikdörtgen gibi sürükle. Shift daire yapar."
+
+item:
+  brush:
+    name: "<#FF7800>Sanatçı Fırçası"
+    paint: "tuvale boya <gray>(elde tutulabilir)"
+    pick: "tuvalden ya da bloktan renk al"
+    palette: "palet <gray>(tuval dışında)"
+    shift-key: "Boyarken Shift"
+    shift: "düz çizgi, kare, daire"
+    wheel-key: "Shift + tekerlek"
+    wheel: "fırça boyutu"
+    undo: "geri al"
+    redo: "yinele"
+  canvas:
+    name: "Tuval {size}"
+    lore:
+      - "Duvara, zemine ya da tavana yerleştir"
+      - "ve fırçayla boya."
+      - ""
+      - "<dark_gray>Üretim masasında dikdörtgen"
+      - "<dark_gray>dizilen aynı tuvaller tek"
+      - "<dark_gray>büyük tuvalde birleşir."
+    assemble: "yığından büyük bir tuval birleştir"
+  painting:
+    sketch-name: "Taslak"
+    author: "Yazar: <white>{name}"
+    size: "Boyut: <white>{size}"
+    imported: "<#FFE100>İçe aktarıldı <dark_gray>» <gray>aktarılmış, elle boyanmamış"
+    signed:
+      - "<dark_gray>Resim + boş {size} tuval"
+      - "<dark_gray>üretim masasında kopya verir."
+    sketch:
+      - "<dark_gray>İmzasız: hâlâ boyanabilir."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Başlıksız"
+  signed: "<#FF7800>imzalı"
+  sketch: "<white>taslak"
+  imported: " <gray>· <#FFE100>içe aktarılmış"
+
+hud:
+  size: "<gray>boyut <white>{size}"
+
+paint:
+  signed: "Resim imzalandı — artık değiştirilemez"
+  not-yours: "Bu resim {player} oyuncusuna ait: sadece yazarı boyayabilir"
+  undo:
+    look: "Geri almak için bir resme bak"
+    undone: "Geri alındı"
+    redone: "Yinelendi"
+    nothing-undo: "Geri alınacak bir şey yok"
+    nothing-redo: "Yinelenecek bir şey yok"
+
+place:
+  deleted: "Yazar bu resmi sildi. Eşya yeniden boş bir tuval oldu"
+  too-big: "Bu sunucuda {max} değerinden büyük tuvaller yerleştirilemez"
+  no-room: "{size} tuval buraya sığmıyor"
+  denied: "Burada bunu yapamazsın"
+  break-owner: "Resmi sadece yerleştiren oyuncu kaldırabilir"
+  change-owner: "Resmi sadece yerleştiren oyuncu değiştirebilir"
+
+assemble:
+  hold: "Elinde 1×1 tuvaller tut"
+  not-enough: "{size} tuval için {canvases} gerekir, elinde {have} var"
+  done: "{size} tuval birleştirildi"
+
+import:
+  parts: "Alınan parçalar: {have} / {total}. {next}. parçayı yapıştır."
+  too-big: "Koddaki resim bu sunucunun izin verdiğinden büyük ({max})"
+  bad-code: "Bu bir resim kodu değil ya da bozuk"
+  loading: "Görsel yükleniyor…"
+  image-failed: "Görsel yüklenemedi: {reason}"
+  image-done: "<#1FFF5E>Görsel tuvalde. <gray>Beğenmedin mi? Pencereyi yeniden aç ve ayarla — önceki sonucun yerine geçer."
+  code-done: "<#1FFF5E>Çizim tuvalde. <gray>Fırça elindeyken F ile geri al."
+  no-target: "Koyacak yer yok: tuvaline bak ya da elinde boş bir {size} tuval tut"
+  created: "Envanterinde {size} bir resim var"
+  paper: "İçe aktarma kâğıda mal olur: {sheets} — resmin her bloğu için {price}"
+  limit: "Zaten {paintings} var — bu sınır. Bazılarını sil: /paint gallery"
+
+gallery:
+  need-canvas: "Envanterinde boş bir {size} tuval olmalı"
+
+sign:
+  done: "<#1FFF5E>'{title}' resmi imzalandı. <gray>Artık üretim masasında kopyalanabilir."
+
+panel:
+  window:
+    tools: "Fırça"
+    colors: "Renk"
+    actions: "Resim"
+  title:
+    tools: "FIRÇA"
+    colors: "RENK"
+  window-reset: "'{window}' penceresi yerine döndü"
+  window-grabbed: "<#FF7800>'{window}' penceresi <dark_gray>» <gray>nişangâhınla taşı; bırakmak için Sağ tıkı bırak ya da yeniden tıkla"
+  move: "<#FF7800>Pencereyi taşı <dark_gray>» <gray>Sağ tıkı basılı tutup sürükle; Shift + tık yerine koyar"
+  size: "<#FF7800>Fırça boyutu: {size} <dark_gray>» <gray>ince ayar için Shift + tekerlek"
+  shape:
+    square: "<#FF7800>Kare fırça <dark_gray>» <gray>düz kenarlar, keskin köşeler"
+    round: "<#FF7800>Yuvarlak fırça <dark_gray>» <gray>yumuşak, yuvarlak vuruşlar"
+  hue: "<#FF7800>Ton <dark_gray>» <gray>bu tonun renkleri karede görünür"
+  current-color: "<#FF7800>Geçerli renk: <white>{color} <dark_gray>» <gray>#RRGGBB kodu gir"
+  previous-color: "<#FF7800>Önceki renk: <white>{color} <dark_gray>» <gray>geri dön"
+  transparent: "<#1FFFE3>Şeffaf <dark_gray>» <gray>duvar resmin arkasından görünür"
+  shade: "{color} <dark_gray>» <gray>geçerli rengin tonu"
+  pixels: "{size} piksel"
+  action:
+    undo: "<#FF7800>Geri al <dark_gray>» <gray>F ile aynı"
+    redo: "<#FF7800>Yinele <dark_gray>» <gray>Shift + F ile aynı"
+    clear: "<#FF7800>Tuvali temizle <dark_gray>» <gray>beyaza boyar, geri alınabilir"
+    resolution: "<#FF7800>Çözünürlük: {res} piksel/blok <dark_gray>» <gray>değiştir; F geri getirir"
+    shared: "<#FF7800>Herkes boyayabilir: {state} <dark_gray>» <gray>değiştir"
+    sign: "<#FF7800>İmzala <dark_gray>» <gray>başlık ver ve resmi bitir"
+    export: "<#FF7800>Dışa aktar <dark_gray>» <gray>resim kodunu metin olarak al"
+    import: "<#FF7800>İçe aktar <dark_gray>» <gray>resim kodu yapıştır"
+    image: "<#FF7800>URL'den görsel <dark_gray>» <gray>kırpma, yakınlaştırma ve kaydırmayla"
+    gallery: "<#FF7800>Resimlerim"
+    hide: "<#FF7800>Paneli gizle <dark_gray>» <gray>fırçayla tuvale tıklayınca geri gelir"
+
+menu:
+  close:
+    name: "Kapat"
+    action: "menüyü kapat"
+  back:
+    name: "Geri"
+    action: "geri dön"
+  hint: "İpucu"
+  page:
+    previous: "Önceki sayfa"
+    next: "Sonraki sayfa"
+    action: "sayfayı çevir"
+    of: "Sayfa {page} / {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Kalıcı olarak silinsin mi?"
+      - "Resim tüm duvarlardan kaybolur"
+      - "ve eşyaları boş tuvale dönüşür."
+    "yes": "<#FF1F1F>evet, sil"
+    "no": "kalsın"
+    action: "kalıcı olarak sil"
+    done: "Resim silindi"
+  admin:
+    title: "Resimler: yönetici"
+    canvases:
+      name: "<#FF7800>Her boyutta tuval"
+      lore:
+        - "1×1'den {max}'e kadar: 3×5, 1×4 ve diğerleri."
+    painting:
+      - "Yazar: <white>{author}"
+      - "{size} blok · {res} piksel/blok · {state}"
+      - "Değiştirildi: <white>{date}"
+      - "Yüklü chunk'larda yerleştirilen: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "al"
+    export: "metin olarak dışa aktar"
+    empty: "Sunucuda henüz resim yok"
+    count: "<white>Sunucudaki resimler: <#FF7800>{count}"
+    too-big:
+      - "Yapılandırmanın izin verdiğinden büyük:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "{amount} tanesini birden al"
+    help-canvases:
+      - "<white>Her boyutta tuval."
+      - "Sütun genişlik, satır yüksekliktir:"
+      - "beşinci satırın üçüncü sütunu 3×5'tir."
+      - ""
+      - "Shift + Sol tık {amount} tanesini birden verir."
+    help:
+      - "<white>Üst satırda eklenti eşyaları var:"
+      - "fırça, bir tuval ve {max} boyutuna"
+      - "kadar tuvallerin tablosu."
+      - ""
+      - "Aşağıda tüm oyuncuların resimleri var."
+      - "Buradan alınan resim aynısıdır,"
+      - "kopya değildir: değişiklikler asıldığı"
+      - "her yerde görünür."
+  canvas:
+    title: "Tuval"
+    info:
+      - "Yazar: <white>{author}"
+      - "Boyut: <white>{size} <gray>blok, <white>{pixels} <gray>piksel"
+      - "Durum: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Çözünürlük: <#FF7800>blok başına {res} <white>piksel"
+      lore:
+        - "Sayı düştükçe pikseller büyür."
+        - "Değiştirince çizim gerilir."
+        - "<dark_gray>F değişikliği geri alır."
+      finer: "daha ince"
+      coarser: "daha kaba"
+    clear:
+      name: "Tuvali temizle"
+      lore:
+        - "Beyaza boyar. Geri alınabilir (F)."
+      action: "temizle"
+    shared:
+      name: "<white>Herkes boyayabilir: {state}"
+      lore:
+        - "Birlikte boyama: herhangi bir"
+        - "oyuncunun fırçası bu tuvalde çalışır."
+    sign:
+      name: "İmzala"
+      lore:
+        - "Başlık ver ve resmi bitir."
+        - "İmzalı resim değiştirilemez,"
+        - "ama kopyalanabilir."
+      action: "imzala"
+    export:
+      name: "Metin olarak dışa aktar"
+      lore:
+        - "Resim kodu: kopyala ve istediğin"
+        - "kişiye ver, başka bir sunucuya"
+        - "bile."
+      action: "kodu göster"
+    import:
+      name: "Metinden içe aktar"
+      lore:
+        - "Bir kod yapıştır. Çizim baktığın"
+        - "tuvale ya da elindeki boş bir"
+        - "tuvale yerleşir."
+      action: "kod yapıştır"
+    gallery:
+      lore:
+        - "Şimdiye kadar boyadığın her şey."
+  gallery:
+    title: "Resimlerim"
+    painting:
+      - "{size} blok · {res} piksel/blok · {state}"
+      - "Değiştirildi: <white>{date}"
+      - "Şu an yerleştirilen: <white>{placed}"
+    take: "al <gray>(boş bir {size} tuval gerekir)"
+    empty:
+      name: "Henüz bir şey yok"
+      lore:
+        - "Bir tuval yerleştir ve bir şeyler boya."
+    help:
+      - "<white>Tüm resimlerin burada saklanır,"
+      - "kaldırsan ya da kaybetsen bile."
+      - ""
+      - "Buradan alınan taslak aynı resimdir:"
+      - "değişiklikler asıldığı her yerde"
+      - "görünür."
+      - ""
+      - "İmzalı resimler üretim masasında"
+      - "kopyalanır: resim + boş tuval."
+  palette:
+    title: "Palet ve araçlar"
+    page: "Renkler: sayfa {page} / {pages}"
+    hex:
+      name: "Kodla renk"
+      lore:
+        - "#RRGGBB gir — paletteki en yakın"
+        - "renk seçilir."
+      action: "kod gir"
+    transparent:
+      - "Pikseller kaybolur: duvar resmin"
+      - "arkasından görünür. Çıkartmalar ve"
+      - "her biçimdeki resimler için iyi."
+    shade:
+      - "Seçili rengin tonu."
+    size:
+      name: "<white>Fırça boyutu: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>Oyunda: Shift + fare tekerleği."
+      more: "daha büyük"
+      less: "daha küçük"
+      shift: "Shift ile"
+      by-four: "4'er"
+    canvas:
+      name: "Tuval ve resimlerim"
+      lore:
+        - "Çözünürlük, imzalama, dışa aktarma,"
+        - "içe aktarma, resimlerinin listesi."
+    help:
+      - "<white>Fırça elindeyken:"
+      - "tuvale Sağ tık boyar,"
+      - "Sol tık tuvalden ya da dünyadaki"
+      - "herhangi bir bloktan renk alır."
+      - ""
+      - "Shift + tekerlek fırça boyutunu değiştirir."
+      - "F geri alır, Shift + F yineler."
+      - ""
+      - "Şekiller sürüklenir: Sağ tıkı basılı"
+      - "tut, hareket ettir, bırak."
+      - "Shift ile çizgi düz olur,"
+      - "dikdörtgen kare olur,"
+      - "elips daire olur."
+
+dialog:
+  code: "Kod"
+  export:
+    title: "Resmi dışa aktar"
+    text: "'{title}' — {length} karakterlik bir kod. Panoya koymak için Kopyala'ya bas."
+    text-parts: "'{title}' — kod uzun olduğu için parçalara bölündü. Parça {part} / {parts}: {length} karakter. Tüm parçaları tek tek kopyalayıp yapıştır."
+    copy: "Kopyala"
+    copy-tooltip: "Kodu panoya koy"
+    next: "Sonraki parça"
+    first: "İlk parçaya dön"
+  import:
+    title: "Resmi içe aktar"
+    text: "Bir resim kodu yapıştır (Ctrl+V). Çizim baktığın tuvale ya da elindeki boş bir tuvale yerleşir."
+    button: "İçe aktar"
+  sign:
+    title: "Resmi imzala"
+    text: "İmzalı resim değiştirilemez ama kopyalanabilir: üretim masasında resim + aynı boyutta boş bir tuval."
+    input: "Başlık"
+    button: "İmzala"
+  hex:
+    title: "Kodla renk"
+    text: "Rengi #RRGGBB biçiminde gir. Haritalar her rengi gösteremez, bu yüzden en yakın renk seçilir."
+    input: "Renk"
+    button: "Seç"
+  canvas:
+    title: "Tuval birleştir"
+    creative: "Yaratıcı modda tuvaller harcanmaz."
+    have: "Elinde {canvases} var."
+    text: "Sütun genişlik, satır yüksekliktir: 2×4 tuval için sekiz adet 1×1 tuval gerekir. Gri boyutlara şimdilik ulaşılamıyor."
+    same: "Bu tuval zaten elinde"
+    assemble: "{size} tuval birleştir: {canvases} gerekir"
+    need: "{canvases} gerekir, elinde {have} var"
+  image:
+    title: "URL'den görsel"
+    text: "Görsel baktığın tuvale ya da elindeki boş bir tuvale yerleşir; blok cinsinden boyut sadece ikisi de yoksa önemlidir. Beğenmedin mi? Pencereyi yeniden aç: ayarlar korunur ve tuvaldeki önceki sonucun yerine geçer."
+    url: "Görsel URL'si"
+    fit:
+      label: "Sığdırma"
+      cover: "Tuvali doldur, fazlasını kırp"
+      contain: "Görselin tamamını sığdır, kenar boşluklarıyla"
+      stretch: "Tuvale göre ger"
+    zoom: "Yakınlaştırma, %"
+    x: "Sağa kaydır, %"
+    "y": "Aşağı kaydır, %"
+    brightness: "Parlaklık, %"
+    contrast: "Karşıtlık, %"
+    saturation: "Doygunluk, %"
+    dither: "Yumuşak renk geçişleri (piksel sanatına uygulanmaz)"
+    shade: "Blok yüzü gibi karart: resimlerden yapılmış küpler için"
+    clear: "Görselin etrafındaki boşluklar beyaz değil, şeffaf olur"
+    width: "Yeni resmin genişliği, blok"
+    height: "Yeni resmin yüksekliği, blok"
+    button: "Uygula"
+    no-url: "Bir görsel URL'si yapıştır"

@@ -7,7 +7,6 @@ import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.item.ItemService;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
-import me.bbijabnpobatejb.paintcraft.ui.Dialogs;
 import me.bbijabnpobatejb.paintcraft.ui.inventory.InventoryGuiImpl;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.ItemUtil;
@@ -108,7 +107,7 @@ public class CanvasGui extends InventoryGuiImpl {
                 paint.sendCannotEdit(player, painting);
                 return false;
             }
-            Dialogs.sign(plugin, player, painting);
+            plugin.getPrompts().sign(player, painting);
             return true;
         });
 
@@ -126,7 +125,7 @@ public class CanvasGui extends InventoryGuiImpl {
                 .lore(StringUtil.mmLore(Lang.list("menu.canvas.import.lore")))
                 .addLore(ActionLoreBuilder.create(Lang.get("menu.canvas.import.action")).build())
                 .build(), (gui, player, click) -> {
-            Dialogs.importCode(plugin, player, null);
+            plugin.getPrompts().importCode(player, null);
             return true;
         });
 

@@ -1,0 +1,451 @@
+# PaintCraft — Español
+#
+# Los {placeholders} entre llaves los rellena el plugin: déjalos tal cual.
+# Los colores son etiquetas MiniMessage: <gray>, <white>, <#FF7800>.
+# Si falta una clave en otro archivo de idioma, se usa la de este.
+
+language:
+  name: "Español"
+  changed: "<#1FFF5E>Idioma: <white>{language}"
+  current: "<white>Idioma actual: <#FF7800>{language}"
+  available: "<gray>Disponibles: <white>{languages}"
+  unknown: "Idioma desconocido {input}. Disponibles: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "No tienes permiso"
+  color-format: "Un color se escribe como #RRGGBB, por ejemplo #FF8800"
+  canvas-cleared: "<gray>Lienzo borrado. <dark_gray>F para recuperarlo"
+  "on": "SÍ"
+  "off": "NO"
+
+click:
+  left: "clic izq."
+  right: "clic der."
+
+action:
+  open: "abrir"
+  select: "elegir"
+  take: "tomar"
+  toggle: "cambiar"
+
+unit:
+  canvas:
+    one: "{count} lienzo 1×1"
+    many: "{count} lienzos 1×1"
+  sheet:
+    one: "{count} hoja"
+    many: "{count} hojas"
+  painting:
+    one: "{count} pintura"
+    many: "{count} pinturas"
+
+color:
+  transparent: "Transparente"
+  transparent-short: "transparente"
+
+command:
+  invalid-usage: "Uso incorrecto"
+  player-only: "Solo para jugadores"
+  usage-header: "<#FF7800>Uso del comando:"
+  usage: "<#FF1F1F>Uso: <white>{usage}"
+  unknown-choice: "No existe {what}: {input}"
+  choice:
+    tool: "esa herramienta"
+    item: "ese objeto"
+  canvas-size: "El tamaño del lienzo es AnchoxAlto en bloques, de 1x1 a {max}x{max}. Por ejemplo: 2x3"
+  panel-reset: "Las ventanas del panel han vuelto a su sitio"
+  specify-player: "Indica un jugador"
+  give-painting: "Las pinturas salen de la galería: /paint gallery"
+  given: "<white>Entregado a <#FF7800>{player}"
+  reloaded: "Configuración recargada"
+  look-at-painting: "Mira una pintura o sostén una en la mano"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— pinturas sin paquete de recursos"
+    lines:
+      - "<#FF7800>Pincel <dark_gray>» <gray>palo + pluma. <#FF7800>Lienzo <dark_gray>» <gray>papel + palo"
+      - "Lienzos colocados en rectángulo en una mesa de crafteo se unen en uno grande"
+      - "<#FF7800>clic der. <dark_gray>» <gray>pintar, <#FF7800>clic izq. <dark_gray>» <gray>tomar el color de un lienzo o bloque"
+      - "<#FF7800>Shift + clic der. fuera del lienzo <dark_gray>» <gray>paleta, <#FF7800>Shift + rueda <dark_gray>» <gray>tamaño del pincel"
+      - "<#FF7800>Shift al pintar <dark_gray>» <gray>línea recta, cuadrado, círculo"
+      - "<#FF7800>F <dark_gray>» <gray>deshacer, <#FF7800>Shift + F <dark_gray>» <gray>rehacer"
+      - "<#FF7800>Q <dark_gray>» <gray>herramienta anterior, <#FF7800>Shift + Q <dark_gray>» <gray>siguiente"
+      - "<white>/paint <gray>paleta · <white>/paint gallery <gray>mis pinturas"
+      - "<white>/paint color #RRGGBB <gray>· <white>size número <gray>· <white>tool nombre"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>devolver las ventanas movidas a su sitio"
+      - "<white>/paint export <gray>código de la pintura · <white>/paint import [código] <gray>pegar un código"
+      - "<white>/paint sign [título] <gray>firmar: una pintura firmada se puede copiar"
+      - "<white>/paint image [url] <gray>imagen de la web: recorte, zoom, desplazamiento"
+      - "<white>/paint admin <gray>objetos del plugin y todas las pinturas del servidor"
+      - "<white>/paint give brush|canvas [AnchoxAlto] [cantidad] [jugador]"
+      - "<white>/paint language [código] <gray>idioma del plugin · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Pincel"
+    hint: "Mantén clic der. y arrastra sobre el lienzo. Shift mantiene el trazo recto."
+  eraser:
+    name: "Borrador"
+    hint: "Borra hasta dejar el lienzo en blanco."
+  fill:
+    name: "Relleno"
+    hint: "Rellena una zona de un solo color."
+  spray:
+    name: "Spray"
+    hint: "Esparce puntos: cuanto más mantienes, más denso."
+  line:
+    name: "Línea"
+    hint: "Mantén clic der. al inicio y suelta al final. Shift la alinea."
+  rect:
+    name: "Rectángulo"
+    hint: "Arrastra de esquina a esquina. Shift hace un cuadrado."
+  ellipse:
+    name: "Elipse"
+    hint: "Arrastra como un rectángulo. Shift hace un círculo."
+
+item:
+  brush:
+    name: "<#FF7800>Pincel de artista"
+    paint: "pintar en un lienzo <gray>(se puede sostener)"
+    pick: "tomar el color de un lienzo o bloque"
+    palette: "paleta <gray>(fuera del lienzo)"
+    shift-key: "Shift al pintar"
+    shift: "línea recta, cuadrado, círculo"
+    wheel-key: "Shift + rueda"
+    wheel: "tamaño del pincel"
+    undo: "deshacer"
+    redo: "rehacer"
+  canvas:
+    name: "Lienzo {size}"
+    lore:
+      - "Colócalo en una pared, suelo o techo"
+      - "y pinta con el pincel."
+      - ""
+      - "<dark_gray>Lienzos idénticos colocados en"
+      - "<dark_gray>rectángulo en una mesa de crafteo"
+      - "<dark_gray>se unen en uno grande."
+    assemble: "montar un lienzo grande con la pila"
+  painting:
+    sketch-name: "Boceto"
+    author: "Autor: <white>{name}"
+    size: "Tamaño: <white>{size}"
+    imported: "<#FFE100>Importada <dark_gray>» <gray>transferida, no pintada a mano"
+    signed:
+      - "<dark_gray>Pintura + lienzo en blanco {size}"
+      - "<dark_gray>en una mesa de crafteo hacen una copia."
+    sketch:
+      - "<dark_gray>Sin firmar: aún se puede pintar."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Sin título"
+  signed: "<#FF7800>firmada"
+  sketch: "<white>boceto"
+  imported: " <gray>· <#FFE100>importada"
+
+hud:
+  size: "<gray>tamaño <white>{size}"
+
+paint:
+  signed: "La pintura está firmada: ya no se puede cambiar"
+  not-yours: "Esta pintura es de {player}: solo el autor puede pintar en ella"
+  undo:
+    look: "Mira una pintura para deshacer"
+    undone: "Deshecho"
+    redone: "Rehecho"
+    nothing-undo: "Nada que deshacer"
+    nothing-redo: "Nada que rehacer"
+
+place:
+  deleted: "El autor eliminó esta pintura. El objeto vuelve a ser un lienzo en blanco"
+  too-big: "En este servidor no se pueden colocar lienzos de más de {max}"
+  no-room: "Un lienzo {size} no cabe aquí"
+  denied: "No puedes hacer eso aquí"
+  break-owner: "Solo el jugador que colocó la pintura puede quitarla"
+  change-owner: "Solo el jugador que colocó la pintura puede cambiarla"
+
+assemble:
+  hold: "Sostén lienzos 1×1 en la mano"
+  not-enough: "Un lienzo {size} necesita {canvases}, tienes {have}"
+  done: "Lienzo {size} montado"
+
+import:
+  parts: "Partes recibidas: {have} de {total}. Pega la parte {next}."
+  too-big: "La pintura del código es más grande de lo que permite este servidor ({max})"
+  bad-code: "Esto no es un código de pintura, o está dañado"
+  loading: "Cargando la imagen…"
+  image-failed: "No se pudo cargar la imagen: {reason}"
+  image-done: "<#1FFF5E>La imagen está en el lienzo. <gray>¿No te convence? Abre la ventana otra vez y ajusta: el resultado anterior se reemplaza."
+  code-done: "<#1FFF5E>El dibujo está en el lienzo. <gray>Deshaz con F sosteniendo el pincel."
+  no-target: "No hay dónde ponerla: mira tu lienzo o sostén un lienzo {size} en blanco"
+  created: "Tienes una pintura {size} en el inventario"
+  paper: "Importar cuesta papel: {sheets} — {price} por bloque de la pintura"
+  limit: "Ya tienes {paintings}: es el límite. Elimina alguna: /paint gallery"
+
+gallery:
+  need-canvas: "Necesitas un lienzo {size} en blanco en el inventario"
+
+sign:
+  done: "<#1FFF5E>Pintura '{title}' firmada. <gray>Ahora se puede copiar en una mesa de crafteo."
+
+panel:
+  window:
+    tools: "Pincel"
+    colors: "Color"
+    actions: "Pintura"
+  title:
+    tools: "PINCEL"
+    colors: "COLOR"
+  window-reset: "La ventana '{window}' ha vuelto a su sitio"
+  window-grabbed: "<#FF7800>Ventana '{window}' <dark_gray>» <gray>muévela con la mira; suelta clic der. o haz clic otra vez para soltarla"
+  move: "<#FF7800>Mover la ventana <dark_gray>» <gray>mantén clic der. y arrastra; Shift + clic la devuelve a su sitio"
+  size: "<#FF7800>Tamaño del pincel: {size} <dark_gray>» <gray>ajuste fino con Shift + rueda"
+  shape:
+    square: "<#FF7800>Pincel cuadrado <dark_gray>» <gray>bordes rectos, esquinas marcadas"
+    round: "<#FF7800>Pincel redondo <dark_gray>» <gray>trazos suaves y redondeados"
+  hue: "<#FF7800>Tono <dark_gray>» <gray>los colores de este tono aparecen en el cuadrado"
+  current-color: "<#FF7800>Color actual: <white>{color} <dark_gray>» <gray>escribe un código #RRGGBB"
+  previous-color: "<#FF7800>Color anterior: <white>{color} <dark_gray>» <gray>volver a él"
+  transparent: "<#1FFFE3>Transparente <dark_gray>» <gray>la pared se ve a través de la pintura"
+  shade: "{color} <dark_gray>» <gray>tono del color actual"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Deshacer <dark_gray>» <gray>igual que F"
+    redo: "<#FF7800>Rehacer <dark_gray>» <gray>igual que Shift + F"
+    clear: "<#FF7800>Borrar el lienzo <dark_gray>» <gray>lo rellena de blanco, se puede deshacer"
+    resolution: "<#FF7800>Resolución: {res} px/bloque <dark_gray>» <gray>cambiar; F lo revierte"
+    shared: "<#FF7800>Todos pueden pintar: {state} <dark_gray>» <gray>cambiar"
+    sign: "<#FF7800>Firmar <dark_gray>» <gray>ponle un título y termina la pintura"
+    export: "<#FF7800>Exportar <dark_gray>» <gray>código de la pintura como texto"
+    import: "<#FF7800>Importar <dark_gray>» <gray>pegar un código de pintura"
+    image: "<#FF7800>Imagen desde una URL <dark_gray>» <gray>con recorte, zoom y desplazamiento"
+    gallery: "<#FF7800>Mis pinturas"
+    hide: "<#FF7800>Ocultar el panel <dark_gray>» <gray>vuelve al hacer clic en el lienzo con el pincel"
+
+menu:
+  close:
+    name: "Cerrar"
+    action: "cerrar el menú"
+  back:
+    name: "Atrás"
+    action: "volver"
+  hint: "Pista"
+  page:
+    previous: "Página anterior"
+    next: "Página siguiente"
+    action: "pasar página"
+    of: "Página {page} de {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>¿Eliminar para siempre?"
+      - "La pintura desaparece de todas las paredes"
+      - "y sus objetos pasan a ser lienzos en blanco."
+    "yes": "<#FF1F1F>sí, eliminar"
+    "no": "conservarla"
+    action: "eliminar para siempre"
+    done: "Pintura eliminada"
+  admin:
+    title: "Pinturas: admin"
+    canvases:
+      name: "<#FF7800>Lienzos de todos los tamaños"
+      lore:
+        - "De 1×1 a {max}: 3×5, 1×4 y cualquier otro."
+    painting:
+      - "Autor: <white>{author}"
+      - "{size} bloques · {res} px/bloque · {state}"
+      - "Cambiada: <white>{date}"
+      - "Colocada en chunks cargados: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "tomar"
+    export: "exportar como texto"
+    empty: "Aún no hay pinturas en el servidor"
+    count: "<white>Pinturas en el servidor: <#FF7800>{count}"
+    too-big:
+      - "Más grande de lo que permite la config:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "tomar {amount} de golpe"
+    help-canvases:
+      - "<white>Lienzos de todos los tamaños."
+      - "La columna es el ancho, la fila el alto:"
+      - "tercera columna de la quinta fila es 3×5."
+      - ""
+      - "Shift + clic izq. da {amount} de golpe."
+    help:
+      - "<white>La fila de arriba tiene objetos"
+      - "del plugin: el pincel, un lienzo y la tabla"
+      - "de lienzos hasta {max}."
+      - ""
+      - "Debajo están las pinturas de todos."
+      - "Una pintura tomada aquí es la misma,"
+      - "no una copia: los cambios se ven"
+      - "dondequiera que esté colgada."
+  canvas:
+    title: "Lienzo"
+    info:
+      - "Autor: <white>{author}"
+      - "Tamaño: <white>{size} <gray>bloques, <white>{pixels} <gray>píxeles"
+      - "Estado: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Resolución: <#FF7800>{res} <white>píxeles por bloque"
+      lore:
+        - "Cuanto menor el número, más grandes"
+        - "los píxeles."
+        - "Al cambiar, el dibujo se estira."
+        - "<dark_gray>F deshace el cambio."
+      finer: "más fina"
+      coarser: "más gruesa"
+    clear:
+      name: "Borrar el lienzo"
+      lore:
+        - "Lo rellena de blanco. Se puede deshacer (F)."
+      action: "borrar"
+    shared:
+      name: "<white>Todos pueden pintar: {state}"
+      lore:
+        - "Pintar en conjunto: el pincel de"
+        - "cualquier jugador funciona en este lienzo."
+    sign:
+      name: "Firmar"
+      lore:
+        - "Ponle un título y termina la pintura."
+        - "Una pintura firmada no se puede"
+        - "cambiar, pero sí copiar."
+      action: "firmar"
+    export:
+      name: "Exportar como texto"
+      lore:
+        - "El código de la pintura: cópialo y"
+        - "pásalo a quien quieras, incluso"
+        - "a otro servidor."
+      action: "mostrar el código"
+    import:
+      name: "Importar desde texto"
+      lore:
+        - "Pega un código. El dibujo va al lienzo"
+        - "que miras, o a un lienzo en blanco"
+        - "que sostengas en la mano."
+      action: "pegar un código"
+    gallery:
+      lore:
+        - "Todo lo que has pintado."
+  gallery:
+    title: "Mis pinturas"
+    painting:
+      - "{size} bloques · {res} px/bloque · {state}"
+      - "Cambiada: <white>{date}"
+      - "Colocada ahora: <white>{placed}"
+    take: "tomar <gray>(necesita un lienzo {size} en blanco)"
+    empty:
+      name: "Aún no hay nada"
+      lore:
+        - "Coloca un lienzo y pinta algo."
+    help:
+      - "<white>Todas tus pinturas se guardan aquí,"
+      - "aunque las hayas quitado o perdido."
+      - ""
+      - "Un boceto tomado de aquí es la misma"
+      - "pintura: los cambios se ven dondequiera"
+      - "que esté colgada."
+      - ""
+      - "Las pinturas firmadas se copian en una"
+      - "mesa de crafteo: pintura + lienzo en blanco."
+  palette:
+    title: "Paleta y herramientas"
+    page: "Colores: página {page} de {pages}"
+    hex:
+      name: "Color por código"
+      lore:
+        - "Escribe #RRGGBB: se elige el color"
+        - "más cercano de la paleta."
+      action: "escribir un código"
+    transparent:
+      - "Los píxeles desaparecen: la pared se ve"
+      - "a través de la pintura. Útil para pegatinas"
+      - "y pinturas de cualquier forma."
+    shade:
+      - "Tono del color seleccionado."
+    size:
+      name: "<white>Tamaño del pincel: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>En el juego: Shift + rueda del ratón."
+      more: "más grande"
+      less: "más pequeño"
+      shift: "Con Shift"
+      by-four: "de 4 en 4"
+    canvas:
+      name: "Lienzo y mis pinturas"
+      lore:
+        - "Resolución, firma, exportación,"
+        - "importación, lista de tus pinturas."
+    help:
+      - "<white>Con el pincel en la mano:"
+      - "clic der. en un lienzo pinta,"
+      - "clic izq. toma el color de un lienzo"
+      - "o de cualquier bloque del mundo."
+      - ""
+      - "Shift + rueda cambia el tamaño del pincel."
+      - "F deshace, Shift + F rehace."
+      - ""
+      - "Las formas se arrastran: mantén clic der.,"
+      - "mueve y suelta."
+      - "Con Shift la línea sale recta,"
+      - "el rectángulo se vuelve cuadrado,"
+      - "la elipse se vuelve círculo."
+
+dialog:
+  code: "Código"
+  export:
+    title: "Exportar una pintura"
+    text: "'{title}' — un código de {length} caracteres. Pulsa Copiar para ponerlo en el portapapeles."
+    text-parts: "'{title}' — el código es largo, así que se divide en partes. Parte {part} de {parts}: {length} caracteres. Copia y pega todas las partes una por una."
+    copy: "Copiar"
+    copy-tooltip: "Poner el código en el portapapeles"
+    next: "Siguiente parte"
+    first: "Volver a la primera parte"
+  import:
+    title: "Importar una pintura"
+    text: "Pega un código de pintura (Ctrl+V). El dibujo va al lienzo que miras, o a un lienzo en blanco que sostengas en la mano."
+    button: "Importar"
+  sign:
+    title: "Firmar la pintura"
+    text: "Una pintura firmada no se puede cambiar, pero sí copiar: pintura + un lienzo en blanco del mismo tamaño en una mesa de crafteo."
+    input: "Título"
+    button: "Firmar"
+  hex:
+    title: "Color por código"
+    text: "Escribe un color como #RRGGBB. Los mapas no pueden mostrar todos los colores, así que se elige el más cercano."
+    input: "Color"
+    button: "Elegir"
+  canvas:
+    title: "Montar un lienzo"
+    creative: "En modo creativo no se gastan lienzos."
+    have: "Tienes {canvases}."
+    text: "La columna es el ancho, la fila el alto: un lienzo 2×4 necesita ocho lienzos 1×1. Los tamaños en gris aún están fuera de alcance."
+    same: "Ya tienes este lienzo"
+    assemble: "Montar un lienzo {size}: necesita {canvases}"
+    need: "Necesita {canvases}, tienes {have}"
+  image:
+    title: "Imagen desde una URL"
+    text: "La imagen va al lienzo que miras, o a un lienzo en blanco que sostengas en la mano; el tamaño en bloques solo importa si no hay ninguno de los dos. ¿No te convence? Abre la ventana otra vez: los ajustes se conservan y el resultado anterior en el lienzo se reemplaza."
+    url: "URL de la imagen"
+    fit:
+      label: "Ajuste"
+      cover: "Llenar el lienzo, recortar el resto"
+      contain: "Mostrar toda la imagen, con márgenes"
+      stretch: "Estirar sobre el lienzo"
+    zoom: "Zoom, %"
+    x: "Desplazar a la derecha, %"
+    "y": "Desplazar hacia abajo, %"
+    brightness: "Brillo, %"
+    contrast: "Contraste, %"
+    saturation: "Saturación, %"
+    dither: "Transiciones de color suaves (no se aplica al pixel art)"
+    shade: "Oscurecer como la cara de un bloque: para cubos hechos de pinturas"
+    clear: "Los márgenes alrededor de la imagen son transparentes, no blancos"
+    width: "Ancho de la nueva pintura, en bloques"
+    height: "Alto de la nueva pintura, en bloques"
+    button: "Aplicar"
+    no-url: "Pega la URL de una imagen"

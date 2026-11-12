@@ -1,4 +1,4 @@
-package me.bbijabnpobatejb.paintcraft.ui;
+package me.bbijabnpobatejb.paintcraft.modern;
 
 import io.papermc.paper.dialog.Dialog;
 import io.papermc.paper.dialog.DialogResponseView;
@@ -10,8 +10,11 @@ import io.papermc.paper.registry.data.dialog.input.DialogInput;
 import io.papermc.paper.registry.data.dialog.input.SingleOptionDialogInput;
 import io.papermc.paper.registry.data.dialog.input.TextDialogInput;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
-import lombok.experimental.UtilityClass;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
+import me.bbijabnpobatejb.paintcraft.compat.Prompts;
 import me.bbijabnpobatejb.paintcraft.exchange.ImageOptions;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
@@ -31,13 +34,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-@UtilityClass
+@RequiredArgsConstructor
 @SuppressWarnings("UnstableApiUsage")
-public class Dialogs {
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+public class DialogPrompts implements Prompts {
 
-    public final int PART_LIMIT = 12_000;
+    private static final int PART_LIMIT = 12_000;
+    private static final int CANVAS_GRID = 8;
 
-    public void export(PaintCraft plugin, Player player, Painting painting, List<String> parts, int index) {
+    PaintCraft plugin;
+
+    @Override
+    public int partLimit() {
+        return PART_LIMIT;
+    }
+
+    @Override
+    public void export(Player player, Painting painting, List<String> parts, int index) {
         String code = parts.get(index);
         boolean multi = parts.size() > 1;
         String text = multi
@@ -62,15 +75,16 @@ public class Dialogs {
                 .action(DialogAction.staticAction(ClickEvent.copyToClipboard(code)))
                 .build());
         if (multi && index + 1 < parts.size()) {
-            buttons.add(button(Lang.get("dialog.export.next"), p -> export(plugin, p, painting, parts, index + 1)));
+            buttons.add(button(Lang.get("dialog.export.next"), p -> export(p, painting, parts, index + 1)));
         } else if (multi) {
-            buttons.add(button(Lang.get("dialog.export.first"), p -> export(plugin, p, painting, parts, 0)));
+            buttons.add(button(Lang.get("dialog.export.first"), p -> export(p, painting, parts, 0)));
         }
 
         show(player, base(Lang.get("dialog.export.title"), text, inputs, DialogBase.DialogAfterAction.NONE), buttons, 2);
     }
 
-    public void importCode(PaintCraft plugin, Player player, @Nullable String hint) {
+    @Override
+    public void importCode(Player player, @Nullable String hint) {
         if (!player.hasPermission(PaintCraft.PERMISSION_IMPORT) || !plugin.getConfigHandler().isImportCode()) {
             Chat.sendChat(player, Chat.red(Lang.get("common.no-permission")));
             return;
@@ -88,7 +102,8 @@ public class Dialogs {
                 })), 1);
     }
 
-    public void sign(PaintCraft plugin, Player player, Painting painting) {
+    @Override
+    public void sign(Player player, Painting painting) {
         DialogInput input = DialogInput.text("title", Component.text(Lang.get("dialog.sign.input")))
                 .width(260)
                 .initial(painting.title)
@@ -102,7 +117,8 @@ public class Dialogs {
                 })), 1);
     }
 
-    public void hex(PaintCraft plugin, Player player) {
+    @Override
+    public void hex(Player player) {
         DialogInput input = DialogInput.text("hex", Component.text(Lang.get("dialog.hex.input")))
                 .width(160)
                 .initial(Palette.hex(plugin.getPaintService().session(player).getColor()))
@@ -119,9 +135,8 @@ public class Dialogs {
                 })), 1);
     }
 
-    private final int CANVAS_GRID = 8;
-
-    public void canvas(PaintCraft plugin, Player player) {
+    @Override
+    public void canvas(Player player) {
         int have = plugin.getRecipeService().unitCanvases(player);
         if (have == 0) return;
         boolean free = player.getGameMode() == GameMode.CREATIVE;
@@ -134,7 +149,7 @@ public class Dialogs {
                 String size = width + "×" + height;
                 String canvases = Lang.plural(need, "unit.canvas");
                 if (need == 1) {
-                    buttons.add(cell(size, Chat.DARK_GRAY, Lang.get("dialog.canvas.same"), p -> canvas(plugin, p)));
+                    buttons.add(cell(size, Chat.DARK_GRAY, Lang.get("dialog.canvas.same"), p -> canvas(p)));
                 } else if (free || have >= need) {
                     buttons.add(cell(size, Chat.WHITE, Lang.get("dialog.canvas.assemble", "size", size, "canvases", canvases),
                             p -> plugin.getRecipeService().assemble(p, w, h)));
@@ -158,7 +173,8 @@ public class Dialogs {
                 .build();
     }
 
-    public void image(PaintCraft plugin, Player player, @Nullable String url) {
+    @Override
+    public void image(Player player, @Nullable String url) {
         if (!player.hasPermission(PaintCraft.PERMISSION_IMAGE) || !plugin.getConfigHandler().isImageUrl()) {
             Chat.sendChat(player, Chat.red(Lang.get("common.no-permission")));
             return;
@@ -259,7 +275,7 @@ public class Dialogs {
         return DialogAction.customClick((view, audience) -> {
             if (!(audience instanceof Player player)) return;
             if (Bukkit.isPrimaryThread()) reply.accept(player, view);
-            else Bukkit.getScheduler().runTask(PaintCraft.getInstance(), () -> reply.accept(player, view));
+            else Bukkit.getScheduler().runTask(plugin, () -> reply.accept(player, view));
         }, ClickCallback.Options.builder().uses(ClickCallback.UNLIMITED_USES).lifetime(Duration.ofMinutes(15)).build());
     }
 

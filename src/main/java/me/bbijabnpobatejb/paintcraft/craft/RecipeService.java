@@ -13,10 +13,12 @@ import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.Sounds;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.jetbrains.annotations.Nullable;
@@ -50,6 +52,8 @@ public class RecipeService {
         }
 
         ItemStack stub = items.createCanvas(1, 1, 1);
+        Material canvas = plugin.getItemStyle().material(PaintItem.CANVAS);
+        Material painting = plugin.getItemStyle().material(PaintItem.PAINTING);
         for (int columns = 1; columns <= 3; columns++) {
             for (int rows = 1; rows <= 3; rows++) {
                 if (columns * rows == 1) continue;
@@ -57,16 +61,16 @@ public class RecipeService {
                 String[] shape = new String[rows];
                 Arrays.fill(shape, "C".repeat(columns));
                 recipe.shape(shape);
-                recipe.setIngredient('C', ItemService.BASE);
+                recipe.setIngredient('C', canvas);
                 add(recipe.getKey(), recipe, placeholders);
             }
         }
         val single = new ShapelessRecipe(key("single"), stub);
-        single.addIngredient(ItemService.BASE);
+        single.addIngredient(new RecipeChoice.MaterialChoice(canvas, painting));
         add(single.getKey(), single, placeholders);
         val pair = new ShapelessRecipe(key("pair"), stub);
-        pair.addIngredient(ItemService.BASE);
-        pair.addIngredient(ItemService.BASE);
+        pair.addIngredient(new RecipeChoice.MaterialChoice(canvas, painting));
+        pair.addIngredient(new RecipeChoice.MaterialChoice(canvas, painting));
         add(pair.getKey(), pair, placeholders);
 
         Bukkit.getOnlinePlayers().forEach(this::discover);

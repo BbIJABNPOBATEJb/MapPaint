@@ -1,22 +1,20 @@
 package me.bbijabnpobatejb.paintcraft.listener;
 
-import io.papermc.paper.event.player.PlayerPickEntityEvent;
 import io.papermc.paper.event.player.PrePlayerAttackEntityEvent;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
+import me.bbijabnpobatejb.paintcraft.compat.Compat;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.item.PaintItem;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.paint.PlayerSession;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
-import me.bbijabnpobatejb.paintcraft.ui.Dialogs;
 import me.bbijabnpobatejb.paintcraft.ui.menu.PaletteGui;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.Sounds;
-import me.bbijabnpobatejb.paintcraft.util.VersionCompat;
 import me.bbijabnpobatejb.paintcraft.world.Placement;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -74,7 +72,7 @@ public class PaintListener implements Listener {
             Block block = event.getClickedBlock();
             if (block == null || !block.getType().isInteractable()) {
                 event.setCancelled(true);
-                Dialogs.canvas(plugin, player);
+                plugin.getPrompts().canvas(player);
                 return;
             }
         }
@@ -90,9 +88,10 @@ public class PaintListener implements Listener {
         Action action = event.getAction();
         val session = plugin.getPaintService().session(player);
         double reach = plugin.getConfigHandler().getReach();
+        boolean right = action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK;
+        if (right) plugin.getItemStyle().used(player, false);
 
         if (plugin.getStudioService().click(player)) {
-            boolean right = action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK;
             if (right && plugin.getStudioService().isDragging(player)) event.setUseInteractedBlock(Event.Result.DENY);
             else event.setCancelled(true);
             return;
@@ -124,8 +123,9 @@ public class PaintListener implements Listener {
 
     private void onBrushClickFrame(Player player) {
         if (!player.hasPermission(PaintCraft.PERMISSION_USE)) return;
+        val style = plugin.getItemStyle();
         if (plugin.getStudioService().click(player)) {
-            if (plugin.getStudioService().isDragging(player)) player.startUsingItem(EquipmentSlot.HAND);
+            if (plugin.getStudioService().isDragging(player)) style.used(player, true);
             return;
         }
         val session = plugin.getPaintService().session(player);
@@ -134,10 +134,11 @@ public class PaintListener implements Listener {
             if (player.isSneaking()) openPalette(player, session);
             return;
         }
+        if (session.getStroke() != null) style.used(player, true);
         if (!firstClickThisTick(session)) return;
 
         plugin.getPaintService().press(player, visible);
-        if (session.getStroke() != null) player.startUsingItem(EquipmentSlot.HAND);
+        if (session.getStroke() != null) style.used(player, true);
     }
 
     private void openPalette(Player player, PlayerSession session) {
@@ -165,8 +166,8 @@ public class PaintListener implements Listener {
         }
         if (block == null) return;
 
-        Color color = block.getBlockData().getMapColor();
-        if (color.asRGB() == 0) return;
+        Color color = Compat.mapColor(block);
+        if (color == null || color.asRGB() == 0) return;
         plugin.getPaintService().setColor(player, Palette.nearest(color.asRGB()));
         Sounds.playSound(player, Sound.ITEM_BOTTLE_FILL, .5f, 1.4f);
     }
@@ -273,7 +274,7 @@ public class PaintListener implements Listener {
         }
         breaking = true;
         try {
-            if (!VersionCompat.createHangingBreak(frame, player).callEvent()) {
+            if (!Compat.hangingBreak(frame, player).callEvent()) {
                 Chat.sendActionBar(player, Chat.red(Lang.get("place.denied")));
                 return;
             }
@@ -325,18 +326,6 @@ public class PaintListener implements Listener {
         if (player.getGameMode() != GameMode.CREATIVE) hand.setAmount(hand.getAmount() - 1);
         player.swingMainHand();
         player.getWorld().playSound(placement.center(), glow ? Sound.ITEM_GLOW_INK_SAC_USE : Sound.ITEM_INK_SAC_USE, 1f, 1f);
-    }
-
-    @EventHandler(ignoreCancelled = true)
-    public void onPick(PlayerPickEntityEvent event) {
-        val placements = plugin.getPlacementManager();
-        if (!placements.isOurs(event.getEntity())) return;
-        event.setCancelled(true);
-
-        Placement placement = placements.of(event.getEntity());
-        Player player = event.getPlayer();
-        if (placement == null || player.getGameMode() != GameMode.CREATIVE) return;
-        plugin.getItemService().give(player, plugin.getItemService().createPainting(placement.painting, 1));
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -399,5 +388,6 @@ public class PaintListener implements Listener {
         plugin.getPlacementPreview().forget(event.getPlayer());
         plugin.getSlotTracker().forget(event.getPlayer().getUniqueId());
         plugin.getPaintService().forget(event.getPlayer());
+        plugin.getItemStyle().forget(event.getPlayer());
     }
 }

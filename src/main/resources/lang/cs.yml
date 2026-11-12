@@ -1,0 +1,452 @@
+# PaintCraft — Čeština
+#
+# {slova} ve složených závorkách doplňuje plugin: nechte je beze změny.
+# Barvy se zadávají značkami MiniMessage: <gray>, <white>, <#FF7800>.
+# Klíč, který v souboru chybí, se vezme z anglického překladu.
+
+language:
+  name: "Čeština"
+  changed: "<#1FFF5E>Jazyk: <white>{language}"
+  current: "<white>Aktuální jazyk: <#FF7800>{language}"
+  available: "<gray>Dostupné: <white>{languages}"
+  unknown: "Jazyk {input} neexistuje. Dostupné: {languages}"
+
+prefix: "Obrazy"
+
+common:
+  no-permission: "Nemáš oprávnění"
+  color-format: "Barva se zadává jako #RRGGBB, například #FF8800"
+  canvas-cleared: "<gray>Plátno vymazáno. <dark_gray>F — vrátit zpět"
+  "on": "ZAP"
+  "off": "VYP"
+
+click:
+  left: "LTM"
+  right: "PTM"
+
+action:
+  open: "otevřít"
+  select: "vybrat"
+  take: "vzít"
+  toggle: "přepnout"
+
+unit:
+  canvas:
+    one: "{count} plátno 1×1"
+    few: "{count} plátna 1×1"
+    many: "{count} pláten 1×1"
+  sheet:
+    one: "{count} list"
+    few: "{count} listy"
+    many: "{count} listů"
+  painting:
+    one: "{count} obraz"
+    few: "{count} obrazy"
+    many: "{count} obrazů"
+
+color:
+  transparent: "Průhledná"
+  transparent-short: "průhledná"
+
+command:
+  invalid-usage: "Nesprávné použití"
+  player-only: "Jen pro hráče"
+  usage-header: "<#FF7800>Nápověda k příkazu:"
+  usage: "<#FF1F1F>Použití: <white>{usage}"
+  unknown-choice: "Takové není: {input} ({what})"
+  choice:
+    tool: "nástroj"
+    item: "předmět"
+  canvas-size: "Velikost plátna je ŠxV v blocích, od 1x1 do {max}x{max}. Například: 2x3"
+  panel-reset: "Okna panelu u plátna se vrátila na svá místa"
+  specify-player: "Zadej hráče"
+  give-painting: "Obrazy vydává galerie: /paint gallery"
+  given: "<white>Předáno hráči <#FF7800>{player}"
+  reloaded: "Nastavení znovu načteno"
+  look-at-painting: "Podívej se na obraz nebo ho vezmi do ruky"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— obrazy bez balíčku zdrojů"
+    lines:
+      - "<#FF7800>Štětec <dark_gray>» <gray>hůl + pírko. <#FF7800>Plátno <dark_gray>» <gray>papír + hůl"
+      - "Plátna složená do obdélníku na pracovním stole se spojí ve velké"
+      - "<#FF7800>PTM <dark_gray>» <gray>malovat, <#FF7800>LTM <dark_gray>» <gray>vzít barvu z plátna nebo bloku"
+      - "<#FF7800>Shift + PTM mimo plátno <dark_gray>» <gray>paleta, <#FF7800>Shift + kolečko <dark_gray>» <gray>velikost štětce"
+      - "<#FF7800>Shift při malování <dark_gray>» <gray>rovná čára, čtverec, kruh"
+      - "<#FF7800>F <dark_gray>» <gray>zpět, <#FF7800>Shift + F <dark_gray>» <gray>znovu"
+      - "<#FF7800>Q <dark_gray>» <gray>předchozí nástroj, <#FF7800>Shift + Q <dark_gray>» <gray>další"
+      - "<white>/paint <gray>paleta · <white>/paint gallery <gray>moje obrazy"
+      - "<white>/paint color #RRGGBB <gray>· <white>size číslo <gray>· <white>tool nástroj"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>vrátit posunutá okna panelu na místo"
+      - "<white>/paint export <gray>kód obrazu · <white>/paint import [kód] <gray>vložit kód"
+      - "<white>/paint sign [název] <gray>podepsat: podepsaný obraz lze kopírovat"
+      - "<white>/paint image [odkaz] <gray>obrázek z internetu: ořez, měřítko, posun"
+      - "<white>/paint admin <gray>předměty pluginu a všechny obrazy serveru"
+      - "<white>/paint give brush|canvas [ŠxV] [počet] [hráč]"
+      - "<white>/paint language [kód] <gray>jazyk pluginu · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Štětec"
+    hint: "Drž PTM a tahej po plátně. Shift — po přímce."
+  eraser:
+    name: "Guma"
+    hint: "Maže až na čisté plátno."
+  fill:
+    name: "Výplň"
+    hint: "Vyplní oblast jedné barvy."
+  spray:
+    name: "Sprej"
+    hint: "Rozprašuje tečky: čím déle držíš, tím hustěji."
+  line:
+    name: "Čára"
+    hint: "Drž PTM na začátku, na konci pusť. Shift — rovně."
+  rect:
+    name: "Obdélník"
+    hint: "Táhni z rohu do rohu. Shift — čtverec."
+  ellipse:
+    name: "Elipsa"
+    hint: "Táhni jako obdélník. Shift — kruh."
+
+item:
+  brush:
+    name: "<#FF7800>Malířský štětec"
+    paint: "malovat na plátno <gray>(lze držet)"
+    pick: "vzít barvu z plátna nebo bloku"
+    palette: "paleta <gray>(mimo plátno)"
+    shift-key: "Shift při malování"
+    shift: "rovná čára, čtverec, kruh"
+    wheel-key: "Shift + kolečko"
+    wheel: "velikost štětce"
+    undo: "zpět"
+    redo: "znovu"
+  canvas:
+    name: "Plátno {size}"
+    lore:
+      - "Postav na zeď, podlahu nebo strop"
+      - "a maluj štětcem."
+      - ""
+      - "<dark_gray>Stejná plátna složená do"
+      - "<dark_gray>obdélníku na pracovním stole"
+      - "<dark_gray>se spojí ve velké."
+    assemble: "složit velké plátno z hromádky"
+  painting:
+    sketch-name: "Skica"
+    author: "Autor: <white>{name}"
+    size: "Velikost: <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>převedeno, nenamalováno štětcem"
+    signed:
+      - "<dark_gray>Obraz + prázdné plátno {size}"
+      - "<dark_gray>na pracovním stole dá kopii."
+    sketch:
+      - "<dark_gray>Nepodepsáno: lze dál malovat."
+      - "<dark_gray>č. {id}"
+
+painting:
+  untitled: "Bez názvu"
+  signed: "<#FF7800>podepsáno"
+  sketch: "<white>skica"
+  imported: " <gray>· <#FFE100>import"
+
+hud:
+  size: "<gray>velikost <white>{size}"
+
+paint:
+  signed: "Obraz je podepsaný — už ho nelze měnit"
+  not-yours: "Tento obraz patří hráči {player}: maluje na něm jen autor"
+  undo:
+    look: "Podívej se na obraz, abys mohl vrátit krok"
+    undone: "Vráceno"
+    redone: "Provedeno znovu"
+    nothing-undo: "Není co vracet"
+    nothing-redo: "Není co provádět znovu"
+
+place:
+  deleted: "Autor tento obraz smazal. Předmět je opět prázdné plátno"
+  too-big: "Plátna větší než {max} nelze na tomto serveru stavět"
+  no-room: "Plátno {size} se sem nevejde"
+  denied: "Tady to nemůžeš udělat"
+  break-owner: "Obraz může sundat jen ten, kdo ho pověsil"
+  change-owner: "Obraz může měnit jen ten, kdo ho pověsil"
+
+assemble:
+  hold: "Vezmi do ruky plátna 1×1"
+  not-enough: "Plátno {size} potřebuje {canvases}, v ruce máš {have}"
+  done: "Plátno {size} složeno"
+
+import:
+  parts: "Přijaté části: {have} z {total}. Vlož část {next}."
+  too-big: "Obraz v kódu je větší, než server povoluje ({max})"
+  bad-code: "Toto není kód obrazu, nebo je poškozený"
+  loading: "Načítám obrázek…"
+  image-failed: "Obrázek se nepodařilo načíst: {reason}"
+  image-done: "<#1FFF5E>Obrázek je na plátně. <gray>Není to ono? Otevři okno znovu a uprav — předchozí výsledek se nahradí."
+  code-done: "<#1FFF5E>Kresba je na plátně. <gray>Zpět — F se štětcem v ruce."
+  no-target: "Není kam vložit: podívej se na své plátno nebo vezmi do ruky prázdné plátno {size}"
+  created: "Obraz {size} máš v inventáři"
+  paper: "Import stojí papír: {sheets} — po {price} za blok obrazu"
+  limit: "Už máš {paintings} — to je limit. Smaž nepotřebné: /paint gallery"
+
+gallery:
+  need-canvas: "Potřebuješ v inventáři prázdné plátno {size}"
+
+sign:
+  done: "<#1FFF5E>Obraz „{title}“ podepsán. <gray>Teď ho lze kopírovat na pracovním stole."
+
+panel:
+  window:
+    tools: "Štětec"
+    colors: "Barva"
+    actions: "Obraz"
+  title:
+    tools: "ŠTĚTEC"
+    colors: "BARVA"
+  window-reset: "Okno „{window}“ se vrátilo na místo"
+  window-grabbed: "<#FF7800>Okno „{window}“ <dark_gray>» <gray>veď ho zaměřovačem; pusť PTM nebo klikni znovu, aby zůstalo"
+  move: "<#FF7800>Posunout okno <dark_gray>» <gray>drž PTM a veď; Shift + klik ho vrátí na místo"
+  size: "<#FF7800>Velikost štětce: {size} <dark_gray>» <gray>přesněji — Shift + kolečko"
+  shape:
+    square: "<#FF7800>Hranatý štětec <dark_gray>» <gray>rovné okraje, ostré rohy"
+    round: "<#FF7800>Kulatý štětec <dark_gray>» <gray>měkké zaoblené tahy"
+  hue: "<#FF7800>Odstín <dark_gray>» <gray>barvy tohoto odstínu se objeví ve čtverci"
+  current-color: "<#FF7800>Aktuální barva: <white>{color} <dark_gray>» <gray>zadej kód #RRGGBB"
+  previous-color: "<#FF7800>Předchozí barva: <white>{color} <dark_gray>» <gray>vrátit se k ní"
+  transparent: "<#1FFFE3>Průhledná <dark_gray>» <gray>obrazem prosvítá zeď"
+  shade: "{color} <dark_gray>» <gray>jas aktuální barvy"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Zpět <dark_gray>» <gray>totéž co F"
+    redo: "<#FF7800>Znovu <dark_gray>» <gray>totéž co Shift + F"
+    clear: "<#FF7800>Vymazat plátno <dark_gray>» <gray>vyplnit bílou, jde vrátit"
+    resolution: "<#FF7800>Rozlišení: {res} px/blok <dark_gray>» <gray>změnit; F vrátí původní"
+    shared: "<#FF7800>Malovat může každý: {state} <dark_gray>» <gray>přepnout"
+    sign: "<#FF7800>Podepsat <dark_gray>» <gray>dát název a dokončit obraz"
+    export: "<#FF7800>Export <dark_gray>» <gray>kód obrazu jako text"
+    import: "<#FF7800>Import <dark_gray>» <gray>vložit kód obrazu"
+    image: "<#FF7800>Obrázek z odkazu <dark_gray>» <gray>s ořezem, měřítkem a posunem"
+    gallery: "<#FF7800>Moje obrazy"
+    hide: "<#FF7800>Skrýt panel <dark_gray>» <gray>vrátí se, když štětcem klikneš na plátno"
+
+menu:
+  close:
+    name: "Zavřít"
+    action: "zavřít menu"
+  back:
+    name: "Zpět"
+    action: "vrátit se"
+  hint: "Nápověda"
+  page:
+    previous: "Předchozí strana"
+    next: "Další strana"
+    action: "listovat"
+    of: "Strana {page} z {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Smazat navždy?"
+      - "Obraz zmizí ze zdí všem"
+      - "a jeho předměty se změní na prázdná plátna."
+    "yes": "<#FF1F1F>ano, smazat"
+    "no": "nemazat"
+    action: "smazat navždy"
+    done: "Obraz smazán"
+  admin:
+    title: "Obrazy: správa"
+    canvases:
+      name: "<#FF7800>Plátna všech velikostí"
+      lore:
+        - "Od 1×1 do {max}: 3×5, 1×4 i jakákoli jiná."
+    painting:
+      - "Autor: <white>{author}"
+      - "{size} bloků · {res} px/blok · {state}"
+      - "Změněno: <white>{date}"
+      - "Visí v načtených chunkách: <white>{placed}"
+      - "<dark_gray>č. {id}"
+    take: "vzít si"
+    export: "export do textu"
+    empty: "Na serveru zatím nejsou žádné obrazy"
+    count: "<white>Obrazů na serveru: <#FF7800>{count}"
+    too-big:
+      - "Větší, než dovoluje konfigurace:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "vzít rovnou {amount}"
+    help-canvases:
+      - "<white>Plátna všech velikostí."
+      - "Sloupec je šířka, řádek je výška:"
+      - "třetí sloupec pátého řádku je 3×5."
+      - ""
+      - "Shift + LTM dá rovnou {amount}."
+    help:
+      - "<white>Horní řada jsou předměty pluginu:"
+      - "štětec, plátno a tabulka pláten"
+      - "všech velikostí do {max}."
+      - ""
+      - "Níže jsou obrazy všech hráčů."
+      - "Vzatý obraz je ten samý,"
+      - "ne kopie: úpravy jsou vidět"
+      - "všude, kde visí."
+  canvas:
+    title: "Plátno"
+    info:
+      - "Autor: <white>{author}"
+      - "Velikost: <white>{size} <gray>bloků, <white>{pixels} <gray>pixelů"
+      - "Stav: {state}"
+      - "<dark_gray>č. {id}"
+    resolution:
+      name: "<white>Rozlišení: <#FF7800>{res} <white>pixelů na blok"
+      lore:
+        - "Čím menší číslo, tím větší pixely."
+        - "Kresba se při změně roztáhne."
+        - "<dark_gray>Změnu vrátí klávesa F."
+      finer: "jemněji"
+      coarser: "hrubě"
+    clear:
+      name: "Vymazat plátno"
+      lore:
+        - "Vyplnit bílou. Jde vrátit (F)."
+      action: "vymazat"
+    shared:
+      name: "<white>Malovat může každý: {state}"
+      lore:
+        - "Společné malování: štětec"
+        - "kteréhokoli hráče funguje na tomto plátně."
+    sign:
+      name: "Podepsat"
+      lore:
+        - "Dát název a dokončit obraz."
+        - "Podepsaný obraz nelze měnit,"
+        - "ale lze ho kopírovat."
+      action: "podepsat"
+    export:
+      name: "Export do textu"
+      lore:
+        - "Kód obrazu: zkopíruj a pošli"
+        - "komukoli, i na jiný server."
+      action: "zobrazit kód"
+    import:
+      name: "Import z textu"
+      lore:
+        - "Vlož kód. Kresba skončí na plátně,"
+        - "na které se díváš, nebo na prázdném"
+        - "plátně v ruce."
+      action: "vložit kód"
+    gallery:
+      lore:
+        - "Vše, co jsi namaloval."
+  gallery:
+    title: "Moje obrazy"
+    painting:
+      - "{size} bloků · {res} px/blok · {state}"
+      - "Změněno: <white>{date}"
+      - "Teď visí: <white>{placed}"
+    take: "vzít <gray>(potřebuješ prázdné plátno {size})"
+    empty:
+      name: "Zatím tu nic není"
+      lore:
+        - "Postav plátno a něco namaluj."
+    help:
+      - "<white>Tady jsou všechny tvé obrazy,"
+      - "i když jsi je sundal nebo ztratil."
+      - ""
+      - "Skica vzatá odsud je ten samý"
+      - "obraz: úpravy jsou vidět všude,"
+      - "kde visí."
+      - ""
+      - "Podepsané obrazy se kopírují"
+      - "na stole: obraz + prázdné plátno."
+  palette:
+    title: "Paleta a nástroje"
+    page: "Barvy: strana {page} z {pages}"
+    hex:
+      name: "Barva podle kódu"
+      lore:
+        - "Zadej #RRGGBB — vybere se"
+        - "nejbližší barva z palety."
+      action: "zadat kód"
+    transparent:
+      - "Pixely zmizí: obrazem prosvítá"
+      - "zeď. Hodí se na nálepky"
+      - "a obrazy libovolného tvaru."
+    shade:
+      - "Jas vybrané barvy."
+    size:
+      name: "<white>Velikost štětce: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>Ve hře: Shift + kolečko myši."
+      more: "větší"
+      less: "menší"
+      shift: "Se Shiftem"
+      by-four: "po 4"
+    canvas:
+      name: "Plátno a moje obrazy"
+      lore:
+        - "Rozlišení, podpis, export,"
+        - "import, seznam tvých obrazů."
+    help:
+      - "<white>Se štětcem v ruce:"
+      - "PTM na plátně — malovat,"
+      - "LTM — vzít barvu z plátna"
+      - "nebo z libovolného bloku světa."
+      - ""
+      - "Shift + kolečko mění velikost štětce."
+      - "F vrací zpět, Shift + F znovu."
+      - ""
+      - "Tvary se táhnou: drž PTM,"
+      - "veď, pusť."
+      - "Se Shiftem jde čára rovně,"
+      - "obdélník se změní na čtverec,"
+      - "elipsa na kruh."
+
+dialog:
+  code: "Kód"
+  export:
+    title: "Export obrazu"
+    text: "„{title}“ — kód o {length} znacích. Stiskni „Kopírovat“ a vloží se do schránky."
+    text-parts: "„{title}“ — kód je dlouhý, proto je rozdělen na části. Část {part} z {parts}: {length} znaků. Zkopíruj a vlož všechny části postupně."
+    copy: "Kopírovat"
+    copy-tooltip: "Vložit kód do schránky"
+    next: "Další část"
+    first: "K první části"
+  import:
+    title: "Import obrazu"
+    text: "Vlož kód obrazu (Ctrl+V). Kresba skončí na plátně, na které se díváš, nebo na prázdném plátně v ruce."
+    button: "Importovat"
+  sign:
+    title: "Podepsat obraz"
+    text: "Podepsaný obraz nelze měnit, ale lze ho kopírovat: obraz + prázdné plátno stejné velikosti na pracovním stole."
+    input: "Název"
+    button: "Podepsat"
+  hex:
+    title: "Barva podle kódu"
+    text: "Zadej barvu jako #RRGGBB. Mapy neumějí všechny barvy, proto se vybere nejbližší."
+    input: "Barva"
+    button: "Vybrat"
+  canvas:
+    title: "Složit plátno"
+    creative: "V kreativním režimu se plátna nespotřebovávají."
+    have: "V ruce máš {canvases}."
+    text: "Sloupec je šířka, řádek je výška: plátno 2×4 se skládá z osmi pláten 1×1. Šedé velikosti zatím nejsou dostupné."
+    same: "Toto plátno už v ruce máš"
+    assemble: "Složit plátno {size}: potřeba {canvases}"
+    need: "Potřeba {canvases}, v ruce máš {have}"
+  image:
+    title: "Obrázek z odkazu"
+    text: "Obrázek skončí na plátně, na které se díváš, nebo na prázdném plátně v ruce; velikost v blocích se použije, jen když není ani jedno. Nelíbí se? Otevři okno znovu: nastavení zůstane a předchozí výsledek na plátně se nahradí."
+    url: "Odkaz na obrázek"
+    fit:
+      label: "Přizpůsobení"
+      cover: "Vyplnit plátno, zbytek oříznout"
+      contain: "Vložit celý, s okraji"
+      stretch: "Roztáhnout na celé plátno"
+    zoom: "Přiblížení, %"
+    x: "Posun doprava, %"
+    "y": "Posun dolů, %"
+    brightness: "Jas, %"
+    contrast: "Kontrast, %"
+    saturation: "Sytost, %"
+    dither: "Plynulé barevné přechody (pro pixel art se nepoužijí)"
+    shade: "Ztmavit jako stěnu bloku: pro kostky z obrazů"
+    clear: "Okraje kolem obrázku jsou průhledné, ne bílé"
+    width: "Šířka nového obrazu, bloků"
+    height: "Výška nového obrazu, bloků"
+    button: "Použít"
+    no-url: "Vlož odkaz na obrázek"

@@ -1,0 +1,449 @@
+# PaintCraft — 日本語
+#
+# 波括弧の {placeholders} はプラグインが埋め込みます。そのままにしてください。
+# 色は MiniMessage タグです：<gray>、<white>、<#FF7800>。
+# 他の言語ファイルにないキーは en.yml の内容が使われます。
+
+language:
+  name: "日本語"
+  changed: "<#1FFF5E>言語：<white>{language}"
+  current: "<white>現在の言語：<#FF7800>{language}"
+  available: "<gray>利用可能：<white>{languages}"
+  unknown: "不明な言語 {input}。利用可能：{languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "権限がありません"
+  color-format: "色は #RRGGBB の形式で指定します（例：#FF8800）"
+  canvas-cleared: "<gray>キャンバスを消去しました。<dark_gray>F で元に戻せます"
+  "on": "ON"
+  "off": "OFF"
+
+click:
+  left: "左クリック"
+  right: "右クリック"
+
+action:
+  open: "開く"
+  select: "選択"
+  take: "取る"
+  toggle: "切り替え"
+
+unit:
+  canvas:
+    one: "1×1 キャンバス {count} 枚"
+    many: "1×1 キャンバス {count} 枚"
+  sheet:
+    one: "{count} 枚"
+    many: "{count} 枚"
+  painting:
+    one: "絵 {count} 点"
+    many: "絵 {count} 点"
+
+color:
+  transparent: "透明"
+  transparent-short: "透明"
+
+command:
+  invalid-usage: "使い方が正しくありません"
+  player-only: "プレイヤー専用です"
+  usage-header: "<#FF7800>コマンドの使い方："
+  usage: "<#FF1F1F>使い方：<white>{usage}"
+  unknown-choice: "{what}が見つかりません：{input}"
+  choice:
+    tool: "ツール"
+    item: "アイテム"
+  canvas-size: "キャンバスのサイズは「幅x高さ」（ブロック単位）で、1x1 から {max}x{max} までです。例：2x3"
+  panel-reset: "パネルのウィンドウを元の位置に戻しました"
+  specify-player: "プレイヤーを指定してください"
+  give-painting: "絵はギャラリーから入手します：/paint gallery"
+  given: "<#FF7800>{player}<white> に渡しました"
+  reloaded: "設定を再読み込みしました"
+  look-at-painting: "絵を見るか、絵を手に持ってください"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— リソースパック不要のお絵かき"
+    lines:
+      - "<#FF7800>筆 <dark_gray>» <gray>棒 + 羽根。<#FF7800>キャンバス <dark_gray>» <gray>紙 + 棒"
+      - "作業台で長方形に並べたキャンバスは大きな1枚に合体します"
+      - "<#FF7800>右クリック <dark_gray>» <gray>描く、<#FF7800>左クリック <dark_gray>» <gray>キャンバスやブロックから色を取る"
+      - "<#FF7800>キャンバス外で Shift + 右クリック <dark_gray>» <gray>パレット、<#FF7800>Shift + スクロール <dark_gray>» <gray>筆の太さ"
+      - "<#FF7800>描画中に Shift <dark_gray>» <gray>直線・正方形・円"
+      - "<#FF7800>F <dark_gray>» <gray>元に戻す、<#FF7800>Shift + F <dark_gray>» <gray>やり直し"
+      - "<#FF7800>Q <dark_gray>» <gray>前のツール、<#FF7800>Shift + Q <dark_gray>» <gray>次のツール"
+      - "<white>/paint <gray>パレット · <white>/paint gallery <gray>自分の絵"
+      - "<white>/paint color #RRGGBB <gray>· <white>size 数値 <gray>· <white>tool 名前"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>動かしたパネルを元の位置へ"
+      - "<white>/paint export <gray>絵のコード · <white>/paint import [コード] <gray>コードを貼り付け"
+      - "<white>/paint sign [タイトル] <gray>署名：署名した絵はコピーできます"
+      - "<white>/paint image [url] <gray>Web の画像：切り抜き・拡大・移動"
+      - "<white>/paint admin <gray>プラグインのアイテムとサーバー上の全作品"
+      - "<white>/paint give brush|canvas [WxH] [個数] [プレイヤー]"
+      - "<white>/paint language [コード] <gray>プラグインの言語 · <white>/paint reload"
+
+tool:
+  brush:
+    name: "筆"
+    hint: "右クリックを押したままキャンバス上をドラッグ。Shift で直線になります。"
+  eraser:
+    name: "消しゴム"
+    hint: "何もない状態まで消します。"
+  fill:
+    name: "塗りつぶし"
+    hint: "同じ色の範囲を塗りつぶします。"
+  spray:
+    name: "スプレー"
+    hint: "点を吹き付けます。長く押すほど濃くなります。"
+  line:
+    name: "直線"
+    hint: "始点で右クリックを押し、終点で離します。Shift で角度を固定。"
+  rect:
+    name: "長方形"
+    hint: "角から角へドラッグ。Shift で正方形になります。"
+  ellipse:
+    name: "楕円"
+    hint: "長方形と同じようにドラッグ。Shift で円になります。"
+
+item:
+  brush:
+    name: "<#FF7800>画家の筆"
+    paint: "キャンバスに描く <gray>(押し続け可)"
+    pick: "キャンバスやブロックから色を取る"
+    palette: "パレット <gray>(キャンバス外)"
+    shift-key: "描画中の Shift"
+    shift: "直線・正方形・円"
+    wheel-key: "Shift + スクロール"
+    wheel: "筆の太さ"
+    undo: "元に戻す"
+    redo: "やり直し"
+  canvas:
+    name: "キャンバス {size}"
+    lore:
+      - "壁・床・天井に設置して、"
+      - "筆で描きます。"
+      - ""
+      - "<dark_gray>同じキャンバスを作業台で"
+      - "<dark_gray>長方形に並べると、"
+      - "<dark_gray>大きな1枚に合体します。"
+    assemble: "スタックから大きなキャンバスを作る"
+  painting:
+    sketch-name: "スケッチ"
+    author: "作者：<white>{name}"
+    size: "サイズ：<white>{size}"
+    imported: "<#FFE100>インポート <dark_gray>» <gray>取り込んだもので、手描きではありません"
+    signed:
+      - "<dark_gray>絵 + 空のキャンバス {size} を"
+      - "<dark_gray>作業台に置くとコピーできます。"
+    sketch:
+      - "<dark_gray>未署名：まだ描き足せます。"
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "無題"
+  signed: "<#FF7800>署名済み"
+  sketch: "<white>スケッチ"
+  imported: " <gray>· <#FFE100>インポート"
+
+hud:
+  size: "<gray>サイズ <white>{size}"
+
+paint:
+  signed: "この絵は署名済みです。もう変更できません"
+  not-yours: "この絵は {player} のものです。作者だけが描けます"
+  undo:
+    look: "元に戻すには絵を見てください"
+    undone: "元に戻しました"
+    redone: "やり直しました"
+    nothing-undo: "元に戻す操作はありません"
+    nothing-redo: "やり直す操作はありません"
+
+place:
+  deleted: "作者がこの絵を削除しました。アイテムは空のキャンバスに戻ります"
+  too-big: "このサーバーでは {max} より大きいキャンバスは設置できません"
+  no-room: "ここには {size} のキャンバスが入りません"
+  denied: "ここではできません"
+  break-owner: "絵を設置したプレイヤーだけが外せます"
+  change-owner: "絵を設置したプレイヤーだけが変更できます"
+
+assemble:
+  hold: "1×1 のキャンバスを手に持ってください"
+  not-enough: "{size} のキャンバスには {canvases} が必要です（所持：{have}）"
+  done: "キャンバス {size} を作りました"
+
+import:
+  parts: "受信済みのパート：{have} / {total}。パート {next} を貼り付けてください。"
+  too-big: "コードの絵がサーバーの上限（{max}）より大きいです"
+  bad-code: "絵のコードではないか、壊れています"
+  loading: "画像を読み込み中…"
+  image-failed: "画像を読み込めませんでした：{reason}"
+  image-done: "<#1FFF5E>画像をキャンバスに配置しました。<gray>気に入らない場合はもう一度ウィンドウを開いて調整してください。前の結果は置き換えられます。"
+  code-done: "<#1FFF5E>絵をキャンバスに配置しました。<gray>筆を持って F で元に戻せます。"
+  no-target: "置き場所がありません。キャンバスを見るか、空の {size} キャンバスを持ってください"
+  created: "{size} の絵をインベントリに入れました"
+  paper: "インポートには紙が必要です：{sheets}（絵の1ブロックあたり {price}）"
+  limit: "すでに {paintings} あり、上限です。いくつか削除してください：/paint gallery"
+
+gallery:
+  need-canvas: "インベントリに空の {size} キャンバスが必要です"
+
+sign:
+  done: "<#1FFF5E>絵「{title}」に署名しました。<gray>作業台でコピーできるようになります。"
+
+panel:
+  window:
+    tools: "筆"
+    colors: "色"
+    actions: "絵"
+  title:
+    tools: "筆"
+    colors: "色"
+  window-reset: "ウィンドウ「{window}」を元の位置に戻しました"
+  window-grabbed: "<#FF7800>ウィンドウ「{window}」 <dark_gray>» <gray>照準で動かします。右クリックを離すか、もう一度クリックで配置"
+  move: "<#FF7800>ウィンドウを移動 <dark_gray>» <gray>右クリックを押したままドラッグ。Shift + クリックで元に戻す"
+  size: "<#FF7800>筆の太さ：{size} <dark_gray>» <gray>Shift + スクロールで微調整"
+  shape:
+    square: "<#FF7800>角筆 <dark_gray>» <gray>まっすぐな縁とシャープな角"
+    round: "<#FF7800>丸筆 <dark_gray>» <gray>やわらかく丸い筆致"
+  hue: "<#FF7800>色相 <dark_gray>» <gray>この色相の色が四角に表示されます"
+  current-color: "<#FF7800>現在の色：<white>{color} <dark_gray>» <gray>#RRGGBB コードを入力"
+  previous-color: "<#FF7800>前の色：<white>{color} <dark_gray>» <gray>切り替えて戻す"
+  transparent: "<#1FFFE3>透明 <dark_gray>» <gray>絵越しに壁が見えます"
+  shade: "{color} <dark_gray>» <gray>現在の色の濃淡"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>元に戻す <dark_gray>» <gray>F と同じ"
+    redo: "<#FF7800>やり直し <dark_gray>» <gray>Shift + F と同じ"
+    clear: "<#FF7800>キャンバスを消去 <dark_gray>» <gray>白で塗りつぶし。元に戻せます"
+    resolution: "<#FF7800>解像度：{res} px/ブロック <dark_gray>» <gray>変更。F で元に戻せます"
+    shared: "<#FF7800>誰でも描ける：{state} <dark_gray>» <gray>切り替え"
+    sign: "<#FF7800>署名 <dark_gray>» <gray>タイトルを付けて絵を完成させる"
+    export: "<#FF7800>エクスポート <dark_gray>» <gray>絵のコードを文字列で出力"
+    import: "<#FF7800>インポート <dark_gray>» <gray>絵のコードを貼り付け"
+    image: "<#FF7800>URL から画像 <dark_gray>» <gray>切り抜き・拡大・移動つき"
+    gallery: "<#FF7800>自分の絵"
+    hide: "<#FF7800>パネルを隠す <dark_gray>» <gray>筆でキャンバスをクリックすると再び表示"
+
+menu:
+  close:
+    name: "閉じる"
+    action: "メニューを閉じる"
+  back:
+    name: "戻る"
+    action: "戻る"
+  hint: "ヒント"
+  page:
+    previous: "前のページ"
+    next: "次のページ"
+    action: "ページをめくる"
+    of: "{page} / {pages} ページ"
+  delete:
+    confirm:
+      - "<#FF1F1F>完全に削除しますか？"
+      - "絵はすべての壁から消え、"
+      - "アイテムは空のキャンバスに戻ります。"
+    "yes": "<#FF1F1F>はい、削除"
+    "no": "残す"
+    action: "完全に削除"
+    done: "絵を削除しました"
+  admin:
+    title: "絵：管理"
+    canvases:
+      name: "<#FF7800>あらゆるサイズのキャンバス"
+      lore:
+        - "1×1 から {max} まで：3×5、1×4 など自由。"
+    painting:
+      - "作者：<white>{author}"
+      - "{size} ブロック · {res} px/ブロック · {state}"
+      - "更新：<white>{date}"
+      - "読み込み済みチャンクに設置：<white>{placed}"
+      - "<dark_gray># {id}"
+    take: "取る"
+    export: "文字列でエクスポート"
+    empty: "サーバーにはまだ絵がありません"
+    count: "<white>サーバー上の絵：<#FF7800>{count}"
+    too-big:
+      - "設定の上限を超えています："
+      - "<white>canvas.max-size: {max}"
+    take-stack: "{amount} 個まとめて取る"
+    help-canvases:
+      - "<white>あらゆるサイズのキャンバス。"
+      - "列が幅、行が高さです："
+      - "5行目の3列目が 3×5 です。"
+      - ""
+      - "Shift + 左クリックで {amount} 個まとめて入手。"
+    help:
+      - "<white>一番上の行はプラグインのアイテム："
+      - "筆、キャンバス、{max} までの"
+      - "キャンバス一覧です。"
+      - ""
+      - "その下は全プレイヤーの絵です。"
+      - "ここから取った絵はコピーではなく"
+      - "本物です。編集は飾ってある"
+      - "すべての場所に反映されます。"
+  canvas:
+    title: "キャンバス"
+    info:
+      - "作者：<white>{author}"
+      - "サイズ：<white>{size} <gray>ブロック、<white>{pixels} <gray>ピクセル"
+      - "状態：{state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>解像度：<#FF7800>{res} <white>ピクセル/ブロック"
+      lore:
+        - "数値が小さいほどピクセルが大きくなります。"
+        - "変更すると絵は引き伸ばされます。"
+        - "<dark_gray>F で変更を元に戻せます。"
+      finer: "細かく"
+      coarser: "粗く"
+    clear:
+      name: "キャンバスを消去"
+      lore:
+        - "白で塗りつぶします。元に戻せます (F)。"
+      action: "消去"
+    shared:
+      name: "<white>誰でも描ける：{state}"
+      lore:
+        - "みんなで描く：どのプレイヤーの筆も"
+        - "このキャンバスで使えます。"
+    sign:
+      name: "署名"
+      lore:
+        - "タイトルを付けて絵を完成させます。"
+        - "署名した絵は変更できませんが、"
+        - "コピーはできます。"
+      action: "署名"
+    export:
+      name: "文字列でエクスポート"
+      lore:
+        - "絵のコード：コピーして誰にでも、"
+        - "別のサーバーにも渡せます。"
+      action: "コードを表示"
+    import:
+      name: "文字列からインポート"
+      lore:
+        - "コードを貼り付けます。絵は見ている"
+        - "キャンバス、または手に持った"
+        - "空のキャンバスに入ります。"
+      action: "コードを貼り付け"
+    gallery:
+      lore:
+        - "これまでに描いたすべての絵。"
+  gallery:
+    title: "自分の絵"
+    painting:
+      - "{size} ブロック · {res} px/ブロック · {state}"
+      - "更新：<white>{date}"
+      - "現在の設置数：<white>{placed}"
+    take: "取る <gray>(空の {size} キャンバスが必要)"
+    empty:
+      name: "まだ何もありません"
+      lore:
+        - "キャンバスを置いて何か描こう。"
+    help:
+      - "<white>あなたの絵はすべてここに保存されます。"
+      - "外したり失くしたりしても大丈夫です。"
+      - ""
+      - "ここから取ったスケッチは同じ絵です。"
+      - "編集は飾ってあるすべての場所に"
+      - "反映されます。"
+      - ""
+      - "署名した絵は作業台でコピー："
+      - "絵 + 空のキャンバス。"
+  palette:
+    title: "パレットとツール"
+    page: "色：{page} / {pages} ページ"
+    hex:
+      name: "コードで色指定"
+      lore:
+        - "#RRGGBB を入力すると、最も近い"
+        - "パレットの色が選ばれます。"
+      action: "コードを入力"
+    transparent:
+      - "ピクセルが消えて、絵越しに壁が"
+      - "見えます。ステッカーや"
+      - "好きな形の絵に便利です。"
+    shade:
+      - "選択中の色の濃淡。"
+    size:
+      name: "<white>筆の太さ：<#FF7800>{size}"
+      lore:
+        - "<dark_gray>ゲーム中：Shift + マウスホイール。"
+      more: "太く"
+      less: "細く"
+      shift: "Shift 併用"
+      by-four: "4ずつ"
+    canvas:
+      name: "キャンバスと自分の絵"
+      lore:
+        - "解像度、署名、エクスポート、"
+        - "インポート、自分の絵の一覧。"
+    help:
+      - "<white>筆を持っているとき："
+      - "キャンバスを右クリックで描画、"
+      - "左クリックでキャンバスや世界中の"
+      - "ブロックから色を取ります。"
+      - ""
+      - "Shift + スクロールで筆の太さを変更。"
+      - "F で元に戻す、Shift + F でやり直し。"
+      - ""
+      - "図形はドラッグで描きます。"
+      - "右クリックを押して動かし、離します。"
+      - "Shift で線はまっすぐに、"
+      - "長方形は正方形に、"
+      - "楕円は円になります。"
+
+dialog:
+  code: "コード"
+  export:
+    title: "絵をエクスポート"
+    text: "「{title}」：{length} 文字のコードです。「コピー」を押すとクリップボードに入ります。"
+    text-parts: "「{title}」：コードが長いため分割されています。パート {part} / {parts}：{length} 文字。すべてのパートを順にコピーして貼り付けてください。"
+    copy: "コピー"
+    copy-tooltip: "コードをクリップボードに入れる"
+    next: "次のパート"
+    first: "最初のパートに戻る"
+  import:
+    title: "絵をインポート"
+    text: "絵のコードを貼り付けます (Ctrl+V)。絵は見ているキャンバス、または手に持った空のキャンバスに入ります。"
+    button: "インポート"
+  sign:
+    title: "絵に署名"
+    text: "署名した絵は変更できませんが、コピーはできます。作業台に絵と同じサイズの空のキャンバスを置いてください。"
+    input: "タイトル"
+    button: "署名"
+  hex:
+    title: "コードで色指定"
+    text: "色を #RRGGBB で入力してください。マップはすべての色を表示できないため、最も近い色が選ばれます。"
+    input: "色"
+    button: "選択"
+  canvas:
+    title: "キャンバスを合体"
+    creative: "クリエイティブモードではキャンバスは消費されません。"
+    have: "所持：{canvases}。"
+    text: "列が幅、行が高さです。2×4 のキャンバスには 1×1 が8枚必要です。灰色のサイズは今は作れません。"
+    same: "このキャンバスはすでに持っています"
+    assemble: "{size} のキャンバスを作る：{canvases} 必要"
+    need: "{canvases} 必要（所持：{have}）"
+  image:
+    title: "URL から画像"
+    text: "画像は見ているキャンバス、または手に持った空のキャンバスに入ります。ブロック単位のサイズは、どちらもない場合のみ有効です。気に入らない場合はもう一度ウィンドウを開いてください。設定は保持され、キャンバス上の前の結果は置き換えられます。"
+    url: "画像の URL"
+    fit:
+      label: "フィット"
+      cover: "キャンバスを埋めて、はみ出しは切り抜く"
+      contain: "画像全体を収め、余白を付ける"
+      stretch: "キャンバスいっぱいに引き伸ばす"
+    zoom: "拡大率、%"
+    x: "右へ移動、%"
+    "y": "下へ移動、%"
+    brightness: "明るさ、%"
+    contrast: "コントラスト、%"
+    saturation: "彩度、%"
+    dither: "色の変化をなめらかにする（ドット絵には適用されません）"
+    shade: "ブロックの面のように暗くする：絵で作る立方体用"
+    clear: "画像の周りの余白を白ではなく透明にする"
+    width: "新しい絵の幅、ブロック"
+    height: "新しい絵の高さ、ブロック"
+    button: "適用"
+    no-url: "画像の URL を貼り付けてください"

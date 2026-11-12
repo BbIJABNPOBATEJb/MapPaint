@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
+import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class ConfigHandler {
         plugin.reloadConfig();
         val config = plugin.getConfig();
 
-        maxSize = Math.clamp(config.getInt("canvas.max-size", 5), 1, 16);
+        maxSize = MathUtil.clamp(config.getInt("canvas.max-size", 5), 1, 16);
         List<Integer> allowed = new ArrayList<>();
         for (int res : config.getIntegerList("canvas.resolutions")) {
             if ((res == 16 || res == 32 || res == 64 || res == 128) && !allowed.contains(res)) allowed.add(res);
@@ -59,28 +60,28 @@ public class ConfigHandler {
         allowed.sort(null);
         resolutions = List.copyOf(allowed);
         defaultResolution = nearestAllowed(config.getInt("canvas.default-resolution", 32));
-        reach = Math.clamp(config.getDouble("canvas.reach", 6.0), 2.0, 32.0);
+        reach = MathUtil.clamp(config.getDouble("canvas.reach", 6.0), 2.0, 32.0);
 
-        maxBrush = Math.clamp(config.getInt("brush.max-size", 32), 1, 64);
+        maxBrush = MathUtil.clamp(config.getInt("brush.max-size", 32), 1, 64);
         eraserTransparent = config.getBoolean("brush.eraser-transparent", false);
 
         maxPaintings = Math.max(0, config.getInt("limits.paintings-per-player", 200));
-        undoSteps = Math.clamp(config.getInt("limits.undo-steps", 30), 1, 500);
+        undoSteps = MathUtil.clamp(config.getInt("limits.undo-steps", 30), 1, 500);
         onlyPlacerBreaks = config.getBoolean("protection.only-placer-breaks", true);
-        autosaveSeconds = Math.clamp(config.getInt("autosave-seconds", 20), 5, 600);
+        autosaveSeconds = MathUtil.clamp(config.getInt("autosave-seconds", 20), 5, 600);
 
         importCode = config.getBoolean("import.code", true);
         imageUrl = config.getBoolean("import.image-url", true);
-        imageMaxBytes = Math.clamp(config.getInt("import.image-max-bytes", 8 * 1024 * 1024), 1024, 64 * 1024 * 1024);
+        imageMaxBytes = MathUtil.clamp(config.getInt("import.image-max-bytes", 8 * 1024 * 1024), 1024, 64 * 1024 * 1024);
         imageResolution = nearestAllowed(config.getInt("import.image-resolution", 128));
         imageAllowPrivate = config.getBoolean("import.image-allow-private-hosts", false);
-        paperPerBlock = Math.clamp(config.getInt("import.paper-per-block", 1), 0, 64);
+        paperPerBlock = MathUtil.clamp(config.getInt("import.paper-per-block", 1), 0, 64);
 
         brushRecipe = config.getBoolean("recipes.brush.enabled", true);
         brushIngredients = materials("recipes.brush.ingredients", List.of(Material.STICK, Material.FEATHER));
         canvasRecipe = config.getBoolean("recipes.canvas.enabled", true);
         canvasIngredients = materials("recipes.canvas.ingredients", List.of(Material.PAPER, Material.STICK));
-        canvasAmount = Math.clamp(config.getInt("recipes.canvas.amount", 1), 1, 64);
+        canvasAmount = MathUtil.clamp(config.getInt("recipes.canvas.amount", 1), 1, 64);
     }
 
     public byte getEraserColor() {
@@ -88,7 +89,7 @@ public class ConfigHandler {
     }
 
     int nearestAllowed(int wanted) {
-        int best = resolutions.getFirst();
+        int best = resolutions.get(0);
         for (int res : resolutions) {
             if (Math.abs(res - wanted) < Math.abs(best - wanted)) best = res;
         }

@@ -1,0 +1,451 @@
+# PaintCraft — Italiano
+#
+# I {placeholders} tra parentesi graffe vengono riempiti dal plugin: lasciali così come sono.
+# I colori sono tag MiniMessage: <gray>, <white>, <#FF7800>.
+# Una chiave mancante in un altro file di lingua viene presa da questo.
+
+language:
+  name: "Italiano"
+  changed: "<#1FFF5E>Lingua: <white>{language}"
+  current: "<white>Lingua attuale: <#FF7800>{language}"
+  available: "<gray>Disponibili: <white>{languages}"
+  unknown: "Lingua sconosciuta {input}. Disponibili: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "Non hai il permesso"
+  color-format: "Un colore si scrive #RRGGBB, ad esempio #FF8800"
+  canvas-cleared: "<gray>Tela cancellata. <dark_gray>F per recuperarla"
+  "on": "SÌ"
+  "off": "NO"
+
+click:
+  left: "clic sx"
+  right: "clic dx"
+
+action:
+  open: "aprire"
+  select: "scegliere"
+  take: "prendere"
+  toggle: "cambiare"
+
+unit:
+  canvas:
+    one: "{count} tela 1×1"
+    many: "{count} tele 1×1"
+  sheet:
+    one: "{count} foglio"
+    many: "{count} fogli"
+  painting:
+    one: "{count} dipinto"
+    many: "{count} dipinti"
+
+color:
+  transparent: "Trasparente"
+  transparent-short: "trasparente"
+
+command:
+  invalid-usage: "Uso non valido"
+  player-only: "Solo per i giocatori"
+  usage-header: "<#FF7800>Uso del comando:"
+  usage: "<#FF1F1F>Uso: <white>{usage}"
+  unknown-choice: "{what} inesistente: {input}"
+  choice:
+    tool: "strumento"
+    item: "oggetto"
+  canvas-size: "La dimensione della tela è LxA in blocchi, da 1x1 a {max}x{max}. Ad esempio: 2x3"
+  panel-reset: "Le finestre del pannello sono tornate al loro posto"
+  specify-player: "Indica un giocatore"
+  give-painting: "I dipinti arrivano dalla galleria: /paint gallery"
+  given: "<white>Consegnato a <#FF7800>{player}"
+  reloaded: "Configurazione ricaricata"
+  look-at-painting: "Guarda un dipinto o tienine uno in mano"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— dipinti senza resource pack"
+    lines:
+      - "<#FF7800>Pennello <dark_gray>» <gray>bastone + piuma. <#FF7800>Tela <dark_gray>» <gray>carta + bastone"
+      - "Tele disposte a rettangolo in un banco da lavoro si uniscono in una grande"
+      - "<#FF7800>clic dx <dark_gray>» <gray>dipingere, <#FF7800>clic sx <dark_gray>» <gray>prendere il colore da una tela o un blocco"
+      - "<#FF7800>Shift + clic dx fuori dalla tela <dark_gray>» <gray>tavolozza, <#FF7800>Shift + rotellina <dark_gray>» <gray>dimensione del pennello"
+      - "<#FF7800>Shift mentre dipingi <dark_gray>» <gray>linea retta, quadrato, cerchio"
+      - "<#FF7800>F <dark_gray>» <gray>annulla, <#FF7800>Shift + F <dark_gray>» <gray>ripeti"
+      - "<#FF7800>Q <dark_gray>» <gray>strumento precedente, <#FF7800>Shift + Q <dark_gray>» <gray>successivo"
+      - "<white>/paint <gray>tavolozza · <white>/paint gallery <gray>i miei dipinti"
+      - "<white>/paint color #RRGGBB <gray>· <white>size numero <gray>· <white>tool nome"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>rimettere a posto le finestre spostate"
+      - "<white>/paint export <gray>codice del dipinto · <white>/paint import [codice] <gray>incollare un codice"
+      - "<white>/paint sign [titolo] <gray>firmare: un dipinto firmato si può copiare"
+      - "<white>/paint image [url] <gray>immagine dal web: ritaglio, zoom, spostamento"
+      - "<white>/paint admin <gray>oggetti del plugin e tutti i dipinti del server"
+      - "<white>/paint give brush|canvas [LxA] [quantità] [giocatore]"
+      - "<white>/paint language [codice] <gray>lingua del plugin · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Pennello"
+    hint: "Tieni premuto clic dx e trascina sulla tela. Shift mantiene il tratto dritto."
+  eraser:
+    name: "Gomma"
+    hint: "Cancella fino alla tela bianca."
+  fill:
+    name: "Riempimento"
+    hint: "Riempie un'area di un solo colore."
+  spray:
+    name: "Spray"
+    hint: "Spruzza punti: più tieni premuto, più è denso."
+  line:
+    name: "Linea"
+    hint: "Tieni clic dx all'inizio, rilascia alla fine. Shift la allinea."
+  rect:
+    name: "Rettangolo"
+    hint: "Trascina da un angolo all'altro. Shift fa un quadrato."
+  ellipse:
+    name: "Ellisse"
+    hint: "Trascina come un rettangolo. Shift fa un cerchio."
+
+item:
+  brush:
+    name: "<#FF7800>Pennello da artista"
+    paint: "dipingere su una tela <gray>(si può tenere in mano)"
+    pick: "prendere il colore da una tela o un blocco"
+    palette: "tavolozza <gray>(fuori dalla tela)"
+    shift-key: "Shift mentre dipingi"
+    shift: "linea retta, quadrato, cerchio"
+    wheel-key: "Shift + rotellina"
+    wheel: "dimensione del pennello"
+    undo: "annulla"
+    redo: "ripeti"
+  canvas:
+    name: "Tela {size}"
+    lore:
+      - "Posizionala su una parete, sul pavimento"
+      - "o sul soffitto e dipingi con il pennello."
+      - ""
+      - "<dark_gray>Tele identiche disposte a"
+      - "<dark_gray>rettangolo in un banco da lavoro"
+      - "<dark_gray>si uniscono in una grande."
+    assemble: "assemblare una tela grande dalla pila"
+  painting:
+    sketch-name: "Bozzetto"
+    author: "Autore: <white>{name}"
+    size: "Dimensione: <white>{size}"
+    imported: "<#FFE100>Importato <dark_gray>» <gray>trasferito, non dipinto a mano"
+    signed:
+      - "<dark_gray>Dipinto + tela bianca {size}"
+      - "<dark_gray>in un banco da lavoro fanno una copia."
+    sketch:
+      - "<dark_gray>Non firmato: si può ancora dipingere."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Senza titolo"
+  signed: "<#FF7800>firmato"
+  sketch: "<white>bozzetto"
+  imported: " <gray>· <#FFE100>importato"
+
+hud:
+  size: "<gray>dimensione <white>{size}"
+
+paint:
+  signed: "Il dipinto è firmato: non si può più modificare"
+  not-yours: "Questo dipinto appartiene a {player}: solo l'autore può dipingerci"
+  undo:
+    look: "Guarda un dipinto per annullare"
+    undone: "Annullato"
+    redone: "Ripetuto"
+    nothing-undo: "Niente da annullare"
+    nothing-redo: "Niente da ripetere"
+
+place:
+  deleted: "L'autore ha eliminato questo dipinto. L'oggetto è di nuovo una tela bianca"
+  too-big: "Su questo server non si possono posizionare tele più grandi di {max}"
+  no-room: "Una tela {size} non ci sta qui"
+  denied: "Non puoi farlo qui"
+  break-owner: "Solo il giocatore che ha posizionato il dipinto può rimuoverlo"
+  change-owner: "Solo il giocatore che ha posizionato il dipinto può modificarlo"
+
+assemble:
+  hold: "Tieni in mano delle tele 1×1"
+  not-enough: "Una tela {size} richiede {canvases}, ne hai {have}"
+  done: "Tela {size} assemblata"
+
+import:
+  parts: "Parti ricevute: {have} di {total}. Incolla la parte {next}."
+  too-big: "Il dipinto nel codice è più grande di quanto permette questo server ({max})"
+  bad-code: "Questo non è un codice di dipinto, oppure è danneggiato"
+  loading: "Caricamento dell'immagine…"
+  image-failed: "Impossibile caricare l'immagine: {reason}"
+  image-done: "<#1FFF5E>L'immagine è sulla tela. <gray>Non va bene? Riapri la finestra e regola: il risultato precedente viene sostituito."
+  code-done: "<#1FFF5E>Il disegno è sulla tela. <gray>Annulla con F tenendo il pennello."
+  no-target: "Non so dove metterlo: guarda la tua tela o tieni in mano una tela {size} bianca"
+  created: "Un dipinto {size} è nel tuo inventario"
+  paper: "Importare costa carta: {sheets} — {price} per blocco del dipinto"
+  limit: "Hai già {paintings}: è il limite. Eliminane qualcuno: /paint gallery"
+
+gallery:
+  need-canvas: "Ti serve una tela {size} bianca nell'inventario"
+
+sign:
+  done: "<#1FFF5E>Dipinto '{title}' firmato. <gray>Ora si può copiare in un banco da lavoro."
+
+panel:
+  window:
+    tools: "Pennello"
+    colors: "Colore"
+    actions: "Dipinto"
+  title:
+    tools: "PENNELLO"
+    colors: "COLORE"
+  window-reset: "La finestra '{window}' è tornata al suo posto"
+  window-grabbed: "<#FF7800>Finestra '{window}' <dark_gray>» <gray>spostala con il mirino; rilascia clic dx o clicca di nuovo per lasciarla"
+  move: "<#FF7800>Sposta la finestra <dark_gray>» <gray>tieni clic dx e trascina; Shift + clic la rimette a posto"
+  size: "<#FF7800>Dimensione del pennello: {size} <dark_gray>» <gray>regolazione fine con Shift + rotellina"
+  shape:
+    square: "<#FF7800>Pennello quadrato <dark_gray>» <gray>bordi dritti, angoli netti"
+    round: "<#FF7800>Pennello tondo <dark_gray>» <gray>tratti morbidi e arrotondati"
+  hue: "<#FF7800>Tinta <dark_gray>» <gray>i colori di questa tinta compaiono nel quadrato"
+  current-color: "<#FF7800>Colore attuale: <white>{color} <dark_gray>» <gray>inserisci un codice #RRGGBB"
+  previous-color: "<#FF7800>Colore precedente: <white>{color} <dark_gray>» <gray>tornare indietro"
+  transparent: "<#1FFFE3>Trasparente <dark_gray>» <gray>la parete si vede attraverso il dipinto"
+  shade: "{color} <dark_gray>» <gray>sfumatura del colore attuale"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Annulla <dark_gray>» <gray>come F"
+    redo: "<#FF7800>Ripeti <dark_gray>» <gray>come Shift + F"
+    clear: "<#FF7800>Cancella la tela <dark_gray>» <gray>riempie di bianco, si può annullare"
+    resolution: "<#FF7800>Risoluzione: {res} px/blocco <dark_gray>» <gray>cambia; F la ripristina"
+    shared: "<#FF7800>Tutti possono dipingere: {state} <dark_gray>» <gray>cambia"
+    sign: "<#FF7800>Firma <dark_gray>» <gray>dai un titolo e concludi il dipinto"
+    export: "<#FF7800>Esporta <dark_gray>» <gray>codice del dipinto come testo"
+    import: "<#FF7800>Importa <dark_gray>» <gray>incolla un codice di dipinto"
+    image: "<#FF7800>Immagine da URL <dark_gray>» <gray>con ritaglio, zoom e spostamento"
+    gallery: "<#FF7800>I miei dipinti"
+    hide: "<#FF7800>Nascondi il pannello <dark_gray>» <gray>torna quando clicchi la tela con il pennello"
+
+menu:
+  close:
+    name: "Chiudi"
+    action: "chiudere il menu"
+  back:
+    name: "Indietro"
+    action: "tornare indietro"
+  hint: "Suggerimento"
+  page:
+    previous: "Pagina precedente"
+    next: "Pagina successiva"
+    action: "girare pagina"
+    of: "Pagina {page} di {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Eliminare per sempre?"
+      - "Il dipinto sparisce da tutte le pareti"
+      - "e i suoi oggetti diventano tele bianche."
+    "yes": "<#FF1F1F>sì, elimina"
+    "no": "tienilo"
+    action: "eliminare per sempre"
+    done: "Dipinto eliminato"
+  admin:
+    title: "Dipinti: admin"
+    canvases:
+      name: "<#FF7800>Tele di ogni dimensione"
+      lore:
+        - "Da 1×1 a {max}: 3×5, 1×4 e qualsiasi altra."
+    painting:
+      - "Autore: <white>{author}"
+      - "{size} blocchi · {res} px/blocco · {state}"
+      - "Modificato: <white>{date}"
+      - "Posizionato nei chunk caricati: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "prendere"
+    export: "esportare come testo"
+    empty: "Non ci sono ancora dipinti sul server"
+    count: "<white>Dipinti sul server: <#FF7800>{count}"
+    too-big:
+      - "Più grande di quanto consente la config:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "prenderne {amount} insieme"
+    help-canvases:
+      - "<white>Tele di ogni dimensione."
+      - "La colonna è la larghezza, la riga l'altezza:"
+      - "terza colonna della quinta riga è 3×5."
+      - ""
+      - "Shift + clic sx ne dà {amount} insieme."
+    help:
+      - "<white>La riga in alto contiene gli oggetti"
+      - "del plugin: il pennello, una tela e la tabella"
+      - "delle tele fino a {max}."
+      - ""
+      - "Sotto ci sono i dipinti di tutti."
+      - "Un dipinto preso qui è lo stesso,"
+      - "non una copia: le modifiche si vedono"
+      - "ovunque sia appeso."
+  canvas:
+    title: "Tela"
+    info:
+      - "Autore: <white>{author}"
+      - "Dimensione: <white>{size} <gray>blocchi, <white>{pixels} <gray>pixel"
+      - "Stato: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Risoluzione: <#FF7800>{res} <white>pixel per blocco"
+      lore:
+        - "Più il numero è basso, più i pixel"
+        - "sono grandi."
+        - "Con il cambio il disegno si allunga."
+        - "<dark_gray>F annulla il cambio."
+      finer: "più fine"
+      coarser: "più grossa"
+    clear:
+      name: "Cancella la tela"
+      lore:
+        - "Riempie di bianco. Si può annullare (F)."
+      action: "cancellare"
+    shared:
+      name: "<white>Tutti possono dipingere: {state}"
+      lore:
+        - "Pittura in compagnia: il pennello di"
+        - "qualsiasi giocatore funziona su questa tela."
+    sign:
+      name: "Firma"
+      lore:
+        - "Dai un titolo e concludi il dipinto."
+        - "Un dipinto firmato non si può"
+        - "modificare, ma si può copiare."
+      action: "firmare"
+    export:
+      name: "Esporta come testo"
+      lore:
+        - "Il codice del dipinto: copialo e"
+        - "passalo a chi vuoi, anche a"
+        - "un altro server."
+      action: "mostrare il codice"
+    import:
+      name: "Importa da testo"
+      lore:
+        - "Incolla un codice. Il disegno va sulla"
+        - "tela che guardi, oppure su una tela"
+        - "bianca che tieni in mano."
+      action: "incollare un codice"
+    gallery:
+      lore:
+        - "Tutto ciò che hai dipinto."
+  gallery:
+    title: "I miei dipinti"
+    painting:
+      - "{size} blocchi · {res} px/blocco · {state}"
+      - "Modificato: <white>{date}"
+      - "Posizionato ora: <white>{placed}"
+    take: "prendere <gray>(serve una tela {size} bianca)"
+    empty:
+      name: "Ancora niente"
+      lore:
+        - "Posiziona una tela e dipingi qualcosa."
+    help:
+      - "<white>Tutti i tuoi dipinti sono qui,"
+      - "anche se li hai rimossi o persi."
+      - ""
+      - "Un bozzetto preso da qui è lo stesso"
+      - "dipinto: le modifiche si vedono"
+      - "ovunque sia appeso."
+      - ""
+      - "I dipinti firmati si copiano in un banco"
+      - "da lavoro: dipinto + tela bianca."
+  palette:
+    title: "Tavolozza e strumenti"
+    page: "Colori: pagina {page} di {pages}"
+    hex:
+      name: "Colore da codice"
+      lore:
+        - "Inserisci #RRGGBB: viene scelto il"
+        - "colore più vicino della tavolozza."
+      action: "inserire un codice"
+    transparent:
+      - "I pixel spariscono: la parete si vede"
+      - "attraverso il dipinto. Utile per adesivi"
+      - "e dipinti di qualsiasi forma."
+    shade:
+      - "Sfumatura del colore selezionato."
+    size:
+      name: "<white>Dimensione del pennello: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>In gioco: Shift + rotellina del mouse."
+      more: "più grande"
+      less: "più piccolo"
+      shift: "Con Shift"
+      by-four: "di 4"
+    canvas:
+      name: "Tela e i miei dipinti"
+      lore:
+        - "Risoluzione, firma, esportazione,"
+        - "importazione, elenco dei tuoi dipinti."
+    help:
+      - "<white>Con il pennello in mano:"
+      - "clic dx su una tela dipinge,"
+      - "clic sx prende il colore da una tela"
+      - "o da qualsiasi blocco del mondo."
+      - ""
+      - "Shift + rotellina cambia la dimensione."
+      - "F annulla, Shift + F ripete."
+      - ""
+      - "Le forme si trascinano: tieni clic dx,"
+      - "muovi e rilascia."
+      - "Con Shift la linea va dritta,"
+      - "il rettangolo diventa un quadrato,"
+      - "l'ellisse diventa un cerchio."
+
+dialog:
+  code: "Codice"
+  export:
+    title: "Esporta un dipinto"
+    text: "'{title}' — un codice di {length} caratteri. Premi Copia per metterlo negli appunti."
+    text-parts: "'{title}' — il codice è lungo, quindi è diviso in parti. Parte {part} di {parts}: {length} caratteri. Copia e incolla tutte le parti una per una."
+    copy: "Copia"
+    copy-tooltip: "Metti il codice negli appunti"
+    next: "Parte successiva"
+    first: "Torna alla prima parte"
+  import:
+    title: "Importa un dipinto"
+    text: "Incolla un codice di dipinto (Ctrl+V). Il disegno va sulla tela che guardi, oppure su una tela bianca che tieni in mano."
+    button: "Importa"
+  sign:
+    title: "Firma il dipinto"
+    text: "Un dipinto firmato non si può modificare, ma si può copiare: dipinto + una tela bianca della stessa dimensione in un banco da lavoro."
+    input: "Titolo"
+    button: "Firma"
+  hex:
+    title: "Colore da codice"
+    text: "Inserisci un colore come #RRGGBB. Le mappe non possono mostrare tutti i colori, quindi viene scelto il più vicino."
+    input: "Colore"
+    button: "Scegli"
+  canvas:
+    title: "Assembla una tela"
+    creative: "In modalità creativa le tele non si consumano."
+    have: "Hai in mano {canvases}."
+    text: "La colonna è la larghezza, la riga l'altezza: una tela 2×4 richiede otto tele 1×1. Le dimensioni in grigio per ora sono fuori portata."
+    same: "Hai già questa tela"
+    assemble: "Assembla una tela {size}: richiede {canvases}"
+    need: "Richiede {canvases}, ne hai {have}"
+  image:
+    title: "Immagine da URL"
+    text: "L'immagine va sulla tela che guardi, oppure su una tela bianca che tieni in mano; la dimensione in blocchi conta solo se non c'è nessuna delle due. Non va bene? Riapri la finestra: le impostazioni restano e il risultato precedente sulla tela viene sostituito."
+    url: "URL dell'immagine"
+    fit:
+      label: "Adattamento"
+      cover: "Riempi la tela, ritaglia il resto"
+      contain: "Mostra tutta l'immagine, con margini"
+      stretch: "Allunga sulla tela"
+    zoom: "Zoom, %"
+    x: "Sposta a destra, %"
+    "y": "Sposta in basso, %"
+    brightness: "Luminosità, %"
+    contrast: "Contrasto, %"
+    saturation: "Saturazione, %"
+    dither: "Transizioni di colore morbide (non vale per la pixel art)"
+    shade: "Scurisci come la faccia di un blocco: per cubi fatti di dipinti"
+    clear: "I margini attorno all'immagine sono trasparenti, non bianchi"
+    width: "Larghezza del nuovo dipinto, in blocchi"
+    height: "Altezza del nuovo dipinto, in blocchi"
+    button: "Applica"
+    no-url: "Incolla l'URL di un'immagine"

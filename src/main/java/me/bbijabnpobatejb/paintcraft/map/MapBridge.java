@@ -1,7 +1,10 @@
 package me.bbijabnpobatejb.paintcraft.map;
 
+import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerMapData;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import lombok.val;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.store.PaintingStorage;
 import me.bbijabnpobatejb.paintcraft.world.Placement;
@@ -16,7 +19,6 @@ import org.bukkit.plugin.Plugin;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
 
 @SuppressWarnings("deprecation")
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -27,15 +29,10 @@ public final class MapBridge {
     final Plugin plugin;
     final PaintingStorage store;
     final Set<Player> viewers = new HashSet<>();
-    boolean packetsBroken;
 
     public MapBridge(Plugin plugin, PaintingStorage store) {
         this.plugin = plugin;
         this.store = store;
-        if (!MapPackets.AVAILABLE) {
-            plugin.getLogger().warning("Fast map updates are unavailable (" + MapPackets.FAILURE
-                    + "). Painting still works, but strokes show up with a delay of up to half a second.");
-        }
     }
 
     public void ensure(Painting painting) {
@@ -162,29 +159,23 @@ public final class MapBridge {
     }
 
     private void sendNow(Painting painting, int index, TileRenderer tile, int x, int y, int w, int h, byte[] patch) {
-        if (!MapPackets.AVAILABLE || packetsBroken || painting.placements.isEmpty()) {
+        if (painting.placements.isEmpty()) {
             return;
         }
         viewers.clear();
         for (Placement placement : painting.placements) {
             ItemFrame frame = placement.frames[index];
             if (frame != null && frame.isValid()) {
-                viewers.addAll(frame.getTrackedBy());
+                viewers.addAll(frame.getTrackedPlayers());
             }
         }
         if (viewers.isEmpty()) {
             return;
         }
-        try {
-            Object packet = MapPackets.patch(tile.view.getId(), x, y, w, h, patch);
-            for (Player viewer : viewers) {
-                MapPackets.send(viewer, packet);
-            }
-        } catch (Throwable t) {
-            packetsBroken = true;
-            plugin.getLogger().log(Level.WARNING, "Fast map updates disabled after an error", t);
-        } finally {
-            viewers.clear();
+        val players = PacketEvents.getAPI().getPlayerManager();
+        for (Player viewer : viewers) {
+            players.sendPacket(viewer, new WrapperPlayServerMapData(tile.view.getId(), (byte) 0, false, true, null, w, h, x, y, patch));
         }
+        viewers.clear();
     }
 }

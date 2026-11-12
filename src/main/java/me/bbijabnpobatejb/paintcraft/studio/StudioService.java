@@ -12,34 +12,30 @@ import me.bbijabnpobatejb.paintcraft.packet.PacketScene;
 import me.bbijabnpobatejb.paintcraft.paint.PlayerSession;
 import me.bbijabnpobatejb.paintcraft.paint.Tool;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
-import me.bbijabnpobatejb.paintcraft.ui.Dialogs;
 import me.bbijabnpobatejb.paintcraft.ui.menu.GalleryGui;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
+import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 import me.bbijabnpobatejb.paintcraft.util.Sounds;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
 import me.bbijabnpobatejb.paintcraft.world.Placement;
 import me.bbijabnpobatejb.paintcraft.world.Plane;
-import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.text.object.ObjectContents;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.logging.Level;
@@ -76,8 +72,6 @@ public class StudioService {
     private static final double DRAG_LIMIT = 3.0;
     private static final int TALL = 4;
 
-    private static final Set<Material> BLOCK_SPRITES = EnumSet.of(Material.SPONGE, Material.WHITE_WOOL, Material.BOOKSHELF);
-
     @RequiredArgsConstructor
     public enum Pane {
         TOOLS(0.84, 1.58),
@@ -95,7 +89,6 @@ public class StudioService {
     final Map<UUID, Studio> studios = new HashMap<>();
     final Map<UUID, Placement> selected = new HashMap<>();
     final Map<UUID, Placement> dismissed = new HashMap<>();
-    final Map<Material, Component> sprites = new EnumMap<>(Material.class);
     final BlockData wood = Material.DARK_OAK_PLANKS.createBlockData();
     final BlockData darkWood = Material.SPRUCE_PLANKS.createBlockData();
     boolean broken;
@@ -341,7 +334,7 @@ public class StudioService {
         Player player = studio.getPlayer();
         Pane pane = studio.getDragging();
         studio.setDragTicks(studio.getDragTicks() + 1);
-        if (player.isHandRaised()) {
+        if (plugin.getItemStyle().isHolding(player)) {
             studio.setDragHeld(true);
         } else if (studio.isDragHeld()) {
             drop(studio);
@@ -352,8 +345,8 @@ public class StudioService {
         if (hit == null) return;
         Painting painting = studio.getPlacement().painting;
         double[] old = studio.getDragPosition();
-        double a = Math.clamp(hit.a() - studio.getGrabA(), -pane.w - DRAG_LIMIT, painting.blocksW + DRAG_LIMIT);
-        double b = Math.clamp(hit.b() - studio.getGrabB(), -pane.h - DRAG_LIMIT, painting.blocksH + DRAG_LIMIT);
+        double a = MathUtil.clamp(hit.a() - studio.getGrabA(), -pane.w - DRAG_LIMIT, painting.blocksW + DRAG_LIMIT);
+        double b = MathUtil.clamp(hit.b() - studio.getGrabB(), -pane.h - DRAG_LIMIT, painting.blocksH + DRAG_LIMIT);
         double[] moved = resolve(pane, a, b, obstacles(studio, pane), old);
         if (Math.abs(moved[0] - old[0]) < 1.0e-3 && Math.abs(moved[1] - old[1]) < 1.0e-3) return;
         studio.setDragPosition(moved);
@@ -464,15 +457,6 @@ public class StudioService {
             broken = true;
             plugin.getLogger().log(Level.SEVERE, "Canvas panel disabled: can't build its packets", e);
         }
-    }
-
-    private Component sprite(Material material) {
-        return sprites.computeIfAbsent(material, m -> {
-            String name = m.getKey().getKey().toLowerCase(Locale.ROOT);
-            boolean block = BLOCK_SPRITES.contains(m);
-            return Component.object(ObjectContents.sprite(Key.key("minecraft", block ? "blocks" : "items"),
-                    Key.key("minecraft", (block ? "block/" : "item/") + name)));
-        });
     }
 
     private final class Draw {
@@ -624,7 +608,7 @@ public class StudioService {
             if (transparent) icon("current-none", a0 + 0.05 + big / 2, b + big / 2, big * 0.7, Material.BARRIER);
             else rect("current", a0 + 0.075, b + 0.025, a0 + 0.025 + big, b + big - 0.025, L_CONTENT, argb(current));
             button(a0 + 0.05, b, a0 + 0.05 + big, b + big, Lang.get("panel.current-color", "color", name(current)),
-                    p -> Dialogs.hex(plugin, p));
+                    p -> plugin.getPrompts().hex(p));
 
             byte previous = session.getPreviousColor();
             double pa = a0 + 0.05 + big + 0.03;
@@ -680,15 +664,15 @@ public class StudioService {
                         refresh(painting);
                     }),
                     new Action(Material.WRITABLE_BOOK, Lang.get("panel.action.sign"), p -> {
-                        if (owner) Dialogs.sign(plugin, p, painting);
+                        if (owner) plugin.getPrompts().sign(p, painting);
                         else paint.sendCannotEdit(p, painting);
                     }),
                     new Action(Material.PAPER, Lang.get("panel.action.export"),
                             p -> plugin.getExchangeService().export(p, painting)),
                     new Action(Material.HOPPER, Lang.get("panel.action.import"),
-                            p -> Dialogs.importCode(plugin, p, null)),
+                            p -> plugin.getPrompts().importCode(p, null)),
                     new Action(Material.PAINTING, Lang.get("panel.action.image"),
-                            p -> Dialogs.image(plugin, p, null)),
+                            p -> plugin.getPrompts().image(p, null)),
                     new Action(Material.BOOKSHELF, Lang.get("panel.action.gallery"), p -> new GalleryGui(plugin, p, 0).onOpen(p)),
                     new Action(Material.BARRIER, Lang.get("panel.action.hide"),
                             StudioService.this::close));
@@ -723,7 +707,7 @@ public class StudioService {
         double[] begin(Pane pane, String title) {
             double[] origin = studio.getPanes().get(pane);
             double a0 = origin[0], b0 = origin[1], a1 = a0 + pane.w, b1 = b0 + pane.h;
-            double fa = Math.clamp((a0 + a1) / 2, 0, width), fb = Math.clamp((b0 + b1) / 2, 0, height);
+            double fa = MathUtil.clamp((a0 + a1) / 2, 0, width), fb = MathUtil.clamp((b0 + b1) / 2, 0, height);
             fold = plane.point(fa, fb, 0.02);
 
             String key = pane.name().toLowerCase(Locale.ROOT);
@@ -760,7 +744,9 @@ public class StudioService {
         }
 
         void icon(String key, double a, double b, double size, Material material) {
-            finish(plane.sprite(scene.text(key), a, b, size, L_ICON, sprite(material)));
+            val icons = plugin.getIcons();
+            if (icons != null) finish(plane.sprite(scene.text(key), a, b, size, L_ICON, icons.sprite(material)));
+            else finish(plane.icon(scene.item(key), a, b, size, L_ICON, new ItemStack(material)));
         }
 
         void dot(String key, double a, double b, double size, boolean round) {

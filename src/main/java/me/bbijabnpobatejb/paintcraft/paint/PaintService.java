@@ -10,6 +10,7 @@ import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
 import me.bbijabnpobatejb.paintcraft.store.PaintingStorage;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
+import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
 import me.bbijabnpobatejb.paintcraft.world.Placement;
 import me.bbijabnpobatejb.paintcraft.world.PlacementManager;
@@ -124,7 +125,7 @@ public class PaintService {
     }
 
     public int clampSize(int size) {
-        return Math.clamp(size, 1, plugin.getConfigHandler().getMaxBrush());
+        return MathUtil.clamp(size, 1, plugin.getConfigHandler().getMaxBrush());
     }
 
     public void setColor(Player player, byte color) {
@@ -269,7 +270,7 @@ public class PaintService {
                     && stroke.painting.pixels == stroke.pixels
                     && stroke.painting.placements.contains(stroke.placement)
                     && plugin.getItemService().isBrush(player.getInventory().getItemInMainHand());
-            boolean holding = alive && player.isHandRaised();
+            boolean holding = alive && plugin.getItemStyle().isHolding(player);
             if (!alive || (!holding && stroke.age >= GRACE_TICKS)) {
                 finish(stroke);
                 it.remove();

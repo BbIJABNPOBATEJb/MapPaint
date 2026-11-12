@@ -1,0 +1,449 @@
+# PaintCraft — 简体中文
+#
+# 花括号中的 {placeholders} 由插件填入，请保持原样。
+# 颜色使用 MiniMessage 标签：<gray>、<white>、<#FF7800>。
+# 其他语言文件中缺少的键会回退到 en.yml。
+
+language:
+  name: "简体中文"
+  changed: "<#1FFF5E>语言：<white>{language}"
+  current: "<white>当前语言：<#FF7800>{language}"
+  available: "<gray>可用语言：<white>{languages}"
+  unknown: "未知语言 {input}。可用语言：{languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "你没有权限"
+  color-format: "颜色格式为 #RRGGBB，例如 #FF8800"
+  canvas-cleared: "<gray>画布已清空。<dark_gray>按 F 可恢复"
+  "on": "开"
+  "off": "关"
+
+click:
+  left: "左键"
+  right: "右键"
+
+action:
+  open: "打开"
+  select: "选择"
+  take: "拿取"
+  toggle: "切换"
+
+unit:
+  canvas:
+    one: "{count} 张 1×1 画布"
+    many: "{count} 张 1×1 画布"
+  sheet:
+    one: "{count} 张"
+    many: "{count} 张"
+  painting:
+    one: "{count} 幅画作"
+    many: "{count} 幅画作"
+
+color:
+  transparent: "透明"
+  transparent-short: "透明"
+
+command:
+  invalid-usage: "用法有误"
+  player-only: "仅限玩家使用"
+  usage-header: "<#FF7800>命令用法："
+  usage: "<#FF1F1F>用法：<white>{usage}"
+  unknown-choice: "没有这个{what}：{input}"
+  choice:
+    tool: "工具"
+    item: "物品"
+  canvas-size: "画布尺寸为 宽x高（单位为方块），范围 1x1 到 {max}x{max}。例如：2x3"
+  panel-reset: "面板窗口已回到原位"
+  specify-player: "请指定玩家"
+  give-painting: "画作请从画廊获取：/paint gallery"
+  given: "<white>已交给 <#FF7800>{player}"
+  reloaded: "配置已重新加载"
+  look-at-painting: "请看向一幅画作，或把它拿在手上"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— 无需资源包的画作"
+    lines:
+      - "<#FF7800>画笔 <dark_gray>» <gray>木棍 + 羽毛。<#FF7800>画布 <dark_gray>» <gray>纸 + 木棍"
+      - "在工作台中摆成矩形的画布会合成大画布"
+      - "<#FF7800>右键 <dark_gray>» <gray>绘画，<#FF7800>左键 <dark_gray>» <gray>从画布或方块取色"
+      - "<#FF7800>Shift + 右键（画布外） <dark_gray>» <gray>调色板，<#FF7800>Shift + 滚轮 <dark_gray>» <gray>笔刷大小"
+      - "<#FF7800>绘画时按 Shift <dark_gray>» <gray>直线、正方形、圆"
+      - "<#FF7800>F <dark_gray>» <gray>撤销，<#FF7800>Shift + F <dark_gray>» <gray>重做"
+      - "<#FF7800>Q <dark_gray>» <gray>上一个工具，<#FF7800>Shift + Q <dark_gray>» <gray>下一个工具"
+      - "<white>/paint <gray>调色板 · <white>/paint gallery <gray>我的画作"
+      - "<white>/paint color #RRGGBB <gray>· <white>size 数字 <gray>· <white>tool 名称"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>把移动过的面板窗口放回原位"
+      - "<white>/paint export <gray>画作代码 · <white>/paint import [代码] <gray>粘贴代码"
+      - "<white>/paint sign [标题] <gray>签名：签名后的画作可以复制"
+      - "<white>/paint image [url] <gray>网络图片：裁剪、缩放、偏移"
+      - "<white>/paint admin <gray>插件物品和服务器上的所有画作"
+      - "<white>/paint give brush|canvas [WxH] [数量] [玩家]"
+      - "<white>/paint language [代码] <gray>插件语言 · <white>/paint reload"
+
+tool:
+  brush:
+    name: "画笔"
+    hint: "按住右键在画布上拖动。按住 Shift 可画直线。"
+  eraser:
+    name: "橡皮"
+    hint: "擦除至空白画布。"
+  fill:
+    name: "填充"
+    hint: "填充同一颜色的区域。"
+  spray:
+    name: "喷漆"
+    hint: "喷出点点：按得越久越密。"
+  line:
+    name: "直线"
+    hint: "在起点按住右键，在终点松开。Shift 可吸附角度。"
+  rect:
+    name: "矩形"
+    hint: "从一个角拖到对角。Shift 画正方形。"
+  ellipse:
+    name: "椭圆"
+    hint: "像矩形一样拖动。Shift 画正圆。"
+
+item:
+  brush:
+    name: "<#FF7800>画家的画笔"
+    paint: "在画布上绘画 <gray>(可持续按住)"
+    pick: "从画布或方块取色"
+    palette: "调色板 <gray>(画布外)"
+    shift-key: "绘画时按 Shift"
+    shift: "直线、正方形、圆"
+    wheel-key: "Shift + 滚轮"
+    wheel: "笔刷大小"
+    undo: "撤销"
+    redo: "重做"
+  canvas:
+    name: "画布 {size}"
+    lore:
+      - "放在墙上、地面或天花板上，"
+      - "然后用画笔绘画。"
+      - ""
+      - "<dark_gray>相同的画布在工作台中"
+      - "<dark_gray>摆成矩形，"
+      - "<dark_gray>即可合成大画布。"
+    assemble: "用整组画布合成大画布"
+  painting:
+    sketch-name: "草稿"
+    author: "作者：<white>{name}"
+    size: "尺寸：<white>{size}"
+    imported: "<#FFE100>导入 <dark_gray>» <gray>转移而来，非手绘"
+    signed:
+      - "<dark_gray>画作 + 空白画布 {size}"
+      - "<dark_gray>在工作台中可制作副本。"
+    sketch:
+      - "<dark_gray>未签名：仍可继续绘画。"
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "无题"
+  signed: "<#FF7800>已签名"
+  sketch: "<white>草稿"
+  imported: " <gray>· <#FFE100>导入"
+
+hud:
+  size: "<gray>大小 <white>{size}"
+
+paint:
+  signed: "画作已签名，无法再修改"
+  not-yours: "这幅画属于 {player}：只有作者可以在上面绘画"
+  undo:
+    look: "请看向一幅画作再撤销"
+    undone: "已撤销"
+    redone: "已重做"
+    nothing-undo: "没有可撤销的内容"
+    nothing-redo: "没有可重做的内容"
+
+place:
+  deleted: "作者已删除这幅画作。该物品恢复为空白画布"
+  too-big: "本服务器不能放置大于 {max} 的画布"
+  no-room: "这里放不下 {size} 的画布"
+  denied: "你不能在这里这样做"
+  break-owner: "只有放置画作的玩家才能取下它"
+  change-owner: "只有放置画作的玩家才能修改它"
+
+assemble:
+  hold: "请手持 1×1 画布"
+  not-enough: "{size} 画布需要 {canvases}，你手上有 {have}"
+  done: "已合成画布 {size}"
+
+import:
+  parts: "已收到的部分：{have}/{total}。请粘贴第 {next} 部分。"
+  too-big: "代码中的画作超过了本服务器允许的大小（{max}）"
+  bad-code: "这不是画作代码，或代码已损坏"
+  loading: "正在加载图片…"
+  image-failed: "无法加载图片：{reason}"
+  image-done: "<#1FFF5E>图片已放到画布上。<gray>不满意？再次打开窗口调整，之前的结果会被替换。"
+  code-done: "<#1FFF5E>图案已放到画布上。<gray>手持画笔按 F 可撤销。"
+  no-target: "没有可放置的位置：请看向你的画布，或手持空白的 {size} 画布"
+  created: "{size} 画作已放入你的背包"
+  paper: "导入需要纸：{sheets}，画作每个方块 {price}"
+  limit: "你已有 {paintings}，已达上限。请删除一些：/paint gallery"
+
+gallery:
+  need-canvas: "你的背包中需要一张空白的 {size} 画布"
+
+sign:
+  done: "<#1FFF5E>画作「{title}」已签名。<gray>现在可以在工作台中复制。"
+
+panel:
+  window:
+    tools: "画笔"
+    colors: "颜色"
+    actions: "画作"
+  title:
+    tools: "画笔"
+    colors: "颜色"
+  window-reset: "「{window}」窗口已回到原位"
+  window-grabbed: "<#FF7800>窗口「{window}」 <dark_gray>» <gray>用准星移动；松开右键或再次点击即可放下"
+  move: "<#FF7800>移动窗口 <dark_gray>» <gray>按住右键拖动；Shift + 点击可复位"
+  size: "<#FF7800>笔刷大小：{size} <dark_gray>» <gray>用 Shift + 滚轮微调"
+  shape:
+    square: "<#FF7800>方形笔刷 <dark_gray>» <gray>边缘平直，棱角分明"
+    round: "<#FF7800>圆形笔刷 <dark_gray>» <gray>柔和的圆润笔触"
+  hue: "<#FF7800>色相 <dark_gray>» <gray>该色相的颜色会显示在方块中"
+  current-color: "<#FF7800>当前颜色：<white>{color} <dark_gray>» <gray>输入 #RRGGBB 代码"
+  previous-color: "<#FF7800>上一个颜色：<white>{color} <dark_gray>» <gray>切换回去"
+  transparent: "<#1FFFE3>透明 <dark_gray>» <gray>墙面会透过画作显示出来"
+  shade: "{color} <dark_gray>» <gray>当前颜色的深浅变化"
+  pixels: "{size} 像素"
+  action:
+    undo: "<#FF7800>撤销 <dark_gray>» <gray>等同于 F"
+    redo: "<#FF7800>重做 <dark_gray>» <gray>等同于 Shift + F"
+    clear: "<#FF7800>清空画布 <dark_gray>» <gray>填充白色，可撤销"
+    resolution: "<#FF7800>分辨率：{res} 像素/方块 <dark_gray>» <gray>更改；按 F 可恢复"
+    shared: "<#FF7800>允许所有人绘画：{state} <dark_gray>» <gray>切换"
+    sign: "<#FF7800>签名 <dark_gray>» <gray>起个标题并完成画作"
+    export: "<#FF7800>导出 <dark_gray>» <gray>将画作导出为代码字符串"
+    import: "<#FF7800>导入 <dark_gray>» <gray>粘贴画作代码"
+    image: "<#FF7800>网络图片 <dark_gray>» <gray>可裁剪、缩放和偏移"
+    gallery: "<#FF7800>我的画作"
+    hide: "<#FF7800>隐藏面板 <dark_gray>» <gray>手持画笔点击画布时会重新出现"
+
+menu:
+  close:
+    name: "关闭"
+    action: "关闭菜单"
+  back:
+    name: "返回"
+    action: "返回"
+  hint: "提示"
+  page:
+    previous: "上一页"
+    next: "下一页"
+    action: "翻页"
+    of: "第 {page} 页，共 {pages} 页"
+  delete:
+    confirm:
+      - "<#FF1F1F>永久删除？"
+      - "画作会从所有墙上消失，"
+      - "其物品会变回空白画布。"
+    "yes": "<#FF1F1F>是，删除"
+    "no": "保留"
+    action: "永久删除"
+    done: "画作已删除"
+  admin:
+    title: "画作：管理"
+    canvases:
+      name: "<#FF7800>各种尺寸的画布"
+      lore:
+        - "从 1×1 到 {max}：3×5、1×4 等任意尺寸。"
+    painting:
+      - "作者：<white>{author}"
+      - "{size} 方块 · {res} 像素/方块 · {state}"
+      - "修改时间：<white>{date}"
+      - "已放置（已加载区块）：<white>{placed}"
+      - "<dark_gray># {id}"
+    take: "拿取"
+    export: "导出为字符串"
+    empty: "服务器上还没有画作"
+    count: "<white>服务器上的画作：<#FF7800>{count}"
+    too-big:
+      - "超出配置允许的大小："
+      - "<white>canvas.max-size: {max}"
+    take-stack: "一次拿取 {amount} 个"
+    help-canvases:
+      - "<white>各种尺寸的画布。"
+      - "列是宽度，行是高度："
+      - "第五行第三列就是 3×5。"
+      - ""
+      - "Shift + 左键一次给 {amount} 个。"
+    help:
+      - "<white>最上面一行是插件物品："
+      - "画笔、画布，以及不超过 {max}"
+      - "的画布表格。"
+      - ""
+      - "下面是所有玩家的画作。"
+      - "从这里拿的画作就是原画，"
+      - "不是副本：修改会同步显示"
+      - "在它悬挂的所有地方。"
+  canvas:
+    title: "画布"
+    info:
+      - "作者：<white>{author}"
+      - "尺寸：<white>{size} <gray>方块，<white>{pixels} <gray>像素"
+      - "状态：{state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>分辨率：<#FF7800>{res} <white>像素/方块"
+      lore:
+        - "数值越小，像素越大。"
+        - "更改时图案会被拉伸。"
+        - "<dark_gray>按 F 可撤销更改。"
+      finer: "更精细"
+      coarser: "更粗糙"
+    clear:
+      name: "清空画布"
+      lore:
+        - "填充白色。可撤销 (F)。"
+      action: "清空"
+    shared:
+      name: "<white>允许所有人绘画：{state}"
+      lore:
+        - "共同绘画：任何玩家的画笔"
+        - "都可以在这块画布上使用。"
+    sign:
+      name: "签名"
+      lore:
+        - "起个标题并完成画作。"
+        - "签名后的画作无法修改，"
+        - "但可以复制。"
+      action: "签名"
+    export:
+      name: "导出为字符串"
+      lore:
+        - "画作代码：复制后可发给"
+        - "任何人，甚至其他服务器。"
+      action: "显示代码"
+    import:
+      name: "从字符串导入"
+      lore:
+        - "粘贴代码。图案会放到你"
+        - "看向的画布上，或手持的"
+        - "空白画布中。"
+      action: "粘贴代码"
+    gallery:
+      lore:
+        - "你画过的所有作品。"
+  gallery:
+    title: "我的画作"
+    painting:
+      - "{size} 方块 · {res} 像素/方块 · {state}"
+      - "修改时间：<white>{date}"
+      - "当前已放置：<white>{placed}"
+    take: "拿取 <gray>(需要空白的 {size} 画布)"
+    empty:
+      name: "这里还没有内容"
+      lore:
+        - "放一块画布，画点什么吧。"
+    help:
+      - "<white>你的所有画作都保存在这里，"
+      - "即使已被取下或丢失。"
+      - ""
+      - "从这里拿的草稿就是原画："
+      - "修改会同步显示在它悬挂的"
+      - "所有地方。"
+      - ""
+      - "签名后的画作可在工作台中复制："
+      - "画作 + 空白画布。"
+  palette:
+    title: "调色板和工具"
+    page: "颜色：第 {page} 页，共 {pages} 页"
+    hex:
+      name: "按代码选色"
+      lore:
+        - "输入 #RRGGBB，会选取"
+        - "调色板中最接近的颜色。"
+      action: "输入代码"
+    transparent:
+      - "像素会消失：墙面透过画作"
+      - "显示出来。适合做贴纸"
+      - "和任意形状的画作。"
+    shade:
+      - "所选颜色的深浅变化。"
+    size:
+      name: "<white>笔刷大小：<#FF7800>{size}"
+      lore:
+        - "<dark_gray>游戏中：Shift + 鼠标滚轮。"
+      more: "更大"
+      less: "更小"
+      shift: "按住 Shift"
+      by-four: "每次 4"
+    canvas:
+      name: "画布和我的画作"
+      lore:
+        - "分辨率、签名、导出、"
+        - "导入、你的画作列表。"
+    help:
+      - "<white>手持画笔时："
+      - "右键点击画布绘画，"
+      - "左键从画布或世界中的"
+      - "任意方块取色。"
+      - ""
+      - "Shift + 滚轮改变笔刷大小。"
+      - "F 撤销，Shift + F 重做。"
+      - ""
+      - "图形靠拖动绘制：按住右键，"
+      - "移动，然后松开。"
+      - "按住 Shift，直线会变平直，"
+      - "矩形变正方形，"
+      - "椭圆变正圆。"
+
+dialog:
+  code: "代码"
+  export:
+    title: "导出画作"
+    text: "「{title}」，代码共 {length} 个字符。点击“复制”放入剪贴板。"
+    text-parts: "「{title}」，代码较长，已分成几部分。第 {part} 部分，共 {parts} 部分：{length} 个字符。请依次复制并粘贴所有部分。"
+    copy: "复制"
+    copy-tooltip: "将代码放入剪贴板"
+    next: "下一部分"
+    first: "回到第一部分"
+  import:
+    title: "导入画作"
+    text: "粘贴画作代码 (Ctrl+V)。图案会放到你看向的画布上，或手持的空白画布中。"
+    button: "导入"
+  sign:
+    title: "为画作签名"
+    text: "签名后的画作无法修改，但可以复制：在工作台中放入画作 + 同样大小的空白画布。"
+    input: "标题"
+    button: "签名"
+  hex:
+    title: "按代码选色"
+    text: "按 #RRGGBB 输入颜色。地图无法显示所有颜色，因此会选取最接近的一种。"
+    input: "颜色"
+    button: "选择"
+  canvas:
+    title: "合成画布"
+    creative: "创造模式下不消耗画布。"
+    have: "你手上有 {canvases}。"
+    text: "列是宽度，行是高度：2×4 的画布需要八张 1×1 画布。灰色的尺寸暂时无法合成。"
+    same: "你已经持有这个画布"
+    assemble: "合成 {size} 画布：需要 {canvases}"
+    need: "需要 {canvases}，你手上有 {have}"
+  image:
+    title: "网络图片"
+    text: "图片会放到你看向的画布上，或手持的空白画布中；只有两者都没有时，方块尺寸才有用。不满意？再次打开窗口：设置会保留，画布上之前的结果会被替换。"
+    url: "图片 URL"
+    fit:
+      label: "适应方式"
+      cover: "铺满画布，裁掉多余部分"
+      contain: "完整显示图片，留出边距"
+      stretch: "拉伸至整块画布"
+    zoom: "缩放，%"
+    x: "向右偏移，%"
+    "y": "向下偏移，%"
+    brightness: "亮度，%"
+    contrast: "对比度，%"
+    saturation: "饱和度，%"
+    dither: "平滑颜色过渡（不适用于像素画）"
+    shade: "像方块的面一样变暗：用于画作拼成的立方体"
+    clear: "图片周围的边距为透明，而不是白色"
+    width: "新画作的宽度，方块"
+    height: "新画作的高度，方块"
+    button: "应用"
+    no-url: "请粘贴图片 URL"

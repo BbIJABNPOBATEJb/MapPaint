@@ -7,7 +7,13 @@ group = pluginGroup
 version = pluginVersion
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(javaVer)
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+sourceSets {
+    modern {
+        compileClasspath += sourceSets.main.output
+    }
 }
 
 repositories {
@@ -27,19 +33,37 @@ dependencies {
 
     compileOnly libs.lombok
     annotationProcessor libs.lombok
+
+    modernCompileOnly libs.paper.api.modern
+    modernCompileOnly libs.packetevents
+    modernCompileOnly libs.lombok
+    modernAnnotationProcessor libs.lombok
 }
 
 configurations.runtimeClasspath {
     exclude group: 'com.google.code.gson'
     exclude group: 'org.jetbrains', module: 'annotations'
-    exclude group: 'net.kyori', module: 'adventure-api'
-    exclude group: 'net.kyori', module: 'adventure-key'
+}
+
+configurations.compileClasspath {
+    resolutionStrategy.eachDependency {
+        if (requested.group == 'net.kyori' && requested.name.startsWith('adventure-') && requested.name != 'adventure-nbt') {
+            useVersion(libs.versions.adventure.old.get())
+        }
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.release.set(javaVer.toInteger())
     options.compilerArgs.add('-parameters')
+}
+
+compileJava {
+    options.release.set(javaVer.toInteger())
+}
+
+compileModernJava {
+    options.release.set(21)
 }
 
 processResources {
@@ -60,6 +84,7 @@ processResources {
 def libsPackage = "${project.group}.paintcraft.lib"
 
 shadowJar {
+    from sourceSets.modern.output
     archiveBaseName.set(pluginName)
     archiveClassifier.set('')
 
@@ -69,10 +94,6 @@ shadowJar {
     relocate 'panda.std', "${libsPackage}.panda.std"
     relocate 'com.github.retrooper.packetevents', "${libsPackage}.packetevents.api"
     relocate 'io.github.retrooper.packetevents', "${libsPackage}.packetevents.impl"
-    relocate('net.kyori.adventure.nbt', "${libsPackage}.nbt") {
-        exclude 'net.kyori.adventure.nbt.api.*'
-    }
-    relocate 'net.kyori.examination', "${libsPackage}.examination"
 
     exclude 'META-INF/maven/**'
     exclude 'META-INF/versions/**'

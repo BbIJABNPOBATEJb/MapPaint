@@ -5,6 +5,7 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,6 +19,8 @@ import java.util.List;
 @UtilityClass
 public class ItemUtil {
 
+    private final Enchantment GLINT = Enchantment.getByKey(NamespacedKey.minecraft("unbreaking"));
+
     public ItemBuilder builder(Material material) {
         return new ItemBuilder(new ItemStack(material));
     }
@@ -27,13 +30,13 @@ public class ItemUtil {
     }
 
     public @Nullable String getString(@Nullable ItemStack item, NamespacedKey key) {
-        if (item == null || item.getType().isAir()) return null;
-        return item.getPersistentDataContainer().get(key, PersistentDataType.STRING);
+        if (item == null || !item.hasItemMeta()) return null;
+        return item.getItemMeta().getPersistentDataContainer().get(key, PersistentDataType.STRING);
     }
 
     public int getInt(@Nullable ItemStack item, NamespacedKey key, int fallback) {
-        if (item == null || item.getType().isAir()) return fallback;
-        return item.getPersistentDataContainer().getOrDefault(key, PersistentDataType.INTEGER, fallback);
+        if (item == null || !item.hasItemMeta()) return fallback;
+        return item.getItemMeta().getPersistentDataContainer().getOrDefault(key, PersistentDataType.INTEGER, fallback);
     }
 
     public record ItemBuilder(ItemStack itemStack) {
@@ -65,11 +68,12 @@ public class ItemUtil {
         }
 
         public ItemBuilder glowing(boolean glowing) {
-            return editMeta(meta -> meta.setEnchantmentGlintOverride(glowing ? Boolean.TRUE : null));
+            if (!glowing) return this;
+            return editMeta(meta -> meta.addEnchant(GLINT, 1, true));
         }
 
         public ItemBuilder amount(int amount) {
-            itemStack.setAmount(Math.clamp(amount, 1, 99));
+            itemStack.setAmount(MathUtil.clamp(amount, 1, 99));
             return this;
         }
 
@@ -79,14 +83,6 @@ public class ItemUtil {
 
         public ItemBuilder integer(NamespacedKey key, int value) {
             return editMeta(meta -> meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, value));
-        }
-
-        public ItemBuilder maxStack(int size) {
-            return editMeta(meta -> meta.setMaxStackSize(size));
-        }
-
-        public ItemBuilder model(String vanillaItem) {
-            return editMeta(meta -> meta.setItemModel(NamespacedKey.minecraft(vanillaItem)));
         }
 
         public ItemBuilder leatherColor(int rgb) {

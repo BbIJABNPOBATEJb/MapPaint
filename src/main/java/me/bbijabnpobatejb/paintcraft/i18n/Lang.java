@@ -18,7 +18,10 @@ import java.util.Map;
 public class Lang {
 
     public final String DEFAULT = "en";
-    public final List<String> BUNDLED = List.of("en", "ru");
+    public final List<String> BUNDLED = List.of(
+            "en", "ru", "uk", "de", "fr", "es", "pt", "it", "pl",
+            "tr", "nl", "cs", "sv", "zh", "ja", "ko", "vi", "id"
+    );
 
     private Plugin plugin;
     private File folder;
@@ -114,18 +117,29 @@ public class Lang {
     }
 
     public String plural(int count, String key, Object... placeholders) {
-        String form;
-        if (active.contains(key + ".few")) {
-            int mod100 = Math.abs(count) % 100;
-            int mod10 = mod100 % 10;
-            if (mod100 >= 11 && mod100 <= 14) form = "many";
-            else if (mod10 == 1) form = "one";
-            else if (mod10 >= 2 && mod10 <= 4) form = "few";
-            else form = "many";
-        } else {
-            form = count == 1 ? "one" : "many";
-        }
+        String form = pluralForm(Math.abs(count));
+        if (form.equals("few") && !active.contains(key + ".few")) form = "many";
         return fill(active.getString(key + "." + form, key), placeholders).replace("{count}", String.valueOf(count));
+    }
+
+    private String pluralForm(int count) {
+        int mod100 = count % 100, mod10 = count % 10;
+        boolean teen = mod100 >= 11 && mod100 <= 14;
+        return switch (code) {
+            case "ru", "uk" -> {
+                if (mod10 == 1 && !teen) yield "one";
+                yield mod10 >= 2 && mod10 <= 4 && !teen ? "few" : "many";
+            }
+            case "pl" -> {
+                if (count == 1) yield "one";
+                yield mod10 >= 2 && mod10 <= 4 && !teen ? "few" : "many";
+            }
+            case "cs" -> {
+                if (count == 1) yield "one";
+                yield count >= 2 && count <= 4 ? "few" : "many";
+            }
+            default -> count == 1 ? "one" : "many";
+        };
     }
 
     private String fill(String template, Object... placeholders) {

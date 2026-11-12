@@ -1,0 +1,449 @@
+# PaintCraft — 한국어
+#
+# 중괄호 안의 {placeholders}는 플러그인이 채워 넣습니다. 그대로 두세요.
+# 색은 MiniMessage 태그입니다: <gray>, <white>, <#FF7800>.
+# 다른 언어 파일에 없는 키는 en.yml의 내용을 사용합니다.
+
+language:
+  name: "한국어"
+  changed: "<#1FFF5E>언어: <white>{language}"
+  current: "<white>현재 언어: <#FF7800>{language}"
+  available: "<gray>사용 가능: <white>{languages}"
+  unknown: "알 수 없는 언어 {input}. 사용 가능: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "권한이 없습니다"
+  color-format: "색은 #RRGGBB 형식으로 씁니다. 예: #FF8800"
+  canvas-cleared: "<gray>캔버스를 비웠습니다. <dark_gray>F로 되돌릴 수 있습니다"
+  "on": "켜짐"
+  "off": "꺼짐"
+
+click:
+  left: "좌클릭"
+  right: "우클릭"
+
+action:
+  open: "열기"
+  select: "선택"
+  take: "가져오기"
+  toggle: "전환"
+
+unit:
+  canvas:
+    one: "1×1 캔버스 {count}개"
+    many: "1×1 캔버스 {count}개"
+  sheet:
+    one: "{count}장"
+    many: "{count}장"
+  painting:
+    one: "그림 {count}점"
+    many: "그림 {count}점"
+
+color:
+  transparent: "투명"
+  transparent-short: "투명"
+
+command:
+  invalid-usage: "잘못된 사용법"
+  player-only: "플레이어 전용입니다"
+  usage-header: "<#FF7800>명령어 사용법:"
+  usage: "<#FF1F1F>사용법: <white>{usage}"
+  unknown-choice: "{what}을(를) 찾을 수 없습니다: {input}"
+  choice:
+    tool: "도구"
+    item: "아이템"
+  canvas-size: "캔버스 크기는 가로x세로(블록 단위)이며 1x1부터 {max}x{max}까지입니다. 예: 2x3"
+  panel-reset: "패널 창이 제자리로 돌아왔습니다"
+  specify-player: "플레이어를 지정하세요"
+  give-painting: "그림은 갤러리에서 받습니다: /paint gallery"
+  given: "<#FF7800>{player}<white>에게 지급했습니다"
+  reloaded: "설정을 다시 불러왔습니다"
+  look-at-painting: "그림을 바라보거나 손에 들고 있어야 합니다"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— 리소스 팩 없이 그리는 그림"
+    lines:
+      - "<#FF7800>붓 <dark_gray>» <gray>막대기 + 깃털. <#FF7800>캔버스 <dark_gray>» <gray>종이 + 막대기"
+      - "제작대에서 직사각형으로 놓은 캔버스는 큰 캔버스로 합쳐집니다"
+      - "<#FF7800>우클릭 <dark_gray>» <gray>그리기, <#FF7800>좌클릭 <dark_gray>» <gray>캔버스나 블록에서 색 추출"
+      - "<#FF7800>캔버스 밖에서 Shift + 우클릭 <dark_gray>» <gray>팔레트, <#FF7800>Shift + 휠 <dark_gray>» <gray>붓 크기"
+      - "<#FF7800>그리는 중 Shift <dark_gray>» <gray>직선, 정사각형, 원"
+      - "<#FF7800>F <dark_gray>» <gray>실행 취소, <#FF7800>Shift + F <dark_gray>» <gray>다시 실행"
+      - "<#FF7800>Q <dark_gray>» <gray>이전 도구, <#FF7800>Shift + Q <dark_gray>» <gray>다음 도구"
+      - "<white>/paint <gray>팔레트 · <white>/paint gallery <gray>내 그림"
+      - "<white>/paint color #RRGGBB <gray>· <white>size 숫자 <gray>· <white>tool 이름"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>옮긴 패널 창을 제자리로"
+      - "<white>/paint export <gray>그림 코드 · <white>/paint import [코드] <gray>코드 붙여넣기"
+      - "<white>/paint sign [제목] <gray>서명: 서명한 그림은 복사할 수 있음"
+      - "<white>/paint image [url] <gray>웹 이미지: 자르기, 확대, 이동"
+      - "<white>/paint admin <gray>플러그인 아이템과 서버의 모든 그림"
+      - "<white>/paint give brush|canvas [WxH] [수량] [플레이어]"
+      - "<white>/paint language [코드] <gray>플러그인 언어 · <white>/paint reload"
+
+tool:
+  brush:
+    name: "붓"
+    hint: "우클릭을 누른 채 캔버스 위에서 드래그하세요. Shift를 누르면 직선이 됩니다."
+  eraser:
+    name: "지우개"
+    hint: "빈 캔버스 상태까지 지웁니다."
+  fill:
+    name: "채우기"
+    hint: "같은 색 영역을 채웁니다."
+  spray:
+    name: "스프레이"
+    hint: "점을 뿌립니다. 오래 누를수록 촘촘해집니다."
+  line:
+    name: "직선"
+    hint: "시작점에서 우클릭을 누르고 끝점에서 놓으세요. Shift로 각도를 고정합니다."
+  rect:
+    name: "직사각형"
+    hint: "모서리에서 모서리로 드래그하세요. Shift를 누르면 정사각형이 됩니다."
+  ellipse:
+    name: "타원"
+    hint: "직사각형처럼 드래그하세요. Shift를 누르면 원이 됩니다."
+
+item:
+  brush:
+    name: "<#FF7800>화가의 붓"
+    paint: "캔버스에 그리기 <gray>(누르고 있기 가능)"
+    pick: "캔버스나 블록에서 색 추출"
+    palette: "팔레트 <gray>(캔버스 밖)"
+    shift-key: "그리는 중 Shift"
+    shift: "직선, 정사각형, 원"
+    wheel-key: "Shift + 휠"
+    wheel: "붓 크기"
+    undo: "실행 취소"
+    redo: "다시 실행"
+  canvas:
+    name: "캔버스 {size}"
+    lore:
+      - "벽, 바닥, 천장에 설치하고"
+      - "붓으로 그리세요."
+      - ""
+      - "<dark_gray>같은 캔버스를 제작대에서"
+      - "<dark_gray>직사각형으로 놓으면"
+      - "<dark_gray>큰 캔버스로 합쳐집니다."
+    assemble: "스택으로 큰 캔버스 만들기"
+  painting:
+    sketch-name: "스케치"
+    author: "작가: <white>{name}"
+    size: "크기: <white>{size}"
+    imported: "<#FFE100>가져옴 <dark_gray>» <gray>옮겨 온 그림이며 직접 그린 것이 아닙니다"
+    signed:
+      - "<dark_gray>그림 + 빈 캔버스 {size}를"
+      - "<dark_gray>제작대에 놓으면 복사됩니다."
+    sketch:
+      - "<dark_gray>서명 전: 계속 그릴 수 있습니다."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "제목 없음"
+  signed: "<#FF7800>서명됨"
+  sketch: "<white>스케치"
+  imported: " <gray>· <#FFE100>가져옴"
+
+hud:
+  size: "<gray>크기 <white>{size}"
+
+paint:
+  signed: "서명된 그림은 더 이상 수정할 수 없습니다"
+  not-yours: "이 그림은 {player}님의 것입니다. 작가만 그릴 수 있습니다"
+  undo:
+    look: "실행 취소하려면 그림을 바라보세요"
+    undone: "실행 취소했습니다"
+    redone: "다시 실행했습니다"
+    nothing-undo: "취소할 작업이 없습니다"
+    nothing-redo: "다시 실행할 작업이 없습니다"
+
+place:
+  deleted: "작가가 이 그림을 삭제했습니다. 아이템은 다시 빈 캔버스가 됩니다"
+  too-big: "이 서버에서는 {max}보다 큰 캔버스를 설치할 수 없습니다"
+  no-room: "여기에는 {size} 캔버스가 들어가지 않습니다"
+  denied: "여기서는 할 수 없습니다"
+  break-owner: "그림을 설치한 플레이어만 떼어 낼 수 있습니다"
+  change-owner: "그림을 설치한 플레이어만 변경할 수 있습니다"
+
+assemble:
+  hold: "1×1 캔버스를 손에 들고 계세요"
+  not-enough: "{size} 캔버스에는 {canvases}가 필요하며, 현재 {have} 들고 있습니다"
+  done: "캔버스 {size}를 만들었습니다"
+
+import:
+  parts: "받은 조각: {have}/{total}. 조각 {next}을(를) 붙여넣으세요."
+  too-big: "코드의 그림이 서버 허용 크기({max})보다 큽니다"
+  bad-code: "그림 코드가 아니거나 손상되었습니다"
+  loading: "이미지를 불러오는 중…"
+  image-failed: "이미지를 불러오지 못했습니다: {reason}"
+  image-done: "<#1FFF5E>이미지를 캔버스에 올렸습니다. <gray>마음에 안 드시나요? 창을 다시 열어 조정하세요. 이전 결과는 교체됩니다."
+  code-done: "<#1FFF5E>그림을 캔버스에 올렸습니다. <gray>붓을 든 채 F로 취소할 수 있습니다."
+  no-target: "올릴 곳이 없습니다. 캔버스를 바라보거나 빈 {size} 캔버스를 들고 계세요"
+  created: "{size} 그림이 인벤토리에 들어왔습니다"
+  paper: "가져오기에는 종이가 필요합니다: {sheets} — 그림 블록 하나당 {price}"
+  limit: "이미 {paintings}을(를) 가지고 있어 한도입니다. 일부를 삭제하세요: /paint gallery"
+
+gallery:
+  need-canvas: "인벤토리에 빈 {size} 캔버스가 필요합니다"
+
+sign:
+  done: "<#1FFF5E>그림 '{title}'에 서명했습니다. <gray>이제 제작대에서 복사할 수 있습니다."
+
+panel:
+  window:
+    tools: "붓"
+    colors: "색"
+    actions: "그림"
+  title:
+    tools: "붓"
+    colors: "색"
+  window-reset: "'{window}' 창이 제자리로 돌아왔습니다"
+  window-grabbed: "<#FF7800>'{window}' 창 <dark_gray>» <gray>조준점으로 옮기세요. 우클릭을 놓거나 다시 클릭하면 내려놓습니다"
+  move: "<#FF7800>창 이동 <dark_gray>» <gray>우클릭을 누른 채 드래그. Shift + 클릭하면 제자리로"
+  size: "<#FF7800>붓 크기: {size} <dark_gray>» <gray>Shift + 휠로 미세 조정"
+  shape:
+    square: "<#FF7800>사각 붓 <dark_gray>» <gray>곧은 가장자리와 뾰족한 모서리"
+    round: "<#FF7800>둥근 붓 <dark_gray>» <gray>부드럽고 둥근 붓질"
+  hue: "<#FF7800>색상 <dark_gray>» <gray>이 색상의 색이 사각형에 표시됩니다"
+  current-color: "<#FF7800>현재 색: <white>{color} <dark_gray>» <gray>#RRGGBB 코드 입력"
+  previous-color: "<#FF7800>이전 색: <white>{color} <dark_gray>» <gray>되돌아가기"
+  transparent: "<#1FFFE3>투명 <dark_gray>» <gray>그림 너머로 벽이 보입니다"
+  shade: "{color} <dark_gray>» <gray>현재 색의 명암"
+  pixels: "{size}px"
+  action:
+    undo: "<#FF7800>실행 취소 <dark_gray>» <gray>F와 같음"
+    redo: "<#FF7800>다시 실행 <dark_gray>» <gray>Shift + F와 같음"
+    clear: "<#FF7800>캔버스 비우기 <dark_gray>» <gray>흰색으로 채움, 취소 가능"
+    resolution: "<#FF7800>해상도: {res}px/블록 <dark_gray>» <gray>변경. F로 되돌릴 수 있음"
+    shared: "<#FF7800>누구나 그릴 수 있음: {state} <dark_gray>» <gray>전환"
+    sign: "<#FF7800>서명 <dark_gray>» <gray>제목을 붙이고 그림을 완성"
+    export: "<#FF7800>내보내기 <dark_gray>» <gray>그림 코드를 문자열로"
+    import: "<#FF7800>가져오기 <dark_gray>» <gray>그림 코드 붙여넣기"
+    image: "<#FF7800>URL 이미지 <dark_gray>» <gray>자르기, 확대, 이동 지원"
+    gallery: "<#FF7800>내 그림"
+    hide: "<#FF7800>패널 숨기기 <dark_gray>» <gray>붓으로 캔버스를 클릭하면 다시 나타남"
+
+menu:
+  close:
+    name: "닫기"
+    action: "메뉴 닫기"
+  back:
+    name: "뒤로"
+    action: "뒤로 가기"
+  hint: "도움말"
+  page:
+    previous: "이전 페이지"
+    next: "다음 페이지"
+    action: "페이지 넘기기"
+    of: "{page}/{pages} 페이지"
+  delete:
+    confirm:
+      - "<#FF1F1F>영구 삭제할까요?"
+      - "그림이 모든 벽에서 사라지고"
+      - "관련 아이템은 빈 캔버스가 됩니다."
+    "yes": "<#FF1F1F>예, 삭제"
+    "no": "유지"
+    action: "영구 삭제"
+    done: "그림을 삭제했습니다"
+  admin:
+    title: "그림: 관리자"
+    canvases:
+      name: "<#FF7800>모든 크기의 캔버스"
+      lore:
+        - "1×1부터 {max}까지: 3×5, 1×4 등 자유롭게."
+    painting:
+      - "작가: <white>{author}"
+      - "{size} 블록 · {res}px/블록 · {state}"
+      - "수정: <white>{date}"
+      - "로드된 청크에 설치됨: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "가져오기"
+    export: "문자열로 내보내기"
+    empty: "서버에 아직 그림이 없습니다"
+    count: "<white>서버의 그림: <#FF7800>{count}"
+    too-big:
+      - "설정 허용 크기를 넘습니다:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "{amount}개 한 번에 가져오기"
+    help-canvases:
+      - "<white>모든 크기의 캔버스."
+      - "열은 가로, 행은 세로입니다:"
+      - "다섯 번째 행의 세 번째 열이 3×5입니다."
+      - ""
+      - "Shift + 좌클릭으로 {amount}개를 한 번에 받습니다."
+    help:
+      - "<white>맨 윗줄은 플러그인 아이템입니다:"
+      - "붓, 캔버스, 그리고 {max}까지의"
+      - "캔버스 표."
+      - ""
+      - "그 아래는 모든 플레이어의 그림입니다."
+      - "여기서 가져온 그림은 복사본이 아닌"
+      - "원본입니다. 수정하면 걸려 있는"
+      - "모든 곳에 반영됩니다."
+  canvas:
+    title: "캔버스"
+    info:
+      - "작가: <white>{author}"
+      - "크기: <white>{size} <gray>블록, <white>{pixels} <gray>픽셀"
+      - "상태: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>해상도: 블록당 <#FF7800>{res}<white>픽셀"
+      lore:
+        - "숫자가 작을수록 픽셀이 커집니다."
+        - "변경하면 그림이 늘어납니다."
+        - "<dark_gray>F로 변경을 취소합니다."
+      finer: "더 촘촘하게"
+      coarser: "더 거칠게"
+    clear:
+      name: "캔버스 비우기"
+      lore:
+        - "흰색으로 채웁니다. 취소 가능 (F)."
+      action: "비우기"
+    shared:
+      name: "<white>누구나 그릴 수 있음: {state}"
+      lore:
+        - "함께 그리기: 어떤 플레이어의 붓이든"
+        - "이 캔버스에서 사용할 수 있습니다."
+    sign:
+      name: "서명"
+      lore:
+        - "제목을 붙이고 그림을 완성합니다."
+        - "서명한 그림은 수정할 수 없지만"
+        - "복사는 할 수 있습니다."
+      action: "서명"
+    export:
+      name: "문자열로 내보내기"
+      lore:
+        - "그림 코드: 복사해서 누구에게나,"
+        - "다른 서버에도 전달할 수 있습니다."
+      action: "코드 보기"
+    import:
+      name: "문자열에서 가져오기"
+      lore:
+        - "코드를 붙여넣으세요. 그림은 바라보는"
+        - "캔버스 또는 손에 든 빈 캔버스에"
+        - "들어갑니다."
+      action: "코드 붙여넣기"
+    gallery:
+      lore:
+        - "지금까지 그린 모든 그림."
+  gallery:
+    title: "내 그림"
+    painting:
+      - "{size} 블록 · {res}px/블록 · {state}"
+      - "수정: <white>{date}"
+      - "현재 설치됨: <white>{placed}"
+    take: "가져오기 <gray>(빈 {size} 캔버스 필요)"
+    empty:
+      name: "아직 아무것도 없습니다"
+      lore:
+        - "캔버스를 놓고 무언가 그려 보세요."
+    help:
+      - "<white>그린 그림은 모두 여기에 보관됩니다."
+      - "떼어 냈거나 잃어버려도 괜찮습니다."
+      - ""
+      - "여기서 가져온 스케치는 같은 그림입니다."
+      - "수정하면 걸려 있는 모든 곳에"
+      - "반영됩니다."
+      - ""
+      - "서명한 그림은 제작대에서 복사:"
+      - "그림 + 빈 캔버스."
+  palette:
+    title: "팔레트와 도구"
+    page: "색: {page}/{pages} 페이지"
+    hex:
+      name: "코드로 색 지정"
+      lore:
+        - "#RRGGBB를 입력하면 가장 가까운"
+        - "팔레트 색이 선택됩니다."
+      action: "코드 입력"
+    transparent:
+      - "픽셀이 사라져 그림 너머로 벽이"
+      - "보입니다. 스티커나 원하는"
+      - "모양의 그림에 좋습니다."
+    shade:
+      - "선택한 색의 명암."
+    size:
+      name: "<white>붓 크기: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>게임 중: Shift + 마우스 휠."
+      more: "크게"
+      less: "작게"
+      shift: "Shift 누르면"
+      by-four: "4씩"
+    canvas:
+      name: "캔버스와 내 그림"
+      lore:
+        - "해상도, 서명, 내보내기,"
+        - "가져오기, 내 그림 목록."
+    help:
+      - "<white>붓을 들고 있을 때:"
+      - "캔버스를 우클릭하면 그리고,"
+      - "좌클릭하면 캔버스나 월드의 모든"
+      - "블록에서 색을 추출합니다."
+      - ""
+      - "Shift + 휠로 붓 크기를 바꿉니다."
+      - "F는 실행 취소, Shift + F는 다시 실행."
+      - ""
+      - "도형은 드래그로 그립니다. 우클릭을"
+      - "누른 채 움직이고 놓으세요."
+      - "Shift를 누르면 선은 곧게,"
+      - "직사각형은 정사각형,"
+      - "타원은 원이 됩니다."
+
+dialog:
+  code: "코드"
+  export:
+    title: "그림 내보내기"
+    text: "'{title}' — {length}자 코드입니다. 복사를 누르면 클립보드에 담깁니다."
+    text-parts: "'{title}' — 코드가 길어서 여러 조각으로 나뉘었습니다. {part}/{parts}번째 조각: {length}자. 모든 조각을 차례로 복사해 붙여넣으세요."
+    copy: "복사"
+    copy-tooltip: "코드를 클립보드에 담기"
+    next: "다음 조각"
+    first: "첫 조각으로"
+  import:
+    title: "그림 가져오기"
+    text: "그림 코드를 붙여넣으세요 (Ctrl+V). 그림은 바라보는 캔버스 또는 손에 든 빈 캔버스에 들어갑니다."
+    button: "가져오기"
+  sign:
+    title: "그림에 서명"
+    text: "서명한 그림은 수정할 수 없지만 복사할 수 있습니다. 제작대에 그림 + 같은 크기의 빈 캔버스를 놓으세요."
+    input: "제목"
+    button: "서명"
+  hex:
+    title: "코드로 색 지정"
+    text: "색을 #RRGGBB 형식으로 입력하세요. 지도는 모든 색을 표현할 수 없어 가장 가까운 색이 선택됩니다."
+    input: "색"
+    button: "선택"
+  canvas:
+    title: "캔버스 합치기"
+    creative: "크리에이티브 모드에서는 캔버스가 소모되지 않습니다."
+    have: "{canvases}을(를) 들고 있습니다."
+    text: "열은 가로, 행은 세로입니다. 2×4 캔버스에는 1×1 캔버스 여덟 개가 필요합니다. 회색 크기는 아직 만들 수 없습니다."
+    same: "이미 이 캔버스를 들고 있습니다"
+    assemble: "{size} 캔버스 만들기: {canvases} 필요"
+    need: "{canvases}이(가) 필요하며 현재 {have} 들고 있습니다"
+  image:
+    title: "URL 이미지"
+    text: "이미지는 바라보는 캔버스 또는 손에 든 빈 캔버스에 들어갑니다. 블록 단위 크기는 둘 다 없을 때만 쓰입니다. 마음에 안 드시나요? 창을 다시 여세요. 설정은 유지되고 캔버스의 이전 결과는 교체됩니다."
+    url: "이미지 URL"
+    fit:
+      label: "맞춤"
+      cover: "캔버스를 채우고 넘치는 부분은 자르기"
+      contain: "이미지 전체를 맞추고 여백 두기"
+      stretch: "캔버스 전체로 늘리기"
+    zoom: "확대, %"
+    x: "오른쪽으로 이동, %"
+    "y": "아래로 이동, %"
+    brightness: "밝기, %"
+    contrast: "대비, %"
+    saturation: "채도, %"
+    dither: "색 전환을 부드럽게 (픽셀 아트에는 적용 안 됨)"
+    shade: "블록 면처럼 어둡게: 그림으로 만든 큐브용"
+    clear: "이미지 주변 여백을 흰색이 아닌 투명으로"
+    width: "새 그림의 너비, 블록"
+    height: "새 그림의 높이, 블록"
+    button: "적용"
+    no-url: "이미지 URL을 붙여넣으세요"

@@ -19,11 +19,11 @@ import me.bbijabnpobatejb.paintcraft.item.PaintItem;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.paint.Tool;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
-import me.bbijabnpobatejb.paintcraft.ui.Dialogs;
 import me.bbijabnpobatejb.paintcraft.ui.menu.AdminGui;
 import me.bbijabnpobatejb.paintcraft.ui.menu.GalleryGui;
 import me.bbijabnpobatejb.paintcraft.ui.menu.PaletteGui;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
+import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -111,7 +111,7 @@ public class PaintCommand {
     @Execute(name = "sign")
     void sign(@Sender Player sender) {
         Painting painting = resolve(sender);
-        if (painting != null) Dialogs.sign(plugin, sender, painting);
+        if (painting != null) plugin.getPrompts().sign(sender, painting);
     }
 
     @Execute(name = "sign")
@@ -128,14 +128,14 @@ public class PaintCommand {
 
     @Execute(name = "import")
     void importCode(@Sender Player sender, @OptionalArg("code") String code) {
-        if (code == null) Dialogs.importCode(plugin, sender, null);
+        if (code == null) plugin.getPrompts().importCode(sender, null);
         else plugin.getExchangeService().importText(sender, code);
     }
 
     @Execute(name = "image")
     @Permission(PaintCraft.PERMISSION_IMAGE)
     void image(@Sender Player sender, @OptionalArg("url") String url) {
-        Dialogs.image(plugin, sender, url);
+        plugin.getPrompts().image(sender, url);
     }
 
     @Execute(name = "admin")
@@ -159,7 +159,7 @@ public class PaintCommand {
             case BRUSH -> stack = items.createBrush();
             case CANVAS -> {
                 CanvasSize canvas = size == null ? CanvasSize.SINGLE : size;
-                stack = items.createCanvas(canvas.width(), canvas.height(), amount == null ? 1 : Math.clamp(amount, 1, 64));
+                stack = items.createCanvas(canvas.width(), canvas.height(), amount == null ? 1 : MathUtil.clamp(amount, 1, 64));
             }
             default -> {
                 Chat.sendChat(sender, Chat.red(Lang.get("command.give-painting")));

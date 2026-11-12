@@ -12,6 +12,10 @@ import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.command.BukkitCommandConfigurator;
 import me.bbijabnpobatejb.paintcraft.command.PaintCommand;
+import me.bbijabnpobatejb.paintcraft.compat.Compat;
+import me.bbijabnpobatejb.paintcraft.compat.Icons;
+import me.bbijabnpobatejb.paintcraft.compat.ItemStyle;
+import me.bbijabnpobatejb.paintcraft.compat.Prompts;
 import me.bbijabnpobatejb.paintcraft.config.ConfigHandler;
 import me.bbijabnpobatejb.paintcraft.craft.CraftListener;
 import me.bbijabnpobatejb.paintcraft.craft.RecipeService;
@@ -27,6 +31,7 @@ import me.bbijabnpobatejb.paintcraft.paint.PaintService;
 import me.bbijabnpobatejb.paintcraft.store.PaintingStorage;
 import me.bbijabnpobatejb.paintcraft.studio.StudioService;
 import me.bbijabnpobatejb.paintcraft.ui.listener.InventoryListener;
+import me.bbijabnpobatejb.paintcraft.util.ChatInput;
 import me.bbijabnpobatejb.paintcraft.world.PlacementManager;
 import me.bbijabnpobatejb.paintcraft.world.PlacementPreview;
 import org.bukkit.Bukkit;
@@ -34,6 +39,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 import java.util.logging.Level;
@@ -64,6 +70,10 @@ public final class PaintCraft extends JavaPlugin {
     SlotTracker slotTracker;
     StudioService studioService;
     PlacementPreview placementPreview;
+    ChatInput chatInput;
+    Prompts prompts;
+    ItemStyle itemStyle;
+    @Nullable Icons icons;
     PacketListenerCommon packetListener;
     BukkitTask autosaveTask;
 
@@ -87,6 +97,10 @@ public final class PaintCraft extends JavaPlugin {
         storage.load();
         mapBridge = new MapBridge(this, storage);
         storage.beforeEvict = mapBridge::detach;
+        chatInput = new ChatInput(this);
+        prompts = Compat.prompts(this);
+        itemStyle = Compat.items(this);
+        icons = Compat.icons(this);
         itemService = new ItemService(this);
         placementManager = new PlacementManager(this, storage, mapBridge, itemService);
         paintService = new PaintService(this, storage, mapBridge, placementManager);
@@ -177,6 +191,8 @@ public final class PaintCraft extends JavaPlugin {
         registerListener(new WorldListener(this));
         registerListener(new InventoryListener());
         registerListener(new CraftListener(this));
+        registerListener(chatInput);
+        Compat.listeners(this);
     }
 
     void registerListener(Listener listener) {

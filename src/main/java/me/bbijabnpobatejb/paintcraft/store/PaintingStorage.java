@@ -252,7 +252,7 @@ public final class PaintingStorage {
                 return view;
             }
         }
-        return Bukkit.createMap(Bukkit.getWorlds().getFirst());
+        return Bukkit.createMap(Bukkit.getWorlds().get(0));
     }
 
     public void markPlacementRemoved(UUID placement) {

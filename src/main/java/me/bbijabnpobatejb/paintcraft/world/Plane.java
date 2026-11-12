@@ -7,6 +7,7 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 import org.joml.Matrix3f;
 import org.joml.Quaternionf;
@@ -28,6 +29,7 @@ public final class Plane {
     public final double cornerX, cornerY, cornerZ;
     public final int ux, uy, uz, vx, vy, vz, nx, ny, nz;
     Quaternionf rotation;
+    Quaternionf iconRotation;
 
     private Plane(World world, double cornerX, double cornerY, double cornerZ, int[] axes, BlockFace face) {
         this.world = world;
@@ -47,6 +49,7 @@ public final class Plane {
                 ux, uy, uz,
                 -vx, -vy, -vz,
                 nx, ny, nz));
+        iconRotation = new Quaternionf(rotation).rotateY((float) Math.PI);
     }
 
     public static Plane of(World world, BlockFace face, int rot, int ox, int oy, int oz) {
@@ -93,6 +96,12 @@ public final class Plane {
         return display.text(text)
                 .textLook(0, false, false, FakeDisplay.BILLBOARD_FIXED)
                 .light(FakeDisplay.FULL_BRIGHT);
+    }
+
+    public FakeDisplay icon(FakeDisplay display, double a, double b, double size, double out, ItemStack item) {
+        display.position(point(a, b, out));
+        display.transform(new Vector3f(), iconRotation, new Vector3f((float) size, (float) size, 0.01f), new Quaternionf());
+        return display.item(item).light(FakeDisplay.FULL_BRIGHT);
     }
 
     public FakeDisplay sprite(FakeDisplay display, double a, double b, double size, double out, Component sprite) {

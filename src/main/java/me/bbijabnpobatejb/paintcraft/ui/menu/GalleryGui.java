@@ -10,6 +10,7 @@ import me.bbijabnpobatejb.paintcraft.ui.inventory.InventoryGuiImpl;
 import me.bbijabnpobatejb.paintcraft.item.ItemService;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.ItemUtil;
+import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
 import me.bbijabnpobatejb.paintcraft.util.action.ActionLoreBuilder;
 import net.kyori.adventure.text.Component;
@@ -50,7 +51,7 @@ public class GalleryGui extends InventoryGuiImpl {
 
         List<Painting> paintings = plugin.getStorage().ownedBy(viewer.getUniqueId());
         int pages = Math.max(1, (paintings.size() + PER_PAGE - 1) / PER_PAGE);
-        page = Math.clamp(page, 0, pages - 1);
+        page = MathUtil.clamp(page, 0, pages - 1);
         val date = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
         for (int i = 0; i < PER_PAGE; i++) {

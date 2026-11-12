@@ -10,7 +10,6 @@ import me.bbijabnpobatejb.paintcraft.item.PaintItem;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.paint.PaintService;
 import me.bbijabnpobatejb.paintcraft.store.Codec;
-import me.bbijabnpobatejb.paintcraft.ui.Dialogs;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.Sounds;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
@@ -34,7 +33,7 @@ public class ExchangeService {
             return;
         }
         String code = Codec.encode(painting.blocksW, painting.blocksH, painting.res, plugin.getStorage().pixels(painting));
-        Dialogs.export(plugin, player, painting, Codec.split(code, Dialogs.PART_LIMIT), 0);
+        plugin.getPrompts().export(player, painting, Codec.split(code, plugin.getPrompts().partLimit()), 0);
     }
 
     public void importText(Player player, String text) {
@@ -56,7 +55,7 @@ public class ExchangeService {
                 else if (missing < 0) missing = i;
             }
             if (missing >= 0) {
-                Dialogs.importCode(plugin, player, Lang.get("import.parts",
+                plugin.getPrompts().importCode(player, Lang.get("import.parts",
                         "have", have, "total", part.total(), "next", missing + 1));
                 return;
             }

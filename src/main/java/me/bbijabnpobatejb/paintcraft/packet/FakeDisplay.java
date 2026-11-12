@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.paintcraft.packet;
 
+import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import com.github.retrooper.packetevents.protocol.entity.EntityPositionData;
 import com.github.retrooper.packetevents.protocol.entity.data.EntityData;
 import com.github.retrooper.packetevents.protocol.entity.data.EntityDataTypes;
@@ -10,11 +11,13 @@ import com.github.retrooper.packetevents.util.Vector3d;
 import com.github.retrooper.packetevents.wrapper.PacketWrapper;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityMetadata;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityPositionSync;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEntityTeleport;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnEntity;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
 import io.github.retrooper.packetevents.util.SpigotReflectionUtil;
 import lombok.AccessLevel;
 import lombok.Getter;
+import me.bbijabnpobatejb.paintcraft.compat.Compat;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.PackagePrivate;
 import net.kyori.adventure.text.Component;
@@ -34,25 +37,29 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class FakeDisplay {
 
+    private static final boolean OLD_DISPLAY = Compat.isOlderThan(ServerVersion.V_1_20_2);
+    private static final boolean OLD_TELEPORT = Compat.isOlderThan(ServerVersion.V_1_21_2);
+    private static final int SHIFT = OLD_DISPLAY ? -1 : 0;
+
     private static final int FLAGS = 0;
     private static final int INTERPOLATION_DELAY = 8;
     private static final int TRANSFORMATION_DURATION = 9;
     private static final int TELEPORT_DURATION = 10;
-    private static final int TRANSLATION = 11;
-    private static final int SCALE = 12;
-    private static final int LEFT_ROTATION = 13;
-    private static final int RIGHT_ROTATION = 14;
-    private static final int BILLBOARD = 15;
-    private static final int BRIGHTNESS = 16;
-    private static final int VIEW_RANGE = 17;
-    private static final int GLOW_COLOR = 22;
-    private static final int BLOCK_STATE = 23;
-    private static final int TEXT = 23;
-    private static final int TEXT_LINE_WIDTH = 24;
-    private static final int TEXT_BACKGROUND = 25;
-    private static final int TEXT_FLAGS = 27;
-    private static final int ITEM = 23;
-    private static final int ITEM_DISPLAY_TYPE = 24;
+    private static final int TRANSLATION = 11 + SHIFT;
+    private static final int SCALE = 12 + SHIFT;
+    private static final int LEFT_ROTATION = 13 + SHIFT;
+    private static final int RIGHT_ROTATION = 14 + SHIFT;
+    private static final int BILLBOARD = 15 + SHIFT;
+    private static final int BRIGHTNESS = 16 + SHIFT;
+    private static final int VIEW_RANGE = 17 + SHIFT;
+    private static final int GLOW_COLOR = 22 + SHIFT;
+    private static final int BLOCK_STATE = 23 + SHIFT;
+    private static final int TEXT = 23 + SHIFT;
+    private static final int TEXT_LINE_WIDTH = 24 + SHIFT;
+    private static final int TEXT_BACKGROUND = 25 + SHIFT;
+    private static final int TEXT_FLAGS = 27 + SHIFT;
+    private static final int ITEM = 23 + SHIFT;
+    private static final int ITEM_DISPLAY_TYPE = 24 + SHIFT;
     private static final int INTERACTION_WIDTH = 8;
     private static final int INTERACTION_HEIGHT = 9;
     private static final int INTERACTION_RESPONSIVE = 10;
@@ -244,7 +251,7 @@ public final class FakeDisplay {
         } else {
             data.add(new EntityData<>(FLAGS, EntityDataTypes.BYTE, glowing ? FLAG_GLOWING : (byte) 0));
             data.add(new EntityData<>(TRANSFORMATION_DURATION, EntityDataTypes.INT, interpolation));
-            data.add(new EntityData<>(TELEPORT_DURATION, EntityDataTypes.INT, teleportDuration));
+            if (!OLD_DISPLAY) data.add(new EntityData<>(TELEPORT_DURATION, EntityDataTypes.INT, teleportDuration));
             data.add(new EntityData<>(TRANSLATION, EntityDataTypes.VECTOR3F, pe(translation)));
             data.add(new EntityData<>(SCALE, EntityDataTypes.VECTOR3F, pe(scale)));
             data.add(new EntityData<>(LEFT_ROTATION, EntityDataTypes.QUATERNION, pe(left)));
@@ -270,8 +277,12 @@ public final class FakeDisplay {
 
     void appendChanges(List<PacketWrapper<?>> out) {
         if (x != sentX || y != sentY || z != sentZ) {
-            out.add(new WrapperPlayServerEntityPositionSync(entityId,
-                    new EntityPositionData(new Vector3d(x, y, z), Vector3d.zero(), 0f, 0f), false));
+            if (OLD_TELEPORT) {
+                out.add(new WrapperPlayServerEntityTeleport(entityId, new Vector3d(x, y, z), 0f, 0f, false));
+            } else {
+                out.add(new WrapperPlayServerEntityPositionSync(entityId,
+                        new EntityPositionData(new Vector3d(x, y, z), Vector3d.zero(), 0f, 0f), false));
+            }
         }
 
         List<EntityData<?>> data = new ArrayList<>();
@@ -301,7 +312,7 @@ public final class FakeDisplay {
             if (interpolation != sentInterpolation) {
                 data.add(new EntityData<>(TRANSFORMATION_DURATION, EntityDataTypes.INT, interpolation));
             }
-            if (teleportDuration != sentTeleportDuration) {
+            if (!OLD_DISPLAY && teleportDuration != sentTeleportDuration) {
                 data.add(new EntityData<>(TELEPORT_DURATION, EntityDataTypes.INT, teleportDuration));
             }
             if (light != sentLight) data.add(new EntityData<>(BRIGHTNESS, EntityDataTypes.INT, light));

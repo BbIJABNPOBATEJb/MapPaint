@@ -1,0 +1,449 @@
+# PaintCraft — Tiếng Việt
+#
+# {placeholders} trong dấu ngoặc nhọn do plugin điền vào: giữ nguyên.
+# Màu dùng thẻ MiniMessage: <gray>, <white>, <#FF7800>.
+# Khóa thiếu trong file ngôn ngữ khác sẽ dùng bản en.yml.
+
+language:
+  name: "Tiếng Việt"
+  changed: "<#1FFF5E>Ngôn ngữ: <white>{language}"
+  current: "<white>Ngôn ngữ hiện tại: <#FF7800>{language}"
+  available: "<gray>Có sẵn: <white>{languages}"
+  unknown: "Không có ngôn ngữ {input}. Có sẵn: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "Bạn không có quyền"
+  color-format: "Màu được viết dạng #RRGGBB, ví dụ #FF8800"
+  canvas-cleared: "<gray>Đã xóa canvas. <dark_gray>Nhấn F để hoàn tác"
+  "on": "BẬT"
+  "off": "TẮT"
+
+click:
+  left: "Chuột trái"
+  right: "Chuột phải"
+
+action:
+  open: "mở"
+  select: "chọn"
+  take: "lấy"
+  toggle: "bật/tắt"
+
+unit:
+  canvas:
+    one: "{count} canvas 1×1"
+    many: "{count} canvas 1×1"
+  sheet:
+    one: "{count} tờ"
+    many: "{count} tờ"
+  painting:
+    one: "{count} bức tranh"
+    many: "{count} bức tranh"
+
+color:
+  transparent: "Trong suốt"
+  transparent-short: "trong suốt"
+
+command:
+  invalid-usage: "Cú pháp không hợp lệ"
+  player-only: "Chỉ dành cho người chơi"
+  usage-header: "<#FF7800>Cách dùng lệnh:"
+  usage: "<#FF1F1F>Cú pháp: <white>{usage}"
+  unknown-choice: "Không có {what}: {input}"
+  choice:
+    tool: "công cụ"
+    item: "vật phẩm"
+  canvas-size: "Kích thước canvas là RxC tính bằng khối, từ 1x1 đến {max}x{max}. Ví dụ: 2x3"
+  panel-reset: "Các cửa sổ bảng đã về chỗ cũ"
+  specify-player: "Hãy chỉ định người chơi"
+  give-painting: "Tranh lấy từ phòng tranh: /paint gallery"
+  given: "<white>Đã đưa cho <#FF7800>{player}"
+  reloaded: "Đã tải lại cấu hình"
+  look-at-painting: "Hãy nhìn vào một bức tranh hoặc cầm nó trên tay"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— tranh vẽ không cần resource pack"
+    lines:
+      - "<#FF7800>Cọ <dark_gray>» <gray>gậy + lông vũ. <#FF7800>Canvas <dark_gray>» <gray>giấy + gậy"
+      - "Canvas xếp thành hình chữ nhật trong bàn chế tạo sẽ gộp thành canvas lớn"
+      - "<#FF7800>Chuột phải <dark_gray>» <gray>vẽ, <#FF7800>chuột trái <dark_gray>» <gray>lấy màu từ canvas hoặc khối"
+      - "<#FF7800>Shift + chuột phải ngoài canvas <dark_gray>» <gray>bảng màu, <#FF7800>Shift + cuộn <dark_gray>» <gray>cỡ cọ"
+      - "<#FF7800>Shift khi vẽ <dark_gray>» <gray>đường thẳng, hình vuông, hình tròn"
+      - "<#FF7800>F <dark_gray>» <gray>hoàn tác, <#FF7800>Shift + F <dark_gray>» <gray>làm lại"
+      - "<#FF7800>Q <dark_gray>» <gray>công cụ trước, <#FF7800>Shift + Q <dark_gray>» <gray>công cụ sau"
+      - "<white>/paint <gray>bảng màu · <white>/paint gallery <gray>tranh của tôi"
+      - "<white>/paint color #RRGGBB <gray>· <white>size số <gray>· <white>tool tên"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>đưa các cửa sổ bảng đã dời về chỗ cũ"
+      - "<white>/paint export <gray>mã tranh · <white>/paint import [mã] <gray>dán mã"
+      - "<white>/paint sign [tên] <gray>ký tên: tranh đã ký có thể sao chép"
+      - "<white>/paint image [url] <gray>ảnh từ web: cắt, thu phóng, dịch chuyển"
+      - "<white>/paint admin <gray>vật phẩm plugin và mọi bức tranh trên máy chủ"
+      - "<white>/paint give brush|canvas [WxH] [số lượng] [người chơi]"
+      - "<white>/paint language [mã] <gray>ngôn ngữ plugin · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Cọ"
+    hint: "Giữ chuột phải và kéo trên canvas. Shift giữ nét thẳng."
+  eraser:
+    name: "Tẩy"
+    hint: "Xóa về canvas trống."
+  fill:
+    name: "Đổ màu"
+    hint: "Tô một vùng cùng màu."
+  spray:
+    name: "Bình xịt"
+    hint: "Xịt các chấm: giữ càng lâu càng dày."
+  line:
+    name: "Đường thẳng"
+    hint: "Giữ chuột phải ở điểm đầu, thả ở điểm cuối. Shift để nắn thẳng."
+  rect:
+    name: "Hình chữ nhật"
+    hint: "Kéo từ góc này sang góc kia. Shift tạo hình vuông."
+  ellipse:
+    name: "Hình elip"
+    hint: "Kéo như hình chữ nhật. Shift tạo hình tròn."
+
+item:
+  brush:
+    name: "<#FF7800>Cọ của họa sĩ"
+    paint: "vẽ lên canvas <gray>(có thể giữ)"
+    pick: "lấy màu từ canvas hoặc khối"
+    palette: "bảng màu <gray>(ngoài canvas)"
+    shift-key: "Shift khi vẽ"
+    shift: "đường thẳng, hình vuông, hình tròn"
+    wheel-key: "Shift + cuộn"
+    wheel: "cỡ cọ"
+    undo: "hoàn tác"
+    redo: "làm lại"
+  canvas:
+    name: "Canvas {size}"
+    lore:
+      - "Đặt lên tường, sàn hoặc trần"
+      - "và vẽ bằng cọ."
+      - ""
+      - "<dark_gray>Các canvas giống nhau xếp"
+      - "<dark_gray>thành hình chữ nhật trong bàn chế tạo"
+      - "<dark_gray>sẽ gộp thành canvas lớn."
+    assemble: "ghép canvas lớn từ chồng vật phẩm"
+  painting:
+    sketch-name: "Bản phác"
+    author: "Tác giả: <white>{name}"
+    size: "Kích thước: <white>{size}"
+    imported: "<#FFE100>Nhập <dark_gray>» <gray>được chuyển vào, không vẽ tay"
+    signed:
+      - "<dark_gray>Tranh + canvas trống {size}"
+      - "<dark_gray>trong bàn chế tạo tạo ra bản sao."
+    sketch:
+      - "<dark_gray>Chưa ký: vẫn có thể vẽ tiếp."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Chưa đặt tên"
+  signed: "<#FF7800>đã ký"
+  sketch: "<white>bản phác"
+  imported: " <gray>· <#FFE100>nhập"
+
+hud:
+  size: "<gray>cỡ <white>{size}"
+
+paint:
+  signed: "Bức tranh đã được ký — không thể sửa nữa"
+  not-yours: "Bức tranh này của {player}: chỉ tác giả mới được vẽ lên"
+  undo:
+    look: "Hãy nhìn vào một bức tranh để hoàn tác"
+    undone: "Đã hoàn tác"
+    redone: "Đã làm lại"
+    nothing-undo: "Không có gì để hoàn tác"
+    nothing-redo: "Không có gì để làm lại"
+
+place:
+  deleted: "Tác giả đã xóa bức tranh này. Vật phẩm lại là canvas trống"
+  too-big: "Máy chủ này không cho đặt canvas lớn hơn {max}"
+  no-room: "Canvas {size} không vừa chỗ này"
+  denied: "Bạn không thể làm vậy ở đây"
+  break-owner: "Chỉ người đã đặt bức tranh mới gỡ được nó"
+  change-owner: "Chỉ người đã đặt bức tranh mới thay đổi được nó"
+
+assemble:
+  hold: "Hãy cầm canvas 1×1 trên tay"
+  not-enough: "Canvas {size} cần {canvases}, bạn đang cầm {have}"
+  done: "Đã ghép canvas {size}"
+
+import:
+  parts: "Đã nhận phần: {have}/{total}. Hãy dán phần {next}."
+  too-big: "Bức tranh trong mã lớn hơn mức máy chủ cho phép ({max})"
+  bad-code: "Đây không phải mã tranh, hoặc mã bị hỏng"
+  loading: "Đang tải ảnh…"
+  image-failed: "Không tải được ảnh: {reason}"
+  image-done: "<#1FFF5E>Ảnh đã lên canvas. <gray>Chưa ưng? Mở lại cửa sổ và chỉnh — kết quả trước sẽ bị thay thế."
+  code-done: "<#1FFF5E>Hình vẽ đã lên canvas. <gray>Hoàn tác bằng F khi cầm cọ."
+  no-target: "Không có chỗ đặt: hãy nhìn vào canvas của bạn hoặc cầm canvas trống {size}"
+  created: "Bức tranh {size} đã ở trong túi đồ của bạn"
+  paper: "Nhập tốn giấy: {sheets} — {price} cho mỗi khối của bức tranh"
+  limit: "Bạn đã có {paintings} — đó là giới hạn. Hãy xóa bớt: /paint gallery"
+
+gallery:
+  need-canvas: "Bạn cần một canvas trống {size} trong túi đồ"
+
+sign:
+  done: "<#1FFF5E>Đã ký bức tranh '{title}'. <gray>Giờ có thể sao chép trong bàn chế tạo."
+
+panel:
+  window:
+    tools: "Cọ"
+    colors: "Màu"
+    actions: "Bức tranh"
+  title:
+    tools: "CỌ"
+    colors: "MÀU"
+  window-reset: "Cửa sổ '{window}' đã về chỗ cũ"
+  window-grabbed: "<#FF7800>Cửa sổ '{window}' <dark_gray>» <gray>di chuyển bằng tâm ngắm; thả chuột phải hoặc nhấn lần nữa để thả"
+  move: "<#FF7800>Di chuyển cửa sổ <dark_gray>» <gray>giữ chuột phải và kéo; Shift + nhấn để đưa về chỗ cũ"
+  size: "<#FF7800>Cỡ cọ: {size} <dark_gray>» <gray>tinh chỉnh bằng Shift + cuộn"
+  shape:
+    square: "<#FF7800>Cọ vuông <dark_gray>» <gray>cạnh thẳng, góc nhọn"
+    round: "<#FF7800>Cọ tròn <dark_gray>» <gray>nét tròn mềm mại"
+  hue: "<#FF7800>Sắc độ <dark_gray>» <gray>các màu thuộc sắc độ này hiện trong ô vuông"
+  current-color: "<#FF7800>Màu hiện tại: <white>{color} <dark_gray>» <gray>nhập mã #RRGGBB"
+  previous-color: "<#FF7800>Màu trước: <white>{color} <dark_gray>» <gray>quay lại màu này"
+  transparent: "<#1FFFE3>Trong suốt <dark_gray>» <gray>tường lộ ra qua bức tranh"
+  shade: "{color} <dark_gray>» <gray>sắc thái của màu hiện tại"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Hoàn tác <dark_gray>» <gray>giống phím F"
+    redo: "<#FF7800>Làm lại <dark_gray>» <gray>giống Shift + F"
+    clear: "<#FF7800>Xóa canvas <dark_gray>» <gray>tô trắng, có thể hoàn tác"
+    resolution: "<#FF7800>Độ phân giải: {res} px/khối <dark_gray>» <gray>thay đổi; F để hoàn tác"
+    shared: "<#FF7800>Ai cũng được vẽ: {state} <dark_gray>» <gray>bật/tắt"
+    sign: "<#FF7800>Ký tên <dark_gray>» <gray>đặt tên và hoàn thành bức tranh"
+    export: "<#FF7800>Xuất <dark_gray>» <gray>mã tranh dạng chuỗi"
+    import: "<#FF7800>Nhập <dark_gray>» <gray>dán mã tranh"
+    image: "<#FF7800>Ảnh từ URL <dark_gray>» <gray>có cắt, thu phóng và dịch chuyển"
+    gallery: "<#FF7800>Tranh của tôi"
+    hide: "<#FF7800>Ẩn bảng <dark_gray>» <gray>hiện lại khi bạn nhấn vào canvas bằng cọ"
+
+menu:
+  close:
+    name: "Đóng"
+    action: "đóng menu"
+  back:
+    name: "Quay lại"
+    action: "quay lại"
+  hint: "Gợi ý"
+  page:
+    previous: "Trang trước"
+    next: "Trang sau"
+    action: "lật trang"
+    of: "Trang {page}/{pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Xóa vĩnh viễn?"
+      - "Bức tranh biến mất khỏi mọi bức tường"
+      - "và vật phẩm của nó thành canvas trống."
+    "yes": "<#FF1F1F>có, xóa"
+    "no": "giữ lại"
+    action: "xóa vĩnh viễn"
+    done: "Đã xóa bức tranh"
+  admin:
+    title: "Tranh: quản trị"
+    canvases:
+      name: "<#FF7800>Canvas mọi kích thước"
+      lore:
+        - "Từ 1×1 đến {max}: 3×5, 1×4 và các cỡ khác."
+    painting:
+      - "Tác giả: <white>{author}"
+      - "{size} khối · {res} px/khối · {state}"
+      - "Sửa lần cuối: <white>{date}"
+      - "Đã đặt trong chunk đang tải: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "lấy"
+    export: "xuất dạng chuỗi"
+    empty: "Máy chủ chưa có bức tranh nào"
+    count: "<white>Số tranh trên máy chủ: <#FF7800>{count}"
+    too-big:
+      - "Lớn hơn mức cấu hình cho phép:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "lấy {amount} cái một lúc"
+    help-canvases:
+      - "<white>Canvas mọi kích thước."
+      - "Cột là chiều rộng, hàng là chiều cao:"
+      - "cột thứ ba của hàng thứ năm là 3×5."
+      - ""
+      - "Shift + chuột trái đưa {amount} cái một lúc."
+    help:
+      - "<white>Hàng trên cùng là vật phẩm plugin:"
+      - "cọ, canvas và bảng canvas"
+      - "đến cỡ {max}."
+      - ""
+      - "Bên dưới là tranh của mọi người chơi."
+      - "Tranh lấy ở đây chính là bức đó,"
+      - "không phải bản sao: chỉnh sửa hiện ra"
+      - "ở mọi nơi nó đang treo."
+  canvas:
+    title: "Canvas"
+    info:
+      - "Tác giả: <white>{author}"
+      - "Kích thước: <white>{size} <gray>khối, <white>{pixels} <gray>điểm ảnh"
+      - "Trạng thái: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Độ phân giải: <#FF7800>{res} <white>điểm ảnh mỗi khối"
+      lore:
+        - "Số càng nhỏ, điểm ảnh càng to."
+        - "Hình vẽ bị kéo giãn khi đổi."
+        - "<dark_gray>F hoàn tác thay đổi."
+      finer: "mịn hơn"
+      coarser: "thô hơn"
+    clear:
+      name: "Xóa canvas"
+      lore:
+        - "Tô trắng. Có thể hoàn tác (F)."
+      action: "xóa"
+    shared:
+      name: "<white>Ai cũng được vẽ: {state}"
+      lore:
+        - "Vẽ chung: cọ của bất kỳ người chơi"
+        - "nào cũng dùng được trên canvas này."
+    sign:
+      name: "Ký tên"
+      lore:
+        - "Đặt tên và hoàn thành bức tranh."
+        - "Tranh đã ký không thể sửa,"
+        - "nhưng có thể sao chép."
+      action: "ký tên"
+    export:
+      name: "Xuất dạng chuỗi"
+      lore:
+        - "Mã tranh: sao chép và gửi"
+        - "cho bất kỳ ai, kể cả máy chủ khác."
+      action: "hiện mã"
+    import:
+      name: "Nhập từ chuỗi"
+      lore:
+        - "Dán mã. Hình vẽ sẽ vào canvas"
+        - "bạn đang nhìn, hoặc canvas trống"
+        - "trên tay bạn."
+      action: "dán mã"
+    gallery:
+      lore:
+        - "Mọi thứ bạn đã vẽ."
+  gallery:
+    title: "Tranh của tôi"
+    painting:
+      - "{size} khối · {res} px/khối · {state}"
+      - "Sửa lần cuối: <white>{date}"
+      - "Đang đặt: <white>{placed}"
+    take: "lấy <gray>(cần canvas trống {size})"
+    empty:
+      name: "Chưa có gì"
+      lore:
+        - "Đặt một canvas và vẽ gì đó."
+    help:
+      - "<white>Mọi bức tranh của bạn được lưu ở đây,"
+      - "kể cả khi đã gỡ xuống hoặc làm mất."
+      - ""
+      - "Bản phác lấy từ đây chính là bức"
+      - "tranh đó: chỉnh sửa hiện ra ở mọi"
+      - "nơi nó đang treo."
+      - ""
+      - "Tranh đã ký được sao chép trong bàn"
+      - "chế tạo: tranh + canvas trống."
+  palette:
+    title: "Bảng màu và công cụ"
+    page: "Màu: trang {page}/{pages}"
+    hex:
+      name: "Màu theo mã"
+      lore:
+        - "Nhập #RRGGBB — màu gần nhất"
+        - "trong bảng sẽ được chọn."
+      action: "nhập mã"
+    transparent:
+      - "Điểm ảnh biến mất: tường lộ ra"
+      - "qua bức tranh. Hợp cho hình dán"
+      - "và tranh có hình dạng bất kỳ."
+    shade:
+      - "Sắc thái của màu đang chọn."
+    size:
+      name: "<white>Cỡ cọ: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>Trong game: Shift + cuộn chuột."
+      more: "lớn hơn"
+      less: "nhỏ hơn"
+      shift: "Với Shift"
+      by-four: "mỗi lần 4"
+    canvas:
+      name: "Canvas và tranh của tôi"
+      lore:
+        - "Độ phân giải, ký tên, xuất,"
+        - "nhập, danh sách tranh của bạn."
+    help:
+      - "<white>Khi cầm cọ trên tay:"
+      - "chuột phải trên canvas để vẽ,"
+      - "chuột trái lấy màu từ canvas"
+      - "hoặc từ bất kỳ khối nào trong thế giới."
+      - ""
+      - "Shift + cuộn đổi cỡ cọ."
+      - "F hoàn tác, Shift + F làm lại."
+      - ""
+      - "Hình dạng được kéo ra: giữ chuột phải,"
+      - "di chuyển, rồi thả."
+      - "Với Shift đường sẽ thẳng,"
+      - "hình chữ nhật thành hình vuông,"
+      - "hình elip thành hình tròn."
+
+dialog:
+  code: "Mã"
+  export:
+    title: "Xuất bức tranh"
+    text: "'{title}' — mã dài {length} ký tự. Nhấn Sao chép để đưa vào clipboard."
+    text-parts: "'{title}' — mã dài nên được chia thành nhiều phần. Phần {part}/{parts}: {length} ký tự. Hãy sao chép và dán lần lượt tất cả các phần."
+    copy: "Sao chép"
+    copy-tooltip: "Đưa mã vào clipboard"
+    next: "Phần tiếp theo"
+    first: "Về phần đầu"
+  import:
+    title: "Nhập bức tranh"
+    text: "Dán mã tranh (Ctrl+V). Hình vẽ sẽ vào canvas bạn đang nhìn, hoặc canvas trống trên tay bạn."
+    button: "Nhập"
+  sign:
+    title: "Ký tên bức tranh"
+    text: "Tranh đã ký không thể sửa nhưng có thể sao chép: tranh + canvas trống cùng kích thước trong bàn chế tạo."
+    input: "Tên tranh"
+    button: "Ký"
+  hex:
+    title: "Màu theo mã"
+    text: "Nhập màu dạng #RRGGBB. Bản đồ không hiển thị được mọi màu, nên sẽ chọn màu gần nhất."
+    input: "Màu"
+    button: "Chọn"
+  canvas:
+    title: "Ghép canvas"
+    creative: "Chế độ sáng tạo không tốn canvas."
+    have: "Bạn đang cầm {canvases}."
+    text: "Cột là chiều rộng, hàng là chiều cao: canvas 2×4 cần tám canvas 1×1. Các kích thước màu xám hiện chưa thể ghép."
+    same: "Bạn đã cầm canvas này rồi"
+    assemble: "Ghép canvas {size}: cần {canvases}"
+    need: "Cần {canvases}, bạn đang cầm {have}"
+  image:
+    title: "Ảnh từ URL"
+    text: "Ảnh sẽ vào canvas bạn đang nhìn, hoặc canvas trống trên tay; kích thước theo khối chỉ có tác dụng khi không có cái nào. Chưa ưng? Mở lại cửa sổ: các thiết lập được giữ và kết quả trước trên canvas sẽ bị thay thế."
+    url: "URL ảnh"
+    fit:
+      label: "Cách vừa khung"
+      cover: "Phủ kín canvas, cắt phần thừa"
+      contain: "Vừa toàn bộ ảnh, chừa lề"
+      stretch: "Kéo giãn ra toàn canvas"
+    zoom: "Thu phóng, %"
+    x: "Dịch sang phải, %"
+    "y": "Dịch xuống dưới, %"
+    brightness: "Độ sáng, %"
+    contrast: "Độ tương phản, %"
+    saturation: "Độ bão hòa, %"
+    dither: "Làm mượt chuyển màu (không áp dụng cho pixel art)"
+    shade: "Làm tối như mặt khối: cho khối lập phương làm từ tranh"
+    clear: "Lề quanh ảnh trong suốt, không phải màu trắng"
+    width: "Chiều rộng tranh mới, khối"
+    height: "Chiều cao tranh mới, khối"
+    button: "Áp dụng"
+    no-url: "Hãy dán URL ảnh"

@@ -1,0 +1,452 @@
+# PaintCraft — Polski
+#
+# {słowa} w nawiasach klamrowych podstawia wtyczka: zostaw je bez zmian.
+# Kolory zapisuje się tagami MiniMessage: <gray>, <white>, <#FF7800>.
+# Klucz, którego brakuje w pliku, jest brany z tłumaczenia angielskiego.
+
+language:
+  name: "Polski"
+  changed: "<#1FFF5E>Język: <white>{language}"
+  current: "<white>Aktualny język: <#FF7800>{language}"
+  available: "<gray>Dostępne: <white>{languages}"
+  unknown: "Nie ma języka {input}. Dostępne: {languages}"
+
+prefix: "Obrazy"
+
+common:
+  no-permission: "Nie masz uprawnień"
+  color-format: "Kolor zapisuje się jako #RRGGBB, na przykład #FF8800"
+  canvas-cleared: "<gray>Płótno wyczyszczone. <dark_gray>F — przywróć"
+  "on": "WŁ."
+  "off": "WYŁ."
+
+click:
+  left: "LPM"
+  right: "PPM"
+
+action:
+  open: "otwórz"
+  select: "wybierz"
+  take: "weź"
+  toggle: "przełącz"
+
+unit:
+  canvas:
+    one: "{count} płótno 1×1"
+    few: "{count} płótna 1×1"
+    many: "{count} płócien 1×1"
+  sheet:
+    one: "{count} arkusz"
+    few: "{count} arkusze"
+    many: "{count} arkuszy"
+  painting:
+    one: "{count} obraz"
+    few: "{count} obrazy"
+    many: "{count} obrazów"
+
+color:
+  transparent: "Przezroczysty"
+  transparent-short: "przezroczysty"
+
+command:
+  invalid-usage: "Nieprawidłowe użycie"
+  player-only: "Tylko dla graczy"
+  usage-header: "<#FF7800>Pomoc do komendy:"
+  usage: "<#FF1F1F>Użycie: <white>{usage}"
+  unknown-choice: "Nie ma takiego: {input} ({what})"
+  choice:
+    tool: "narzędzie"
+    item: "przedmiot"
+  canvas-size: "Rozmiar płótna to SxW w blokach, od 1x1 do {max}x{max}. Na przykład: 2x3"
+  panel-reset: "Okna panelu przy płótnie wróciły na swoje miejsca"
+  specify-player: "Podaj gracza"
+  give-painting: "Obrazy wydaje galeria: /paint gallery"
+  given: "<white>Przekazano graczowi <#FF7800>{player}"
+  reloaded: "Konfiguracja wczytana ponownie"
+  look-at-painting: "Spójrz na obraz lub weź go do ręki"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— obrazy bez paczki zasobów"
+    lines:
+      - "<#FF7800>Pędzel <dark_gray>» <gray>patyk + pióro. <#FF7800>Płótno <dark_gray>» <gray>papier + patyk"
+      - "Płótna ułożone w prostokąt na stole rzemieślniczym łączą się w duże"
+      - "<#FF7800>PPM <dark_gray>» <gray>maluj, <#FF7800>LPM <dark_gray>» <gray>pobierz kolor z płótna lub bloku"
+      - "<#FF7800>Shift + PPM obok płótna <dark_gray>» <gray>paleta, <#FF7800>Shift + kółko <dark_gray>» <gray>rozmiar pędzla"
+      - "<#FF7800>Shift przy malowaniu <dark_gray>» <gray>prosta linia, kwadrat, koło"
+      - "<#FF7800>F <dark_gray>» <gray>cofnij, <#FF7800>Shift + F <dark_gray>» <gray>ponów"
+      - "<#FF7800>Q <dark_gray>» <gray>poprzednie narzędzie, <#FF7800>Shift + Q <dark_gray>» <gray>następne"
+      - "<white>/paint <gray>paleta · <white>/paint gallery <gray>moje obrazy"
+      - "<white>/paint color #RRGGBB <gray>· <white>size liczba <gray>· <white>tool narzędzie"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>przywróć przesunięte okna panelu"
+      - "<white>/paint export <gray>kod obrazu · <white>/paint import [kod] <gray>wklej kod"
+      - "<white>/paint sign [tytuł] <gray>podpisz: podpisany obraz można kopiować"
+      - "<white>/paint image [link] <gray>obraz z internetu: kadrowanie, skala, przesunięcie"
+      - "<white>/paint admin <gray>przedmioty wtyczki i wszystkie obrazy serwera"
+      - "<white>/paint give brush|canvas [SxW] [ilość] [gracz]"
+      - "<white>/paint language [kod] <gray>język wtyczki · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Pędzel"
+    hint: "Przytrzymaj PPM i prowadź po płótnie. Shift — po prostej."
+  eraser:
+    name: "Gumka"
+    hint: "Ściera do czystego płótna."
+  fill:
+    name: "Wypełnienie"
+    hint: "Wypełnia obszar jednego koloru."
+  spray:
+    name: "Spray"
+    hint: "Rozpyla punkty: im dłużej trzymasz, tym gęściej."
+  line:
+    name: "Linia"
+    hint: "Przytrzymaj PPM na początku, puść na końcu. Shift — prosto."
+  rect:
+    name: "Prostokąt"
+    hint: "Przeciągnij od rogu do rogu. Shift — kwadrat."
+  ellipse:
+    name: "Elipsa"
+    hint: "Przeciągnij jak prostokąt. Shift — koło."
+
+item:
+  brush:
+    name: "<#FF7800>Pędzel artysty"
+    paint: "maluj po płótnie <gray>(można przytrzymać)"
+    pick: "pobierz kolor z płótna lub bloku"
+    palette: "paleta <gray>(obok płótna)"
+    shift-key: "Shift przy malowaniu"
+    shift: "prosta linia, kwadrat, koło"
+    wheel-key: "Shift + kółko"
+    wheel: "rozmiar pędzla"
+    undo: "cofnij"
+    redo: "ponów"
+  canvas:
+    name: "Płótno {size}"
+    lore:
+      - "Postaw na ścianie, podłodze lub suficie"
+      - "i maluj pędzlem."
+      - ""
+      - "<dark_gray>Identyczne płótna ułożone"
+      - "<dark_gray>w prostokąt na stole rzemieślniczym"
+      - "<dark_gray>łączą się w duże."
+    assemble: "złóż duże płótno ze stosu"
+  painting:
+    sketch-name: "Szkic"
+    author: "Autor: <white>{name}"
+    size: "Rozmiar: <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>przeniesiony, nie namalowany pędzlem"
+    signed:
+      - "<dark_gray>Obraz + puste płótno {size}"
+      - "<dark_gray>na stole rzemieślniczym to kopia."
+    sketch:
+      - "<dark_gray>Niepodpisany: można dalej malować."
+      - "<dark_gray>nr {id}"
+
+painting:
+  untitled: "Bez tytułu"
+  signed: "<#FF7800>podpisany"
+  sketch: "<white>szkic"
+  imported: " <gray>· <#FFE100>import"
+
+hud:
+  size: "<gray>rozmiar <white>{size}"
+
+paint:
+  signed: "Obraz jest podpisany — nie można go już zmieniać"
+  not-yours: "To obraz gracza {player}: maluje na nim tylko autor"
+  undo:
+    look: "Spójrz na obraz, aby cofnąć"
+    undone: "Cofnięto"
+    redone: "Ponowiono"
+    nothing-undo: "Nie ma czego cofać"
+    nothing-redo: "Nie ma czego ponawiać"
+
+place:
+  deleted: "Autor usunął ten obraz. Przedmiot znów jest pustym płótnem"
+  too-big: "Płócien większych niż {max} nie można stawiać na tym serwerze"
+  no-room: "Płótno {size} się tu nie mieści"
+  denied: "Nie możesz tego tu zrobić"
+  break-owner: "Obraz może zdjąć tylko ten, kto go powiesił"
+  change-owner: "Obraz może zmieniać tylko ten, kto go powiesił"
+
+assemble:
+  hold: "Weź do ręki płótna 1×1"
+  not-enough: "Płótno {size} wymaga: {canvases}, w ręce masz {have}"
+  done: "Płótno {size} złożone"
+
+import:
+  parts: "Odebrano części: {have} z {total}. Wklej część {next}."
+  too-big: "Obraz z kodu jest większy, niż pozwala serwer ({max})"
+  bad-code: "To nie jest kod obrazu albo jest uszkodzony"
+  loading: "Wczytuję obraz…"
+  image-failed: "Nie udało się wczytać obrazu: {reason}"
+  image-done: "<#1FFF5E>Obraz jest na płótnie. <gray>Nie to? Otwórz okno ponownie i popraw — poprzedni wynik zostanie zastąpiony."
+  code-done: "<#1FFF5E>Rysunek jest na płótnie. <gray>Cofnij klawiszem F z pędzlem w ręce."
+  no-target: "Nie ma gdzie wstawić: spójrz na swoje płótno lub weź do ręki puste płótno {size}"
+  created: "Obraz {size} jest w twoim ekwipunku"
+  paper: "Import kosztuje papier: {sheets} — po {price} za blok obrazu"
+  limit: "Masz już {paintings} — to limit. Usuń zbędne: /paint gallery"
+
+gallery:
+  need-canvas: "Potrzebujesz pustego płótna {size} w ekwipunku"
+
+sign:
+  done: "<#1FFF5E>Obraz „{title}” podpisany. <gray>Teraz można go kopiować na stole rzemieślniczym."
+
+panel:
+  window:
+    tools: "Pędzel"
+    colors: "Kolor"
+    actions: "Obraz"
+  title:
+    tools: "PĘDZEL"
+    colors: "KOLOR"
+  window-reset: "Okno „{window}” wróciło na miejsce"
+  window-grabbed: "<#FF7800>Okno „{window}” <dark_gray>» <gray>prowadź celownikiem; puść PPM lub kliknij ponownie, aby zostawić"
+  move: "<#FF7800>Przesuń okno <dark_gray>» <gray>przytrzymaj PPM i prowadź; Shift + klik przywraca miejsce"
+  size: "<#FF7800>Rozmiar pędzla: {size} <dark_gray>» <gray>dokładniej — Shift + kółko"
+  shape:
+    square: "<#FF7800>Kwadratowy pędzel <dark_gray>» <gray>równe krawędzie, ostre rogi"
+    round: "<#FF7800>Okrągły pędzel <dark_gray>» <gray>miękkie, zaokrąglone pociągnięcia"
+  hue: "<#FF7800>Odcień <dark_gray>» <gray>kolory tego odcienia pojawią się w kwadracie"
+  current-color: "<#FF7800>Aktualny kolor: <white>{color} <dark_gray>» <gray>wpisz kod #RRGGBB"
+  previous-color: "<#FF7800>Poprzedni kolor: <white>{color} <dark_gray>» <gray>wróć do niego"
+  transparent: "<#1FFFE3>Przezroczysty <dark_gray>» <gray>przez obraz widać ścianę"
+  shade: "{color} <dark_gray>» <gray>jasność aktualnego koloru"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Cofnij <dark_gray>» <gray>to samo co F"
+    redo: "<#FF7800>Ponów <dark_gray>» <gray>to samo co Shift + F"
+    clear: "<#FF7800>Wyczyść płótno <dark_gray>» <gray>zalej na biało, można cofnąć"
+    resolution: "<#FF7800>Rozdzielczość: {res} px/blok <dark_gray>» <gray>zmień; F przywraca poprzednią"
+    shared: "<#FF7800>Wszyscy mogą malować: {state} <dark_gray>» <gray>przełącz"
+    sign: "<#FF7800>Podpisz <dark_gray>» <gray>nadaj tytuł i zakończ obraz"
+    export: "<#FF7800>Eksport <dark_gray>» <gray>kod obrazu jako tekst"
+    import: "<#FF7800>Import <dark_gray>» <gray>wklej kod obrazu"
+    image: "<#FF7800>Obraz z linku <dark_gray>» <gray>z kadrowaniem, skalą i przesunięciem"
+    gallery: "<#FF7800>Moje obrazy"
+    hide: "<#FF7800>Ukryj panel <dark_gray>» <gray>wróci, gdy klikniesz pędzlem w płótno"
+
+menu:
+  close:
+    name: "Zamknij"
+    action: "zamknij menu"
+  back:
+    name: "Wstecz"
+    action: "wróć"
+  hint: "Podpowiedź"
+  page:
+    previous: "Poprzednia strona"
+    next: "Następna strona"
+    action: "przewiń"
+    of: "Strona {page} z {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Usunąć na zawsze?"
+      - "Obraz zniknie ze ścian u wszystkich,"
+      - "a jego przedmioty staną się pustymi płótnami."
+    "yes": "<#FF1F1F>tak, usuń"
+    "no": "nie usuwaj"
+    action: "usuń na zawsze"
+    done: "Obraz usunięty"
+  admin:
+    title: "Obrazy: zarządzanie"
+    canvases:
+      name: "<#FF7800>Płótna wszystkich rozmiarów"
+      lore:
+        - "Od 1×1 do {max}: 3×5, 1×4 i każde inne."
+    painting:
+      - "Autor: <white>{author}"
+      - "{size} bloków · {res} px/blok · {state}"
+      - "Zmieniony: <white>{date}"
+      - "Wisi w załadowanych chunkach: <white>{placed}"
+      - "<dark_gray>nr {id}"
+    take: "weź dla siebie"
+    export: "eksport do tekstu"
+    empty: "Na serwerze nie ma jeszcze obrazów"
+    count: "<white>Obrazów na serwerze: <#FF7800>{count}"
+    too-big:
+      - "Więcej, niż pozwala konfiguracja:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "weź od razu {amount}"
+    help-canvases:
+      - "<white>Płótna wszystkich rozmiarów."
+      - "Kolumna to szerokość, rząd to wysokość:"
+      - "trzecia kolumna piątego rzędu to 3×5."
+      - ""
+      - "Shift + LPM daje od razu {amount}."
+    help:
+      - "<white>Górny rząd to przedmioty wtyczki:"
+      - "pędzel, płótno i tabela płócien"
+      - "wszystkich rozmiarów do {max}."
+      - ""
+      - "Niżej są obrazy wszystkich graczy."
+      - "Wzięty obraz to ten sam obraz,"
+      - "a nie kopia: zmiany widać"
+      - "wszędzie, gdzie wisi."
+  canvas:
+    title: "Płótno"
+    info:
+      - "Autor: <white>{author}"
+      - "Rozmiar: <white>{size} <gray>bloków, <white>{pixels} <gray>pikseli"
+      - "Stan: {state}"
+      - "<dark_gray>nr {id}"
+    resolution:
+      name: "<white>Rozdzielczość: <#FF7800>{res} <white>pikseli na blok"
+      lore:
+        - "Im mniejsza liczba, tym większe piksele."
+        - "Przy zmianie rysunek jest rozciągany."
+        - "<dark_gray>Zmianę cofa klawisz F."
+      finer: "drobniej"
+      coarser: "grubiej"
+    clear:
+      name: "Wyczyść płótno"
+      lore:
+        - "Zalej na biało. Można cofnąć (F)."
+      action: "wyczyść"
+    shared:
+      name: "<white>Wszyscy mogą malować: {state}"
+      lore:
+        - "Wspólne malowanie: pędzel"
+        - "każdego gracza działa na tym płótnie."
+    sign:
+      name: "Podpisz"
+      lore:
+        - "Nadaj tytuł i zakończ obraz."
+        - "Podpisanego nie można zmieniać,"
+        - "ale można go kopiować."
+      action: "podpisz"
+    export:
+      name: "Eksport do tekstu"
+      lore:
+        - "Kod obrazu: skopiuj i przekaż"
+        - "komukolwiek, nawet na inny serwer."
+      action: "pokaż kod"
+    import:
+      name: "Import z tekstu"
+      lore:
+        - "Wklej kod. Rysunek trafi na płótno,"
+        - "na które patrzysz, albo na puste"
+        - "płótno w twojej ręce."
+      action: "wklej kod"
+    gallery:
+      lore:
+        - "Wszystko, co namalowałeś."
+  gallery:
+    title: "Moje obrazy"
+    painting:
+      - "{size} bloków · {res} px/blok · {state}"
+      - "Zmieniony: <white>{date}"
+      - "Teraz wisi: <white>{placed}"
+    take: "weź <gray>(potrzebne puste płótno {size})"
+    empty:
+      name: "Na razie pusto"
+      lore:
+        - "Postaw płótno i namaluj coś."
+    help:
+      - "<white>Tu są wszystkie twoje obrazy,"
+      - "nawet jeśli je zdjąłeś lub zgubiłeś."
+      - ""
+      - "Szkic wzięty stąd to ten sam"
+      - "obraz: zmiany widać wszędzie,"
+      - "gdzie wisi."
+      - ""
+      - "Podpisane obrazy kopiuje się"
+      - "na stole: obraz + puste płótno."
+  palette:
+    title: "Paleta i narzędzia"
+    page: "Kolory: strona {page} z {pages}"
+    hex:
+      name: "Kolor z kodu"
+      lore:
+        - "Wpisz #RRGGBB — zostanie wybrany"
+        - "najbliższy kolor palety."
+      action: "wpisz kod"
+    transparent:
+      - "Piksele znikają: przez obraz widać"
+      - "ścianę. Dobre do naklejek"
+      - "i obrazów o dowolnym kształcie."
+    shade:
+      - "Jasność wybranego koloru."
+    size:
+      name: "<white>Rozmiar pędzla: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>W grze: Shift + kółko myszy."
+      more: "większy"
+      less: "mniejszy"
+      shift: "Z Shiftem"
+      by-four: "po 4"
+    canvas:
+      name: "Płótno i moje obrazy"
+      lore:
+        - "Rozdzielczość, podpis, eksport,"
+        - "import, lista twoich obrazów."
+    help:
+      - "<white>Z pędzlem w ręce:"
+      - "PPM na płótnie — maluj,"
+      - "LPM — pobierz kolor z płótna"
+      - "lub z dowolnego bloku świata."
+      - ""
+      - "Shift + kółko zmienia rozmiar pędzla."
+      - "F cofa, Shift + F ponawia."
+      - ""
+      - "Kształty się przeciąga: przytrzymaj PPM,"
+      - "przesuń, puść."
+      - "Z Shiftem linia idzie prosto,"
+      - "prostokąt staje się kwadratem,"
+      - "elipsa — kołem."
+
+dialog:
+  code: "Kod"
+  export:
+    title: "Eksport obrazu"
+    text: "„{title}” — kod o długości {length} znaków. Naciśnij „Kopiuj”, aby wrzucić go do schowka."
+    text-parts: "„{title}” — kod jest długi, więc podzielono go na części. Część {part} z {parts}: {length} znaków. Skopiuj i wklej wszystkie części po kolei."
+    copy: "Kopiuj"
+    copy-tooltip: "Wrzuć kod do schowka"
+    next: "Następna część"
+    first: "Do pierwszej części"
+  import:
+    title: "Import obrazu"
+    text: "Wklej kod obrazu (Ctrl+V). Rysunek trafi na płótno, na które patrzysz, albo na puste płótno w twojej ręce."
+    button: "Importuj"
+  sign:
+    title: "Podpisz obraz"
+    text: "Podpisanego obrazu nie można zmieniać, ale można go kopiować: obraz + puste płótno tego samego rozmiaru na stole rzemieślniczym."
+    input: "Tytuł"
+    button: "Podpisz"
+  hex:
+    title: "Kolor z kodu"
+    text: "Wpisz kolor jako #RRGGBB. Mapy nie pokażą wszystkich kolorów, więc zostanie wybrany najbliższy."
+    input: "Kolor"
+    button: "Wybierz"
+  canvas:
+    title: "Złóż płótno"
+    creative: "W trybie kreatywnym płótna się nie zużywają."
+    have: "W ręce masz {canvases}."
+    text: "Kolumna to szerokość, rząd to wysokość: płótno 2×4 składa się z ośmiu płócien 1×1. Szare rozmiary są na razie poza zasięgiem."
+    same: "To płótno już masz w ręce"
+    assemble: "Złóż płótno {size}: potrzeba {canvases}"
+    need: "Potrzeba {canvases}, w ręce masz {have}"
+  image:
+    title: "Obraz z linku"
+    text: "Obraz trafi na płótno, na które patrzysz, albo na puste płótno w twojej ręce; rozmiar w blokach liczy się tylko wtedy, gdy nie ma ani jednego, ani drugiego. Nie podoba się? Otwórz okno ponownie: ustawienia zostaną zapamiętane, a poprzedni wynik na płótnie zostanie zastąpiony."
+    url: "Link do obrazu"
+    fit:
+      label: "Dopasowanie"
+      cover: "Wypełnij płótno, resztę przytnij"
+      contain: "Wpisz całość, z marginesami"
+      stretch: "Rozciągnij na całe płótno"
+    zoom: "Powiększenie, %"
+    x: "Przesunięcie w prawo, %"
+    "y": "Przesunięcie w dół, %"
+    brightness: "Jasność, %"
+    contrast: "Kontrast, %"
+    saturation: "Nasycenie, %"
+    dither: "Płynne przejścia kolorów (nie dotyczy pixel artu)"
+    shade: "Przyciemnij jak ścianę bloku: do sześcianów z obrazów"
+    clear: "Marginesy wokół obrazu są przezroczyste, nie białe"
+    width: "Szerokość nowego obrazu, bloków"
+    height: "Wysokość nowego obrazu, bloków"
+    button: "Zastosuj"
+    no-url: "Wklej link do obrazu"

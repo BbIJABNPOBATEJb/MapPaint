@@ -20,12 +20,28 @@ common:
   "on": "ON"
   "off": "OFF"
 
+input:
+  cancel-word: "cancel"
+  prompt: "<white>{prompt} <gray>(or type {cancel})"
+  cancelled: "Cancelled"
+  sign: "Type the painting title in chat"
+  hex: "Type a color in chat as #RRGGBB"
+  import: "Paste the painting code into chat. Long codes go in parts, one message each"
+  url: "Paste the image URL into chat"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— a code of {length} characters. Click to copy:"
+    part: "Part {part}"
+    hint: "Paste the parts one by one: /paint import"
+
 click:
   left: "LMB"
   right: "RMB"
 
 action:
   open: "open"
+  change: "change"
   select: "select"
   take: "take"
   toggle: "toggle"
@@ -329,6 +345,10 @@ menu:
     gallery:
       lore:
         - "Everything you have painted."
+  assemble:
+    help:
+      - "Column is width, row is height:"
+      - "a 2×4 canvas takes eight 1×1 canvases."
   gallery:
     title: "My paintings"
     painting:

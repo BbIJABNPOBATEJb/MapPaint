@@ -1,0 +1,449 @@
+# PaintCraft — Nederlands
+#
+# {plaatshouders} tussen accolades vult de plugin in: laat ze ongewijzigd.
+# Kleuren zijn MiniMessage-tags: <gray>, <white>, <#FF7800>.
+# Een sleutel die in dit bestand ontbreekt, wordt uit de Engelse vertaling gehaald.
+
+language:
+  name: "Nederlands"
+  changed: "<#1FFF5E>Taal: <white>{language}"
+  current: "<white>Huidige taal: <#FF7800>{language}"
+  available: "<gray>Beschikbaar: <white>{languages}"
+  unknown: "Onbekende taal {input}. Beschikbaar: {languages}"
+
+prefix: "Schilderijen"
+
+common:
+  no-permission: "Je hebt hier geen toestemming voor"
+  color-format: "Een kleur schrijf je als #RRGGBB, bijvoorbeeld #FF8800"
+  canvas-cleared: "<gray>Doek leeggemaakt. <dark_gray>F — terughalen"
+  "on": "AAN"
+  "off": "UIT"
+
+click:
+  left: "LMK"
+  right: "RMK"
+
+action:
+  open: "openen"
+  select: "kiezen"
+  take: "pakken"
+  toggle: "wisselen"
+
+unit:
+  canvas:
+    one: "{count} doek 1×1"
+    many: "{count} doeken 1×1"
+  sheet:
+    one: "{count} vel"
+    many: "{count} vellen"
+  painting:
+    one: "{count} schilderij"
+    many: "{count} schilderijen"
+
+color:
+  transparent: "Transparant"
+  transparent-short: "transparant"
+
+command:
+  invalid-usage: "Ongeldig gebruik"
+  player-only: "Alleen voor spelers"
+  usage-header: "<#FF7800>Hulp bij het commando:"
+  usage: "<#FF1F1F>Gebruik: <white>{usage}"
+  unknown-choice: "Onbekend: {input} ({what})"
+  choice:
+    tool: "gereedschap"
+    item: "voorwerp"
+  canvas-size: "De doekgrootte is BxH in blokken, van 1x1 tot {max}x{max}. Bijvoorbeeld: 2x3"
+  panel-reset: "De paneelvensters staan weer op hun plek"
+  specify-player: "Geef een speler op"
+  give-painting: "Schilderijen komen uit de galerij: /paint gallery"
+  given: "<white>Gegeven aan <#FF7800>{player}"
+  reloaded: "Configuratie opnieuw geladen"
+  look-at-painting: "Kijk naar een schilderij of houd er een vast"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— schilderijen zonder resourcepack"
+    lines:
+      - "<#FF7800>Penseel <dark_gray>» <gray>stok + veer. <#FF7800>Doek <dark_gray>» <gray>papier + stok"
+      - "Doeken in een rechthoek op de werkbank worden samengevoegd tot een groot doek"
+      - "<#FF7800>RMK <dark_gray>» <gray>schilderen, <#FF7800>LMK <dark_gray>» <gray>kleur van doek of blok pakken"
+      - "<#FF7800>Shift + RMK naast het doek <dark_gray>» <gray>palet, <#FF7800>Shift + scrollen <dark_gray>» <gray>penseelgrootte"
+      - "<#FF7800>Shift tijdens het schilderen <dark_gray>» <gray>rechte lijn, vierkant, cirkel"
+      - "<#FF7800>F <dark_gray>» <gray>ongedaan maken, <#FF7800>Shift + F <dark_gray>» <gray>opnieuw"
+      - "<#FF7800>Q <dark_gray>» <gray>vorig gereedschap, <#FF7800>Shift + Q <dark_gray>» <gray>volgend"
+      - "<white>/paint <gray>palet · <white>/paint gallery <gray>mijn schilderijen"
+      - "<white>/paint color #RRGGBB <gray>· <white>size getal <gray>· <white>tool naam"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>verschoven paneelvensters terugzetten"
+      - "<white>/paint export <gray>schilderijcode · <white>/paint import [code] <gray>code plakken"
+      - "<white>/paint sign [titel] <gray>signeren: een gesigneerd schilderij kun je kopiëren"
+      - "<white>/paint image [url] <gray>afbeelding van het web: bijsnijden, zoom, verschuiven"
+      - "<white>/paint admin <gray>pluginvoorwerpen en alle schilderijen van de server"
+      - "<white>/paint give brush|canvas [BxH] [aantal] [speler]"
+      - "<white>/paint language [code] <gray>plugintaal · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Penseel"
+    hint: "Houd RMK ingedrukt en sleep over het doek. Shift — recht."
+  eraser:
+    name: "Gum"
+    hint: "Wist tot het lege doek."
+  fill:
+    name: "Vullen"
+    hint: "Vult een vlak van één kleur."
+  spray:
+    name: "Spuitbus"
+    hint: "Spuit stippen: hoe langer je houdt, hoe dichter."
+  line:
+    name: "Lijn"
+    hint: "Houd RMK ingedrukt bij het begin, laat los bij het eind. Shift — recht."
+  rect:
+    name: "Rechthoek"
+    hint: "Sleep van hoek naar hoek. Shift — vierkant."
+  ellipse:
+    name: "Ellips"
+    hint: "Sleep als een rechthoek. Shift — cirkel."
+
+item:
+  brush:
+    name: "<#FF7800>Kunstenaarspenseel"
+    paint: "op het doek schilderen <gray>(ingedrukt houden kan)"
+    pick: "kleur van doek of blok pakken"
+    palette: "palet <gray>(naast het doek)"
+    shift-key: "Shift tijdens het schilderen"
+    shift: "rechte lijn, vierkant, cirkel"
+    wheel-key: "Shift + scrollen"
+    wheel: "penseelgrootte"
+    undo: "ongedaan maken"
+    redo: "opnieuw"
+  canvas:
+    name: "Doek {size}"
+    lore:
+      - "Plaats het op een muur, vloer of plafond"
+      - "en schilder met het penseel."
+      - ""
+      - "<dark_gray>Gelijke doeken, als rechthoek"
+      - "<dark_gray>op de werkbank gelegd,"
+      - "<dark_gray>worden samengevoegd tot een groot doek."
+    assemble: "groot doek maken van de stapel"
+  painting:
+    sketch-name: "Schets"
+    author: "Maker: <white>{name}"
+    size: "Grootte: <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>overgezet, niet met het penseel geschilderd"
+    signed:
+      - "<dark_gray>Schilderij + leeg doek {size}"
+      - "<dark_gray>op de werkbank geeft een kopie."
+    sketch:
+      - "<dark_gray>Niet gesigneerd: je kunt verder schilderen."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Zonder titel"
+  signed: "<#FF7800>gesigneerd"
+  sketch: "<white>schets"
+  imported: " <gray>· <#FFE100>import"
+
+hud:
+  size: "<gray>grootte <white>{size}"
+
+paint:
+  signed: "Het schilderij is gesigneerd — het kan niet meer worden gewijzigd"
+  not-yours: "Dit schilderij is van {player}: alleen de maker schildert erop"
+  undo:
+    look: "Kijk naar een schilderij om ongedaan te maken"
+    undone: "Ongedaan gemaakt"
+    redone: "Opnieuw gedaan"
+    nothing-undo: "Niets om ongedaan te maken"
+    nothing-redo: "Niets om opnieuw te doen"
+
+place:
+  deleted: "De maker heeft dit schilderij verwijderd. Het voorwerp is weer een leeg doek"
+  too-big: "Doeken groter dan {max} kunnen op deze server niet worden geplaatst"
+  no-room: "Een doek van {size} past hier niet"
+  denied: "Dat mag je hier niet doen"
+  break-owner: "Alleen wie het schilderij heeft opgehangen, kan het afnemen"
+  change-owner: "Alleen wie het schilderij heeft opgehangen, kan het wijzigen"
+
+assemble:
+  hold: "Houd doeken van 1×1 vast"
+  not-enough: "Een doek van {size} heeft {canvases} nodig, je hebt er {have}"
+  done: "Doek {size} gemaakt"
+
+import:
+  parts: "Delen ontvangen: {have} van {total}. Plak deel {next}."
+  too-big: "Het schilderij in de code is groter dan de server toestaat ({max})"
+  bad-code: "Dit is geen schilderijcode, of de code is beschadigd"
+  loading: "Afbeelding laden…"
+  image-failed: "De afbeelding kon niet worden geladen: {reason}"
+  image-done: "<#1FFF5E>De afbeelding staat op het doek. <gray>Niet goed? Open het venster opnieuw en pas aan — het vorige resultaat wordt vervangen."
+  code-done: "<#1FFF5E>De tekening staat op het doek. <gray>Ongedaan maken: F met het penseel in de hand."
+  no-target: "Geen plek om het neer te zetten: kijk naar je doek of houd een leeg doek van {size} vast"
+  created: "Een schilderij van {size} zit in je inventaris"
+  paper: "Importeren kost papier: {sheets} — {price} per blok van het schilderij"
+  limit: "Je hebt al {paintings} — dat is de limiet. Verwijder wat: /paint gallery"
+
+gallery:
+  need-canvas: "Je hebt een leeg doek van {size} in je inventaris nodig"
+
+sign:
+  done: "<#1FFF5E>Schilderij “{title}” gesigneerd. <gray>Het kan nu op de werkbank worden gekopieerd."
+
+panel:
+  window:
+    tools: "Penseel"
+    colors: "Kleur"
+    actions: "Schilderij"
+  title:
+    tools: "PENSEEL"
+    colors: "KLEUR"
+  window-reset: "Het venster “{window}” staat weer op zijn plek"
+  window-grabbed: "<#FF7800>Venster “{window}” <dark_gray>» <gray>beweeg het met je dradenkruis; laat RMK los of klik opnieuw om het neer te zetten"
+  move: "<#FF7800>Venster verplaatsen <dark_gray>» <gray>houd RMK ingedrukt en sleep; Shift + klik zet het terug"
+  size: "<#FF7800>Penseelgrootte: {size} <dark_gray>» <gray>fijner met Shift + scrollen"
+  shape:
+    square: "<#FF7800>Vierkant penseel <dark_gray>» <gray>rechte randen, scherpe hoeken"
+    round: "<#FF7800>Rond penseel <dark_gray>» <gray>zachte, ronde streken"
+  hue: "<#FF7800>Tint <dark_gray>» <gray>kleuren van deze tint verschijnen in het vierkant"
+  current-color: "<#FF7800>Huidige kleur: <white>{color} <dark_gray>» <gray>voer een #RRGGBB-code in"
+  previous-color: "<#FF7800>Vorige kleur: <white>{color} <dark_gray>» <gray>terugwisselen"
+  transparent: "<#1FFFE3>Transparant <dark_gray>» <gray>de muur schijnt door het schilderij"
+  shade: "{color} <dark_gray>» <gray>helderheid van de huidige kleur"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Ongedaan maken <dark_gray>» <gray>hetzelfde als F"
+    redo: "<#FF7800>Opnieuw <dark_gray>» <gray>hetzelfde als Shift + F"
+    clear: "<#FF7800>Doek leegmaken <dark_gray>» <gray>wit vullen, kan ongedaan worden gemaakt"
+    resolution: "<#FF7800>Resolutie: {res} px/blok <dark_gray>» <gray>wijzigen; F zet het terug"
+    shared: "<#FF7800>Iedereen mag schilderen: {state} <dark_gray>» <gray>wisselen"
+    sign: "<#FF7800>Signeren <dark_gray>» <gray>geef een titel en rond het schilderij af"
+    export: "<#FF7800>Exporteren <dark_gray>» <gray>schilderijcode als tekst"
+    import: "<#FF7800>Importeren <dark_gray>» <gray>plak een schilderijcode"
+    image: "<#FF7800>Afbeelding van een url <dark_gray>» <gray>met bijsnijden, zoom en verschuiven"
+    gallery: "<#FF7800>Mijn schilderijen"
+    hide: "<#FF7800>Paneel verbergen <dark_gray>» <gray>komt terug als je met het penseel op het doek klikt"
+
+menu:
+  close:
+    name: "Sluiten"
+    action: "menu sluiten"
+  back:
+    name: "Terug"
+    action: "teruggaan"
+  hint: "Tip"
+  page:
+    previous: "Vorige pagina"
+    next: "Volgende pagina"
+    action: "bladeren"
+    of: "Pagina {page} van {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Voorgoed verwijderen?"
+      - "Het schilderij verdwijnt van alle muren"
+      - "en de voorwerpen worden lege doeken."
+    "yes": "<#FF1F1F>ja, verwijderen"
+    "no": "behouden"
+    action: "voorgoed verwijderen"
+    done: "Schilderij verwijderd"
+  admin:
+    title: "Schilderijen: beheer"
+    canvases:
+      name: "<#FF7800>Doeken van elke grootte"
+      lore:
+        - "Van 1×1 tot {max}: 3×5, 1×4 en alle andere."
+    painting:
+      - "Maker: <white>{author}"
+      - "{size} blokken · {res} px/blok · {state}"
+      - "Gewijzigd: <white>{date}"
+      - "Hangt in geladen chunks: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "pakken"
+    export: "als tekst exporteren"
+    empty: "Er zijn nog geen schilderijen op de server"
+    count: "<white>Schilderijen op de server: <#FF7800>{count}"
+    too-big:
+      - "Groter dan de config toestaat:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "meteen {amount} pakken"
+    help-canvases:
+      - "<white>Doeken van elke grootte."
+      - "De kolom is de breedte, de rij de hoogte:"
+      - "derde kolom van de vijfde rij is 3×5."
+      - ""
+      - "Shift + LMK geeft er meteen {amount}."
+    help:
+      - "<white>De bovenste rij bevat pluginvoorwerpen:"
+      - "het penseel, een doek en de tabel"
+      - "met doeken tot {max}."
+      - ""
+      - "Daaronder staan de schilderijen van alle spelers."
+      - "Een gepakt schilderij is hetzelfde, geen"
+      - "kopie: wijzigingen zijn overal te zien"
+      - "waar het hangt."
+  canvas:
+    title: "Doek"
+    info:
+      - "Maker: <white>{author}"
+      - "Grootte: <white>{size} <gray>blokken, <white>{pixels} <gray>pixels"
+      - "Status: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Resolutie: <#FF7800>{res} <white>pixels per blok"
+      lore:
+        - "Hoe lager het getal, hoe groter de pixels."
+        - "De tekening wordt bij wijzigen uitgerekt."
+        - "<dark_gray>F maakt de wijziging ongedaan."
+      finer: "fijner"
+      coarser: "grover"
+    clear:
+      name: "Doek leegmaken"
+      lore:
+        - "Wit vullen. Ongedaan maken kan (F)."
+      action: "leegmaken"
+    shared:
+      name: "<white>Iedereen mag schilderen: {state}"
+      lore:
+        - "Samen schilderen: het penseel van"
+        - "elke speler werkt op dit doek."
+    sign:
+      name: "Signeren"
+      lore:
+        - "Geef een titel en rond het schilderij af."
+        - "Een gesigneerd schilderij kan niet"
+        - "worden gewijzigd, wel gekopieerd."
+      action: "signeren"
+    export:
+      name: "Als tekst exporteren"
+      lore:
+        - "De schilderijcode: kopieer en geef door"
+        - "aan wie je wilt, ook op een andere server."
+      action: "code tonen"
+    import:
+      name: "Importeren uit tekst"
+      lore:
+        - "Plak een code. De tekening komt op het"
+        - "doek waar je naar kijkt, of op een leeg"
+        - "doek in je hand."
+      action: "code plakken"
+    gallery:
+      lore:
+        - "Alles wat je hebt geschilderd."
+  gallery:
+    title: "Mijn schilderijen"
+    painting:
+      - "{size} blokken · {res} px/blok · {state}"
+      - "Gewijzigd: <white>{date}"
+      - "Hangt nu: <white>{placed}"
+    take: "pakken <gray>(leeg doek van {size} nodig)"
+    empty:
+      name: "Hier is nog niets"
+      lore:
+        - "Plaats een doek en schilder iets."
+    help:
+      - "<white>Hier staan al je schilderijen,"
+      - "ook als je ze hebt afgenomen of kwijt bent."
+      - ""
+      - "Een schets die je hier pakt is hetzelfde"
+      - "schilderij: wijzigingen zijn overal te zien"
+      - "waar het hangt."
+      - ""
+      - "Gesigneerde schilderijen kopieer je op"
+      - "de werkbank: schilderij + leeg doek."
+  palette:
+    title: "Palet en gereedschap"
+    page: "Kleuren: pagina {page} van {pages}"
+    hex:
+      name: "Kleur via code"
+      lore:
+        - "Voer #RRGGBB in — de dichtstbijzijnde"
+        - "kleur van het palet wordt gekozen."
+      action: "code invoeren"
+    transparent:
+      - "Pixels verdwijnen: de muur schijnt"
+      - "door het schilderij. Handig voor stickers"
+      - "en schilderijen van elke vorm."
+    shade:
+      - "Helderheid van de gekozen kleur."
+    size:
+      name: "<white>Penseelgrootte: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>In het spel: Shift + muiswiel."
+      more: "groter"
+      less: "kleiner"
+      shift: "Met Shift"
+      by-four: "met 4"
+    canvas:
+      name: "Doek en mijn schilderijen"
+      lore:
+        - "Resolutie, signeren, export,"
+        - "import, lijst van je schilderijen."
+    help:
+      - "<white>Met het penseel in de hand:"
+      - "RMK op een doek schildert,"
+      - "LMK pakt een kleur van het doek"
+      - "of van elk blok in de wereld."
+      - ""
+      - "Shift + scrollen wijzigt de penseelgrootte."
+      - "F maakt ongedaan, Shift + F doet opnieuw."
+      - ""
+      - "Vormen sleep je: houd RMK ingedrukt,"
+      - "beweeg, laat los."
+      - "Met Shift wordt een lijn recht,"
+      - "een rechthoek een vierkant,"
+      - "een ellips een cirkel."
+
+dialog:
+  code: "Code"
+  export:
+    title: "Schilderij exporteren"
+    text: "“{title}” — een code van {length} tekens. Druk op “Kopiëren” om hem op het klembord te zetten."
+    text-parts: "“{title}” — de code is lang en daarom in delen gesplitst. Deel {part} van {parts}: {length} tekens. Kopieer alle delen en plak ze een voor een."
+    copy: "Kopiëren"
+    copy-tooltip: "Zet de code op het klembord"
+    next: "Volgend deel"
+    first: "Terug naar deel één"
+  import:
+    title: "Schilderij importeren"
+    text: "Plak een schilderijcode (Ctrl+V). De tekening komt op het doek waar je naar kijkt, of op een leeg doek in je hand."
+    button: "Importeren"
+  sign:
+    title: "Schilderij signeren"
+    text: "Een gesigneerd schilderij kan niet worden gewijzigd, maar wel gekopieerd: schilderij + een leeg doek van dezelfde grootte op de werkbank."
+    input: "Titel"
+    button: "Signeren"
+  hex:
+    title: "Kleur via code"
+    text: "Voer een kleur in als #RRGGBB. Kaarten kunnen niet elke kleur tonen, dus de dichtstbijzijnde wordt gekozen."
+    input: "Kleur"
+    button: "Kiezen"
+  canvas:
+    title: "Doek maken"
+    creative: "In de creatieve modus worden doeken niet verbruikt."
+    have: "Je hebt {canvases} vast."
+    text: "De kolom is de breedte, de rij de hoogte: een doek van 2×4 kost acht doeken van 1×1. Grijze afmetingen zijn voorlopig te hoog gegrepen."
+    same: "Dit doek heb je al vast"
+    assemble: "Doek van {size} maken: kost {canvases}"
+    need: "Kost {canvases}, je hebt er {have}"
+  image:
+    title: "Afbeelding van een url"
+    text: "De afbeelding komt op het doek waar je naar kijkt, of op een leeg doek in je hand; de grootte in blokken telt alleen als er geen van beide is. Niet tevreden? Open het venster opnieuw: de instellingen blijven bewaard en het vorige resultaat op het doek wordt vervangen."
+    url: "Url van de afbeelding"
+    fit:
+      label: "Aanpassing"
+      cover: "Doek vullen, de rest afsnijden"
+      contain: "Hele afbeelding passen, met randen"
+      stretch: "Over het hele doek rekken"
+    zoom: "Zoom, %"
+    x: "Naar rechts verschuiven, %"
+    "y": "Naar beneden verschuiven, %"
+    brightness: "Helderheid, %"
+    contrast: "Contrast, %"
+    saturation: "Verzadiging, %"
+    dither: "Vloeiende kleurovergangen (niet voor pixelart)"
+    shade: "Verdonkeren als een blokzijde: voor kubussen van schilderijen"
+    clear: "Randen rond de afbeelding zijn transparant, niet wit"
+    width: "Breedte van het nieuwe schilderij, blokken"
+    height: "Hoogte van het nieuwe schilderij, blokken"
+    button: "Toepassen"
+    no-url: "Plak een url van een afbeelding"

@@ -1,0 +1,449 @@
+# PaintCraft — Deutsch
+#
+# {Platzhalter} in geschweiften Klammern füllt das Plugin aus: bitte unverändert lassen.
+# Farben sind MiniMessage-Tags: <gray>, <white>, <#FF7800>.
+# Ein Schlüssel, der in der Datei fehlt, wird aus der englischen Übersetzung genommen.
+
+language:
+  name: "Deutsch"
+  changed: "<#1FFF5E>Sprache: <white>{language}"
+  current: "<white>Aktuelle Sprache: <#FF7800>{language}"
+  available: "<gray>Verfügbar: <white>{languages}"
+  unknown: "Unbekannte Sprache {input}. Verfügbar: {languages}"
+
+prefix: "Gemälde"
+
+common:
+  no-permission: "Dazu fehlt dir die Berechtigung"
+  color-format: "Eine Farbe wird als #RRGGBB angegeben, zum Beispiel #FF8800"
+  canvas-cleared: "<gray>Leinwand geleert. <dark_gray>F — zurückholen"
+  "on": "AN"
+  "off": "AUS"
+
+click:
+  left: "Linksklick"
+  right: "Rechtsklick"
+
+action:
+  open: "öffnen"
+  select: "auswählen"
+  take: "nehmen"
+  toggle: "umschalten"
+
+unit:
+  canvas:
+    one: "{count} Leinwand 1×1"
+    many: "{count} Leinwände 1×1"
+  sheet:
+    one: "{count} Blatt"
+    many: "{count} Blätter"
+  painting:
+    one: "{count} Gemälde"
+    many: "{count} Gemälde"
+
+color:
+  transparent: "Transparent"
+  transparent-short: "transparent"
+
+command:
+  invalid-usage: "Falsche Verwendung"
+  player-only: "Nur für Spieler"
+  usage-header: "<#FF7800>Hilfe zum Befehl:"
+  usage: "<#FF1F1F>Verwendung: <white>{usage}"
+  unknown-choice: "Unbekannt: {input} ({what})"
+  choice:
+    tool: "Werkzeug"
+    item: "Gegenstand"
+  canvas-size: "Die Leinwandgröße ist BxH in Blöcken, von 1x1 bis {max}x{max}. Zum Beispiel: 2x3"
+  panel-reset: "Die Panel-Fenster sind wieder an ihren Plätzen"
+  specify-player: "Gib einen Spieler an"
+  give-painting: "Gemälde gibt es in der Galerie: /paint gallery"
+  given: "<white>Übergeben an <#FF7800>{player}"
+  reloaded: "Konfiguration neu geladen"
+  look-at-painting: "Sieh ein Gemälde an oder nimm eines in die Hand"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— Gemälde ohne Ressourcenpaket"
+    lines:
+      - "<#FF7800>Pinsel <dark_gray>» <gray>Stock + Feder. <#FF7800>Leinwand <dark_gray>» <gray>Papier + Stock"
+      - "Leinwände als Rechteck in der Werkbank werden zu einer großen"
+      - "<#FF7800>Rechtsklick <dark_gray>» <gray>malen, <#FF7800>Linksklick <dark_gray>» <gray>Farbe von Leinwand oder Block"
+      - "<#FF7800>Shift + Rechtsklick neben die Leinwand <dark_gray>» <gray>Palette, <#FF7800>Shift + Mausrad <dark_gray>» <gray>Pinselgröße"
+      - "<#FF7800>Shift beim Malen <dark_gray>» <gray>gerade Linie, Quadrat, Kreis"
+      - "<#FF7800>F <dark_gray>» <gray>rückgängig, <#FF7800>Shift + F <dark_gray>» <gray>wiederholen"
+      - "<#FF7800>Q <dark_gray>» <gray>voriges Werkzeug, <#FF7800>Shift + Q <dark_gray>» <gray>nächstes"
+      - "<white>/paint <gray>Palette · <white>/paint gallery <gray>meine Gemälde"
+      - "<white>/paint color #RRGGBB <gray>· <white>size Zahl <gray>· <white>tool Name"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>verschobene Panel-Fenster zurücksetzen"
+      - "<white>/paint export <gray>Gemäldecode · <white>/paint import [Code] <gray>Code einfügen"
+      - "<white>/paint sign [Titel] <gray>signieren: ein signiertes Gemälde lässt sich kopieren"
+      - "<white>/paint image [URL] <gray>Bild aus dem Web: Zuschnitt, Zoom, Versatz"
+      - "<white>/paint admin <gray>Plugin-Gegenstände und alle Gemälde des Servers"
+      - "<white>/paint give brush|canvas [BxH] [Anzahl] [Spieler]"
+      - "<white>/paint language [Code] <gray>Plugin-Sprache · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Pinsel"
+    hint: "Rechtsklick halten und über die Leinwand ziehen. Shift — gerade."
+  eraser:
+    name: "Radierer"
+    hint: "Radiert bis zur leeren Leinwand."
+  fill:
+    name: "Füllen"
+    hint: "Füllt eine einfarbige Fläche."
+  spray:
+    name: "Sprühdose"
+    hint: "Sprüht Punkte: je länger du hältst, desto dichter."
+  line:
+    name: "Linie"
+    hint: "Am Anfang Rechtsklick halten, am Ende loslassen. Shift — gerade."
+  rect:
+    name: "Rechteck"
+    hint: "Von Ecke zu Ecke ziehen. Shift — Quadrat."
+  ellipse:
+    name: "Ellipse"
+    hint: "Wie ein Rechteck ziehen. Shift — Kreis."
+
+item:
+  brush:
+    name: "<#FF7800>Künstlerpinsel"
+    paint: "auf der Leinwand malen <gray>(halten möglich)"
+    pick: "Farbe von Leinwand oder Block aufnehmen"
+    palette: "Palette <gray>(neben der Leinwand)"
+    shift-key: "Shift beim Malen"
+    shift: "gerade Linie, Quadrat, Kreis"
+    wheel-key: "Shift + Mausrad"
+    wheel: "Pinselgröße"
+    undo: "rückgängig"
+    redo: "wiederholen"
+  canvas:
+    name: "Leinwand {size}"
+    lore:
+      - "An Wand, Boden oder Decke stellen"
+      - "und mit dem Pinsel malen."
+      - ""
+      - "<dark_gray>Gleiche Leinwände, als Rechteck"
+      - "<dark_gray>in der Werkbank ausgelegt,"
+      - "<dark_gray>werden zu einer großen."
+    assemble: "große Leinwand aus dem Stapel bauen"
+  painting:
+    sketch-name: "Skizze"
+    author: "Autor: <white>{name}"
+    size: "Größe: <white>{size}"
+    imported: "<#FFE100>Import <dark_gray>» <gray>übertragen, nicht mit dem Pinsel gemalt"
+    signed:
+      - "<dark_gray>Gemälde + leere Leinwand {size}"
+      - "<dark_gray>in der Werkbank ergibt eine Kopie."
+    sketch:
+      - "<dark_gray>Nicht signiert: kann weiter bemalt werden."
+      - "<dark_gray>Nr. {id}"
+
+painting:
+  untitled: "Ohne Titel"
+  signed: "<#FF7800>signiert"
+  sketch: "<white>Skizze"
+  imported: " <gray>· <#FFE100>Import"
+
+hud:
+  size: "<gray>Größe <white>{size}"
+
+paint:
+  signed: "Das Gemälde ist signiert — es lässt sich nicht mehr ändern"
+  not-yours: "Dieses Gemälde gehört {player}: nur der Autor malt darauf"
+  undo:
+    look: "Sieh ein Gemälde an, um rückgängig zu machen"
+    undone: "Rückgängig gemacht"
+    redone: "Wiederholt"
+    nothing-undo: "Nichts rückgängig zu machen"
+    nothing-redo: "Nichts zu wiederholen"
+
+place:
+  deleted: "Der Autor hat dieses Gemälde gelöscht. Der Gegenstand ist wieder eine leere Leinwand"
+  too-big: "Leinwände über {max} lassen sich auf diesem Server nicht aufstellen"
+  no-room: "Eine Leinwand {size} passt hier nicht hin"
+  denied: "Das darfst du hier nicht"
+  break-owner: "Nur wer das Gemälde aufgehängt hat, kann es abnehmen"
+  change-owner: "Nur wer das Gemälde aufgehängt hat, kann es ändern"
+
+assemble:
+  hold: "Nimm Leinwände 1×1 in die Hand"
+  not-enough: "Eine Leinwand {size} braucht {canvases}, du hältst {have}"
+  done: "Leinwand {size} gebaut"
+
+import:
+  parts: "Teile erhalten: {have} von {total}. Füge Teil {next} ein."
+  too-big: "Das Gemälde im Code ist größer, als der Server erlaubt ({max})"
+  bad-code: "Das ist kein Gemäldecode oder er ist beschädigt"
+  loading: "Lade das Bild…"
+  image-failed: "Das Bild konnte nicht geladen werden: {reason}"
+  image-done: "<#1FFF5E>Das Bild ist auf der Leinwand. <gray>Nicht passend? Öffne das Fenster erneut und passe an — das vorige Ergebnis wird ersetzt."
+  code-done: "<#1FFF5E>Die Zeichnung ist auf der Leinwand. <gray>Rückgängig: F mit dem Pinsel in der Hand."
+  no-target: "Kein Ziel: sieh deine Leinwand an oder nimm eine leere Leinwand {size} in die Hand"
+  created: "Ein Gemälde {size} liegt in deinem Inventar"
+  paper: "Der Import kostet Papier: {sheets} — {price} pro Block des Gemäldes"
+  limit: "Du hast schon {paintings} — das ist das Limit. Lösche Überflüssiges: /paint gallery"
+
+gallery:
+  need-canvas: "Du brauchst eine leere Leinwand {size} im Inventar"
+
+sign:
+  done: "<#1FFF5E>Gemälde „{title}“ signiert. <gray>Jetzt lässt es sich in der Werkbank kopieren."
+
+panel:
+  window:
+    tools: "Pinsel"
+    colors: "Farbe"
+    actions: "Gemälde"
+  title:
+    tools: "PINSEL"
+    colors: "FARBE"
+  window-reset: "Das Fenster „{window}“ ist wieder an seinem Platz"
+  window-grabbed: "<#FF7800>Fenster „{window}“ <dark_gray>» <gray>mit dem Fadenkreuz führen; Rechtsklick loslassen oder erneut klicken zum Ablegen"
+  move: "<#FF7800>Fenster verschieben <dark_gray>» <gray>Rechtsklick halten und ziehen; Shift + Klick setzt es zurück"
+  size: "<#FF7800>Pinselgröße: {size} <dark_gray>» <gray>feiner mit Shift + Mausrad"
+  shape:
+    square: "<#FF7800>Eckiger Pinsel <dark_gray>» <gray>gerade Kanten, scharfe Ecken"
+    round: "<#FF7800>Runder Pinsel <dark_gray>» <gray>weiche, runde Striche"
+  hue: "<#FF7800>Farbton <dark_gray>» <gray>Farben dieses Farbtons erscheinen im Quadrat"
+  current-color: "<#FF7800>Aktuelle Farbe: <white>{color} <dark_gray>» <gray>Code #RRGGBB eingeben"
+  previous-color: "<#FF7800>Vorherige Farbe: <white>{color} <dark_gray>» <gray>zurückwechseln"
+  transparent: "<#1FFFE3>Transparent <dark_gray>» <gray>die Wand scheint durch das Gemälde"
+  shade: "{color} <dark_gray>» <gray>Helligkeit der aktuellen Farbe"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Rückgängig <dark_gray>» <gray>wie F"
+    redo: "<#FF7800>Wiederholen <dark_gray>» <gray>wie Shift + F"
+    clear: "<#FF7800>Leinwand leeren <dark_gray>» <gray>weiß füllen, rückgängig möglich"
+    resolution: "<#FF7800>Auflösung: {res} px/Block <dark_gray>» <gray>ändern; F stellt sie wieder her"
+    shared: "<#FF7800>Alle dürfen malen: {state} <dark_gray>» <gray>umschalten"
+    sign: "<#FF7800>Signieren <dark_gray>» <gray>Titel vergeben und das Gemälde abschließen"
+    export: "<#FF7800>Export <dark_gray>» <gray>Gemäldecode als Text"
+    import: "<#FF7800>Import <dark_gray>» <gray>Gemäldecode einfügen"
+    image: "<#FF7800>Bild von einer URL <dark_gray>» <gray>mit Zuschnitt, Zoom und Versatz"
+    gallery: "<#FF7800>Meine Gemälde"
+    hide: "<#FF7800>Panel ausblenden <dark_gray>» <gray>kommt zurück, wenn du mit dem Pinsel auf die Leinwand klickst"
+
+menu:
+  close:
+    name: "Schließen"
+    action: "Menü schließen"
+  back:
+    name: "Zurück"
+    action: "zurückgehen"
+  hint: "Hinweis"
+  page:
+    previous: "Vorherige Seite"
+    next: "Nächste Seite"
+    action: "blättern"
+    of: "Seite {page} von {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Für immer löschen?"
+      - "Das Gemälde verschwindet von allen Wänden"
+      - "und seine Gegenstände werden zu leeren Leinwänden."
+    "yes": "<#FF1F1F>ja, löschen"
+    "no": "behalten"
+    action: "für immer löschen"
+    done: "Gemälde gelöscht"
+  admin:
+    title: "Gemälde: Verwaltung"
+    canvases:
+      name: "<#FF7800>Leinwände aller Größen"
+      lore:
+        - "Von 1×1 bis {max}: 3×5, 1×4 und alle anderen."
+    painting:
+      - "Autor: <white>{author}"
+      - "{size} Blöcke · {res} px/Block · {state}"
+      - "Geändert: <white>{date}"
+      - "Hängt in geladenen Chunks: <white>{placed}"
+      - "<dark_gray>Nr. {id}"
+    take: "nehmen"
+    export: "als Text exportieren"
+    empty: "Auf dem Server gibt es noch keine Gemälde"
+    count: "<white>Gemälde auf dem Server: <#FF7800>{count}"
+    too-big:
+      - "Größer, als die Konfiguration erlaubt:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "gleich {amount} nehmen"
+    help-canvases:
+      - "<white>Leinwände aller Größen."
+      - "Die Spalte ist die Breite, die Zeile die Höhe:"
+      - "dritte Spalte der fünften Zeile ist 3×5."
+      - ""
+      - "Shift + Linksklick gibt gleich {amount}."
+    help:
+      - "<white>Die obere Reihe zeigt Plugin-Gegenstände:"
+      - "Pinsel, Leinwand und die Tabelle"
+      - "der Leinwände bis {max}."
+      - ""
+      - "Darunter sind die Gemälde aller Spieler."
+      - "Ein genommenes Gemälde ist dasselbe,"
+      - "keine Kopie: Änderungen sind überall"
+      - "zu sehen, wo es hängt."
+  canvas:
+    title: "Leinwand"
+    info:
+      - "Autor: <white>{author}"
+      - "Größe: <white>{size} <gray>Blöcke, <white>{pixels} <gray>Pixel"
+      - "Status: {state}"
+      - "<dark_gray>Nr. {id}"
+    resolution:
+      name: "<white>Auflösung: <#FF7800>{res} <white>Pixel pro Block"
+      lore:
+        - "Je kleiner die Zahl, desto größer die Pixel."
+        - "Die Zeichnung wird beim Ändern gestreckt."
+        - "<dark_gray>F macht die Änderung rückgängig."
+      finer: "feiner"
+      coarser: "gröber"
+    clear:
+      name: "Leinwand leeren"
+      lore:
+        - "Weiß füllen. Rückgängig mit F möglich."
+      action: "leeren"
+    shared:
+      name: "<white>Alle dürfen malen: {state}"
+      lore:
+        - "Gemeinsam malen: der Pinsel jedes"
+        - "Spielers funktioniert auf dieser Leinwand."
+    sign:
+      name: "Signieren"
+      lore:
+        - "Titel vergeben und das Gemälde abschließen."
+        - "Ein signiertes Gemälde lässt sich nicht"
+        - "ändern, aber kopieren."
+      action: "signieren"
+    export:
+      name: "Als Text exportieren"
+      lore:
+        - "Der Gemäldecode: kopieren und an"
+        - "jeden weitergeben, auch auf einen anderen Server."
+      action: "Code anzeigen"
+    import:
+      name: "Aus Text importieren"
+      lore:
+        - "Code einfügen. Die Zeichnung landet auf"
+        - "der Leinwand, die du ansiehst, oder auf einer"
+        - "leeren Leinwand in deiner Hand."
+      action: "Code einfügen"
+    gallery:
+      lore:
+        - "Alles, was du gemalt hast."
+  gallery:
+    title: "Meine Gemälde"
+    painting:
+      - "{size} Blöcke · {res} px/Block · {state}"
+      - "Geändert: <white>{date}"
+      - "Hängt gerade: <white>{placed}"
+    take: "nehmen <gray>(braucht eine leere Leinwand {size})"
+    empty:
+      name: "Hier ist noch nichts"
+      lore:
+        - "Stell eine Leinwand auf und male etwas."
+    help:
+      - "<white>Hier liegen alle deine Gemälde,"
+      - "auch wenn du sie abgenommen oder verloren hast."
+      - ""
+      - "Eine von hier genommene Skizze ist"
+      - "dasselbe Gemälde: Änderungen sind"
+      - "überall zu sehen, wo es hängt."
+      - ""
+      - "Signierte Gemälde werden in der Werkbank"
+      - "kopiert: Gemälde + leere Leinwand."
+  palette:
+    title: "Palette und Werkzeuge"
+    page: "Farben: Seite {page} von {pages}"
+    hex:
+      name: "Farbe per Code"
+      lore:
+        - "Gib #RRGGBB ein — die nächste"
+        - "Palettenfarbe wird gewählt."
+      action: "Code eingeben"
+    transparent:
+      - "Pixel verschwinden: die Wand scheint"
+      - "durch das Gemälde. Gut für Sticker"
+      - "und Gemälde in beliebiger Form."
+    shade:
+      - "Helligkeit der gewählten Farbe."
+    size:
+      name: "<white>Pinselgröße: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>Im Spiel: Shift + Mausrad."
+      more: "größer"
+      less: "kleiner"
+      shift: "Mit Shift"
+      by-four: "um 4"
+    canvas:
+      name: "Leinwand und meine Gemälde"
+      lore:
+        - "Auflösung, Signatur, Export,"
+        - "Import, Liste deiner Gemälde."
+    help:
+      - "<white>Mit dem Pinsel in der Hand:"
+      - "Rechtsklick auf die Leinwand malt,"
+      - "Linksklick nimmt eine Farbe von der Leinwand"
+      - "oder von jedem Block der Welt."
+      - ""
+      - "Shift + Mausrad ändert die Pinselgröße."
+      - "F macht rückgängig, Shift + F wiederholt."
+      - ""
+      - "Formen werden gezogen: Rechtsklick halten,"
+      - "bewegen, loslassen."
+      - "Mit Shift wird die Linie gerade,"
+      - "das Rechteck zum Quadrat,"
+      - "die Ellipse zum Kreis."
+
+dialog:
+  code: "Code"
+  export:
+    title: "Gemälde exportieren"
+    text: "„{title}“ — ein Code mit {length} Zeichen. Klicke auf „Kopieren“, um ihn in die Zwischenablage zu legen."
+    text-parts: "„{title}“ — der Code ist lang und deshalb in Teile aufgeteilt. Teil {part} von {parts}: {length} Zeichen. Kopiere alle Teile und füge sie nacheinander ein."
+    copy: "Kopieren"
+    copy-tooltip: "Den Code in die Zwischenablage legen"
+    next: "Nächster Teil"
+    first: "Zurück zu Teil eins"
+  import:
+    title: "Gemälde importieren"
+    text: "Füge einen Gemäldecode ein (Ctrl+V). Die Zeichnung landet auf der Leinwand, die du ansiehst, oder auf einer leeren Leinwand in deiner Hand."
+    button: "Importieren"
+  sign:
+    title: "Gemälde signieren"
+    text: "Ein signiertes Gemälde lässt sich nicht ändern, aber kopieren: Gemälde + leere Leinwand gleicher Größe in der Werkbank."
+    input: "Titel"
+    button: "Signieren"
+  hex:
+    title: "Farbe per Code"
+    text: "Gib eine Farbe als #RRGGBB ein. Karten können nicht jede Farbe darstellen, deshalb wird die nächste gewählt."
+    input: "Farbe"
+    button: "Wählen"
+  canvas:
+    title: "Leinwand bauen"
+    creative: "Im Kreativmodus werden Leinwände nicht verbraucht."
+    have: "Du hältst {canvases}."
+    text: "Die Spalte ist die Breite, die Zeile die Höhe: eine Leinwand 2×4 braucht acht Leinwände 1×1. Graue Größen sind vorerst außer Reichweite."
+    same: "Diese Leinwand hältst du schon"
+    assemble: "Leinwand {size} bauen: braucht {canvases}"
+    need: "Braucht {canvases}, du hältst {have}"
+  image:
+    title: "Bild von einer URL"
+    text: "Das Bild landet auf der Leinwand, die du ansiehst, oder auf einer leeren Leinwand in deiner Hand; die Größe in Blöcken zählt nur, wenn es keins von beiden gibt. Nicht zufrieden? Öffne das Fenster erneut: die Einstellungen bleiben erhalten und das vorige Ergebnis auf der Leinwand wird ersetzt."
+    url: "Bild-URL"
+    fit:
+      label: "Anpassung"
+      cover: "Leinwand füllen, Rest abschneiden"
+      contain: "Ganzes Bild einpassen, mit Rändern"
+      stretch: "Über die ganze Leinwand strecken"
+    zoom: "Zoom, %"
+    x: "Versatz nach rechts, %"
+    "y": "Versatz nach unten, %"
+    brightness: "Helligkeit, %"
+    contrast: "Kontrast, %"
+    saturation: "Sättigung, %"
+    dither: "Weiche Farbübergänge (bei Pixelart nicht angewendet)"
+    shade: "Abdunkeln wie eine Blockseite: für Würfel aus Gemälden"
+    clear: "Ränder um das Bild sind transparent, nicht weiß"
+    width: "Breite des neuen Gemäldes, Blöcke"
+    height: "Höhe des neuen Gemäldes, Blöcke"
+    button: "Anwenden"
+    no-url: "Füge eine Bild-URL ein"

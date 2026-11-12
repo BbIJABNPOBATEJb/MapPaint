@@ -1,14 +1,17 @@
 [versions]
 lombok = "1.18.48"
-paper = "1.21.11-R0.1-SNAPSHOT"
+paper = "1.20.1-R0.1-SNAPSHOT"
+paper-modern = "1.21.11-R0.1-SNAPSHOT"
 litecommands = "3.11.0"
 packetevents = "2.14.0"
 adventure = "4.25.0"
+adventure-old = "4.14.0"
 
 [libraries]
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 
 paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
+paper-api-modern = { module = "io.papermc.paper:paper-api", version.ref = "paper-modern" }
 
 litecommands-bukkit = { module = "dev.rollczi:litecommands-bukkit", version.ref = "litecommands" }
 packetevents = { module = "com.github.retrooper:packetevents-spigot", version.ref = "packetevents" }

@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
+import me.bbijabnpobatejb.paintcraft.compat.Compat;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.ui.button.ButtonConsumer;
 import me.bbijabnpobatejb.paintcraft.ui.button.ItemButton;
@@ -64,7 +65,8 @@ public abstract class InventoryGuiImpl implements InventoryHolder {
     public void renderBackground() {
         if (background == null) {
             background = ItemUtil.builder(Material.GRAY_STAINED_GLASS_PANE)
-                    .editMeta(meta -> meta.setHideTooltip(true))
+                    .displayName(Component.space())
+                    .editMeta(Compat::hideTooltip)
                     .build();
         }
         for (int slot = 0; slot < size; slot++) inventory.setItem(slot, background);

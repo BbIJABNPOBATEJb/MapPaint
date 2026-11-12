@@ -1,6 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.exchange;
 
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
+import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.color.ColorSpace;
@@ -21,14 +22,16 @@ public final class ImageImporter {
 
     private static final int MAX_REDIRECTS = 5;
 
+    private static final HttpClient CLIENT = HttpClient.newBuilder()
+            .connectTimeout(Duration.ofSeconds(6))
+            .followRedirects(HttpClient.Redirect.NEVER)
+            .build();
+
     private ImageImporter() {
     }
 
     public static BufferedImage fetch(String url, int maxBytes, boolean allowPrivate) throws IOException, InterruptedException {
-        try (HttpClient client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(6))
-                .followRedirects(HttpClient.Redirect.NEVER)
-                .build()) {
+        try {
             URI uri = URI.create(url.trim());
             for (int hop = 0; hop <= MAX_REDIRECTS; hop++) {
                 check(uri, allowPrivate);
@@ -38,7 +41,7 @@ public final class ImageImporter {
                         .header("Accept", "image/*")
                         .GET()
                         .build();
-                HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+                HttpResponse<InputStream> response = CLIENT.send(request, HttpResponse.BodyHandlers.ofInputStream());
                 try (InputStream body = response.body()) {
                     int status = response.statusCode();
                     if (status >= 300 && status < 400) {
@@ -207,9 +210,9 @@ public final class ImageImporter {
             g += shift;
             b += shift;
         }
-        out[0][i] = Math.clamp(r, 0f, 255f) * shade;
-        out[1][i] = Math.clamp(g, 0f, 255f) * shade;
-        out[2][i] = Math.clamp(b, 0f, 255f) * shade;
+        out[0][i] = MathUtil.clamp(r, 0f, 255f) * shade;
+        out[1][i] = MathUtil.clamp(g, 0f, 255f) * shade;
+        out[2][i] = MathUtil.clamp(b, 0f, 255f) * shade;
     }
 
     private static int[] pixels(BufferedImage image) {

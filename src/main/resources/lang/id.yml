@@ -1,0 +1,449 @@
+# PaintCraft — Bahasa Indonesia
+#
+# {placeholders} dalam kurung kurawal diisi oleh plugin: biarkan apa adanya.
+# Warna memakai tag MiniMessage: <gray>, <white>, <#FF7800>.
+# Kunci yang tidak ada di file bahasa lain akan memakai en.yml.
+
+language:
+  name: "Bahasa Indonesia"
+  changed: "<#1FFF5E>Bahasa: <white>{language}"
+  current: "<white>Bahasa saat ini: <#FF7800>{language}"
+  available: "<gray>Tersedia: <white>{languages}"
+  unknown: "Bahasa {input} tidak dikenal. Tersedia: {languages}"
+
+prefix: "Paint"
+
+common:
+  no-permission: "Kamu tidak punya izin"
+  color-format: "Warna ditulis sebagai #RRGGBB, contoh #FF8800"
+  canvas-cleared: "<gray>Kanvas dibersihkan. <dark_gray>Tekan F untuk mengembalikan"
+  "on": "AKTIF"
+  "off": "MATI"
+
+click:
+  left: "Klik kiri"
+  right: "Klik kanan"
+
+action:
+  open: "buka"
+  select: "pilih"
+  take: "ambil"
+  toggle: "ubah"
+
+unit:
+  canvas:
+    one: "{count} kanvas 1×1"
+    many: "{count} kanvas 1×1"
+  sheet:
+    one: "{count} lembar"
+    many: "{count} lembar"
+  painting:
+    one: "{count} lukisan"
+    many: "{count} lukisan"
+
+color:
+  transparent: "Transparan"
+  transparent-short: "transparan"
+
+command:
+  invalid-usage: "Penggunaan tidak valid"
+  player-only: "Hanya untuk pemain"
+  usage-header: "<#FF7800>Cara pakai perintah:"
+  usage: "<#FF1F1F>Penggunaan: <white>{usage}"
+  unknown-choice: "{what} tidak ditemukan: {input}"
+  choice:
+    tool: "alat"
+    item: "item"
+  canvas-size: "Ukuran kanvas adalah LxT dalam blok, dari 1x1 sampai {max}x{max}. Contoh: 2x3"
+  panel-reset: "Jendela panel kembali ke tempatnya"
+  specify-player: "Sebutkan pemainnya"
+  give-painting: "Lukisan diambil dari galeri: /paint gallery"
+  given: "<white>Diberikan kepada <#FF7800>{player}"
+  reloaded: "Konfigurasi dimuat ulang"
+  look-at-painting: "Lihat sebuah lukisan atau pegang satu di tangan"
+  help:
+    title: "<#FF7800><bold>PaintCraft</bold> <gray>— lukisan tanpa resource pack"
+    lines:
+      - "<#FF7800>Kuas <dark_gray>» <gray>tongkat + bulu. <#FF7800>Kanvas <dark_gray>» <gray>kertas + tongkat"
+      - "Kanvas yang disusun persegi panjang di meja kerajinan menyatu jadi kanvas besar"
+      - "<#FF7800>Klik kanan <dark_gray>» <gray>melukis, <#FF7800>klik kiri <dark_gray>» <gray>ambil warna dari kanvas atau blok"
+      - "<#FF7800>Shift + klik kanan di luar kanvas <dark_gray>» <gray>palet, <#FF7800>Shift + scroll <dark_gray>» <gray>ukuran kuas"
+      - "<#FF7800>Shift saat melukis <dark_gray>» <gray>garis lurus, persegi, lingkaran"
+      - "<#FF7800>F <dark_gray>» <gray>urungkan, <#FF7800>Shift + F <dark_gray>» <gray>ulangi"
+      - "<#FF7800>Q <dark_gray>» <gray>alat sebelumnya, <#FF7800>Shift + Q <dark_gray>» <gray>alat berikutnya"
+      - "<white>/paint <gray>palet · <white>/paint gallery <gray>lukisanku"
+      - "<white>/paint color #RRGGBB <gray>· <white>size angka <gray>· <white>tool nama"
+      - "<white>/paint undo <gray>· <white>redo <gray>· <white>clear"
+      - "<white>/paint panel <gray>kembalikan jendela panel yang digeser"
+      - "<white>/paint export <gray>kode lukisan · <white>/paint import [kode] <gray>tempel kode"
+      - "<white>/paint sign [judul] <gray>tanda tangani: lukisan bertanda tangan bisa disalin"
+      - "<white>/paint image [url] <gray>gambar dari web: potong, zoom, geser"
+      - "<white>/paint admin <gray>item plugin dan semua lukisan di server"
+      - "<white>/paint give brush|canvas [WxH] [jumlah] [pemain]"
+      - "<white>/paint language [kode] <gray>bahasa plugin · <white>/paint reload"
+
+tool:
+  brush:
+    name: "Kuas"
+    hint: "Tahan klik kanan dan seret di kanvas. Shift menjaganya lurus."
+  eraser:
+    name: "Penghapus"
+    hint: "Menghapus sampai kanvas kosong."
+  fill:
+    name: "Isi"
+    hint: "Mengisi area dengan satu warna."
+  spray:
+    name: "Semprotan"
+    hint: "Menyemprotkan titik: makin lama ditahan, makin rapat."
+  line:
+    name: "Garis"
+    hint: "Tahan klik kanan di awal, lepas di akhir. Shift meluruskan."
+  rect:
+    name: "Persegi panjang"
+    hint: "Seret dari sudut ke sudut. Shift membuat persegi."
+  ellipse:
+    name: "Elips"
+    hint: "Seret seperti persegi panjang. Shift membuat lingkaran."
+
+item:
+  brush:
+    name: "<#FF7800>Kuas Pelukis"
+    paint: "melukis di kanvas <gray>(bisa ditahan)"
+    pick: "ambil warna dari kanvas atau blok"
+    palette: "palet <gray>(di luar kanvas)"
+    shift-key: "Shift saat melukis"
+    shift: "garis lurus, persegi, lingkaran"
+    wheel-key: "Shift + scroll"
+    wheel: "ukuran kuas"
+    undo: "urungkan"
+    redo: "ulangi"
+  canvas:
+    name: "Kanvas {size}"
+    lore:
+      - "Pasang di dinding, lantai atau langit-langit"
+      - "dan lukis dengan kuas."
+      - ""
+      - "<dark_gray>Kanvas yang sama, disusun"
+      - "<dark_gray>persegi panjang di meja kerajinan,"
+      - "<dark_gray>menyatu jadi kanvas besar."
+    assemble: "rakit kanvas besar dari tumpukan"
+  painting:
+    sketch-name: "Sketsa"
+    author: "Pelukis: <white>{name}"
+    size: "Ukuran: <white>{size}"
+    imported: "<#FFE100>Impor <dark_gray>» <gray>dipindahkan, bukan dilukis tangan"
+    signed:
+      - "<dark_gray>Lukisan + kanvas kosong {size}"
+      - "<dark_gray>di meja kerajinan jadi salinan."
+    sketch:
+      - "<dark_gray>Belum ditandatangani: masih bisa dilukis."
+      - "<dark_gray># {id}"
+
+painting:
+  untitled: "Tanpa judul"
+  signed: "<#FF7800>bertanda tangan"
+  sketch: "<white>sketsa"
+  imported: " <gray>· <#FFE100>impor"
+
+hud:
+  size: "<gray>ukuran <white>{size}"
+
+paint:
+  signed: "Lukisan sudah ditandatangani — tidak bisa diubah lagi"
+  not-yours: "Lukisan ini milik {player}: hanya pelukisnya yang bisa melukis di sini"
+  undo:
+    look: "Lihat sebuah lukisan untuk mengurungkan"
+    undone: "Diurungkan"
+    redone: "Diulangi"
+    nothing-undo: "Tidak ada yang diurungkan"
+    nothing-redo: "Tidak ada yang diulangi"
+
+place:
+  deleted: "Pelukis menghapus lukisan ini. Item kembali jadi kanvas kosong"
+  too-big: "Kanvas lebih besar dari {max} tidak bisa dipasang di server ini"
+  no-room: "Kanvas {size} tidak muat di sini"
+  denied: "Kamu tidak bisa melakukannya di sini"
+  break-owner: "Hanya pemain yang memasang lukisan yang bisa menurunkannya"
+  change-owner: "Hanya pemain yang memasang lukisan yang bisa mengubahnya"
+
+assemble:
+  hold: "Pegang kanvas 1×1 di tanganmu"
+  not-enough: "Kanvas {size} butuh {canvases}, kamu punya {have}"
+  done: "Kanvas {size} berhasil dirakit"
+
+import:
+  parts: "Bagian diterima: {have} dari {total}. Tempel bagian {next}."
+  too-big: "Lukisan dalam kode lebih besar dari yang diizinkan server ({max})"
+  bad-code: "Ini bukan kode lukisan, atau kodenya rusak"
+  loading: "Memuat gambar…"
+  image-failed: "Gagal memuat gambar: {reason}"
+  image-done: "<#1FFF5E>Gambar sudah di kanvas. <gray>Kurang pas? Buka jendelanya lagi dan sesuaikan — hasil sebelumnya akan diganti."
+  code-done: "<#1FFF5E>Gambar sudah di kanvas. <gray>Urungkan dengan F saat memegang kuas."
+  no-target: "Tidak ada tempatnya: lihat kanvasmu atau pegang kanvas kosong {size}"
+  created: "Lukisan {size} ada di inventarismu"
+  paper: "Impor butuh kertas: {sheets} — {price} per blok lukisan"
+  limit: "Kamu sudah punya {paintings} — itu batasnya. Hapus beberapa: /paint gallery"
+
+gallery:
+  need-canvas: "Kamu butuh kanvas kosong {size} di inventaris"
+
+sign:
+  done: "<#1FFF5E>Lukisan '{title}' ditandatangani. <gray>Sekarang bisa disalin di meja kerajinan."
+
+panel:
+  window:
+    tools: "Kuas"
+    colors: "Warna"
+    actions: "Lukisan"
+  title:
+    tools: "KUAS"
+    colors: "WARNA"
+  window-reset: "Jendela '{window}' kembali ke tempatnya"
+  window-grabbed: "<#FF7800>Jendela '{window}' <dark_gray>» <gray>gerakkan dengan crosshair; lepas klik kanan atau klik lagi untuk menaruh"
+  move: "<#FF7800>Pindahkan jendela <dark_gray>» <gray>tahan klik kanan dan seret; Shift + klik mengembalikan"
+  size: "<#FF7800>Ukuran kuas: {size} <dark_gray>» <gray>atur halus dengan Shift + scroll"
+  shape:
+    square: "<#FF7800>Kuas persegi <dark_gray>» <gray>tepi lurus, sudut tajam"
+    round: "<#FF7800>Kuas bulat <dark_gray>» <gray>goresan bulat yang lembut"
+  hue: "<#FF7800>Rona <dark_gray>» <gray>warna dengan rona ini tampil di kotak"
+  current-color: "<#FF7800>Warna saat ini: <white>{color} <dark_gray>» <gray>masukkan kode #RRGGBB"
+  previous-color: "<#FF7800>Warna sebelumnya: <white>{color} <dark_gray>» <gray>kembali ke warna ini"
+  transparent: "<#1FFFE3>Transparan <dark_gray>» <gray>dinding terlihat menembus lukisan"
+  shade: "{color} <dark_gray>» <gray>gradasi dari warna saat ini"
+  pixels: "{size} px"
+  action:
+    undo: "<#FF7800>Urungkan <dark_gray>» <gray>sama dengan F"
+    redo: "<#FF7800>Ulangi <dark_gray>» <gray>sama dengan Shift + F"
+    clear: "<#FF7800>Bersihkan kanvas <dark_gray>» <gray>isi dengan putih, bisa diurungkan"
+    resolution: "<#FF7800>Resolusi: {res} px/blok <dark_gray>» <gray>ubah; F mengembalikan"
+    shared: "<#FF7800>Semua orang boleh melukis: {state} <dark_gray>» <gray>ubah"
+    sign: "<#FF7800>Tanda tangan <dark_gray>» <gray>beri judul dan selesaikan lukisan"
+    export: "<#FF7800>Ekspor <dark_gray>» <gray>kode lukisan sebagai teks"
+    import: "<#FF7800>Impor <dark_gray>» <gray>tempel kode lukisan"
+    image: "<#FF7800>Gambar dari URL <dark_gray>» <gray>dengan potong, zoom dan geser"
+    gallery: "<#FF7800>Lukisanku"
+    hide: "<#FF7800>Sembunyikan panel <dark_gray>» <gray>muncul lagi saat kamu mengeklik kanvas dengan kuas"
+
+menu:
+  close:
+    name: "Tutup"
+    action: "tutup menu"
+  back:
+    name: "Kembali"
+    action: "kembali"
+  hint: "Petunjuk"
+  page:
+    previous: "Halaman sebelumnya"
+    next: "Halaman berikutnya"
+    action: "ganti halaman"
+    of: "Halaman {page} dari {pages}"
+  delete:
+    confirm:
+      - "<#FF1F1F>Hapus selamanya?"
+      - "Lukisan hilang dari semua dinding"
+      - "dan itemnya jadi kanvas kosong."
+    "yes": "<#FF1F1F>ya, hapus"
+    "no": "simpan"
+    action: "hapus selamanya"
+    done: "Lukisan dihapus"
+  admin:
+    title: "Lukisan: admin"
+    canvases:
+      name: "<#FF7800>Kanvas semua ukuran"
+      lore:
+        - "Dari 1×1 sampai {max}: 3×5, 1×4 dan lainnya."
+    painting:
+      - "Pelukis: <white>{author}"
+      - "{size} blok · {res} px/blok · {state}"
+      - "Diubah: <white>{date}"
+      - "Dipasang di chunk termuat: <white>{placed}"
+      - "<dark_gray># {id}"
+    take: "ambil"
+    export: "ekspor sebagai teks"
+    empty: "Belum ada lukisan di server"
+    count: "<white>Lukisan di server: <#FF7800>{count}"
+    too-big:
+      - "Lebih besar dari yang diizinkan config:"
+      - "<white>canvas.max-size: {max}"
+    take-stack: "ambil {amount} sekaligus"
+    help-canvases:
+      - "<white>Kanvas semua ukuran."
+      - "Kolom adalah lebar, baris adalah tinggi:"
+      - "kolom ketiga baris kelima adalah 3×5."
+      - ""
+      - "Shift + klik kiri memberi {amount} sekaligus."
+    help:
+      - "<white>Baris atas berisi item plugin:"
+      - "kuas, kanvas, dan tabel kanvas"
+      - "sampai {max}."
+      - ""
+      - "Di bawahnya lukisan semua pemain."
+      - "Lukisan yang diambil dari sini sama"
+      - "dengan aslinya, bukan salinan: perubahan"
+      - "terlihat di mana pun ia dipasang."
+  canvas:
+    title: "Kanvas"
+    info:
+      - "Pelukis: <white>{author}"
+      - "Ukuran: <white>{size} <gray>blok, <white>{pixels} <gray>piksel"
+      - "Status: {state}"
+      - "<dark_gray># {id}"
+    resolution:
+      name: "<white>Resolusi: <#FF7800>{res} <white>piksel per blok"
+      lore:
+        - "Makin kecil angkanya, makin besar pikselnya."
+        - "Gambar diregangkan saat diubah."
+        - "<dark_gray>F mengurungkan perubahan."
+      finer: "lebih halus"
+      coarser: "lebih kasar"
+    clear:
+      name: "Bersihkan kanvas"
+      lore:
+        - "Isi dengan putih. Bisa diurungkan (F)."
+      action: "bersihkan"
+    shared:
+      name: "<white>Semua orang boleh melukis: {state}"
+      lore:
+        - "Melukis bersama: kuas pemain mana pun"
+        - "berfungsi di kanvas ini."
+    sign:
+      name: "Tanda tangan"
+      lore:
+        - "Beri judul dan selesaikan lukisan."
+        - "Lukisan bertanda tangan tidak bisa"
+        - "diubah, tapi bisa disalin."
+      action: "tanda tangan"
+    export:
+      name: "Ekspor sebagai teks"
+      lore:
+        - "Kode lukisan: salin dan berikan"
+        - "ke siapa saja, bahkan ke server lain."
+      action: "tampilkan kode"
+    import:
+      name: "Impor dari teks"
+      lore:
+        - "Tempel kode. Gambar masuk ke kanvas"
+        - "yang kamu lihat, atau ke kanvas"
+        - "kosong di tanganmu."
+      action: "tempel kode"
+    gallery:
+      lore:
+        - "Semua yang pernah kamu lukis."
+  gallery:
+    title: "Lukisanku"
+    painting:
+      - "{size} blok · {res} px/blok · {state}"
+      - "Diubah: <white>{date}"
+      - "Terpasang sekarang: <white>{placed}"
+    take: "ambil <gray>(butuh kanvas kosong {size})"
+    empty:
+      name: "Belum ada apa-apa"
+      lore:
+        - "Pasang kanvas dan lukis sesuatu."
+    help:
+      - "<white>Semua lukisanmu disimpan di sini,"
+      - "bahkan yang sudah diturunkan atau hilang."
+      - ""
+      - "Sketsa yang diambil dari sini adalah"
+      - "lukisan yang sama: perubahan terlihat"
+      - "di mana pun ia dipasang."
+      - ""
+      - "Lukisan bertanda tangan disalin di"
+      - "meja kerajinan: lukisan + kanvas kosong."
+  palette:
+    title: "Palet dan alat"
+    page: "Warna: halaman {page} dari {pages}"
+    hex:
+      name: "Warna dari kode"
+      lore:
+        - "Masukkan #RRGGBB — warna palet"
+        - "terdekat akan dipilih."
+      action: "masukkan kode"
+    transparent:
+      - "Piksel menghilang: dinding terlihat"
+      - "menembus lukisan. Cocok untuk stiker"
+      - "dan lukisan berbentuk bebas."
+    shade:
+      - "Gradasi dari warna terpilih."
+    size:
+      name: "<white>Ukuran kuas: <#FF7800>{size}"
+      lore:
+        - "<dark_gray>Dalam game: Shift + scroll mouse."
+      more: "lebih besar"
+      less: "lebih kecil"
+      shift: "Dengan Shift"
+      by-four: "per 4"
+    canvas:
+      name: "Kanvas dan lukisanku"
+      lore:
+        - "Resolusi, tanda tangan, ekspor,"
+        - "impor, daftar lukisanmu."
+    help:
+      - "<white>Saat memegang kuas:"
+      - "klik kanan di kanvas untuk melukis,"
+      - "klik kiri mengambil warna dari kanvas"
+      - "atau blok mana pun di dunia."
+      - ""
+      - "Shift + scroll mengubah ukuran kuas."
+      - "F mengurungkan, Shift + F mengulangi."
+      - ""
+      - "Bentuk digambar dengan menyeret: tahan"
+      - "klik kanan, gerakkan, lepas."
+      - "Dengan Shift garis jadi lurus,"
+      - "persegi panjang jadi persegi,"
+      - "elips jadi lingkaran."
+
+dialog:
+  code: "Kode"
+  export:
+    title: "Ekspor lukisan"
+    text: "'{title}' — kode sepanjang {length} karakter. Tekan Salin untuk menaruhnya di clipboard."
+    text-parts: "'{title}' — kodenya panjang, jadi dibagi beberapa bagian. Bagian {part} dari {parts}: {length} karakter. Salin dan tempel semua bagian satu per satu."
+    copy: "Salin"
+    copy-tooltip: "Taruh kode di clipboard"
+    next: "Bagian berikutnya"
+    first: "Kembali ke bagian pertama"
+  import:
+    title: "Impor lukisan"
+    text: "Tempel kode lukisan (Ctrl+V). Gambar masuk ke kanvas yang kamu lihat, atau ke kanvas kosong di tanganmu."
+    button: "Impor"
+  sign:
+    title: "Tanda tangani lukisan"
+    text: "Lukisan bertanda tangan tidak bisa diubah, tapi bisa disalin: lukisan + kanvas kosong berukuran sama di meja kerajinan."
+    input: "Judul"
+    button: "Tanda tangan"
+  hex:
+    title: "Warna dari kode"
+    text: "Masukkan warna sebagai #RRGGBB. Peta tidak bisa menampilkan semua warna, jadi warna terdekat yang dipilih."
+    input: "Warna"
+    button: "Pilih"
+  canvas:
+    title: "Rakit kanvas"
+    creative: "Kanvas tidak terpakai di mode kreatif."
+    have: "Kamu memegang {canvases}."
+    text: "Kolom adalah lebar, baris adalah tinggi: kanvas 2×4 butuh delapan kanvas 1×1. Ukuran berwarna abu-abu belum terjangkau."
+    same: "Kamu sudah memegang kanvas ini"
+    assemble: "Rakit kanvas {size}: butuh {canvases}"
+    need: "Butuh {canvases}, kamu punya {have}"
+  image:
+    title: "Gambar dari URL"
+    text: "Gambar masuk ke kanvas yang kamu lihat, atau ke kanvas kosong di tanganmu; ukuran dalam blok hanya berlaku jika tidak ada keduanya. Kurang puas? Buka jendelanya lagi: pengaturan tersimpan dan hasil sebelumnya di kanvas akan diganti."
+    url: "URL gambar"
+    fit:
+      label: "Penyesuaian"
+      cover: "Penuhi kanvas, potong sisanya"
+      contain: "Muat seluruh gambar, dengan margin"
+      stretch: "Regangkan ke seluruh kanvas"
+    zoom: "Zoom, %"
+    x: "Geser ke kanan, %"
+    "y": "Geser ke bawah, %"
+    brightness: "Kecerahan, %"
+    contrast: "Kontras, %"
+    saturation: "Saturasi, %"
+    dither: "Perhalus transisi warna (tidak untuk pixel art)"
+    shade: "Gelapkan seperti sisi blok: untuk kubus dari lukisan"
+    clear: "Margin di sekitar gambar transparan, bukan putih"
+    width: "Lebar lukisan baru, blok"
+    height: "Tinggi lukisan baru, blok"
+    button: "Terapkan"
+    no-url: "Tempel URL gambar"
