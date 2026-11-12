@@ -2,7 +2,7 @@
 
 # PaintCraft
 
-Paint pictures right in the game. Paper 1.21.11 and 26.3, one jar for both, no resource pack and no other plugins required.
+Paint pictures right in the game. Paper 1.20 – 26.3, one jar for every version, no resource pack and no other plugins required.
 
 Place a canvas on a wall, take the brush and paint with your crosshair like with a mouse.
 A finished painting can be signed, copied, moved to another wall, or turned into a string and sent to anyone.
@@ -41,6 +41,15 @@ Drop one of the jars into `plugins`:
 - `paintcraft-1.0.0-ru.jar` — Russian by default
 
 The jars are otherwise identical. PacketEvents is bundled inside, you don't need it as a separate plugin.
+
+The same jar runs on Paper 1.20 and newer. Older servers lack some client features, so a few things work differently:
+
+| Server | What is different |
+|---|---|
+| before 1.21.9 | Panel icons are item displays instead of text sprites |
+| before 1.21.6 | No dialog windows: titles, color codes and painting codes are typed in chat, image settings and the canvas size table are chest menus. Codes are copied by clicking a chat message and go in parts of 200 characters |
+| before 1.21.4 | Plugin items are a regular brush, paper and painting item. A stroke ends a quarter of a second after you release RMB |
+| 1.20 – 1.20.1 | Colors can't be picked from blocks, only from canvases |
 
 ## Language
 
