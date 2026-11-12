@@ -66,7 +66,7 @@ public final class PaintCraft extends JavaPlugin {
     public static final String PERMISSION_IMAGE = PLUGIN_ID + ".image";
     public static final String PERMISSION_GIVE = PLUGIN_ID + ".give";
     public static final String PERMISSION_ADMIN = PLUGIN_ID + ".admin";
-    public static final int BSTATS_ID = 0;
+    public static final int BSTATS_ID = 35299;
     private static final long ERROR_INTERVAL_MILLIS = 5000;
 
     LiteCommands<CommandSender> liteCommands;

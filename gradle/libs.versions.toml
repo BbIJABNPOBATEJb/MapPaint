@@ -6,7 +6,7 @@ litecommands = "3.11.0"
 packetevents = "2.14.0"
 adventure = "4.25.0"
 adventure-old = "4.14.0"
-bstats = "3.1.0"
+bstats = "3.2.1"
 
 [libraries]
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }

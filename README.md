@@ -1,8 +1,17 @@
-**English** | [Русский](README.ru.md)
+<p align="center">
+  <img src="docs/icon.png" alt="PaintCraft" width="160">
+</p>
 
-# PaintCraft
+<h1 align="center">PaintCraft</h1>
 
-Paint pictures right in the game. Paper 1.20 – 26.3, one jar for every version, no resource pack and no other plugins required.
+<p align="center">
+  Paint pictures right in the game: no resource pack, no other plugins.<br>
+  A <b>Paper 1.20 – 26.3</b> plugin, one jar for every version. 18 languages.
+</p>
+
+<p align="center">
+  <b>English</b> | <a href="README.ru.md">Русский</a>
+</p>
 
 Place a canvas on a wall, take the brush and paint with your crosshair like with a mouse.
 A finished painting can be signed, copied, moved to another wall, or turned into a string and sent to anyone.
