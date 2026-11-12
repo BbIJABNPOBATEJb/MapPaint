@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="https://modrinth.com/plugin/mappaint"><img src="https://img.shields.io/modrinth/dt/mappaint?logo=modrinth&label=Modrinth&color=00AF5C" alt="Modrinth downloads"></a>
+  <a href="https://hangar.papermc.io/BbIJABNPOBATEJb/MapPaint"><img src="https://img.shields.io/hangar/dt/MapPaint?label=Hangar&color=1F6FEB" alt="Hangar downloads"></a>
   <a href="https://www.curseforge.com/minecraft/bukkit-plugins/mappaint"><img src="https://img.shields.io/curseforge/dt/1801013?logo=curseforge&label=CurseForge&color=F16436" alt="CurseForge downloads"></a>
   <a href="https://github.com/BbIJABNPOBATEJb/MapPaint/releases"><img src="https://img.shields.io/github/downloads/BbIJABNPOBATEJb/MapPaint/total?logo=github&label=GitHub" alt="GitHub downloads"></a>
 </p>
@@ -50,12 +51,11 @@
 
 ## Установка
 
-Положите в `plugins` одну из jar:
+Положите `mappaint-1.0.0.jar` в `plugins` и перезапустите сервер. PacketEvents уже внутри, отдельным плагином
+он не нужен.
 
-- `mappaint-1.0.0.jar` — по умолчанию английский
-- `mappaint-1.0.0-ru.jar` — по умолчанию русский
-
-В остальном они одинаковые. PacketEvents уже внутри, отдельным плагином он не нужен.
+По умолчанию язык английский, меняется командой `/paint language <код>`. При сборке получается ещё
+`mappaint-1.0.0-ru.jar` — тот же плагин с русским по умолчанию; он приложен к релизам на GitHub.
 
 ## Версии
 

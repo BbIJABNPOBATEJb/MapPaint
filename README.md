@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="https://modrinth.com/plugin/mappaint"><img src="https://img.shields.io/modrinth/dt/mappaint?logo=modrinth&label=Modrinth&color=00AF5C" alt="Modrinth downloads"></a>
+  <a href="https://hangar.papermc.io/BbIJABNPOBATEJb/MapPaint"><img src="https://img.shields.io/hangar/dt/MapPaint?label=Hangar&color=1F6FEB" alt="Hangar downloads"></a>
   <a href="https://www.curseforge.com/minecraft/bukkit-plugins/mappaint"><img src="https://img.shields.io/curseforge/dt/1801013?logo=curseforge&label=CurseForge&color=F16436" alt="CurseForge downloads"></a>
   <a href="https://github.com/BbIJABNPOBATEJb/MapPaint/releases"><img src="https://img.shields.io/github/downloads/BbIJABNPOBATEJb/MapPaint/total?logo=github&label=GitHub" alt="GitHub downloads"></a>
 </p>
@@ -50,12 +51,11 @@ regular maps in invisible item frames, so the client has nothing to download.
 
 ## Install
 
-Drop one of the jars into `plugins`:
+Drop `mappaint-1.0.0.jar` into `plugins` and restart the server. PacketEvents is bundled inside, you don't need it
+as a separate plugin.
 
-- `mappaint-1.0.0.jar` — English by default
-- `mappaint-1.0.0-ru.jar` — Russian by default
-
-The jars are otherwise identical. PacketEvents is bundled inside, you don't need it as a separate plugin.
+The language is English by default and is switched with `/paint language <code>`. A build also produces
+`mappaint-1.0.0-ru.jar`, the same plugin with Russian by default; it is attached to the GitHub releases.
 
 ## Versions
 
