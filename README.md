@@ -42,16 +42,30 @@ Drop one of the jars into `plugins`:
 
 The jars are otherwise identical. PacketEvents is bundled inside, you don't need it as a separate plugin.
 
-The same jar runs on Paper 1.20 and newer. Older servers lack some client features, so a few things work differently:
+## Versions
 
-| Server | What is different |
+One jar for Paper **1.20 – 26.3**. Painting, the panel, menus, export, import and images work on every version.
+What depends on the version:
+
+| | 1.20 – 1.20.1 | 1.20.2 – 1.21.3 | 1.21.4 – 1.21.5 | 1.21.6 – 1.21.8 | 1.21.9 – 1.21.10 | 1.21.11 – 26.3 |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|
+| Input windows | chat + chest menus | chat + chest menus | chat + chest menus | ✔ dialogs | ✔ dialogs | ✔ dialogs |
+| Panel icons | item displays | item displays | item displays | item displays | ✔ sprites | ✔ sprites |
+| Plugin items | brush, paper, painting | brush, paper, painting | ✔ own look | ✔ | ✔ | ✔ |
+| A stroke ends | ¼ s after release | ¼ s after release | ✔ at once | ✔ | ✔ | ✔ |
+| Walking while painting | ✔ | ✔ | slower | slower | slower | ✔ |
+| Color from a block | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ |
+
+| 1.21.6 and newer | Older |
 |---|---|
-| before 1.21.9 | Panel icons are item displays instead of text sprites |
-| before 1.21.6 | No dialog windows: titles, color codes and painting codes are typed in chat, image settings and the canvas size table are chest menus. Codes are copied by clicking a chat message and go in parts of 200 characters |
-| 1.21.4 – 1.21.10 | You walk slower while you hold RMB with the brush |
-| 1.21.4 and older | A block outline can show between canvas tiles under the crosshair |
-| before 1.21.4 | Plugin items are a regular brush, paper and painting item. A stroke ends a quarter of a second after you release RMB |
-| 1.20 – 1.20.1 | Colors can't be picked from blocks, only from canvases |
+| ![Dialog](docs/img/sign.jpg) Titles, color codes and painting codes go into a dialog | ![Chat](docs/img/old-sign.jpg) The same is typed in chat; a code is copied by clicking a chat message and goes in parts of 200 characters |
+| ![Image dialog](docs/img/image-dialog.jpg) Image settings | ![Image menu](docs/img/old-image.jpg) Image settings as a chest menu |
+
+| 1.21.9 and newer | Older |
+|---|---|
+| ![Sprites](docs/img/studio-tools.jpg) Icons are sprites inside text, always bright | ![Item displays](docs/img/old-panel.jpg) Icons are item displays, darker on walls facing east and west |
+
+On 1.21.4 and older a block outline can show between canvas tiles under the crosshair.
 
 ## Language
 
@@ -212,6 +226,7 @@ LMB to take, RMB to export, Shift + RMB twice to delete forever.
 | `/paint admin` | Items and all paintings |
 | `/paint give <brush\|canvas> [WxH] [amount] [player]` | Give the brush or canvases |
 | `/paint language [code]` | Plugin language |
+| `/paint report [seconds]` | Debug file for a bug report |
 | `/paint reload` | Reload config.yml and translations |
 | `/paint help` | Short help |
 
@@ -224,7 +239,7 @@ LMB to take, RMB to export, Shift + RMB twice to delete forever.
 | `paintcraft.import` | everyone | Import |
 | `paintcraft.image` | op | `/paint image` |
 | `paintcraft.give` | op | `/paint give` |
-| `paintcraft.admin` | op | Other players' paintings, `/paint reload`, `/paint language`, no limits and no costs. Includes everything above |
+| `paintcraft.admin` | op | Other players' paintings, `/paint reload`, `language` and `report`, no limits and no costs. Includes everything above |
 
 ## Config
 
@@ -233,10 +248,17 @@ LMB to take, RMB to export, Shift + RMB twice to delete forever.
 | Setting | Default | Meaning |
 |---|---|---|
 | `language` | en | Plugin language |
+| `update-check` | true | Tell admins when a new version is out |
+| `features.panel` | true | Buttons next to the canvas; false — only the `/paint` menu |
+| `features.placement-preview` | true | Outline of the place a canvas in hand will take |
+| `features.glowing` | true | A glow ink sac makes a painting glow |
+| `features.shared-painting` | true | The author can let everyone paint on a canvas |
+| `sounds` | true | Interface sounds |
 | `canvas.max-size` | 5 | Biggest canvas side in blocks, up to 16 |
 | `canvas.default-resolution` | 32 | Pixels per block of a new canvas |
 | `canvas.resolutions` | 16, 32, 64, 128 | Resolutions players can choose |
 | `canvas.reach` | 6.0 | Painting distance |
+| `canvas.resolution-undo-minutes` | 30 | How long a resolution change can be reverted without losing detail |
 | `brush.max-size` | 32 | Biggest brush |
 | `brush.eraser-transparent` | false | The eraser makes pixels transparent instead of white |
 | `limits.paintings-per-player` | 200 | 0 — unlimited |
@@ -260,6 +282,20 @@ Placing and breaking go through the regular `HangingPlaceEvent` and `HangingBrea
 - A sketch taken from "My paintings" twice is the same painting: edits show up wherever it hangs.
 - When the author deletes a painting it disappears from walls and its items turn into blank canvases.
 
+## Report a bug
+
+Run `/paint report` while looking at the painting that misbehaves and repeat the problem during the next five seconds
+(`/paint report 20` records for longer, up to 30). The plugin writes `plugins/paintcraft/reports/report-<time>.txt`
+and shows the path. Attach that file to an [issue](https://github.com/BbIJABNPOBATEJb/PaintCraft/issues).
+
+The file holds the server and plugin versions, the plugin list, `config.yml`, the state of the painting, tick timings
+and recent plugin errors. It has no IP addresses, chat or tokens.
+
+## Metrics and updates
+
+The plugin sends anonymous usage statistics to [bStats](https://bstats.org); turn it off in `plugins/bStats/config.yml`.
+Once at startup it asks GitHub whether a newer release exists (`update-check: false` turns that off).
+
 ## Build
 
 JDK 21 or newer.
@@ -269,3 +305,8 @@ JDK 21 or newer.
 ```
 
 Both jars end up in `build/libs`.
+
+## License
+
+[MIT](LICENSE). Use it however and wherever you like; the only ask is to keep a link to this repository and the author's
+nickname, **BbIJABNPOBATEJb**.
