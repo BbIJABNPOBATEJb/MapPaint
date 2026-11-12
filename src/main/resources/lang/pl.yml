@@ -25,6 +25,7 @@ click:
   right: "PPM"
 
 action:
+  change: "zmień"
   open: "otwórz"
   select: "wybierz"
   take: "weź"
@@ -228,6 +229,10 @@ panel:
     hide: "<#FF7800>Ukryj panel <dark_gray>» <gray>wróci, gdy klikniesz pędzlem w płótno"
 
 menu:
+  assemble:
+    help:
+      - "Kolumna to szerokość, wiersz to wysokość:"
+      - "płótno 2×4 składa się z ośmiu płócien 1×1."
   close:
     name: "Zamknij"
     action: "zamknij menu"
@@ -450,3 +455,18 @@ dialog:
     height: "Wysokość nowego obrazu, bloków"
     button: "Zastosuj"
     no-url: "Wklej link do obrazu"
+
+input:
+  cancel-word: "anuluj"
+  prompt: "<white>{prompt} <gray>(albo napisz {cancel})"
+  cancelled: "Anulowano"
+  sign: "Napisz na czacie tytuł obrazu"
+  hex: "Napisz na czacie kolor w postaci #RRGGBB"
+  import: "Wklej na czacie kod obrazu. Długi kod wklejaj w częściach, każdą osobną wiadomością"
+  url: "Wklej na czacie link do obrazka"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— kod o długości {length} znaków. Kliknij, aby skopiować:"
+    part: "Część {part}"
+    hint: "Wklejaj części po kolei: /paint import"

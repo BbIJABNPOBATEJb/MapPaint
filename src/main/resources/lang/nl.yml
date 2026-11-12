@@ -25,6 +25,7 @@ click:
   right: "RMK"
 
 action:
+  change: "wijzigen"
   open: "openen"
   select: "kiezen"
   take: "pakken"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Paneel verbergen <dark_gray>» <gray>komt terug als je met het penseel op het doek klikt"
 
 menu:
+  assemble:
+    help:
+      - "Kolom is de breedte, rij is de hoogte:"
+      - "een doek van 2×4 kost acht doeken van 1×1."
   close:
     name: "Sluiten"
     action: "menu sluiten"
@@ -447,3 +452,18 @@ dialog:
     height: "Hoogte van het nieuwe schilderij, blokken"
     button: "Toepassen"
     no-url: "Plak een url van een afbeelding"
+
+input:
+  cancel-word: "annuleren"
+  prompt: "<white>{prompt} <gray>(of typ {cancel})"
+  cancelled: "Geannuleerd"
+  sign: "Typ de titel van het schilderij in de chat"
+  hex: "Typ een kleur als #RRGGBB in de chat"
+  import: "Plak de schilderijcode in de chat. Lange codes gaan in delen, elk in een eigen bericht"
+  url: "Plak de link naar de afbeelding in de chat"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— een code van {length} tekens. Klik om te kopiëren:"
+    part: "Deel {part}"
+    hint: "Plak de delen een voor een: /paint import"

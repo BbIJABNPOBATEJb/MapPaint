@@ -25,6 +25,7 @@ click:
   right: "PTM"
 
 action:
+  change: "změnit"
   open: "otevřít"
   select: "vybrat"
   take: "vzít"
@@ -228,6 +229,10 @@ panel:
     hide: "<#FF7800>Skrýt panel <dark_gray>» <gray>vrátí se, když štětcem klikneš na plátno"
 
 menu:
+  assemble:
+    help:
+      - "Sloupec je šířka, řádek výška:"
+      - "plátno 2×4 se skládá z osmi pláten 1×1."
   close:
     name: "Zavřít"
     action: "zavřít menu"
@@ -450,3 +455,18 @@ dialog:
     height: "Výška nového obrazu, bloků"
     button: "Použít"
     no-url: "Vlož odkaz na obrázek"
+
+input:
+  cancel-word: "zrušit"
+  prompt: "<white>{prompt} <gray>(nebo napište {cancel})"
+  cancelled: "Zrušeno"
+  sign: "Napište do chatu název obrazu"
+  hex: "Napište do chatu barvu ve tvaru #RRGGBB"
+  import: "Vložte do chatu kód obrazu. Dlouhý kód po částech, každou zvláštní zprávou"
+  url: "Vložte do chatu odkaz na obrázek"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— kód o délce {length} znaků. Kliknutím zkopírujete:"
+    part: "Část {part}"
+    hint: "Vkládejte části postupně: /paint import"

@@ -25,6 +25,7 @@ click:
   right: "HMK"
 
 action:
+  change: "ändra"
   open: "öppna"
   select: "välj"
   take: "ta"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Dölj panelen <dark_gray>» <gray>kommer tillbaka när du klickar på duken med penseln"
 
 menu:
+  assemble:
+    help:
+      - "Kolumn är bredd, rad är höjd:"
+      - "en duk på 2×4 kräver åtta dukar på 1×1."
   close:
     name: "Stäng"
     action: "stäng menyn"
@@ -447,3 +452,18 @@ dialog:
     height: "Den nya målningens höjd, block"
     button: "Använd"
     no-url: "Klistra in en bild-url"
+
+input:
+  cancel-word: "avbryt"
+  prompt: "<white>{prompt} <gray>(eller skriv {cancel})"
+  cancelled: "Avbrutet"
+  sign: "Skriv målningens titel i chatten"
+  hex: "Skriv en färg som #RRGGBB i chatten"
+  import: "Klistra in målningens kod i chatten. Långa koder går i delar, en per meddelande"
+  url: "Klistra in bildlänken i chatten"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— en kod på {length} tecken. Klicka för att kopiera:"
+    part: "Del {part}"
+    hint: "Klistra in delarna en i taget: /paint import"

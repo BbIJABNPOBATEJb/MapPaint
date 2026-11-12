@@ -25,6 +25,7 @@ click:
   right: "clic der."
 
 action:
+  change: "cambiar"
   open: "abrir"
   select: "elegir"
   take: "tomar"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Ocultar el panel <dark_gray>» <gray>vuelve al hacer clic en el lienzo con el pincel"
 
 menu:
+  assemble:
+    help:
+      - "La columna es el ancho y la fila el alto:"
+      - "un lienzo 2×4 necesita ocho lienzos 1×1."
   close:
     name: "Cerrar"
     action: "cerrar el menú"
@@ -449,3 +454,18 @@ dialog:
     height: "Alto de la nueva pintura, en bloques"
     button: "Aplicar"
     no-url: "Pega la URL de una imagen"
+
+input:
+  cancel-word: "cancelar"
+  prompt: "<white>{prompt} <gray>(o escribe {cancel})"
+  cancelled: "Cancelado"
+  sign: "Escribe el título de la pintura en el chat"
+  hex: "Escribe un color como #RRGGBB en el chat"
+  import: "Pega el código de la pintura en el chat. Los códigos largos van por partes, una por mensaje"
+  url: "Pega el enlace de la imagen en el chat"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— un código de {length} caracteres. Haz clic para copiar:"
+    part: "Parte {part}"
+    hint: "Pega las partes una por una: /paint import"

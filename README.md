@@ -31,7 +31,7 @@ regular maps in invisible item frames, so the client has nothing to download.
 - **Placement preview**: while you hold a canvas, the spot it will take glows on the wall.
 - **Painting together**: the author can open a canvas for everyone.
 - **My paintings** — everything you painted stays in storage even if the item is lost.
-- **Languages**: English and Russian, switched with `/paint language`.
+- **18 languages**, switched with `/paint language`.
 
 ## Install
 
@@ -48,6 +48,7 @@ The same jar runs on Paper 1.20 and newer. Older servers lack some client featur
 |---|---|
 | before 1.21.9 | Panel icons are item displays instead of text sprites |
 | before 1.21.6 | No dialog windows: titles, color codes and painting codes are typed in chat, image settings and the canvas size table are chest menus. Codes are copied by clicking a chat message and go in parts of 200 characters |
+| 1.21.4 – 1.21.10 | You walk slower while you hold RMB with the brush |
 | before 1.21.4 | Plugin items are a regular brush, paper and painting item. A stroke ends a quarter of a second after you release RMB |
 | 1.20 – 1.20.1 | Colors can't be picked from blocks, only from canvases |
 
@@ -57,6 +58,8 @@ The same jar runs on Paper 1.20 and newer. Older servers lack some client featur
 /paint language        current language and the list
 /paint language ru     switch
 ```
+
+Bundled: en, ru, uk, de, fr, es, pt, it, pl, tr, nl, cs, sv, zh, ja, ko, vi, id.
 
 The choice is saved to `config.yml` (`language: en`). Translations live in `plugins/paintcraft/lang/` and can be edited;
 put your own `xx.yml` there and it becomes available as `/paint language xx`. Missing keys fall back to English.

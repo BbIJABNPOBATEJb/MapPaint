@@ -25,6 +25,7 @@ click:
   right: "Sağ tık"
 
 action:
+  change: "değiştir"
   open: "aç"
   select: "seç"
   take: "al"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Paneli gizle <dark_gray>» <gray>fırçayla tuvale tıklayınca geri gelir"
 
 menu:
+  assemble:
+    help:
+      - "Sütun genişlik, satır yüksekliktir:"
+      - "2×4 tuval sekiz adet 1×1 tuvalden yapılır."
   close:
     name: "Kapat"
     action: "menüyü kapat"
@@ -448,3 +453,18 @@ dialog:
     height: "Yeni resmin yüksekliği, blok"
     button: "Uygula"
     no-url: "Bir görsel URL'si yapıştır"
+
+input:
+  cancel-word: "iptal"
+  prompt: "<white>{prompt} <gray>(veya {cancel} yazın)"
+  cancelled: "İptal edildi"
+  sign: "Tablonun adını sohbete yazın"
+  hex: "Sohbete #RRGGBB biçiminde bir renk yazın"
+  import: "Tablo kodunu sohbete yapıştırın. Uzun kodlar parçalar hâlinde, her biri ayrı mesajla"
+  url: "Görsel bağlantısını sohbete yapıştırın"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— {length} karakterlik kod. Kopyalamak için tıklayın:"
+    part: "Parça {part}"
+    hint: "Parçaları sırayla yapıştırın: /paint import"

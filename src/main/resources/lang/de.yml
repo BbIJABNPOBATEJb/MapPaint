@@ -25,6 +25,7 @@ click:
   right: "Rechtsklick"
 
 action:
+  change: "ändern"
   open: "öffnen"
   select: "auswählen"
   take: "nehmen"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Panel ausblenden <dark_gray>» <gray>kommt zurück, wenn du mit dem Pinsel auf die Leinwand klickst"
 
 menu:
+  assemble:
+    help:
+      - "Spalte ist die Breite, Zeile die Höhe:"
+      - "eine 2×4-Leinwand braucht acht 1×1-Leinwände."
   close:
     name: "Schließen"
     action: "Menü schließen"
@@ -447,3 +452,18 @@ dialog:
     height: "Höhe des neuen Gemäldes, Blöcke"
     button: "Anwenden"
     no-url: "Füge eine Bild-URL ein"
+
+input:
+  cancel-word: "abbrechen"
+  prompt: "<white>{prompt} <gray>(oder schreibe {cancel})"
+  cancelled: "Abgebrochen"
+  sign: "Schreibe den Titel des Gemäldes in den Chat"
+  hex: "Schreibe eine Farbe als #RRGGBB in den Chat"
+  import: "Füge den Gemäldecode in den Chat ein. Lange Codes in Teilen, jeder als eigene Nachricht"
+  url: "Füge den Bildlink in den Chat ein"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— ein Code mit {length} Zeichen. Zum Kopieren klicken:"
+    part: "Teil {part}"
+    hint: "Füge die Teile nacheinander ein: /paint import"

@@ -25,6 +25,7 @@ click:
   right: "右键"
 
 action:
+  change: "更改"
   open: "打开"
   select: "选择"
   take: "拿取"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>隐藏面板 <dark_gray>» <gray>手持画笔点击画布时会重新出现"
 
 menu:
+  assemble:
+    help:
+      - "列是宽度，行是高度："
+      - "2×4 的画布需要八张 1×1 画布。"
   close:
     name: "关闭"
     action: "关闭菜单"
@@ -447,3 +452,18 @@ dialog:
     height: "新画作的高度，方块"
     button: "应用"
     no-url: "请粘贴图片 URL"
+
+input:
+  cancel-word: "取消"
+  prompt: "<white>{prompt} <gray>（或输入 {cancel}）"
+  cancelled: "已取消"
+  sign: "在聊天栏输入画作标题"
+  hex: "在聊天栏输入 #RRGGBB 格式的颜色"
+  import: "把画作代码粘贴到聊天栏。较长的代码分段发送，每段一条消息"
+  url: "把图片链接粘贴到聊天栏"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— 代码共 {length} 个字符。点击复制："
+    part: "第 {part} 段"
+    hint: "逐段粘贴：/paint import"

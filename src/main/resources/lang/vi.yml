@@ -25,6 +25,7 @@ click:
   right: "Chuột phải"
 
 action:
+  change: "thay đổi"
   open: "mở"
   select: "chọn"
   take: "lấy"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Ẩn bảng <dark_gray>» <gray>hiện lại khi bạn nhấn vào canvas bằng cọ"
 
 menu:
+  assemble:
+    help:
+      - "Cột là chiều rộng, hàng là chiều cao:"
+      - "khung tranh 2×4 cần tám khung tranh 1×1."
   close:
     name: "Đóng"
     action: "đóng menu"
@@ -447,3 +452,18 @@ dialog:
     height: "Chiều cao tranh mới, khối"
     button: "Áp dụng"
     no-url: "Hãy dán URL ảnh"
+
+input:
+  cancel-word: "hủy"
+  prompt: "<white>{prompt} <gray>(hoặc gõ {cancel})"
+  cancelled: "Đã hủy"
+  sign: "Gõ tên bức tranh vào khung chat"
+  hex: "Gõ màu dạng #RRGGBB vào khung chat"
+  import: "Dán mã bức tranh vào khung chat. Mã dài gửi theo từng phần, mỗi phần một tin nhắn"
+  url: "Dán liên kết hình ảnh vào khung chat"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— mã dài {length} ký tự. Nhấp để sao chép:"
+    part: "Phần {part}"
+    hint: "Dán lần lượt từng phần: /paint import"

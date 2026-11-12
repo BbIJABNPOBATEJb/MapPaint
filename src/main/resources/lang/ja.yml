@@ -25,6 +25,7 @@ click:
   right: "右クリック"
 
 action:
+  change: "変更"
   open: "開く"
   select: "選択"
   take: "取る"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>パネルを隠す <dark_gray>» <gray>筆でキャンバスをクリックすると再び表示"
 
 menu:
+  assemble:
+    help:
+      - "列が幅、行が高さです："
+      - "2×4 のキャンバスには 1×1 が8枚必要です。"
   close:
     name: "閉じる"
     action: "メニューを閉じる"
@@ -447,3 +452,18 @@ dialog:
     height: "新しい絵の高さ、ブロック"
     button: "適用"
     no-url: "画像の URL を貼り付けてください"
+
+input:
+  cancel-word: "キャンセル"
+  prompt: "<white>{prompt} <gray>（または {cancel} と入力）"
+  cancelled: "キャンセルしました"
+  sign: "絵のタイトルをチャットに入力してください"
+  hex: "色を #RRGGBB の形式でチャットに入力してください"
+  import: "絵のコードをチャットに貼り付けてください。長いコードは分割して、1つずつ送信します"
+  url: "画像のリンクをチャットに貼り付けてください"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— {length} 文字のコード。クリックでコピー："
+    part: "パート {part}"
+    hint: "パートを順番に貼り付けます：/paint import"

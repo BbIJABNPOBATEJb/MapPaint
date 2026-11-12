@@ -25,6 +25,7 @@ click:
   right: "clic droit"
 
 action:
+  change: "modifier"
   open: "ouvrir"
   select: "choisir"
   take: "prendre"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Masquer le panneau <dark_gray>» <gray>revient quand vous cliquez sur la toile avec le pinceau"
 
 menu:
+  assemble:
+    help:
+      - "La colonne est la largeur, la ligne la hauteur :"
+      - "une toile 2×4 demande huit toiles 1×1."
   close:
     name: "Fermer"
     action: "fermer le menu"
@@ -449,3 +454,18 @@ dialog:
     height: "Hauteur du nouveau tableau, en blocs"
     button: "Appliquer"
     no-url: "Collez l'URL d'une image"
+
+input:
+  cancel-word: "annuler"
+  prompt: "<white>{prompt} <gray>(ou écrivez {cancel})"
+  cancelled: "Annulé"
+  sign: "Écrivez le titre du tableau dans le chat"
+  hex: "Écrivez une couleur au format #RRGGBB dans le chat"
+  import: "Collez le code du tableau dans le chat. Un code long se colle en parties, une par message"
+  url: "Collez le lien de l'image dans le chat"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— un code de {length} caractères. Cliquez pour copier :"
+    part: "Partie {part}"
+    hint: "Collez les parties une par une : /paint import"

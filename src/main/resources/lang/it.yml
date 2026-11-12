@@ -25,6 +25,7 @@ click:
   right: "clic dx"
 
 action:
+  change: "cambia"
   open: "aprire"
   select: "scegliere"
   take: "prendere"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Nascondi il pannello <dark_gray>» <gray>torna quando clicchi la tela con il pennello"
 
 menu:
+  assemble:
+    help:
+      - "La colonna è la larghezza, la riga l'altezza:"
+      - "una tela 2×4 richiede otto tele 1×1."
   close:
     name: "Chiudi"
     action: "chiudere il menu"
@@ -449,3 +454,18 @@ dialog:
     height: "Altezza del nuovo dipinto, in blocchi"
     button: "Applica"
     no-url: "Incolla l'URL di un'immagine"
+
+input:
+  cancel-word: "annulla"
+  prompt: "<white>{prompt} <gray>(oppure scrivi {cancel})"
+  cancelled: "Annullato"
+  sign: "Scrivi in chat il titolo del dipinto"
+  hex: "Scrivi in chat un colore nel formato #RRGGBB"
+  import: "Incolla in chat il codice del dipinto. I codici lunghi vanno a parti, una per messaggio"
+  url: "Incolla in chat il link dell'immagine"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— un codice di {length} caratteri. Clicca per copiare:"
+    part: "Parte {part}"
+    hint: "Incolla le parti una alla volta: /paint import"

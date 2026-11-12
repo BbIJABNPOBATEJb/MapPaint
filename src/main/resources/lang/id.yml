@@ -25,6 +25,7 @@ click:
   right: "Klik kanan"
 
 action:
+  change: "ubah"
   open: "buka"
   select: "pilih"
   take: "ambil"
@@ -225,6 +226,10 @@ panel:
     hide: "<#FF7800>Sembunyikan panel <dark_gray>» <gray>muncul lagi saat kamu mengeklik kanvas dengan kuas"
 
 menu:
+  assemble:
+    help:
+      - "Kolom adalah lebar, baris adalah tinggi:"
+      - "kanvas 2×4 butuh delapan kanvas 1×1."
   close:
     name: "Tutup"
     action: "tutup menu"
@@ -447,3 +452,18 @@ dialog:
     height: "Tinggi lukisan baru, blok"
     button: "Terapkan"
     no-url: "Tempel URL gambar"
+
+input:
+  cancel-word: "batal"
+  prompt: "<white>{prompt} <gray>(atau ketik {cancel})"
+  cancelled: "Dibatalkan"
+  sign: "Ketik judul lukisan di obrolan"
+  hex: "Ketik warna dalam bentuk #RRGGBB di obrolan"
+  import: "Tempel kode lukisan di obrolan. Kode panjang dikirim per bagian, satu pesan tiap bagian"
+  url: "Tempel tautan gambar di obrolan"
+
+export:
+  chat:
+    header: "<#FF7800>{title} <gray>— kode sepanjang {length} karakter. Klik untuk menyalin:"
+    part: "Bagian {part}"
+    hint: "Tempel bagian satu per satu: /paint import"
