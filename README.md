@@ -49,6 +49,7 @@ The same jar runs on Paper 1.20 and newer. Older servers lack some client featur
 | before 1.21.9 | Panel icons are item displays instead of text sprites |
 | before 1.21.6 | No dialog windows: titles, color codes and painting codes are typed in chat, image settings and the canvas size table are chest menus. Codes are copied by clicking a chat message and go in parts of 200 characters |
 | 1.21.4 – 1.21.10 | You walk slower while you hold RMB with the brush |
+| 1.21.4 and older | A block outline can show between canvas tiles under the crosshair |
 | before 1.21.4 | Plugin items are a regular brush, paper and painting item. A stroke ends a quarter of a second after you release RMB |
 | 1.20 – 1.20.1 | Colors can't be picked from blocks, only from canvases |
 
