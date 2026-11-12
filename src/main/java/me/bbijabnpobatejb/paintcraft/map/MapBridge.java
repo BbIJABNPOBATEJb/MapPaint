@@ -3,6 +3,7 @@ package me.bbijabnpobatejb.paintcraft.map;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerMapData;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
@@ -21,19 +22,15 @@ import java.util.List;
 import java.util.Set;
 
 @SuppressWarnings("deprecation")
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class MapBridge {
 
     public static final int MAP = 128;
 
-    final Plugin plugin;
-    final PaintingStorage store;
-    final Set<Player> viewers = new HashSet<>();
-
-    public MapBridge(Plugin plugin, PaintingStorage store) {
-        this.plugin = plugin;
-        this.store = store;
-    }
+    Plugin plugin;
+    PaintingStorage store;
+    Set<Player> viewers = new HashSet<>();
 
     public void ensure(Painting painting) {
         if (painting.tiles == null) {

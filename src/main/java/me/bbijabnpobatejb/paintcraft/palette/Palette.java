@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.paintcraft.palette;
 
+import lombok.experimental.UtilityClass;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -11,7 +12,8 @@ import java.util.Comparator;
 import java.util.List;
 
 @SuppressWarnings({"deprecation", "removal"})
-public final class Palette {
+@UtilityClass
+public class Palette {
 
     public static final byte TRANSPARENT = 0;
 
@@ -65,9 +67,6 @@ public final class Palette {
             }
         }
         BLACK = black < 0 ? nearestSlow(0x000000) : (byte) black;
-    }
-
-    private Palette() {
     }
 
     private static double sortKey(int base) {

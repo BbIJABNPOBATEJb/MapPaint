@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.paintcraft.store;
 
+import lombok.experimental.UtilityClass;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
 
 import java.io.ByteArrayOutputStream;
@@ -10,7 +11,8 @@ import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
-public final class Codec {
+@UtilityClass
+public class Codec {
 
     public static final String PREFIX = "pc1:";
     private static final String PART_PREFIX = "pc1p";
@@ -33,9 +35,6 @@ public final class Codec {
         public FormatException(String message) {
             super(message);
         }
-    }
-
-    private Codec() {
     }
 
     public static String encode(int blocksW, int blocksH, int res, byte[] pixels) {

@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.paintcraft.exchange;
 
+import lombok.experimental.UtilityClass;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
 import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 
@@ -18,7 +19,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
-public final class ImageImporter {
+@UtilityClass
+public class ImageImporter {
 
     private static final int MAX_REDIRECTS = 5;
 
@@ -26,9 +28,6 @@ public final class ImageImporter {
             .connectTimeout(Duration.ofSeconds(6))
             .followRedirects(HttpClient.Redirect.NEVER)
             .build();
-
-    private ImageImporter() {
-    }
 
     public static BufferedImage fetch(String url, int maxBytes, boolean allowPrivate) throws IOException, InterruptedException {
         try {
