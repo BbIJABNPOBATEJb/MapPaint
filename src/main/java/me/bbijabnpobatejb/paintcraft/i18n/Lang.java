@@ -42,7 +42,8 @@ public class Lang {
 
         names.clear();
         for (String language : available()) {
-            names.put(language, config(language).getString("language.name", language));
+            String name = config(language).getString("language.name");
+            names.put(language, name == null ? language : name);
         }
     }
 
@@ -105,7 +106,12 @@ public class Lang {
     }
 
     public String get(String key, Object... placeholders) {
-        return fill(active.getString(key, key), placeholders);
+        return fill(text(key), placeholders);
+    }
+
+    private String text(String key) {
+        String value = active.getString(key);
+        return value == null ? key : value;
     }
 
     public List<String> list(String key, Object... placeholders) {
@@ -119,7 +125,7 @@ public class Lang {
     public String plural(int count, String key, Object... placeholders) {
         String form = pluralForm(Math.abs(count));
         if (form.equals("few") && !active.contains(key + ".few")) form = "many";
-        return fill(active.getString(key + "." + form, key), placeholders).replace("{count}", String.valueOf(count));
+        return fill(text(key + "." + form), placeholders).replace("{count}", String.valueOf(count));
     }
 
     private String pluralForm(int count) {
