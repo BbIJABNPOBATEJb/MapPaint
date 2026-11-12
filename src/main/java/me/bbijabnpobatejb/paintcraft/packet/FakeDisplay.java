@@ -13,7 +13,10 @@ import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerEn
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnEntity;
 import io.github.retrooper.packetevents.util.SpigotConversionUtil;
 import io.github.retrooper.packetevents.util.SpigotReflectionUtil;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.PackagePrivate;
 import net.kyori.adventure.text.Component;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.inventory.ItemStack;
@@ -28,6 +31,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class FakeDisplay {
 
     private static final int FLAGS = 0;
@@ -65,48 +69,49 @@ public final class FakeDisplay {
     public enum Kind {BLOCK, TEXT, ITEM, INTERACTION}
 
     @Getter
-    private final Kind kind;
+    final Kind kind;
     @Getter
-    private final int entityId = SpigotReflectionUtil.generateEntityId();
-    private final UUID uuid = UUID.randomUUID();
+    final int entityId = SpigotReflectionUtil.generateEntityId();
+    final UUID uuid = UUID.randomUUID();
 
-    private double x, y, z;
-    private int blockId;
-    private com.github.retrooper.packetevents.protocol.item.ItemStack item = com.github.retrooper.packetevents.protocol.item.ItemStack.EMPTY;
-    private int light = -1;
-    private final Vector3f translation = new Vector3f();
-    private final Vector3f scale = new Vector3f(1f);
-    private final Quaternionf left = new Quaternionf();
-    private final Quaternionf right = new Quaternionf();
-    private int interpolation = 1;
-    private int teleportDuration = 1;
-    private float viewRange = 1f;
-    private boolean glowing;
-    private int glowColor = -1;
-    private Component text = Component.empty();
-    private int textBackground = 0x40000000;
-    private boolean seeThrough;
-    private boolean shadow;
-    private byte billboard = BILLBOARD_CENTER;
-    private float width = 1f, height = 1f;
+    double x, y, z;
+    int blockId;
+    com.github.retrooper.packetevents.protocol.item.ItemStack item = com.github.retrooper.packetevents.protocol.item.ItemStack.EMPTY;
+    int light = -1;
+    final Vector3f translation = new Vector3f();
+    final Vector3f scale = new Vector3f(1f);
+    final Quaternionf left = new Quaternionf();
+    final Quaternionf right = new Quaternionf();
+    int interpolation = 1;
+    int teleportDuration = 1;
+    float viewRange = 1f;
+    boolean glowing;
+    int glowColor = -1;
+    Component text = Component.empty();
+    int textBackground = 0x40000000;
+    boolean seeThrough;
+    boolean shadow;
+    byte billboard = BILLBOARD_CENTER;
+    float width = 1f, height = 1f;
 
-    private boolean spawned;
-    private double sentX, sentY, sentZ;
-    private int sentBlockId;
-    private com.github.retrooper.packetevents.protocol.item.ItemStack sentItem;
-    private int sentTextBackground;
-    private int sentLight;
-    private final Vector3f sentTranslation = new Vector3f();
-    private final Vector3f sentScale = new Vector3f();
-    private final Quaternionf sentLeft = new Quaternionf();
-    private final Quaternionf sentRight = new Quaternionf();
-    private int sentInterpolation, sentTeleportDuration;
-    private float sentViewRange;
-    private boolean sentGlowing;
-    private int sentGlowColor;
-    private Component sentText;
-    private float sentWidth, sentHeight;
+    boolean spawned;
+    double sentX, sentY, sentZ;
+    int sentBlockId;
+    com.github.retrooper.packetevents.protocol.item.ItemStack sentItem;
+    int sentTextBackground;
+    int sentLight;
+    final Vector3f sentTranslation = new Vector3f();
+    final Vector3f sentScale = new Vector3f();
+    final Quaternionf sentLeft = new Quaternionf();
+    final Quaternionf sentRight = new Quaternionf();
+    int sentInterpolation, sentTeleportDuration;
+    float sentViewRange;
+    boolean sentGlowing;
+    int sentGlowColor;
+    Component sentText;
+    float sentWidth, sentHeight;
 
+    @PackagePrivate
     boolean used;
 
     FakeDisplay(Kind kind) {

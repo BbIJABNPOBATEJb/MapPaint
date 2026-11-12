@@ -1,6 +1,8 @@
 package me.bbijabnpobatejb.paintcraft.world;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.item.PaintItem;
@@ -23,6 +25,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class PlacementPreview {
 
     private static final int FITS = 0x1FFF5E;
@@ -35,10 +38,10 @@ public class PlacementPreview {
         int checkedTick;
     }
 
-    private final PaintCraft plugin;
-    private final Map<UUID, Shown> shown = new HashMap<>();
-    private final BlockData fits = Material.LIME_STAINED_GLASS.createBlockData();
-    private final BlockData blocked = Material.RED_STAINED_GLASS.createBlockData();
+    PaintCraft plugin;
+    Map<UUID, Shown> shown = new HashMap<>();
+    BlockData fits = Material.LIME_STAINED_GLASS.createBlockData();
+    BlockData blocked = Material.RED_STAINED_GLASS.createBlockData();
 
     public void tick() {
         int tick = Bukkit.getCurrentTick();

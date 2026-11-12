@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.ui.menu;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
@@ -22,6 +24,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AdminGui extends InventoryGuiImpl {
 
     private static final int PER_PAGE = 36;
@@ -29,9 +32,9 @@ public class AdminGui extends InventoryGuiImpl {
     private static final int GRID = 5;
     private static final int STACK = 64;
 
-    private final PaintCraft plugin;
-    private int page;
-    private boolean canvases;
+    final PaintCraft plugin;
+    int page;
+    boolean canvases;
     private @Nullable String confirmDelete;
 
     public AdminGui(PaintCraft plugin, int page) {

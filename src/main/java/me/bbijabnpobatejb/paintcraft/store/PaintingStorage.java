@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.store;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
 import org.bukkit.Bukkit;
@@ -36,26 +38,27 @@ import java.util.stream.Stream;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class PaintingStorage {
 
     private static final int MAGIC = 0x50435031;
     private static final String ID_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
     private static final long EVICT_AFTER_MS = 5 * 60_000L;
 
-    private final Plugin plugin;
-    private final Path dir;
-    private final Path dataFile;
-    private final Map<String, Painting> byId = new HashMap<>();
-    private final Map<Integer, Painting> byMapId = new HashMap<>();
-    private final ArrayDeque<Integer> freeMapIds = new ArrayDeque<>();
-    private final Set<String> removedPlacements = new HashSet<>();
-    private final SecureRandom random = new SecureRandom();
-    private final ExecutorService writer = Executors.newSingleThreadExecutor(r -> {
+    final Plugin plugin;
+    final Path dir;
+    final Path dataFile;
+    final Map<String, Painting> byId = new HashMap<>();
+    final Map<Integer, Painting> byMapId = new HashMap<>();
+    final ArrayDeque<Integer> freeMapIds = new ArrayDeque<>();
+    final Set<String> removedPlacements = new HashSet<>();
+    final SecureRandom random = new SecureRandom();
+    final ExecutorService writer = Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "PaintCraft-writer");
         t.setDaemon(true);
         return t;
     });
-    private boolean dataDirty;
+    boolean dataDirty;
     public java.util.function.Consumer<Painting> beforeEvict = painting -> {
     };
 

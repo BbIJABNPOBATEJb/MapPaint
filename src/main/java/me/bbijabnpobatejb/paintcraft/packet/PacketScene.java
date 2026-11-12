@@ -4,6 +4,8 @@ import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.wrapper.PacketWrapper;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerBundle;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerDestroyEntities;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,12 +20,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class PacketScene {
 
-    private final Map<Object, FakeDisplay> displays = new LinkedHashMap<>();
-    private final Map<UUID, Player> viewers = new HashMap<>();
-    private final Map<UUID, Set<Integer>> personalGlow = new HashMap<>();
-    private final Map<UUID, Integer> personalGlowColor = new HashMap<>();
+    Map<Object, FakeDisplay> displays = new LinkedHashMap<>();
+    Map<UUID, Player> viewers = new HashMap<>();
+    Map<UUID, Set<Integer>> personalGlow = new HashMap<>();
+    Map<UUID, Integer> personalGlowColor = new HashMap<>();
 
     public void beginFrame() {
         for (FakeDisplay display : displays.values()) display.used = false;
@@ -72,7 +75,7 @@ public final class PacketScene {
         return display;
     }
 
-    private final List<FakeDisplay> orphans = new ArrayList<>();
+    List<FakeDisplay> orphans = new ArrayList<>();
 
     public void endFrame() {
         List<PacketWrapper<?>> packets = new ArrayList<>();

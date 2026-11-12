@@ -1,7 +1,9 @@
 package me.bbijabnpobatejb.paintcraft.paint;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import org.bukkit.Material;
 
@@ -9,6 +11,7 @@ import java.util.Locale;
 
 @Getter
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum Tool {
     BRUSH(Material.BRUSH),
     ERASER(Material.SPONGE),
@@ -18,7 +21,7 @@ public enum Tool {
     RECT(Material.ITEM_FRAME),
     ELLIPSE(Material.SNOWBALL);
 
-    private final Material icon;
+    Material icon;
 
     public String getDisplayName() {
         return Lang.get("tool." + name().toLowerCase(Locale.ROOT) + ".name");

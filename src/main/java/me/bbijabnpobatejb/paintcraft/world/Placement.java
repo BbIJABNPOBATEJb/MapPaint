@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.world;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -9,6 +11,7 @@ import org.bukkit.util.Vector;
 
 import java.util.UUID;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class Placement {
 
     public final UUID id;
@@ -22,8 +25,8 @@ public final class Placement {
     public final ItemFrame[] frames;
     public final Plane plane;
 
-    private final int nx, ny, nz;
-    private final double cornerX, cornerY, cornerZ;
+    int nx, ny, nz;
+    double cornerX, cornerY, cornerZ;
 
     public Placement(UUID id, Painting painting, World world, BlockFace face, int rot, UUID placer, int ox, int oy, int oz) {
         this.id = id;

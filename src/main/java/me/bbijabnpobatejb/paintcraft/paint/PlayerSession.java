@@ -1,7 +1,9 @@
 package me.bbijabnpobatejb.paintcraft.paint;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.exchange.ImageOptions;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
@@ -11,27 +13,28 @@ import java.awt.image.BufferedImage;
 
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class PlayerSession {
 
-    private byte color = Palette.BLACK;
-    private byte previousColor = Palette.WHITE;
-    private int size = 1;
-    private Tool tool = Tool.BRUSH;
-    private boolean squareBrush;
-    private float hue;
-    private int pickedCell = -1;
-    private float[] layout = {Float.NaN, Float.NaN, Float.NaN, Float.NaN, Float.NaN, Float.NaN};
-    private int palettePage;
+    byte color = Palette.BLACK;
+    byte previousColor = Palette.WHITE;
+    int size = 1;
+    Tool tool = Tool.BRUSH;
+    boolean squareBrush;
+    float hue;
+    int pickedCell = -1;
+    float[] layout = {Float.NaN, Float.NaN, Float.NaN, Float.NaN, Float.NaN, Float.NaN};
+    int palettePage;
 
     private @Nullable Painting lastPainting;
     private @Nullable PaintService.Stroke stroke;
-    private int lastClickTick = -100;
-    private int lastPunchTick = -100;
-    private int lastInventoryClickTick = -100;
+    int lastClickTick = -100;
+    int lastPunchTick = -100;
+    int lastInventoryClickTick = -100;
     private @Nullable ImageOptions imageOptions;
     private @Nullable BufferedImage imageCache;
     private @Nullable String imageCacheUrl;
-    private UndoStack.@Nullable Step imageStep;
+    UndoStack.@Nullable Step imageStep;
     private @Nullable Painting imagePainting;
-    private String @Nullable [] importParts;
+    String @Nullable [] importParts;
 }

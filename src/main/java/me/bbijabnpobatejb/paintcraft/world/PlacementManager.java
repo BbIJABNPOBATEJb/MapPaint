@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.world;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.item.ItemService;
 import me.bbijabnpobatejb.paintcraft.map.MapBridge;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
@@ -29,19 +31,20 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class PlacementManager {
 
-    private final Plugin plugin;
-    private final PaintingStorage store;
-    private final MapBridge bridge;
-    private final ItemService items;
-    private final Map<UUID, Placement> byId = new HashMap<>();
+    Plugin plugin;
+    PaintingStorage store;
+    MapBridge bridge;
+    ItemService items;
+    Map<UUID, Placement> byId = new HashMap<>();
 
-    private final NamespacedKey paintingKey;
-    private final NamespacedKey placeKey;
-    private final NamespacedKey tileKey;
-    private final NamespacedKey rotKey;
-    private final NamespacedKey placerKey;
+    NamespacedKey paintingKey;
+    NamespacedKey placeKey;
+    NamespacedKey tileKey;
+    NamespacedKey rotKey;
+    NamespacedKey placerKey;
 
     public PlacementManager(Plugin plugin, PaintingStorage store, MapBridge bridge, ItemService items) {
         this.plugin = plugin;

@@ -1,6 +1,8 @@
 package me.bbijabnpobatejb.paintcraft.ui.listener;
 
 import com.destroystokyo.paper.event.server.ServerTickEndEvent;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.ui.inventory.InventoryGuiImpl;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,9 +16,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class InventoryListener implements Listener {
 
-    private final Map<InventoryGuiImpl, Integer> activeGuis = new HashMap<>();
+    Map<InventoryGuiImpl, Integer> activeGuis = new HashMap<>();
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {

@@ -1,16 +1,20 @@
 package me.bbijabnpobatejb.paintcraft.paint;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class Draw {
 
     private static final int[][] DABS = new int[65][];
 
-    private final byte[] pixels;
-    private final int width;
-    private final int height;
-    private final UndoStack.Step step;
+    final byte[] pixels;
+    final int width;
+    final int height;
+    final UndoStack.Step step;
     public boolean square;
     public int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE, maxX = -1, maxY = -1;
 

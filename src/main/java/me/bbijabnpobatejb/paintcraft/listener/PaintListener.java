@@ -2,7 +2,9 @@ package me.bbijabnpobatejb.paintcraft.listener;
 
 import io.papermc.paper.event.player.PlayerPickEntityEvent;
 import io.papermc.paper.event.player.PrePlayerAttackEntityEvent;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
@@ -47,12 +49,13 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class PaintListener implements Listener {
 
     private static final double NEAR_MISS = 0.6;
 
-    private final PaintCraft plugin;
-    private boolean breaking;
+    final PaintCraft plugin;
+    boolean breaking;
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onInteract(PlayerInteractEvent event) {

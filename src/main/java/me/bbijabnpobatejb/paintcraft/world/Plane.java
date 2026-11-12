@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.world;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.packet.FakeDisplay;
 import net.kyori.adventure.text.Component;
 import org.bukkit.World;
@@ -10,6 +12,7 @@ import org.joml.Matrix3f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class Plane {
 
     public static final double SURFACE = 0.01;
@@ -24,7 +27,7 @@ public final class Plane {
     public final World world;
     public final double cornerX, cornerY, cornerZ;
     public final int ux, uy, uz, vx, vy, vz, nx, ny, nz;
-    private final Quaternionf rotation;
+    Quaternionf rotation;
 
     private Plane(World world, double cornerX, double cornerY, double cornerZ, int[] axes, BlockFace face) {
         this.world = world;

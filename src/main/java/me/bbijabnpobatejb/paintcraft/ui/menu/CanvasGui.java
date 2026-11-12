@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.ui.menu;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
@@ -17,11 +19,12 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CanvasGui extends InventoryGuiImpl {
 
-    private final PaintCraft plugin;
-    private final Player viewer;
-    private final Painting painting;
+    PaintCraft plugin;
+    Player viewer;
+    Painting painting;
 
     public CanvasGui(PaintCraft plugin, Player viewer, Painting painting) {
         super(27, Component.text(Lang.get("menu.canvas.title")));

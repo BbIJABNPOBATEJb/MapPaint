@@ -2,7 +2,9 @@ package me.bbijabnpobatejb.paintcraft.listener;
 
 import com.destroystokyo.paper.event.entity.EntityAddToWorldEvent;
 import com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
@@ -12,9 +14,10 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.server.MapInitializeEvent;
 
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class WorldListener implements Listener {
 
-    private final PaintCraft plugin;
+    PaintCraft plugin;
 
     @EventHandler
     public void onAdd(EntityAddToWorldEvent event) {

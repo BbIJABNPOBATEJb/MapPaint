@@ -2,6 +2,7 @@ package me.bbijabnpobatejb.paintcraft.util.action;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import me.bbijabnpobatejb.paintcraft.util.StringUtil;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class ActionLoreBuilder {
 
     public static final String KEY_DROP = "key.drop";
@@ -24,7 +26,7 @@ public final class ActionLoreBuilder {
     public static final String KEY_JUMP = "key.jump";
     public static final String KEY_SPRINT = "key.sprint";
 
-    private final List<Component> lines = new ArrayList<>();
+    List<Component> lines = new ArrayList<>();
 
     public static ActionLoreBuilder create() {
         return new ActionLoreBuilder();

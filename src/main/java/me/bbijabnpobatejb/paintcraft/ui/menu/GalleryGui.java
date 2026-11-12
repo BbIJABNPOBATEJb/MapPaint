@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.ui.menu;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
@@ -19,14 +21,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class GalleryGui extends InventoryGuiImpl {
 
     private static final int PER_PAGE = 36;
     private static final int FIRST_SLOT = 9;
 
-    private final PaintCraft plugin;
-    private final Player viewer;
-    private int page;
+    final PaintCraft plugin;
+    final Player viewer;
+    int page;
     private @Nullable String confirmDelete;
 
     public GalleryGui(PaintCraft plugin, Player viewer, int page) {

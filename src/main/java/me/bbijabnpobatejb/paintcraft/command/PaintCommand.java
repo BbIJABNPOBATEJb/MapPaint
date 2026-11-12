@@ -7,7 +7,9 @@ import dev.rollczi.litecommands.annotations.execute.Execute;
 import dev.rollczi.litecommands.annotations.join.Join;
 import dev.rollczi.litecommands.annotations.optional.OptionalArg;
 import dev.rollczi.litecommands.annotations.permission.Permission;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.command.argument.CanvasSize;
@@ -34,9 +36,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @Command(name = "paint", aliases = {"paintcraft", "картина", "картины"})
 @Permission(PaintCraft.PERMISSION_USE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class PaintCommand {
 
-    private final PaintCraft plugin;
+    PaintCraft plugin;
 
     @Execute
     void open(@Sender Player sender) {

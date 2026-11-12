@@ -1,6 +1,8 @@
 package me.bbijabnpobatejb.paintcraft.exchange;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
@@ -21,9 +23,10 @@ import org.bukkit.inventory.ItemStack;
 import java.awt.image.BufferedImage;
 
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ExchangeService {
 
-    private final PaintCraft plugin;
+    PaintCraft plugin;
 
     public void export(Player player, Painting painting) {
         if (!player.hasPermission(PaintCraft.PERMISSION_EXPORT)) {

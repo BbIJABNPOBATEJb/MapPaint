@@ -1,6 +1,8 @@
 package me.bbijabnpobatejb.paintcraft.studio;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
@@ -43,6 +45,7 @@ import java.util.function.Consumer;
 import java.util.logging.Level;
 
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class StudioService {
 
     private static final int SLIDE_TICKS = 6;
@@ -88,14 +91,14 @@ public class StudioService {
         }
     }
 
-    private final PaintCraft plugin;
-    private final Map<UUID, Studio> studios = new HashMap<>();
-    private final Map<UUID, Placement> selected = new HashMap<>();
-    private final Map<UUID, Placement> dismissed = new HashMap<>();
-    private final Map<Material, Component> sprites = new EnumMap<>(Material.class);
-    private final BlockData wood = Material.DARK_OAK_PLANKS.createBlockData();
-    private final BlockData darkWood = Material.SPRUCE_PLANKS.createBlockData();
-    private boolean broken;
+    final PaintCraft plugin;
+    final Map<UUID, Studio> studios = new HashMap<>();
+    final Map<UUID, Placement> selected = new HashMap<>();
+    final Map<UUID, Placement> dismissed = new HashMap<>();
+    final Map<Material, Component> sprites = new EnumMap<>(Material.class);
+    final BlockData wood = Material.DARK_OAK_PLANKS.createBlockData();
+    final BlockData darkWood = Material.SPRUCE_PLANKS.createBlockData();
+    boolean broken;
 
     public void select(Player player, Placement placement) {
         dismissed.remove(player.getUniqueId());

@@ -1,20 +1,25 @@
 package me.bbijabnpobatejb.paintcraft.paint;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.BitSet;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class UndoStack {
 
+    @FieldDefaults(level = AccessLevel.PRIVATE)
     public static final class Step {
-        private int[] index = new int[64];
-        private byte[] color = new byte[64];
-        private int size;
-        private BitSet seen = new BitSet();
+        int[] index = new int[64];
+        byte[] color = new byte[64];
+        int size;
+        BitSet seen = new BitSet();
         public int minX = Integer.MAX_VALUE, minY = Integer.MAX_VALUE, maxX = -1, maxY = -1;
         public byte[] fullPixels;
         public int fullRes;
-        private int fullSize;
+        int fullSize;
         public boolean flipsImported;
 
         public static Step resolution(int res, byte[] pixels) {
@@ -85,11 +90,11 @@ public final class UndoStack {
         }
     }
 
-    private final ArrayDeque<Step> undo = new ArrayDeque<>();
-    private final ArrayDeque<Step> redo = new ArrayDeque<>();
-    private final int maxSteps;
-    private final int maxPixels;
-    private int pixels;
+    final ArrayDeque<Step> undo = new ArrayDeque<>();
+    final ArrayDeque<Step> redo = new ArrayDeque<>();
+    final int maxSteps;
+    final int maxPixels;
+    int pixels;
 
     public UndoStack(int maxSteps, int maxPixels) {
         this.maxSteps = maxSteps;

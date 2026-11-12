@@ -6,7 +6,9 @@ import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
@@ -19,9 +21,10 @@ public record CanvasSize(int width, int height) {
     public static final CanvasSize SINGLE = new CanvasSize(1, 1);
 
     @RequiredArgsConstructor
+    @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
     public static class Resolver extends ArgumentResolver<CommandSender, CanvasSize> {
 
-        private final PaintCraft plugin;
+        PaintCraft plugin;
 
         @Override
         protected ParseResult<CanvasSize> parse(Invocation<CommandSender> invocation, Argument<CanvasSize> argument, String input) {

@@ -1,6 +1,8 @@
 package me.bbijabnpobatejb.paintcraft.craft;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import org.bukkit.Keyed;
 import org.bukkit.event.EventHandler;
@@ -12,9 +14,10 @@ import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.ItemStack;
 
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CraftListener implements Listener {
 
-    private final PaintCraft plugin;
+    PaintCraft plugin;
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPrepare(PrepareItemCraftEvent event) {

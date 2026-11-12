@@ -6,6 +6,8 @@ import dev.rollczi.litecommands.argument.resolver.ArgumentResolver;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.suggestion.SuggestionContext;
 import dev.rollczi.litecommands.suggestion.SuggestionResult;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.util.Chat;
 import org.bukkit.command.CommandSender;
@@ -14,10 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ChoiceArgument<E extends Enum<E>> extends ArgumentResolver<CommandSender, E> {
 
-    private final E[] values;
-    private final String what;
+    E[] values;
+    String what;
 
     public ChoiceArgument(Class<E> type, String what) {
         this.values = type.getEnumConstants();

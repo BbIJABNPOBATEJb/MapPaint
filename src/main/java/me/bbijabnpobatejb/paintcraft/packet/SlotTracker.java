@@ -2,6 +2,8 @@ package me.bbijabnpobatejb.paintcraft.packet;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerPing;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -11,6 +13,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class SlotTracker {
 
     private static final int PING_MARK = 0x50430000;
@@ -22,9 +25,9 @@ public final class SlotTracker {
         boolean pingScheduled;
     }
 
-    private final Plugin plugin;
-    private final Map<UUID, State> states = new ConcurrentHashMap<>();
-    private int pingCounter;
+    final Plugin plugin;
+    final Map<UUID, State> states = new ConcurrentHashMap<>();
+    int pingCounter;
 
     public SlotTracker(Plugin plugin) {
         this.plugin = plugin;

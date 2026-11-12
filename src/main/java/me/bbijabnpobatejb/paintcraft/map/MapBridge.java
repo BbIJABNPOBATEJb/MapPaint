@@ -1,5 +1,7 @@
 package me.bbijabnpobatejb.paintcraft.map;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.store.PaintingStorage;
 import me.bbijabnpobatejb.paintcraft.world.Placement;
@@ -17,14 +19,15 @@ import java.util.Set;
 import java.util.logging.Level;
 
 @SuppressWarnings("deprecation")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class MapBridge {
 
     public static final int MAP = 128;
 
-    private final Plugin plugin;
-    private final PaintingStorage store;
-    private final Set<Player> viewers = new HashSet<>();
-    private boolean packetsBroken;
+    final Plugin plugin;
+    final PaintingStorage store;
+    final Set<Player> viewers = new HashSet<>();
+    boolean packetsBroken;
 
     public MapBridge(Plugin plugin, PaintingStorage store) {
         this.plugin = plugin;
