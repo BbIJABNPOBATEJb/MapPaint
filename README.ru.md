@@ -10,6 +10,11 @@
 </p>
 
 <p align="center">
+  <a href="https://modrinth.com/plugin/mappaint"><img src="https://img.shields.io/modrinth/dt/mappaint?logo=modrinth&label=Modrinth&color=00AF5C" alt="Modrinth downloads"></a>
+  <a href="https://github.com/BbIJABNPOBATEJb/MapPaint/releases"><img src="https://img.shields.io/github/downloads/BbIJABNPOBATEJb/MapPaint/total?logo=github&label=GitHub" alt="GitHub downloads"></a>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> | <b>Русский</b>
 </p>
 
