@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/icon.png" alt="PaintCraft" width="160">
+  <img src="docs/icon.png" alt="MapPaint" width="160">
 </p>
 
-<h1 align="center">PaintCraft</h1>
+<h1 align="center">MapPaint</h1>
 
 <p align="center">
   Рисование картин прямо в игре: без ресурспака и без других плагинов.<br>
@@ -46,8 +46,8 @@
 
 Положите в `plugins` одну из jar:
 
-- `paintcraft-1.0.0.jar` — по умолчанию английский
-- `paintcraft-1.0.0-ru.jar` — по умолчанию русский
+- `mappaint-1.0.0.jar` — по умолчанию английский
+- `mappaint-1.0.0-ru.jar` — по умолчанию русский
 
 В остальном они одинаковые. PacketEvents уже внутри, отдельным плагином он не нужен.
 
@@ -85,7 +85,7 @@
 
 В комплекте: en, ru, uk, de, fr, es, pt, it, pl, tr, nl, cs, sv, zh, ja, ko, vi, id.
 
-Выбор записывается в `config.yml` (`language: ru`). Переводы лежат в `plugins/paintcraft/lang/`, их можно править;
+Выбор записывается в `config.yml` (`language: ru`). Переводы лежат в `plugins/mappaint/lang/`, их можно править;
 свой файл `xx.yml` в этой папке становится доступен как `/paint language xx`. Чего нет в файле, берётся из английского.
 У уже выданных предметов остаётся тот текст, с которым они созданы.
 
@@ -192,7 +192,7 @@ pc1:7ZVLjsMgDIbVqcbHYMGKU8yShY_DEXOyCcEQmhBiXlKr8ldVqjT9PmMefTx_fvXMO0W61P4ct9zi
 Картинка ложится туда же, куда лёг бы код. Подбирать настройки удобнее на висящем холсте: применили, посмотрели,
 открыли окно снова — настройки сохранены, прошлый вариант заменяется, бумага второй раз не берётся.
 
-Право `paintcraft.image` по умолчанию только у операторов: по ссылке ходит сам сервер. На localhost и адреса
+Право `mappaint.image` по умолчанию только у операторов: по ссылке ходит сам сервер. На localhost и адреса
 локальной сети он не пойдёт, пока это не разрешено в настройках.
 
 #### Картина как блок
@@ -216,7 +216,7 @@ pc1:7ZVLjsMgDIbVqcbHYMGKU8yShY_DEXOyCcEQmhBiXlKr8ldVqjT9PmMefTx_fvXMO0W61P4ct9zi
 
 ## Команды
 
-`/paint`, она же `/paintcraft`, `/картина`, `/картины`. Команды про картину относятся к той, на которую вы смотрите,
+`/paint`, она же `/mappaint`, `/картина`, `/картины`. Команды про картину относятся к той, на которую вы смотрите,
 затем к той, что в руке.
 
 | Команда | Что делает |
@@ -244,16 +244,16 @@ pc1:7ZVLjsMgDIbVqcbHYMGKU8yShY_DEXOyCcEQmhBiXlKr8ldVqjT9PmMefTx_fvXMO0W61P4ct9zi
 
 | Право | По умолчанию | Что даёт |
 |---|---|---|
-| `paintcraft.use` | всем | Рисовать, ставить холсты, `/paint` и меню |
-| `paintcraft.export` | всем | Экспорт |
-| `paintcraft.import` | всем | Импорт |
-| `paintcraft.image` | операторам | `/paint image` |
-| `paintcraft.give` | операторам | `/paint give` |
-| `paintcraft.admin` | операторам | Чужие картины, `/paint reload`, `language` и `report`, без пределов и платы. Включает всё выше |
+| `mappaint.use` | всем | Рисовать, ставить холсты, `/paint` и меню |
+| `mappaint.export` | всем | Экспорт |
+| `mappaint.import` | всем | Импорт |
+| `mappaint.image` | операторам | `/paint image` |
+| `mappaint.give` | операторам | `/paint give` |
+| `mappaint.admin` | операторам | Чужие картины, `/paint reload`, `language` и `report`, без пределов и платы. Включает всё выше |
 
 ## Настройки
 
-`plugins/paintcraft/config.yml`, применяется командой `/paint reload`.
+`plugins/mappaint/config.yml`, применяется командой `/paint reload`.
 
 | Настройка | По умолчанию | Что значит |
 |---|---|---|
@@ -288,15 +288,15 @@ pc1:7ZVLjsMgDIbVqcbHYMGKU8yShY_DEXOyCcEQmhBiXlKr8ldVqjT9PmMefTx_fvXMO0W61P4ct9zi
 ## Что стоит знать
 
 - Цветов столько, сколько умеет карта: 61 базовый, у каждого 4 яркости.
-- Рисунки хранит плагин в `plugins/paintcraft/paintings`. Без плагина карты в рамках будут пустыми.
+- Рисунки хранит плагин в `plugins/mappaint/paintings`. Без плагина карты в рамках будут пустыми.
 - Набросок, взятый из «Моих картин» дважды, — одна и та же картина: правки видны везде, где она висит.
 - Удалённая автором картина пропадает со стен, а её предметы становятся чистыми холстами.
 
 ## Сообщить о баге
 
 Выполните `/paint report`, глядя на картину, с которой что-то не так, и в следующие пять секунд повторите проблему
-(`/paint report 20` пишет дольше, до 30). Плагин сохранит `plugins/paintcraft/reports/report-<время>.txt`
-и покажет путь. Приложите этот файл к [issue](https://github.com/BbIJABNPOBATEJb/PaintCraft/issues).
+(`/paint report 20` пишет дольше, до 30). Плагин сохранит `plugins/mappaint/reports/report-<время>.txt`
+и покажет путь. Приложите этот файл к [issue](https://github.com/BbIJABNPOBATEJb/MapPaint/issues).
 
 В файле версии сервера и плагина, список плагинов, `config.yml`, состояние картины, тайминги тика и последние
 ошибки плагина. IP-адресов, чата и токенов в нём нет.

@@ -1,4 +1,4 @@
-# PaintCraft — Čeština
+# MapPaint — Čeština
 #
 # {slova} ve složených závorkách doplňuje plugin: nechte je beze změny.
 # Barvy se zadávají značkami MiniMessage: <gray>, <white>, <#FF7800>.
@@ -68,7 +68,7 @@ command:
   reloaded: "Nastavení znovu načteno"
   look-at-painting: "Podívej se na obraz nebo ho vezmi do ruky"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— obrazy bez balíčku zdrojů"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— obrazy bez balíčku zdrojů"
     lines:
       - "<#FF7800>Štětec <dark_gray>» <gray>hůl + pírko. <#FF7800>Plátno <dark_gray>» <gray>papír + hůl"
       - "Plátna složená do obdélníku na pracovním stole se spojí ve velké"
@@ -483,4 +483,4 @@ report:
   failed: "Hlášení se nepodařilo zapsat: {reason}"
 
 update:
-  available: "<#FFE100>Vyšel PaintCraft {version} <gray>(máte {current}): <white>{url}"
+  available: "<#FFE100>Vyšel MapPaint {version} <gray>(máte {current}): <white>{url}"

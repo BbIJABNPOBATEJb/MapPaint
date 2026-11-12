@@ -1,4 +1,4 @@
-# PaintCraft — Italiano
+# MapPaint — Italiano
 #
 # I {placeholders} tra parentesi graffe vengono riempiti dal plugin: lasciali così come sono.
 # I colori sono tag MiniMessage: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Configurazione ricaricata"
   look-at-painting: "Guarda un dipinto o tienine uno in mano"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— dipinti senza resource pack"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— dipinti senza resource pack"
     lines:
       - "<#FF7800>Pennello <dark_gray>» <gray>bastone + piuma. <#FF7800>Tela <dark_gray>» <gray>carta + bastone"
       - "Tele disposte a rettangolo in un banco da lavoro si uniscono in una grande"
@@ -482,4 +482,4 @@ report:
   failed: "Impossibile scrivere il rapporto: {reason}"
 
 update:
-  available: "<#FFE100>È uscito PaintCraft {version} <gray>(hai {current}): <white>{url}"
+  available: "<#FFE100>È uscito MapPaint {version} <gray>(hai {current}): <white>{url}"

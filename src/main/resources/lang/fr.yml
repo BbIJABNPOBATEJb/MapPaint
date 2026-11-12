@@ -1,4 +1,4 @@
-# PaintCraft — Français
+# MapPaint — Français
 #
 # Les {placeholders} entre accolades sont remplis par le plugin : ne les modifiez pas.
 # Les couleurs sont des balises MiniMessage : <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Configuration rechargée"
   look-at-painting: "Regardez un tableau ou tenez-en un en main"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— des tableaux sans pack de ressources"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— des tableaux sans pack de ressources"
     lines:
       - "<#FF7800>Pinceau <dark_gray>» <gray>bâton + plume. <#FF7800>Toile <dark_gray>» <gray>papier + bâton"
       - "Des toiles disposées en rectangle dans une table de fabrication fusionnent en une grande"
@@ -482,4 +482,4 @@ report:
   failed: "Impossible d'écrire le rapport : {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} est sorti <gray>(vous avez {current}) : <white>{url}"
+  available: "<#FFE100>MapPaint {version} est sorti <gray>(vous avez {current}) : <white>{url}"

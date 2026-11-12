@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/icon.png" alt="PaintCraft" width="160">
+  <img src="docs/icon.png" alt="MapPaint" width="160">
 </p>
 
-<h1 align="center">PaintCraft</h1>
+<h1 align="center">MapPaint</h1>
 
 <p align="center">
   Paint pictures right in the game: no resource pack, no other plugins.<br>
@@ -46,8 +46,8 @@ regular maps in invisible item frames, so the client has nothing to download.
 
 Drop one of the jars into `plugins`:
 
-- `paintcraft-1.0.0.jar` — English by default
-- `paintcraft-1.0.0-ru.jar` — Russian by default
+- `mappaint-1.0.0.jar` — English by default
+- `mappaint-1.0.0-ru.jar` — Russian by default
 
 The jars are otherwise identical. PacketEvents is bundled inside, you don't need it as a separate plugin.
 
@@ -85,7 +85,7 @@ On 1.21.4 and older a block outline can show between canvas tiles under the cros
 
 Bundled: en, ru, uk, de, fr, es, pt, it, pl, tr, nl, cs, sv, zh, ja, ko, vi, id.
 
-The choice is saved to `config.yml` (`language: en`). Translations live in `plugins/paintcraft/lang/` and can be edited;
+The choice is saved to `config.yml` (`language: en`). Translations live in `plugins/mappaint/lang/` and can be edited;
 put your own `xx.yml` there and it becomes available as `/paint language xx`. Missing keys fall back to English.
 Items that were already given out keep the text they were created with.
 
@@ -192,7 +192,7 @@ Very long codes are split into parts of about 12 thousand characters; the window
 The image goes to the same place a code would. Tuning is easiest on a canvas that already hangs: apply, look,
 open the window again — settings are kept, the previous result is replaced and paper isn't charged twice.
 
-`paintcraft.image` is op-only by default because the server itself downloads the URL. Localhost and LAN addresses are
+`mappaint.image` is op-only by default because the server itself downloads the URL. Localhost and LAN addresses are
 refused unless allowed in the config.
 
 #### A painting as a block
@@ -216,7 +216,7 @@ LMB to take, RMB to export, Shift + RMB twice to delete forever.
 
 ## Commands
 
-`/paint`, also `/paintcraft`. Painting commands apply to the painting you look at, then to the one in your hand.
+`/paint`, also `/mappaint`. Painting commands apply to the painting you look at, then to the one in your hand.
 
 | Command | What it does |
 |---|---|
@@ -243,16 +243,16 @@ LMB to take, RMB to export, Shift + RMB twice to delete forever.
 
 | Permission | Default | Gives |
 |---|---|---|
-| `paintcraft.use` | everyone | Painting, placing canvases, `/paint` and menus |
-| `paintcraft.export` | everyone | Export |
-| `paintcraft.import` | everyone | Import |
-| `paintcraft.image` | op | `/paint image` |
-| `paintcraft.give` | op | `/paint give` |
-| `paintcraft.admin` | op | Other players' paintings, `/paint reload`, `language` and `report`, no limits and no costs. Includes everything above |
+| `mappaint.use` | everyone | Painting, placing canvases, `/paint` and menus |
+| `mappaint.export` | everyone | Export |
+| `mappaint.import` | everyone | Import |
+| `mappaint.image` | op | `/paint image` |
+| `mappaint.give` | op | `/paint give` |
+| `mappaint.admin` | op | Other players' paintings, `/paint reload`, `language` and `report`, no limits and no costs. Includes everything above |
 
 ## Config
 
-`plugins/paintcraft/config.yml`, applied with `/paint reload`.
+`plugins/mappaint/config.yml`, applied with `/paint reload`.
 
 | Setting | Default | Meaning |
 |---|---|---|
@@ -287,15 +287,15 @@ Placing and breaking go through the regular `HangingPlaceEvent` and `HangingBrea
 ## Notes
 
 - Colors are limited to what a map can show: 61 base colors with 4 shades each.
-- Drawings are stored by the plugin in `plugins/paintcraft/paintings`. Without the plugin the maps in frames are empty.
+- Drawings are stored by the plugin in `plugins/mappaint/paintings`. Without the plugin the maps in frames are empty.
 - A sketch taken from "My paintings" twice is the same painting: edits show up wherever it hangs.
 - When the author deletes a painting it disappears from walls and its items turn into blank canvases.
 
 ## Report a bug
 
 Run `/paint report` while looking at the painting that misbehaves and repeat the problem during the next five seconds
-(`/paint report 20` records for longer, up to 30). The plugin writes `plugins/paintcraft/reports/report-<time>.txt`
-and shows the path. Attach that file to an [issue](https://github.com/BbIJABNPOBATEJb/PaintCraft/issues).
+(`/paint report 20` records for longer, up to 30). The plugin writes `plugins/mappaint/reports/report-<time>.txt`
+and shows the path. Attach that file to an [issue](https://github.com/BbIJABNPOBATEJb/MapPaint/issues).
 
 The file holds the server and plugin versions, the plugin list, `config.yml`, the state of the painting, tick timings
 and recent plugin errors. It has no IP addresses, chat or tokens.

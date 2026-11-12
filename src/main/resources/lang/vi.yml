@@ -1,4 +1,4 @@
-# PaintCraft — Tiếng Việt
+# MapPaint — Tiếng Việt
 #
 # {placeholders} trong dấu ngoặc nhọn do plugin điền vào: giữ nguyên.
 # Màu dùng thẻ MiniMessage: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Đã tải lại cấu hình"
   look-at-painting: "Hãy nhìn vào một bức tranh hoặc cầm nó trên tay"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— tranh vẽ không cần resource pack"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— tranh vẽ không cần resource pack"
     lines:
       - "<#FF7800>Cọ <dark_gray>» <gray>gậy + lông vũ. <#FF7800>Canvas <dark_gray>» <gray>giấy + gậy"
       - "Canvas xếp thành hình chữ nhật trong bàn chế tạo sẽ gộp thành canvas lớn"
@@ -480,4 +480,4 @@ report:
   failed: "Không thể ghi báo cáo: {reason}"
 
 update:
-  available: "<#FFE100>Đã có PaintCraft {version} <gray>(bạn đang dùng {current}): <white>{url}"
+  available: "<#FFE100>Đã có MapPaint {version} <gray>(bạn đang dùng {current}): <white>{url}"

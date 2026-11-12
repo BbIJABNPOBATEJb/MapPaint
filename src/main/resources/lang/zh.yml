@@ -1,4 +1,4 @@
-# PaintCraft — 简体中文
+# MapPaint — 简体中文
 #
 # 花括号中的 {placeholders} 由插件填入，请保持原样。
 # 颜色使用 MiniMessage 标签：<gray>、<white>、<#FF7800>。
@@ -65,7 +65,7 @@ command:
   reloaded: "配置已重新加载"
   look-at-painting: "请看向一幅画作，或把它拿在手上"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— 无需资源包的画作"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— 无需资源包的画作"
     lines:
       - "<#FF7800>画笔 <dark_gray>» <gray>木棍 + 羽毛。<#FF7800>画布 <dark_gray>» <gray>纸 + 木棍"
       - "在工作台中摆成矩形的画布会合成大画布"
@@ -480,4 +480,4 @@ report:
   failed: "无法写入报告：{reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} 已发布<gray>（当前 {current}）：<white>{url}"
+  available: "<#FFE100>MapPaint {version} 已发布<gray>（当前 {current}）：<white>{url}"

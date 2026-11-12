@@ -1,4 +1,4 @@
-# PaintCraft — Русский
+# MapPaint — Русский
 #
 # {слова} в фигурных скобках подставляет плагин: оставляйте их как есть.
 # Цвета задаются тегами MiniMessage: <gray>, <white>, <#FF7800>.
@@ -83,7 +83,7 @@ command:
   reloaded: "Настройки перечитаны"
   look-at-painting: "Посмотрите на картину или возьмите её в руку"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— картины без ресурспака"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— картины без ресурспака"
     lines:
       - "<#FF7800>Кисть <dark_gray>» <gray>палка + перо. <#FF7800>Холст <dark_gray>» <gray>бумага + палка"
       - "Холсты, выложенные в верстаке прямоугольником, склеиваются в большой"
@@ -483,4 +483,4 @@ report:
   failed: "Не удалось записать отчёт: {reason}"
 
 update:
-  available: "<#FFE100>Вышел PaintCraft {version} <gray>(у вас {current}): <white>{url}"
+  available: "<#FFE100>Вышел MapPaint {version} <gray>(у вас {current}): <white>{url}"

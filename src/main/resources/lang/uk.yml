@@ -1,4 +1,4 @@
-# PaintCraft — Українська
+# MapPaint — Українська
 #
 # {слова} у фігурних дужках підставляє плагін: залишайте їх як є.
 # Кольори задаються тегами MiniMessage: <gray>, <white>, <#FF7800>.
@@ -68,7 +68,7 @@ command:
   reloaded: "Налаштування перечитано"
   look-at-painting: "Подивіться на картину або візьміть її в руку"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— картини без ресурспаку"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— картини без ресурспаку"
     lines:
       - "<#FF7800>Пензель <dark_gray>» <gray>паличка + перо. <#FF7800>Полотно <dark_gray>» <gray>папір + паличка"
       - "Полотна, викладені у верстаку прямокутником, склеюються у велике"
@@ -483,4 +483,4 @@ report:
   failed: "Не вдалося записати звіт: {reason}"
 
 update:
-  available: "<#FFE100>Вийшов PaintCraft {version} <gray>(у вас {current}): <white>{url}"
+  available: "<#FFE100>Вийшов MapPaint {version} <gray>(у вас {current}): <white>{url}"

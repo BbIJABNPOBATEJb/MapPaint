@@ -1,4 +1,4 @@
-# PaintCraft — Polski
+# MapPaint — Polski
 #
 # {słowa} w nawiasach klamrowych podstawia wtyczka: zostaw je bez zmian.
 # Kolory zapisuje się tagami MiniMessage: <gray>, <white>, <#FF7800>.
@@ -68,7 +68,7 @@ command:
   reloaded: "Konfiguracja wczytana ponownie"
   look-at-painting: "Spójrz na obraz lub weź go do ręki"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— obrazy bez paczki zasobów"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— obrazy bez paczki zasobów"
     lines:
       - "<#FF7800>Pędzel <dark_gray>» <gray>patyk + pióro. <#FF7800>Płótno <dark_gray>» <gray>papier + patyk"
       - "Płótna ułożone w prostokąt na stole rzemieślniczym łączą się w duże"
@@ -483,4 +483,4 @@ report:
   failed: "Nie udało się zapisać raportu: {reason}"
 
 update:
-  available: "<#FFE100>Wyszedł PaintCraft {version} <gray>(masz {current}): <white>{url}"
+  available: "<#FFE100>Wyszedł MapPaint {version} <gray>(masz {current}): <white>{url}"

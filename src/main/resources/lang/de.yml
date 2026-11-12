@@ -1,4 +1,4 @@
-# PaintCraft — Deutsch
+# MapPaint — Deutsch
 #
 # {Platzhalter} in geschweiften Klammern füllt das Plugin aus: bitte unverändert lassen.
 # Farben sind MiniMessage-Tags: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Konfiguration neu geladen"
   look-at-painting: "Sieh ein Gemälde an oder nimm eines in die Hand"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— Gemälde ohne Ressourcenpaket"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— Gemälde ohne Ressourcenpaket"
     lines:
       - "<#FF7800>Pinsel <dark_gray>» <gray>Stock + Feder. <#FF7800>Leinwand <dark_gray>» <gray>Papier + Stock"
       - "Leinwände als Rechteck in der Werkbank werden zu einer großen"
@@ -480,4 +480,4 @@ report:
   failed: "Bericht konnte nicht geschrieben werden: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} ist erschienen <gray>(du hast {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} ist erschienen <gray>(du hast {current}): <white>{url}"

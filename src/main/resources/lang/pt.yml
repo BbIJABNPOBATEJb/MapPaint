@@ -1,4 +1,4 @@
-# PaintCraft — Português (Brasil)
+# MapPaint — Português (Brasil)
 #
 # Os {placeholders} entre chaves são preenchidos pelo plugin: deixe-os como estão.
 # As cores são tags MiniMessage: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Configuração recarregada"
   look-at-painting: "Olhe para uma pintura ou segure uma na mão"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— pinturas sem pacote de recursos"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— pinturas sem pacote de recursos"
     lines:
       - "<#FF7800>Pincel <dark_gray>» <gray>graveto + pena. <#FF7800>Tela <dark_gray>» <gray>papel + graveto"
       - "Telas dispostas em retângulo numa bancada de trabalho se juntam numa grande"
@@ -482,4 +482,4 @@ report:
   failed: "Não foi possível gravar o relatório: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} foi lançado <gray>(você tem {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} foi lançado <gray>(você tem {current}): <white>{url}"

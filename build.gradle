@@ -82,7 +82,7 @@ processResources {
     }
 }
 
-def libsPackage = "${project.group}.paintcraft.lib"
+def libsPackage = "${project.group}.mappaint.lib"
 
 shadowJar {
     from sourceSets.modern.output

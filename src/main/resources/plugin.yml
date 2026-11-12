@@ -3,31 +3,31 @@ version: ${version}
 main: ${main}
 api-version: '1.20'
 authors: [ BbIJABNPOBATEJb ]
-website: https://github.com/BbIJABNPOBATEJb/PaintCraft
+website: https://github.com/BbIJABNPOBATEJb/MapPaint
 description: Paint pictures right in the game, no resource pack needed. Export and import as a string.
 
 permissions:
-  paintcraft.use:
+  mappaint.use:
     description: Paint, place canvases, /paint and the menus
     default: true
-  paintcraft.export:
+  mappaint.export:
     description: Export a painting as a string
     default: true
-  paintcraft.import:
+  mappaint.import:
     description: Import a painting from a string
     default: true
-  paintcraft.image:
+  mappaint.image:
     description: Import an image from a URL (/paint image)
     default: op
-  paintcraft.give:
+  mappaint.give:
     description: Give the brush and canvases with /paint give
     default: op
-  paintcraft.admin:
+  mappaint.admin:
     description: Edit and remove other players' paintings, /paint reload, language and report, no limits and no costs
     default: op
     children:
-      paintcraft.use: true
-      paintcraft.export: true
-      paintcraft.import: true
-      paintcraft.image: true
-      paintcraft.give: true
+      mappaint.use: true
+      mappaint.export: true
+      mappaint.import: true
+      mappaint.image: true
+      mappaint.give: true

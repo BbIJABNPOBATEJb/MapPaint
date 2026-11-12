@@ -1,4 +1,4 @@
-# PaintCraft — Español
+# MapPaint — Español
 #
 # Los {placeholders} entre llaves los rellena el plugin: déjalos tal cual.
 # Los colores son etiquetas MiniMessage: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Configuración recargada"
   look-at-painting: "Mira una pintura o sostén una en la mano"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— pinturas sin paquete de recursos"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— pinturas sin paquete de recursos"
     lines:
       - "<#FF7800>Pincel <dark_gray>» <gray>palo + pluma. <#FF7800>Lienzo <dark_gray>» <gray>papel + palo"
       - "Lienzos colocados en rectángulo en una mesa de crafteo se unen en uno grande"
@@ -482,4 +482,4 @@ report:
   failed: "No se pudo escribir el informe: {reason}"
 
 update:
-  available: "<#FFE100>Ya salió PaintCraft {version} <gray>(tienes {current}): <white>{url}"
+  available: "<#FFE100>Ya salió MapPaint {version} <gray>(tienes {current}): <white>{url}"

@@ -1,4 +1,4 @@
-# PaintCraft — Bahasa Indonesia
+# MapPaint — Bahasa Indonesia
 #
 # {placeholders} dalam kurung kurawal diisi oleh plugin: biarkan apa adanya.
 # Warna memakai tag MiniMessage: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Konfigurasi dimuat ulang"
   look-at-painting: "Lihat sebuah lukisan atau pegang satu di tangan"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— lukisan tanpa resource pack"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— lukisan tanpa resource pack"
     lines:
       - "<#FF7800>Kuas <dark_gray>» <gray>tongkat + bulu. <#FF7800>Kanvas <dark_gray>» <gray>kertas + tongkat"
       - "Kanvas yang disusun persegi panjang di meja kerajinan menyatu jadi kanvas besar"
@@ -480,4 +480,4 @@ report:
   failed: "Tidak bisa menulis laporan: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} sudah rilis <gray>(kamu memakai {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} sudah rilis <gray>(kamu memakai {current}): <white>{url}"

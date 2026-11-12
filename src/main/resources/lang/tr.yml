@@ -1,4 +1,4 @@
-# PaintCraft — Türkçe
+# MapPaint — Türkçe
 #
 # Süslü parantez içindeki {placeholders} eklenti tarafından doldurulur: olduğu gibi bırakın.
 # Renkler MiniMessage etiketleridir: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Ayarlar yeniden yüklendi"
   look-at-painting: "Bir resme bak ya da elinde bir resim tut"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— kaynak paketi olmadan resimler"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— kaynak paketi olmadan resimler"
     lines:
       - "<#FF7800>Fırça <dark_gray>» <gray>çubuk + tüy. <#FF7800>Tuval <dark_gray>» <gray>kâğıt + çubuk"
       - "Üretim masasında dikdörtgen dizilen tuvaller tek büyük tuvalde birleşir"
@@ -481,4 +481,4 @@ report:
   failed: "Rapor yazılamadı: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} yayınlandı <gray>(sizde {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} yayınlandı <gray>(sizde {current}): <white>{url}"

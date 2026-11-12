@@ -1,4 +1,4 @@
-# PaintCraft — Svenska
+# MapPaint — Svenska
 #
 # {platshållare} inom klammerparenteser fyller pluginet i: lämna dem som de är.
 # Färger anges med MiniMessage-taggar: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Konfigurationen är omladdad"
   look-at-painting: "Titta på en målning eller håll en i handen"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— målningar utan resurspaket"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— målningar utan resurspaket"
     lines:
       - "<#FF7800>Pensel <dark_gray>» <gray>pinne + fjäder. <#FF7800>Duk <dark_gray>» <gray>papper + pinne"
       - "Dukar i en rektangel på arbetsbänken slås ihop till en stor"
@@ -480,4 +480,4 @@ report:
   failed: "Kunde inte skriva rapporten: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} har släppts <gray>(du har {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} har släppts <gray>(du har {current}): <white>{url}"

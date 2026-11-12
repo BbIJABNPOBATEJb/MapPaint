@@ -1,4 +1,4 @@
-# PaintCraft — 한국어
+# MapPaint — 한국어
 #
 # 중괄호 안의 {placeholders}는 플러그인이 채워 넣습니다. 그대로 두세요.
 # 색은 MiniMessage 태그입니다: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "설정을 다시 불러왔습니다"
   look-at-painting: "그림을 바라보거나 손에 들고 있어야 합니다"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— 리소스 팩 없이 그리는 그림"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— 리소스 팩 없이 그리는 그림"
     lines:
       - "<#FF7800>붓 <dark_gray>» <gray>막대기 + 깃털. <#FF7800>캔버스 <dark_gray>» <gray>종이 + 막대기"
       - "제작대에서 직사각형으로 놓은 캔버스는 큰 캔버스로 합쳐집니다"
@@ -480,4 +480,4 @@ report:
   failed: "보고서를 쓸 수 없습니다: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version}이(가) 나왔습니다 <gray>(현재 {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version}이(가) 나왔습니다 <gray>(현재 {current}): <white>{url}"

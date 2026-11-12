@@ -1,4 +1,4 @@
-# PaintCraft — English
+# MapPaint — English
 #
 # {placeholders} in braces are filled in by the plugin: keep them as they are.
 # Colors are MiniMessage tags: <gray>, <white>, <#FF7800>.
@@ -80,7 +80,7 @@ command:
   reloaded: "Config reloaded"
   look-at-painting: "Look at a painting or hold one in your hand"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— paintings without a resource pack"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— paintings without a resource pack"
     lines:
       - "<#FF7800>Brush <dark_gray>» <gray>stick + feather. <#FF7800>Canvas <dark_gray>» <gray>paper + stick"
       - "Canvases laid out as a rectangle in a crafting table merge into a big one"
@@ -480,4 +480,4 @@ report:
   failed: "Couldn't write the report: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} is out <gray>(you have {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} is out <gray>(you have {current}): <white>{url}"

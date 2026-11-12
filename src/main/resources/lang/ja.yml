@@ -1,4 +1,4 @@
-# PaintCraft — 日本語
+# MapPaint — 日本語
 #
 # 波括弧の {placeholders} はプラグインが埋め込みます。そのままにしてください。
 # 色は MiniMessage タグです：<gray>、<white>、<#FF7800>。
@@ -65,7 +65,7 @@ command:
   reloaded: "設定を再読み込みしました"
   look-at-painting: "絵を見るか、絵を手に持ってください"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— リソースパック不要のお絵かき"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— リソースパック不要のお絵かき"
     lines:
       - "<#FF7800>筆 <dark_gray>» <gray>棒 + 羽根。<#FF7800>キャンバス <dark_gray>» <gray>紙 + 棒"
       - "作業台で長方形に並べたキャンバスは大きな1枚に合体します"
@@ -480,4 +480,4 @@ report:
   failed: "レポートを書き込めませんでした: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} が公開されました<gray>（現在 {current}）: <white>{url}"
+  available: "<#FFE100>MapPaint {version} が公開されました<gray>（現在 {current}）: <white>{url}"

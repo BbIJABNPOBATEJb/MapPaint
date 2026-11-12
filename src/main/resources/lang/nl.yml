@@ -1,4 +1,4 @@
-# PaintCraft — Nederlands
+# MapPaint — Nederlands
 #
 # {plaatshouders} tussen accolades vult de plugin in: laat ze ongewijzigd.
 # Kleuren zijn MiniMessage-tags: <gray>, <white>, <#FF7800>.
@@ -65,7 +65,7 @@ command:
   reloaded: "Configuratie opnieuw geladen"
   look-at-painting: "Kijk naar een schilderij of houd er een vast"
   help:
-    title: "<#FF7800><bold>PaintCraft</bold> <gray>— schilderijen zonder resourcepack"
+    title: "<#FF7800><bold>MapPaint</bold> <gray>— schilderijen zonder resourcepack"
     lines:
       - "<#FF7800>Penseel <dark_gray>» <gray>stok + veer. <#FF7800>Doek <dark_gray>» <gray>papier + stok"
       - "Doeken in een rechthoek op de werkbank worden samengevoegd tot een groot doek"
@@ -480,4 +480,4 @@ report:
   failed: "Kon het rapport niet schrijven: {reason}"
 
 update:
-  available: "<#FFE100>PaintCraft {version} is uit <gray>(jij hebt {current}): <white>{url}"
+  available: "<#FFE100>MapPaint {version} is uit <gray>(jij hebt {current}): <white>{url}"
