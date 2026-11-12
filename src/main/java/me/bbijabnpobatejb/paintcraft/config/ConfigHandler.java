@@ -8,6 +8,7 @@ import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.palette.Palette;
 import me.bbijabnpobatejb.paintcraft.util.MathUtil;
+import me.bbijabnpobatejb.paintcraft.util.Sounds;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
@@ -39,6 +40,14 @@ public class ConfigHandler {
     int imageResolution = 128;
     boolean imageAllowPrivate = false;
     int paperPerBlock = 1;
+
+    boolean updateCheck = true;
+    boolean panel = true;
+    boolean placementPreview = true;
+    boolean glowing = true;
+    boolean sharedPainting = true;
+    boolean sounds = true;
+    int resolutionUndoMinutes = 30;
 
     boolean brushRecipe = true;
     List<Material> brushIngredients = List.of(Material.STICK, Material.FEATHER);
@@ -76,6 +85,15 @@ public class ConfigHandler {
         imageResolution = nearestAllowed(config.getInt("import.image-resolution", 128));
         imageAllowPrivate = config.getBoolean("import.image-allow-private-hosts", false);
         paperPerBlock = MathUtil.clamp(config.getInt("import.paper-per-block", 1), 0, 64);
+
+        updateCheck = config.getBoolean("update-check", true);
+        panel = config.getBoolean("features.panel", true);
+        placementPreview = config.getBoolean("features.placement-preview", true);
+        glowing = config.getBoolean("features.glowing", true);
+        sharedPainting = config.getBoolean("features.shared-painting", true);
+        sounds = config.getBoolean("sounds", true);
+        Sounds.setEnabled(sounds);
+        resolutionUndoMinutes = MathUtil.clamp(config.getInt("canvas.resolution-undo-minutes", 30), 0, 24 * 60);
 
         brushRecipe = config.getBoolean("recipes.brush.enabled", true);
         brushIngredients = materials("recipes.brush.ingredients", List.of(Material.STICK, Material.FEATHER));

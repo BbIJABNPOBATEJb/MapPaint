@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "Tính năng này đã bị tắt trên máy chủ"
+  error: "Đã xảy ra lỗi. Chi tiết nằm trong bảng điều khiển máy chủ"
   no-permission: "Bạn không có quyền"
   color-format: "Màu được viết dạng #RRGGBB, ví dụ #FF8800"
   canvas-cleared: "<gray>Đã xóa canvas. <dark_gray>Nhấn F để hoàn tác"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>vật phẩm plugin và mọi bức tranh trên máy chủ"
       - "<white>/paint give brush|canvas [WxH] [số lượng] [người chơi]"
       - "<white>/paint language [mã] <gray>ngôn ngữ plugin · <white>/paint reload"
+      - "<white>/paint report [giây] <gray>tệp gỡ lỗi để báo lỗi"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— mã dài {length} ký tự. Nhấp để sao chép:"
     part: "Phần {part}"
     hint: "Dán lần lượt từng phần: /paint import"
+
+report:
+  started: "<gray>Đang ghi trong {seconds} giây. Hãy tái hiện lỗi ngay bây giờ"
+  busy: "Một báo cáo đang được ghi"
+  saved: "<#1FFF5E>Đã lưu báo cáo: <white>{path}"
+  hint: "<gray>Hãy gửi tệp này cho tác giả plugin. Nhấp để sao chép đường dẫn đầy đủ"
+  copy: "Sao chép đường dẫn"
+  failed: "Không thể ghi báo cáo: {reason}"
+
+update:
+  available: "<#FFE100>Đã có PaintCraft {version} <gray>(bạn đang dùng {current}): <white>{url}"

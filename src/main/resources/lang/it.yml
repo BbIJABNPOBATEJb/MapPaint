@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "Questa funzione è disattivata su questo server"
+  error: "Qualcosa è andato storto. I dettagli sono nella console del server"
   no-permission: "Non hai il permesso"
   color-format: "Un colore si scrive #RRGGBB, ad esempio #FF8800"
   canvas-cleared: "<gray>Tela cancellata. <dark_gray>F per recuperarla"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>oggetti del plugin e tutti i dipinti del server"
       - "<white>/paint give brush|canvas [LxA] [quantità] [giocatore]"
       - "<white>/paint language [codice] <gray>lingua del plugin · <white>/paint reload"
+      - "<white>/paint report [secondi] <gray>file di debug per segnalare un bug"
 
 tool:
   brush:
@@ -469,3 +472,14 @@ export:
     header: "<#FF7800>{title} <gray>— un codice di {length} caratteri. Clicca per copiare:"
     part: "Parte {part}"
     hint: "Incolla le parti una alla volta: /paint import"
+
+report:
+  started: "<gray>Registrazione per {seconds} s. Riproduci il problema adesso"
+  busy: "Un rapporto è già in registrazione"
+  saved: "<#1FFF5E>Rapporto salvato: <white>{path}"
+  hint: "<gray>Invia questo file all'autore del plugin. Clicca per copiare il percorso completo"
+  copy: "Copia il percorso"
+  failed: "Impossibile scrivere il rapporto: {reason}"
+
+update:
+  available: "<#FFE100>È uscito PaintCraft {version} <gray>(hai {current}): <white>{url}"

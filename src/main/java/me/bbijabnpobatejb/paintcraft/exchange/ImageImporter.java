@@ -5,6 +5,8 @@ import me.bbijabnpobatejb.paintcraft.palette.Palette;
 import me.bbijabnpobatejb.paintcraft.util.MathUtil;
 
 import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
@@ -18,11 +20,13 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.Iterator;
 
 @UtilityClass
 public class ImageImporter {
 
     private static final int MAX_REDIRECTS = 5;
+    private static final long MAX_PIXELS = 16_000_000L;
 
     private static final HttpClient CLIENT = HttpClient.newBuilder()
             .connectTimeout(Duration.ofSeconds(6))
@@ -55,16 +59,31 @@ public class ImageImporter {
                     if (data.length > maxBytes) {
                         throw new IOException("too large");
                     }
-                    BufferedImage image = ImageIO.read(new ByteArrayInputStream(data));
-                    if (image == null) {
-                        throw new IOException("not an image");
-                    }
-                    return image;
+                    return decode(data);
                 }
             }
             throw new IOException("too many redirects");
         } catch (IllegalArgumentException e) {
             throw new IOException("bad url");
+        }
+    }
+
+    private static BufferedImage decode(byte[] data) throws IOException {
+        try (ImageInputStream stream = ImageIO.createImageInputStream(new ByteArrayInputStream(data))) {
+            Iterator<ImageReader> readers = ImageIO.getImageReaders(stream);
+            if (!readers.hasNext()) {
+                throw new IOException("not an image");
+            }
+            ImageReader reader = readers.next();
+            try {
+                reader.setInput(stream);
+                if ((long) reader.getWidth(0) * reader.getHeight(0) > MAX_PIXELS) {
+                    throw new IOException("too large");
+                }
+                return reader.read(0);
+            } finally {
+                reader.dispose();
+            }
         }
     }
 

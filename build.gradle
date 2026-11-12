@@ -30,6 +30,7 @@ dependencies {
     implementation libs.litecommands.bukkit
     implementation libs.packetevents
     implementation libs.adventure.nbt
+    implementation libs.bstats
 
     compileOnly libs.lombok
     annotationProcessor libs.lombok
@@ -94,6 +95,7 @@ shadowJar {
     relocate 'panda.std', "${libsPackage}.panda.std"
     relocate 'com.github.retrooper.packetevents', "${libsPackage}.packetevents.api"
     relocate 'io.github.retrooper.packetevents', "${libsPackage}.packetevents.impl"
+    relocate 'org.bstats', "${libsPackage}.bstats"
 
     exclude 'META-INF/maven/**'
     exclude 'META-INF/versions/**'

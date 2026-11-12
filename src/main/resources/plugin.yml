@@ -3,6 +3,7 @@ version: ${version}
 main: ${main}
 api-version: '1.20'
 authors: [ BbIJABNPOBATEJb ]
+website: https://github.com/BbIJABNPOBATEJb/PaintCraft
 description: Paint pictures right in the game, no resource pack needed. Export and import as a string.
 
 permissions:
@@ -22,7 +23,7 @@ permissions:
     description: Give the brush and canvases with /paint give
     default: op
   paintcraft.admin:
-    description: Edit and remove other players' paintings, /paint reload, /paint language, no limits and no costs
+    description: Edit and remove other players' paintings, /paint reload, language and report, no limits and no costs
     default: op
     children:
       paintcraft.use: true

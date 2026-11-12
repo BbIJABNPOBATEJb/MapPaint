@@ -243,6 +243,14 @@ public final class PaintingStorage {
         return byMapId.get(mapId);
     }
 
+    public int usedMaps() {
+        return byMapId.size();
+    }
+
+    public int freeMaps() {
+        return freeMapIds.size();
+    }
+
     public MapView allocateMap() {
         while (!freeMapIds.isEmpty()) {
             int id = freeMapIds.poll();

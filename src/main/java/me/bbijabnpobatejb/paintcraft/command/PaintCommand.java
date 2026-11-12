@@ -14,6 +14,7 @@ import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
 import me.bbijabnpobatejb.paintcraft.command.argument.CanvasSize;
 import me.bbijabnpobatejb.paintcraft.command.argument.LanguageArgument;
+import me.bbijabnpobatejb.paintcraft.diag.ReportService;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.item.PaintItem;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
@@ -187,6 +188,12 @@ public class PaintCommand {
     void language(@Sender CommandSender sender, @Arg("language") LanguageArgument.Code code) {
         plugin.setLanguage(code.value());
         Chat.sendChat(sender, StringUtil.mm(Lang.get("language.changed", "language", Lang.name(code.value()))));
+    }
+
+    @Execute(name = "report")
+    @Permission(PaintCraft.PERMISSION_ADMIN)
+    void report(@Sender CommandSender sender, @OptionalArg("seconds") Integer seconds) {
+        plugin.getReportService().start(sender, seconds == null ? ReportService.DEFAULT_SECONDS : seconds);
     }
 
     @Execute(name = "reload")

@@ -14,6 +14,8 @@ language:
 prefix: "Obrazy"
 
 common:
+  feature-off: "Tato funkce je na tomto serveru vypnutá"
+  error: "Něco se pokazilo. Podrobnosti jsou v konzoli serveru"
   no-permission: "Nemáš oprávnění"
   color-format: "Barva se zadává jako #RRGGBB, například #FF8800"
   canvas-cleared: "<gray>Plátno vymazáno. <dark_gray>F — vrátit zpět"
@@ -85,6 +87,7 @@ command:
       - "<white>/paint admin <gray>předměty pluginu a všechny obrazy serveru"
       - "<white>/paint give brush|canvas [ŠxV] [počet] [hráč]"
       - "<white>/paint language [kód] <gray>jazyk pluginu · <white>/paint reload"
+      - "<white>/paint report [sekundy] <gray>ladicí soubor pro nahlášení chyby"
 
 tool:
   brush:
@@ -470,3 +473,14 @@ export:
     header: "<#FF7800>{title} <gray>— kód o délce {length} znaků. Kliknutím zkopírujete:"
     part: "Část {part}"
     hint: "Vkládejte části postupně: /paint import"
+
+report:
+  started: "<gray>Záznam běží {seconds} s. Zopakujte teď problém"
+  busy: "Hlášení se už zaznamenává"
+  saved: "<#1FFF5E>Hlášení uloženo: <white>{path}"
+  hint: "<gray>Pošlete tento soubor autorovi pluginu. Kliknutím zkopírujete celou cestu"
+  copy: "Zkopírovat cestu"
+  failed: "Hlášení se nepodařilo zapsat: {reason}"
+
+update:
+  available: "<#FFE100>Vyšel PaintCraft {version} <gray>(máte {current}): <white>{url}"

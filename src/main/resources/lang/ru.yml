@@ -14,6 +14,8 @@ language:
 prefix: "Картины"
 
 common:
+  feature-off: "Эта возможность выключена на сервере"
+  error: "Что-то пошло не так. Подробности — в консоли сервера"
   no-permission: "У вас недостаточно прав"
   color-format: "Цвет задаётся как #RRGGBB, например #FF8800"
   canvas-cleared: "<gray>Холст очищен. <dark_gray>F — вернуть"
@@ -100,6 +102,7 @@ command:
       - "<white>/paint admin <gray>выдача предметов и все картины сервера"
       - "<white>/paint give brush|canvas [ШxВ] [кол-во] [игрок]"
       - "<white>/paint language [код] <gray>язык плагина · <white>/paint reload"
+      - "<white>/paint report [секунды] <gray>файл отладки для сообщения о баге"
 
 tool:
   brush:
@@ -470,3 +473,14 @@ dialog:
     height: "Высота новой картины, блоков"
     button: "Применить"
     no-url: "Вставьте ссылку на изображение"
+
+report:
+  started: "<gray>Запись идёт {seconds} с. Повторите проблему сейчас"
+  busy: "Отчёт уже записывается"
+  saved: "<#1FFF5E>Отчёт сохранён: <white>{path}"
+  hint: "<gray>Отправьте этот файл автору плагина. Щёлкните, чтобы скопировать полный путь"
+  copy: "Скопировать путь"
+  failed: "Не удалось записать отчёт: {reason}"
+
+update:
+  available: "<#FFE100>Вышел PaintCraft {version} <gray>(у вас {current}): <white>{url}"

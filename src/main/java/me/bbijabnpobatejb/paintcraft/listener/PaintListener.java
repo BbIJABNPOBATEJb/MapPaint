@@ -51,6 +51,7 @@ import org.jetbrains.annotations.Nullable;
 public class PaintListener implements Listener {
 
     private static final double NEAR_MISS = 0.6;
+    private static final double SEAM_REACH = 6.0;
 
     final PaintCraft plugin;
     boolean breaking;
@@ -59,8 +60,11 @@ public class PaintListener implements Listener {
     public void onInteract(PlayerInteractEvent event) {
         if (event.getHand() != EquipmentSlot.HAND || event.getAction() == Action.PHYSICAL) return;
         PaintItem type = plugin.getItemService().typeOf(event.getItem());
-        if (type == null) return;
         Player player = event.getPlayer();
+        if (type == null) {
+            onSeamClick(event, player);
+            return;
+        }
         if (!player.hasPermission(PaintCraft.PERMISSION_USE)) return;
 
         if (type == PaintItem.BRUSH) {
@@ -82,6 +86,24 @@ public class PaintListener implements Listener {
         if (clicked.getType().isInteractable() && !player.isSneaking() && event.useInteractedBlock() != Event.Result.DENY) return;
         event.setCancelled(true);
         place(player, event.getItem(), clicked, event);
+    }
+
+    private void onSeamClick(PlayerInteractEvent event, Player player) {
+        Action action = event.getAction();
+        if (action != Action.LEFT_CLICK_BLOCK && action != Action.RIGHT_CLICK_BLOCK) return;
+        val hit = plugin.getPlacementManager().traceVisible(player, SEAM_REACH);
+        if (hit == null) return;
+
+        Placement placement = hit.placement();
+        if (action == Action.LEFT_CLICK_BLOCK) {
+            int tile = (int) hit.b() * placement.painting.blocksW + (int) hit.a();
+            ItemFrame frame = placement.frames[tile];
+            if (frame == null || !frame.isValid()) return;
+            event.setCancelled(true);
+            onPunch(player, frame);
+        } else if (useInk(player, placement, player.getInventory().getItemInMainHand())) {
+            event.setCancelled(true);
+        }
     }
 
     private void onBrushClick(PlayerInteractEvent event, Player player) {
@@ -302,30 +324,40 @@ public class PaintListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onInteractEntity(PlayerInteractEntityEvent event) {
         val placements = plugin.getPlacementManager();
-        if (event.getHand() != EquipmentSlot.HAND || !placements.isOurs(event.getRightClicked())) return;
-
+        if (event.getHand() != EquipmentSlot.HAND) return;
         Player player = event.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
+        if (!placements.isOurs(event.getRightClicked())) {
+            if (plugin.getItemService().isBrush(hand) && event.getRightClicked().getType().name().equals("ARMADILLO")) {
+                event.setCancelled(true);
+            }
+            return;
+        }
+
         if (plugin.getItemService().isBrush(hand)) {
             event.setCancelled(true);
             onBrushClickFrame(player);
             return;
         }
-        boolean glow = hand.getType() == Material.GLOW_INK_SAC;
-        if (!glow && hand.getType() != Material.INK_SAC) return;
-        event.setCancelled(true);
-
         Placement placement = placements.of(event.getRightClicked());
-        if (placement == null || placements.isGlowing(placement) == glow) return;
+        if (placement != null && useInk(player, placement, hand)) event.setCancelled(true);
+    }
+
+    private boolean useInk(Player player, Placement placement, ItemStack hand) {
+        val placements = plugin.getPlacementManager();
+        boolean glow = hand.getType() == Material.GLOW_INK_SAC;
+        if (!glow && hand.getType() != Material.INK_SAC) return false;
+        if (!plugin.getConfigHandler().isGlowing() || placements.isGlowing(placement) == glow) return true;
         if (!canManage(player, placement)) {
             Chat.sendActionBar(player, Chat.red(Lang.get("place.change-owner")));
-            return;
+            return true;
         }
-        if (!placements.setGlowing(placement, glow)) return;
+        if (!placements.setGlowing(placement, glow)) return true;
 
         if (player.getGameMode() != GameMode.CREATIVE) hand.setAmount(hand.getAmount() - 1);
         player.swingMainHand();
         player.getWorld().playSound(placement.center(), glow ? Sound.ITEM_GLOW_INK_SAC_USE : Sound.ITEM_INK_SAC_USE, 1f, 1f);
+        return true;
     }
 
     @EventHandler(ignoreCancelled = true)

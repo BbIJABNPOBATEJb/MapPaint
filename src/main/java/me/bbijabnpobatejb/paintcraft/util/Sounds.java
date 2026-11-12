@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.paintcraft.util;
 
+import lombok.Setter;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -15,12 +16,15 @@ public class Sounds {
     public final Sound ERROR = Sound.BLOCK_NOTE_BLOCK_DIDGERIDOO;
     public final Sound POP = Sound.ENTITY_ITEM_PICKUP;
 
+    @Setter
+    private boolean enabled = true;
+
     public void playSound(CommandSender sender, Sound sound) {
         playSound(sender, sound, 1f, 1f);
     }
 
     public void playSound(CommandSender sender, Sound sound, float volume, float pitch) {
-        if (sender instanceof Player player) {
+        if (enabled && sender instanceof Player player) {
             player.playSound(player.getLocation(), sound, volume, pitch);
         }
     }

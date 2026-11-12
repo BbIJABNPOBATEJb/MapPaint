@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "Bu özellik bu sunucuda kapalı"
+  error: "Bir şeyler ters gitti. Ayrıntılar sunucu konsolunda"
   no-permission: "Yetkin yok"
   color-format: "Renk #RRGGBB biçiminde yazılır, örneğin #FF8800"
   canvas-cleared: "<gray>Tuval temizlendi. <dark_gray>Geri getirmek için F"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>eklenti eşyaları ve sunucudaki tüm resimler"
       - "<white>/paint give brush|canvas [GxY] [adet] [oyuncu]"
       - "<white>/paint language [kod] <gray>eklenti dili · <white>/paint reload"
+      - "<white>/paint report [saniye] <gray>hata bildirimi için hata ayıklama dosyası"
 
 tool:
   brush:
@@ -468,3 +471,14 @@ export:
     header: "<#FF7800>{title} <gray>— {length} karakterlik kod. Kopyalamak için tıklayın:"
     part: "Parça {part}"
     hint: "Parçaları sırayla yapıştırın: /paint import"
+
+report:
+  started: "<gray>{seconds} sn boyunca kayıt yapılıyor. Sorunu şimdi tekrarlayın"
+  busy: "Zaten bir rapor kaydediliyor"
+  saved: "<#1FFF5E>Rapor kaydedildi: <white>{path}"
+  hint: "<gray>Bu dosyayı eklenti yazarına gönderin. Tam yolu kopyalamak için tıklayın"
+  copy: "Yolu kopyala"
+  failed: "Rapor yazılamadı: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} yayınlandı <gray>(sizde {current}): <white>{url}"

@@ -14,6 +14,8 @@ language:
 prefix: "Gemälde"
 
 common:
+  feature-off: "Diese Funktion ist auf diesem Server ausgeschaltet"
+  error: "Etwas ist schiefgelaufen. Details stehen in der Serverkonsole"
   no-permission: "Dazu fehlt dir die Berechtigung"
   color-format: "Eine Farbe wird als #RRGGBB angegeben, zum Beispiel #FF8800"
   canvas-cleared: "<gray>Leinwand geleert. <dark_gray>F — zurückholen"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>Plugin-Gegenstände und alle Gemälde des Servers"
       - "<white>/paint give brush|canvas [BxH] [Anzahl] [Spieler]"
       - "<white>/paint language [Code] <gray>Plugin-Sprache · <white>/paint reload"
+      - "<white>/paint report [Sekunden] <gray>Debug-Datei für einen Fehlerbericht"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— ein Code mit {length} Zeichen. Zum Kopieren klicken:"
     part: "Teil {part}"
     hint: "Füge die Teile nacheinander ein: /paint import"
+
+report:
+  started: "<gray>Aufzeichnung läuft {seconds} s. Stelle das Problem jetzt nach"
+  busy: "Es wird bereits ein Bericht aufgezeichnet"
+  saved: "<#1FFF5E>Bericht gespeichert: <white>{path}"
+  hint: "<gray>Schicke diese Datei dem Autor des Plugins. Klicke, um den vollen Pfad zu kopieren"
+  copy: "Pfad kopieren"
+  failed: "Bericht konnte nicht geschrieben werden: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} ist erschienen <gray>(du hast {current}): <white>{url}"

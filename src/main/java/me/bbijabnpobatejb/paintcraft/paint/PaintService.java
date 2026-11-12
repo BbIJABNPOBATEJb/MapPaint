@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
+import me.bbijabnpobatejb.paintcraft.diag.Counters;
 import me.bbijabnpobatejb.paintcraft.i18n.Lang;
 import me.bbijabnpobatejb.paintcraft.map.MapBridge;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
@@ -33,8 +34,6 @@ import java.util.UUID;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class PaintService {
-
-    static final long RES_SOURCE_MILLIS = 30 * 60_000L;
 
     static final int GRACE_TICKS = 3;
 
@@ -72,6 +71,10 @@ public class PaintService {
         toolKey = new NamespacedKey(plugin, "tool");
         squareKey = new NamespacedKey(plugin, "square");
         layoutKey = new NamespacedKey(plugin, "layout");
+    }
+
+    public Map<UUID, PlayerSession> sessions() {
+        return sessions;
     }
 
     public PlayerSession session(Player player) {
@@ -197,7 +200,8 @@ public class PaintService {
 
     public boolean canEdit(Player player, Painting painting) {
         if (painting.signed || !player.hasPermission(PaintCraft.PERMISSION_USE)) return false;
-        return painting.owner.equals(player.getUniqueId()) || painting.shared || player.hasPermission(PaintCraft.PERMISSION_ADMIN);
+        boolean shared = painting.shared && plugin.getConfigHandler().isSharedPainting();
+        return painting.owner.equals(player.getUniqueId()) || shared || player.hasPermission(PaintCraft.PERMISSION_ADMIN);
     }
 
     public void sendCannotEdit(CommandSender sender, Painting painting) {
@@ -256,6 +260,7 @@ public class PaintService {
         stroke.startY = stroke.lastY = y;
         session.setStroke(stroke);
         strokes.add(stroke);
+        plugin.getReportService().event(player, "press " + tool + " size " + stroke.size + " at " + x + "," + y);
         apply(stroke, x, y);
     }
 
@@ -286,6 +291,8 @@ public class PaintService {
     }
 
     void apply(Stroke stroke, int x, int y) {
+        Counters.strokePoints++;
+        plugin.getReportService().event(stroke.player, "point " + x + "," + y);
         Painting painting = stroke.painting;
         val draw = new Draw(stroke.pixels, painting.width(), painting.height(), stroke.step);
         draw.square = stroke.square;
@@ -339,6 +346,7 @@ public class PaintService {
     void finish(Stroke stroke) {
         val session = sessions.get(stroke.player.getUniqueId());
         if (session != null && session.getStroke() == stroke) session.setStroke(null);
+        plugin.getReportService().event(stroke.player, "release after " + stroke.age + " ticks");
         if (stroke.painting.pixels != stroke.pixels || stroke.step.isEmpty()) return;
 
         undoOf(stroke.painting).push(stroke.step);
@@ -452,7 +460,7 @@ public class PaintService {
         val stack = undoOf(painting);
 
         boolean untouched = painting.resSource != null && painting.resStamp == painting.changes
-                && System.currentTimeMillis() - painting.resTime < RES_SOURCE_MILLIS;
+                && System.currentTimeMillis() - painting.resTime < plugin.getConfigHandler().getResolutionUndoMinutes() * 60_000L;
         val last = stack.peek();
         if (untouched && last != null && last.isResolution()) {
             if (last.fullRes == res) stack.dropLast();

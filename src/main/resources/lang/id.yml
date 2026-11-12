@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "Fitur ini dimatikan di server ini"
+  error: "Terjadi kesalahan. Rinciannya ada di konsol server"
   no-permission: "Kamu tidak punya izin"
   color-format: "Warna ditulis sebagai #RRGGBB, contoh #FF8800"
   canvas-cleared: "<gray>Kanvas dibersihkan. <dark_gray>Tekan F untuk mengembalikan"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>item plugin dan semua lukisan di server"
       - "<white>/paint give brush|canvas [WxH] [jumlah] [pemain]"
       - "<white>/paint language [kode] <gray>bahasa plugin · <white>/paint reload"
+      - "<white>/paint report [detik] <gray>file debug untuk laporan bug"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— kode sepanjang {length} karakter. Klik untuk menyalin:"
     part: "Bagian {part}"
     hint: "Tempel bagian satu per satu: /paint import"
+
+report:
+  started: "<gray>Merekam selama {seconds} dtk. Ulangi masalahnya sekarang"
+  busy: "Laporan sedang direkam"
+  saved: "<#1FFF5E>Laporan disimpan: <white>{path}"
+  hint: "<gray>Kirim file ini ke pembuat plugin. Klik untuk menyalin jalur lengkap"
+  copy: "Salin jalur"
+  failed: "Tidak bisa menulis laporan: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} sudah rilis <gray>(kamu memakai {current}): <white>{url}"

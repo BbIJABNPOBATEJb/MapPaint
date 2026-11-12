@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "이 기능은 이 서버에서 꺼져 있습니다"
+  error: "문제가 발생했습니다. 자세한 내용은 서버 콘솔에 있습니다"
   no-permission: "권한이 없습니다"
   color-format: "색은 #RRGGBB 형식으로 씁니다. 예: #FF8800"
   canvas-cleared: "<gray>캔버스를 비웠습니다. <dark_gray>F로 되돌릴 수 있습니다"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>플러그인 아이템과 서버의 모든 그림"
       - "<white>/paint give brush|canvas [WxH] [수량] [플레이어]"
       - "<white>/paint language [코드] <gray>플러그인 언어 · <white>/paint reload"
+      - "<white>/paint report [초] <gray>버그 신고용 디버그 파일"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— {length}자 코드. 클릭하여 복사:"
     part: "{part}번째 부분"
     hint: "부분을 차례로 붙여넣으세요: /paint import"
+
+report:
+  started: "<gray>{seconds}초 동안 기록합니다. 지금 문제를 재현하세요"
+  busy: "이미 보고서를 기록 중입니다"
+  saved: "<#1FFF5E>보고서 저장됨: <white>{path}"
+  hint: "<gray>이 파일을 플러그인 제작자에게 보내 주세요. 클릭하면 전체 경로가 복사됩니다"
+  copy: "경로 복사"
+  failed: "보고서를 쓸 수 없습니다: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version}이(가) 나왔습니다 <gray>(현재 {current}): <white>{url}"

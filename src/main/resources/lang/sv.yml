@@ -14,6 +14,8 @@ language:
 prefix: "Målningar"
 
 common:
+  feature-off: "Den här funktionen är avstängd på servern"
+  error: "Något gick fel. Detaljer finns i serverkonsolen"
   no-permission: "Du har inte behörighet"
   color-format: "En färg skrivs som #RRGGBB, till exempel #FF8800"
   canvas-cleared: "<gray>Duken är rensad. <dark_gray>F — ta tillbaka"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>pluginets föremål och alla målningar på servern"
       - "<white>/paint give brush|canvas [BxH] [antal] [spelare]"
       - "<white>/paint language [kod] <gray>pluginets språk · <white>/paint reload"
+      - "<white>/paint report [sekunder] <gray>felsökningsfil för en buggrapport"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— en kod på {length} tecken. Klicka för att kopiera:"
     part: "Del {part}"
     hint: "Klistra in delarna en i taget: /paint import"
+
+report:
+  started: "<gray>Spelar in i {seconds} s. Återskapa problemet nu"
+  busy: "En rapport spelas redan in"
+  saved: "<#1FFF5E>Rapporten sparad: <white>{path}"
+  hint: "<gray>Skicka den här filen till pluginets författare. Klicka för att kopiera hela sökvägen"
+  copy: "Kopiera sökvägen"
+  failed: "Kunde inte skriva rapporten: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} har släppts <gray>(du har {current}): <white>{url}"

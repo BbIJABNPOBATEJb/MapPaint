@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
+import me.bbijabnpobatejb.paintcraft.diag.Counters;
 import me.bbijabnpobatejb.paintcraft.model.Painting;
 import me.bbijabnpobatejb.paintcraft.store.PaintingStorage;
 import me.bbijabnpobatejb.paintcraft.world.Placement;
@@ -172,6 +173,7 @@ public final class MapBridge {
         val players = PacketEvents.getAPI().getPlayerManager();
         for (Player viewer : viewers) {
             players.sendPacket(viewer, new WrapperPlayServerMapData(tile.view.getId(), (byte) 0, false, true, null, w, h, x, y, patch));
+            Counters.map(patch.length);
         }
         viewers.clear();
     }

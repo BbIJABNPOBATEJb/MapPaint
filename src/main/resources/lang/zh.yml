@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "此功能在本服务器上已关闭"
+  error: "出了点问题，详情见服务器控制台"
   no-permission: "你没有权限"
   color-format: "颜色格式为 #RRGGBB，例如 #FF8800"
   canvas-cleared: "<gray>画布已清空。<dark_gray>按 F 可恢复"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>插件物品和服务器上的所有画作"
       - "<white>/paint give brush|canvas [WxH] [数量] [玩家]"
       - "<white>/paint language [代码] <gray>插件语言 · <white>/paint reload"
+      - "<white>/paint report [秒数] <gray>用于反馈问题的调试文件"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— 代码共 {length} 个字符。点击复制："
     part: "第 {part} 段"
     hint: "逐段粘贴：/paint import"
+
+report:
+  started: "<gray>正在记录 {seconds} 秒，请现在重现问题"
+  busy: "已有报告正在记录"
+  saved: "<#1FFF5E>报告已保存：<white>{path}"
+  hint: "<gray>请把这个文件发给插件作者。点击复制完整路径"
+  copy: "复制路径"
+  failed: "无法写入报告：{reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} 已发布<gray>（当前 {current}）：<white>{url}"

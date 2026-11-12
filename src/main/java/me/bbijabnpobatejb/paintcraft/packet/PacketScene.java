@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import me.bbijabnpobatejb.paintcraft.diag.Counters;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class PacketScene {
@@ -194,6 +195,7 @@ public final class PacketScene {
 
     private static void send(Player player, List<? extends PacketWrapper<?>> packets) {
         if (!player.isOnline()) return;
+        Counters.displayPackets += packets.size();
         var manager = PacketEvents.getAPI().getPlayerManager();
         if (packets.size() == 1) {
             manager.sendPacket(player, packets.get(0));

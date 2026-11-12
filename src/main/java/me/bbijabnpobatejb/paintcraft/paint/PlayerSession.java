@@ -37,4 +37,5 @@ public final class PlayerSession {
     UndoStack.@Nullable Step imageStep;
     private @Nullable Painting imagePainting;
     String @Nullable [] importParts;
+    boolean imageLoading;
 }

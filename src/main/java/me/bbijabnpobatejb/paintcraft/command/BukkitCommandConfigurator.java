@@ -19,6 +19,7 @@ import me.bbijabnpobatejb.paintcraft.util.StringUtil;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
+import java.util.logging.Level;
 
 @UtilityClass
 public class BukkitCommandConfigurator {
@@ -49,6 +50,11 @@ public class BukkitCommandConfigurator {
                     for (val scheme : schematic.all()) {
                         sender.sendMessage(getUsageErrorListItem(scheme));
                     }
+                })
+                .exceptionUnexpected((invocation, exception, chain) -> {
+                    plugin.getLogger().log(Level.WARNING, "Command failed: " + invocation.name() + " "
+                            + String.join(" ", invocation.arguments().asList()), exception);
+                    invocation.sender().sendMessage(Chat.generateMessage(Chat.red(Lang.get("common.error"))));
                 })
                 .schematicGenerator(SchematicFormat.angleBrackets());
     }

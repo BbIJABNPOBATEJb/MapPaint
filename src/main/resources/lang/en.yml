@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "This feature is turned off on this server"
+  error: "Something went wrong. Details are in the server console"
   no-permission: "You don't have permission"
   color-format: "A color is written as #RRGGBB, for example #FF8800"
   canvas-cleared: "<gray>Canvas cleared. <dark_gray>F to bring it back"
@@ -97,6 +99,7 @@ command:
       - "<white>/paint admin <gray>plugin items and every painting on the server"
       - "<white>/paint give brush|canvas [WxH] [amount] [player]"
       - "<white>/paint language [code] <gray>plugin language · <white>/paint reload"
+      - "<white>/paint report [seconds] <gray>debug file for a bug report"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ dialog:
     height: "Height of a new painting, blocks"
     button: "Apply"
     no-url: "Paste an image URL"
+
+report:
+  started: "<gray>Recording for {seconds} s. Reproduce the problem now"
+  busy: "A report is already being recorded"
+  saved: "<#1FFF5E>Report saved: <white>{path}"
+  hint: "<gray>Send this file to the plugin author. Click to copy the full path"
+  copy: "Copy the path"
+  failed: "Couldn't write the report: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} is out <gray>(you have {current}): <white>{url}"

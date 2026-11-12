@@ -92,6 +92,10 @@ public class CanvasGui extends InventoryGuiImpl {
                 paint.sendCannotEdit(player, painting);
                 return false;
             }
+            if (!plugin.getConfigHandler().isSharedPainting()) {
+                Chat.sendActionBar(player, Chat.red(Lang.get("common.feature-off")));
+                return false;
+            }
             painting.shared = !painting.shared;
             painting.dirty = true;
             refresh();

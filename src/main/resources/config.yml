@@ -1,6 +1,22 @@
 # en, ru or any file from the lang folder. In game: /paint language <code>
 language: en
 
+# tell admins when a new version is out
+update-check: true
+
+features:
+  # buttons next to the canvas; false - only the /paint menu
+  panel: true
+  # outline of the place a canvas in hand will take
+  placement-preview: true
+  # a glow ink sac makes a painting glow
+  glowing: true
+  # the author can let everyone paint on a canvas
+  shared-painting: true
+
+# interface sounds
+sounds: true
+
 canvas:
   # biggest canvas side in blocks (1-16)
   max-size: 5
@@ -9,6 +25,8 @@ canvas:
   resolutions: [16, 32, 64, 128]
   # painting distance in blocks
   reach: 6.0
+  # how long a resolution change can be reverted without losing detail, 0 - never
+  resolution-undo-minutes: 30
 
 brush:
   max-size: 32

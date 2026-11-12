@@ -14,6 +14,8 @@ language:
 prefix: "Schilderijen"
 
 common:
+  feature-off: "Deze functie staat uit op deze server"
+  error: "Er ging iets mis. Details staan in de serverconsole"
   no-permission: "Je hebt hier geen toestemming voor"
   color-format: "Een kleur schrijf je als #RRGGBB, bijvoorbeeld #FF8800"
   canvas-cleared: "<gray>Doek leeggemaakt. <dark_gray>F — terughalen"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>pluginvoorwerpen en alle schilderijen van de server"
       - "<white>/paint give brush|canvas [BxH] [aantal] [speler]"
       - "<white>/paint language [code] <gray>plugintaal · <white>/paint reload"
+      - "<white>/paint report [seconden] <gray>debugbestand voor een bugmelding"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— een code van {length} tekens. Klik om te kopiëren:"
     part: "Deel {part}"
     hint: "Plak de delen een voor een: /paint import"
+
+report:
+  started: "<gray>Opname loopt {seconds} s. Herhaal het probleem nu"
+  busy: "Er wordt al een rapport opgenomen"
+  saved: "<#1FFF5E>Rapport opgeslagen: <white>{path}"
+  hint: "<gray>Stuur dit bestand naar de maker van de plugin. Klik om het volledige pad te kopiëren"
+  copy: "Pad kopiëren"
+  failed: "Kon het rapport niet schrijven: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} is uit <gray>(jij hebt {current}): <white>{url}"

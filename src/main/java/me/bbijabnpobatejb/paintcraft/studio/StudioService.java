@@ -93,7 +93,13 @@ public class StudioService {
     final BlockData darkWood = Material.SPRUCE_PLANKS.createBlockData();
     boolean broken;
 
+    public boolean isOpen(Player player) {
+        Studio studio = studios.get(player.getUniqueId());
+        return studio != null && studio.getClosingTicks() < 0;
+    }
+
     public void select(Player player, Placement placement) {
+        if (!plugin.getConfigHandler().isPanel()) return;
         dismissed.remove(player.getUniqueId());
         Studio current = studios.get(player.getUniqueId());
         if (current != null) {
@@ -152,6 +158,7 @@ public class StudioService {
     }
 
     public void tick() {
+        if (!plugin.getConfigHandler().isPanel()) return;
         selectByLook();
         reopen();
         if (studios.isEmpty()) return;
@@ -657,6 +664,10 @@ public class StudioService {
                             Lang.get("panel.action.shared", "state", Chat.getToggleString(painting.shared)), p -> {
                         if (!owner) {
                             paint.sendCannotEdit(p, painting);
+                            return;
+                        }
+                        if (!plugin.getConfigHandler().isSharedPainting()) {
+                            Chat.sendActionBar(p, Chat.red(Lang.get("common.feature-off")));
                             return;
                         }
                         painting.shared = !painting.shared;

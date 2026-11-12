@@ -85,6 +85,10 @@ public class ExchangeService {
             return;
         }
         val session = plugin.getPaintService().session(player);
+        if (session.isImageLoading()) {
+            Chat.sendActionBar(player, Chat.gray(Lang.get("import.loading")));
+            return;
+        }
         session.setImageOptions(options);
 
         int res = config.getImageResolution();
@@ -110,21 +114,24 @@ public class ExchangeService {
         if (cached == null) Chat.sendActionBar(player, Chat.gray(Lang.get("import.loading")));
         int maxBytes = config.getImageMaxBytes();
         boolean allowPrivate = config.isImageAllowPrivate();
+        session.setImageLoading(true);
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             BufferedImage image;
             byte[] pixels;
             try {
                 image = cached != null ? cached : ImageImporter.fetch(url, maxBytes, allowPrivate);
                 pixels = ImageImporter.convert(image, width, height, options, shade);
-            } catch (Exception e) {
+            } catch (Exception | OutOfMemoryError e) {
                 String reason = String.valueOf(e.getMessage());
                 Bukkit.getScheduler().runTask(plugin, () -> {
+                    session.setImageLoading(false);
                     Chat.sendChat(player, Chat.red(Lang.get("import.image-failed", "reason", reason)));
                     Sounds.playSound(player, Sounds.ERROR);
                 });
                 return;
             }
             Bukkit.getScheduler().runTask(plugin, () -> {
+                session.setImageLoading(false);
                 if (!player.isOnline()) return;
                 session.setImageCache(image);
                 session.setImageCacheUrl(url);

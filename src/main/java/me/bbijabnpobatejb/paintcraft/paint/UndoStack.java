@@ -136,6 +136,18 @@ public final class UndoStack {
         return step;
     }
 
+    public int getSteps() {
+        return undo.size();
+    }
+
+    public int getRedoSteps() {
+        return redo.size();
+    }
+
+    public int getPixels() {
+        return pixels;
+    }
+
     public Step peek() {
         return undo.peekLast();
     }

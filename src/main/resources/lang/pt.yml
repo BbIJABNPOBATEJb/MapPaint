@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "Este recurso está desativado neste servidor"
+  error: "Algo deu errado. Os detalhes estão no console do servidor"
   no-permission: "Você não tem permissão"
   color-format: "Uma cor se escreve como #RRGGBB, por exemplo #FF8800"
   canvas-cleared: "<gray>Tela limpa. <dark_gray>F para recuperar"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>itens do plugin e todas as pinturas do servidor"
       - "<white>/paint give brush|canvas [LxA] [quantidade] [jogador]"
       - "<white>/paint language [código] <gray>idioma do plugin · <white>/paint reload"
+      - "<white>/paint report [segundos] <gray>arquivo de depuração para relatar um bug"
 
 tool:
   brush:
@@ -469,3 +472,14 @@ export:
     header: "<#FF7800>{title} <gray>— um código de {length} caracteres. Clique para copiar:"
     part: "Parte {part}"
     hint: "Cole as partes uma por uma: /paint import"
+
+report:
+  started: "<gray>Gravando por {seconds} s. Reproduza o problema agora"
+  busy: "Um relatório já está sendo gravado"
+  saved: "<#1FFF5E>Relatório salvo: <white>{path}"
+  hint: "<gray>Envie este arquivo ao autor do plugin. Clique para copiar o caminho completo"
+  copy: "Copiar o caminho"
+  failed: "Não foi possível gravar o relatório: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} foi lançado <gray>(você tem {current}): <white>{url}"

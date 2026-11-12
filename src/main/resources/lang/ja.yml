@@ -14,6 +14,8 @@ language:
 prefix: "Paint"
 
 common:
+  feature-off: "この機能はこのサーバーでは無効です"
+  error: "問題が発生しました。詳細はサーバーコンソールにあります"
   no-permission: "権限がありません"
   color-format: "色は #RRGGBB の形式で指定します（例：#FF8800）"
   canvas-cleared: "<gray>キャンバスを消去しました。<dark_gray>F で元に戻せます"
@@ -82,6 +84,7 @@ command:
       - "<white>/paint admin <gray>プラグインのアイテムとサーバー上の全作品"
       - "<white>/paint give brush|canvas [WxH] [個数] [プレイヤー]"
       - "<white>/paint language [コード] <gray>プラグインの言語 · <white>/paint reload"
+      - "<white>/paint report [秒] <gray>バグ報告用のデバッグファイル"
 
 tool:
   brush:
@@ -467,3 +470,14 @@ export:
     header: "<#FF7800>{title} <gray>— {length} 文字のコード。クリックでコピー："
     part: "パート {part}"
     hint: "パートを順番に貼り付けます：/paint import"
+
+report:
+  started: "<gray>{seconds} 秒間記録します。今、問題を再現してください"
+  busy: "すでにレポートを記録中です"
+  saved: "<#1FFF5E>レポートを保存しました: <white>{path}"
+  hint: "<gray>このファイルをプラグイン作者に送ってください。クリックでフルパスをコピー"
+  copy: "パスをコピー"
+  failed: "レポートを書き込めませんでした: {reason}"
+
+update:
+  available: "<#FFE100>PaintCraft {version} が公開されました<gray>（現在 {current}）: <white>{url}"

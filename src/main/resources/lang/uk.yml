@@ -14,6 +14,8 @@ language:
 prefix: "Картини"
 
 common:
+  feature-off: "Цю можливість вимкнено на сервері"
+  error: "Щось пішло не так. Подробиці — в консолі сервера"
   no-permission: "У вас недостатньо прав"
   color-format: "Колір задається як #RRGGBB, наприклад #FF8800"
   canvas-cleared: "<gray>Полотно очищено. <dark_gray>F — повернути"
@@ -85,6 +87,7 @@ command:
       - "<white>/paint admin <gray>видача предметів і всі картини сервера"
       - "<white>/paint give brush|canvas [ШxВ] [кількість] [гравець]"
       - "<white>/paint language [код] <gray>мова плагіна · <white>/paint reload"
+      - "<white>/paint report [секунди] <gray>файл налагодження для повідомлення про помилку"
 
 tool:
   brush:
@@ -470,3 +473,14 @@ export:
     header: "<#FF7800>{title} <gray>— код із {length} символів. Натисніть, щоб скопіювати:"
     part: "Частина {part}"
     hint: "Вставляйте частини по черзі: /paint import"
+
+report:
+  started: "<gray>Запис триває {seconds} с. Відтворіть проблему зараз"
+  busy: "Звіт уже записується"
+  saved: "<#1FFF5E>Звіт збережено: <white>{path}"
+  hint: "<gray>Надішліть цей файл автору плагіна. Клацніть, щоб скопіювати повний шлях"
+  copy: "Скопіювати шлях"
+  failed: "Не вдалося записати звіт: {reason}"
+
+update:
+  available: "<#FFE100>Вийшов PaintCraft {version} <gray>(у вас {current}): <white>{url}"

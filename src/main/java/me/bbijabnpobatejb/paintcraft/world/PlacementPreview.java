@@ -46,6 +46,10 @@ public class PlacementPreview {
     public void tick() {
         int tick = Bukkit.getCurrentTick();
         if ((tick & 1) != 0) return;
+        if (!plugin.getConfigHandler().isPlacementPreview()) {
+            if (!shown.isEmpty()) shutdown();
+            return;
+        }
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             ItemStack hand = player.getInventory().getItemInMainHand();

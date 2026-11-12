@@ -14,6 +14,8 @@ language:
 prefix: "Obrazy"
 
 common:
+  feature-off: "Ta funkcja jest wyłączona na tym serwerze"
+  error: "Coś poszło nie tak. Szczegóły są w konsoli serwera"
   no-permission: "Nie masz uprawnień"
   color-format: "Kolor zapisuje się jako #RRGGBB, na przykład #FF8800"
   canvas-cleared: "<gray>Płótno wyczyszczone. <dark_gray>F — przywróć"
@@ -85,6 +87,7 @@ command:
       - "<white>/paint admin <gray>przedmioty wtyczki i wszystkie obrazy serwera"
       - "<white>/paint give brush|canvas [SxW] [ilość] [gracz]"
       - "<white>/paint language [kod] <gray>język wtyczki · <white>/paint reload"
+      - "<white>/paint report [sekundy] <gray>plik debugowania do zgłoszenia błędu"
 
 tool:
   brush:
@@ -470,3 +473,14 @@ export:
     header: "<#FF7800>{title} <gray>— kod o długości {length} znaków. Kliknij, aby skopiować:"
     part: "Część {part}"
     hint: "Wklejaj części po kolei: /paint import"
+
+report:
+  started: "<gray>Nagrywanie przez {seconds} s. Odtwórz teraz problem"
+  busy: "Raport jest już nagrywany"
+  saved: "<#1FFF5E>Raport zapisany: <white>{path}"
+  hint: "<gray>Wyślij ten plik autorowi pluginu. Kliknij, aby skopiować pełną ścieżkę"
+  copy: "Kopiuj ścieżkę"
+  failed: "Nie udało się zapisać raportu: {reason}"
+
+update:
+  available: "<#FFE100>Wyszedł PaintCraft {version} <gray>(masz {current}): <white>{url}"

@@ -4,12 +4,16 @@ import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import lombok.experimental.UtilityClass;
 import me.bbijabnpobatejb.paintcraft.PaintCraft;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Hanging;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.function.Consumer;
 
 @UtilityClass
 public class Compat {
@@ -54,6 +59,15 @@ public class Compat {
 
     public void listeners(PaintCraft plugin) {
         if (hasClass("io.papermc.paper.event.player.PlayerPickEntityEvent")) modern("PickListener", plugin);
+    }
+
+    public void optionalEvent(PaintCraft plugin, String name, Consumer<Event> handler) {
+        try {
+            Class<? extends Event> type = Class.forName(name).asSubclass(Event.class);
+            Bukkit.getPluginManager().registerEvent(type, new Listener() {
+            }, EventPriority.HIGH, (listener, event) -> handler.accept(event), plugin, true);
+        } catch (ClassNotFoundException | LinkageError ignored) {
+        }
     }
 
     @SuppressWarnings("unchecked")
